@@ -43,20 +43,10 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
-    },
-    "custom_liquid_T8Fm3P": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<p>Shipping Text<\/p>",
-        "color_scheme": "",
-        "padding_top": 12,
-        "padding_bottom": 12
-      }
     }
   },
   "order": [
     "announcement-bar",
-    "header",
-    "custom_liquid_T8Fm3P"
+    "header"
   ]
 }
