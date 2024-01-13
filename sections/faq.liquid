@@ -1,0 +1,247 @@
+{%- style -%}
+  #faq-section.section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      #faq-section.section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+  }
+
+  #faq-toc-inner {
+      border: 1px solid #999;
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+  }
+
+  #faq-toc {{ section.settings.toc_title_tag }} {
+    margin-bottom: 1rem;
+  }
+
+  #faq-toc ul {
+      list-style: none;
+      padding: 0;
+  }
+
+  #faq-toc li a {
+      text-decoration: none;
+  }
+
+  .faq-question {
+      margin-bottom: 2rem;
+  }
+{%- endstyle -%}
+
+<div
+  id='faq-section-{{ section.id }}'
+  class='section-{{ section.id }}-padding'
+>
+  <div class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+    {% # Table of Contents %}
+    <div id='faq-toc'>
+      {% assign toc_title_tag = section.settings.toc_title_tag %}
+      <{{ toc_title_tag }}>
+        {{- section.settings.toc_title | escape -}}
+      </{{ toc_title_tag }}>
+
+      <div id='faq-toc-inner'>
+        <ul>
+          {% for block in section.blocks %}
+            <li>
+              <a href='#{{ block.id }}'>{{ block.settings.question }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    {% # FAQ Questions %}
+    {% for block in section.blocks %}
+      <div id='{{ block.id }}' class='faq-question'>
+        {% assign question_tag = section.settings.question_tag %}
+        <{{ question_tag }}>
+          {{- block.settings.question | escape -}}
+        </{{ question_tag }}>
+        <div class='faq-answer'>
+          {% if block.settings.answer %}
+            {{ block.settings.answer }}
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% # END .page-width %}
+</div>
+{%- if section.settings.enable_faq_schema -%}
+  <script type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for block in section.blocks %}
+        {
+          "@type": "Question",
+          "name": {{ block.settings.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ block.settings.answer | strip_html | json }}
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+  </script>
+{%- endif -%}
+{% # END #faq-section-{{ section.id }} %}
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "max_blocks": 25,
+  "class": "faq-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "toc_title",
+      "label": "Table of Contents Title",
+      "default": "Table of Contents:"
+    },
+    {
+      "type": "select",
+      "id": "toc_title_tag",
+      "label": "Table of Contents Title Tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
+          "value": "p",
+          "label": "P"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "select",
+      "id": "question_tag",
+      "label": "Question Tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
+          "value": "p",
+          "label": "P"
+        }
+      ],
+      "default": "h4"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_faq_schema",
+      "label": "Enable FAQ Schema",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Your Question Here"
+        },
+        {
+          "type": "liquid",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Your answer here</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "faq_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
