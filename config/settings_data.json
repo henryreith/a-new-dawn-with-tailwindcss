@@ -113,7 +113,7 @@
     "cart_type": "drawer",
     "show_vendor": false,
     "show_cart_note": false,
-    "cart_drawer_collection": "frontpage",
+    "cart_drawer_collection": "",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
