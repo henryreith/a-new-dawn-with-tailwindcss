@@ -95,6 +95,11 @@
     margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  {% # SVG Logo Snippit %}
+  header svg.logo{
+      height: 4rem
+    }
+
   @media screen and (min-width: 750px) {
     .section-header {
       margin-bottom: {{ section.settings.margin_bottom }}px;
@@ -106,7 +111,14 @@
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
+
+    {% # SVG Logo Snippit %}
+    header svg.logo{
+      height: 6rem
+    }
+
   }
+
 {%- endstyle -%}
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
@@ -170,6 +182,7 @@
         <h1 class="header__heading">
       {%- endif -%}
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+            {% comment %}
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -189,6 +202,10 @@
             {%- else -%}
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
+          {% endcomment %}
+            <div class="header__heading-logo-wrapper tw-m-0">
+              {%- render 'logo-svg' -%}
+            </div>
           </a>
       {%- if request.page_type == 'index' -%}
         </h1>

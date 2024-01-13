@@ -353,13 +353,6 @@ input::-moz-placeholder, textarea::-moz-placeholder {
   /* 2 */
 }
 
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
-}
-
 input::placeholder,
 textarea::placeholder {
   opacity: 1;
@@ -468,34 +461,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
-.twcss-container {
-  width: 100%;
-}
-
-@media (min-width: 320px) {
-  .twcss-container {
-    max-width: 320px;
-  }
-}
-
-@media (min-width: 750px) {
-  .twcss-container {
-    max-width: 750px;
-  }
-}
-
-@media (min-width: 990px) {
-  .twcss-container {
-    max-width: 990px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .twcss-container {
-    max-width: 1280px;
-  }
-}
-
-.twcss-block {
-  display: block;
+.tw-m-0 {
+  margin: 0px;
 }
