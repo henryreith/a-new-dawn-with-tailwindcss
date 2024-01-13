@@ -1,5 +1,27 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos
+# OS generated files #
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Enviroment files #
+dev/
+src/
+node_modules/
+.config
+.github
+.vscode
+.docs
+package.json
+package-lock.json
+.gitignore
+gulpfile.js
+.git
+.gitattributes
+.git/
+README.md
 
 ### macOS ###
 # General
@@ -52,9 +74,3 @@ Temporary Items
 # Ignore all local history of files
 .history
 .ionide
-
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos
-
-# Ignore node_modules folder
-node_modules
-node_modules/
