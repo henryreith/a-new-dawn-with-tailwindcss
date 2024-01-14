@@ -58,6 +58,16 @@ module.exports = {
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
+            {
+							loader: 'postcss-loader',
+							options: {
+								postcssOptions: {
+									plugins: [
+										require('autoprefixer')
+									]
+								}
+							}
+						},
             'sass-loader',
           ],
         },
@@ -83,6 +93,7 @@ module.exports = {
       minimizer: [
         new CssMinimizerPlugin(),
       ],
+      // usedExports: true,
     },
     mode: 'development', // Change to 'production' when ready to deploy
   };
