@@ -1,11 +1,11 @@
 {%- style -%}
-  #faq-section.section-{{ section.id }}-padding {
+  #faq-section-{{ section.id }}.section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
       padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-      #faq-section.section-{{ section.id }}-padding {
+      #faq-section-{{ section.id }}.section-{{ section.id }}-padding {
           padding-top: {{ section.settings.padding_top }}px;
           padding-bottom: {{ section.settings.padding_bottom }}px;
       }
@@ -43,20 +43,23 @@
   <div class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
     {% # Table of Contents %}
     <div id='faq-toc'>
-      {% assign toc_title_tag = section.settings.toc_title_tag %}
-      <{{ toc_title_tag }}>
-        {{- section.settings.toc_title | escape -}}
-      </{{ toc_title_tag }}>
+      {% assign faq_title_tag = section.settings.faq_title_tag %}
+      <{{ faq_title_tag }}>
+        {{- section.settings.faq_title | escape -}}
+      </{{ faq_title_tag }}>
 
-      <div id='faq-toc-inner'>
-        <ul>
-          {% for block in section.blocks %}
-            <li>
-              <a href='#{{ block.id }}'>{{ block.settings.question }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+      {% if section.setting.toc_show %}
+        <div id='faq-toc-inner'>
+          <ul>
+            {% for block in section.blocks %}
+              <li>
+                <a href='#{{ block.id }}'>{{ block.settings.question }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% # END #faq-toc-inner %}
+      {%- endif -%}
     </div>
 
     {% # FAQ Questions %}
@@ -67,8 +70,11 @@
           {{- block.settings.question | escape -}}
         </{{ question_tag }}>
         <div class='faq-answer'>
-          {% if block.settings.answer %}
-            {{ block.settings.answer }}
+          {% if block.settings.answer_richtext %}
+            {{- block.settings.answer_richtext -}}
+          {% endif %}
+          {% if block.settings.answer_liquid %}
+            {{- block.settings.answer_liquid -}}
           {% endif %}
         </div>
       </div>
@@ -88,7 +94,7 @@
           "name": {{ block.settings.question | json }},
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": {{ block.settings.answer | strip_html | json }}
+            "text": "{{ block.settings.answer_richtext | strip_html }} {{ block.settings.answer_liquid | strip_html }}"
           }
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
@@ -100,7 +106,7 @@
 
 {% schema %}
 {
-  "name": "FAQ Section",
+  "name": "t:sections.faq.name",
   "max_blocks": 25,
   "class": "faq-section",
   "disabled_on": {
@@ -109,14 +115,14 @@
   "settings": [
     {
       "type": "text",
-      "id": "toc_title",
-      "label": "Table of Contents Title",
-      "default": "Table of Contents:"
+      "id": "faq_title",
+      "label": "t:sections.faq.faq_title.label",
+      "default": "FAQ:"
     },
     {
       "type": "select",
-      "id": "toc_title_tag",
-      "label": "Table of Contents Title Tag",
+      "id": "faq_title_tag",
+      "label": "t:sections.faq.faq_title_tag.label",
       "options": [
         {
           "value": "h1",
@@ -150,9 +156,15 @@
       "default": "h3"
     },
     {
+      "type": "checkbox",
+      "id": "toc_show",
+      "label": "t:sections.faq.toc_show.label",
+      "default": true
+    },
+    {
       "type": "select",
       "id": "question_tag",
-      "label": "Question Tag",
+      "label": "t:sections.faq.question_tag.label",
       "options": [
         {
           "value": "h1",
@@ -188,7 +200,7 @@
     {
       "type": "checkbox",
       "id": "enable_faq_schema",
-      "label": "Enable FAQ Schema",
+      "label": "t:sections.faq.enable_faq_schema.label",
       "default": false
     },
     {
@@ -215,26 +227,34 @@
   "blocks": [
     {
       "type": "faq_item",
-      "name": "FAQ Item",
+      "name": "t:sections.faq.blocks.faq_item.name",
       "settings": [
         {
           "type": "text",
           "id": "question",
-          "label": "Question",
+          "label": "t:sections.faq.blocks.faq_item.settings.question.label",
           "default": "Your Question Here"
         },
         {
+          "type": "paragraph",
+          "content": "t:sections.faq.blocks.faq_item.settings.paragraph.content"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_richtext",
+          "label": "t:sections.faq.blocks.faq_item.settings.answer_richtext.label"
+        },
+        {
           "type": "liquid",
-          "id": "answer",
-          "label": "Answer",
-          "default": "<p>Your answer here</p>"
+          "id": "answer_liquid",
+          "label": "t:sections.faq.blocks.faq_item.settings.answer_liquid.label"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "FAQ Section",
+      "name": "t:sections.faq.presets.faq.name",
       "category": "Custom",
       "blocks": [
         {
