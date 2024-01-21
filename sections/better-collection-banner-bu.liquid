@@ -4,7 +4,7 @@
 {%- style -%}
   @media screen and (max-width: 749px) {
     .collection-hero--with-image .collection-hero__inner {
-      padding-bottom: calc({{settings.media_shadow_vertical_offset | at_least: 0}}px + 2rem);
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
     }
   }
 {%- endstyle -%}
@@ -49,15 +49,14 @@
     {% endfor %}
   </div>
 </div>
-{% # "name": "t:sections.main-collection-banner.name", %}
+
 {% schema %}
 {
   "name": "Better Collection Banner",
   "class": "section",
   "max_blocks": 5,
   "enabled_on": {
-    "templates": ["*"],
-    "groups": ["*"]
+    "templates": ["collection"]
   },
   "blocks": [
     {

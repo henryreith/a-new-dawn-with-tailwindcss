@@ -1,0 +1,137 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+  }
+  #extended-collection-banner-{{ section.id }}{
+      text-align: {{ section.settings.text_alignment }};
+  }
+  #extended-collection-banner-{{ section.id }}.section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      #extended-collection-banner-{{ section.id }}.section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+
+      .collection-hero__description--full-width{
+          max-width: 100%;
+      }
+  }
+{%- endstyle -%}
+
+<div
+  id='extended-collection-banner-{{ section.id }}'
+  class='collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding'
+>
+  <div class='collection-hero__image-wrapper'>
+    {{ section.settings.image_with_text_image | image_url: width: 1500 | image_tag }}
+  </div>
+  <div class='collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'>
+    <div class='collection-hero__text-wrapper'>
+      <h1 class='collection-hero__title'>
+        <span class='visually-hidden'>{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}
+      </h1>
+
+      {%- if section.settings.show_collection_description -%}
+        <div class='collection-hero__description collection-hero__description--full-width rte'>
+          {{ collection.description }}
+        </div>
+      {%- endif -%}
+    </div>
+    {% comment %}
+      {%- if section.settings.show_collection_image and collection.image -%}
+        <div class='collection-hero__image-container media gradient'>
+          <img
+            srcset='
+              {%- if collection.image.width >= 165 -%}{{ collection.image | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if collection.image.width >= 360 -%}{{ collection.image | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if collection.image.width >= 535 -%}{{ collection.image | image_url: width: 535 }} 535w,{%- endif -%}
+              {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 750 }} 750w,{%- endif -%}
+              {%- if collection.image.width >= 1070 -%}{{ collection.image | image_url: width: 1070 }} 1070w,{%- endif -%}
+              {%- if collection.image.width >= 1500 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {{ collection.image | image_url }} {{ collection.image.width }}w
+            '
+            src='{{ collection.image | image_url: width: 750 }}'
+            sizes='(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)'
+            alt=''
+            width='{{ collection.image.width }}'
+            height='{{ collection.image.height }}'
+          >
+        </div>
+      {%- endif -%}
+    {% endcomment %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.extended-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.extended-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.extended-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.extended-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.extended-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "collection_banner_background_image",
+      "label": "t:sections.extended-collection-banner.settings.desktop_collection_image.label",
+      "info": "t:sections.extended-collection-banner.settings.desktop_collection_image.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:sections.all.text_align.label",
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

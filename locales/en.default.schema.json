@@ -682,6 +682,67 @@
         "name": "Custom Liquid"
       }
     },
+    "extended-collection-banner": {
+      "name": "Ext collection banner",
+      "settings": {
+        "paragraph": {
+          "content": "Add a description or image by editing your collection. [Learn more](https:\/\/help.shopify.com\/manual\/products\/collections\/collection-layout)"
+        },
+        "show_collection_description": {
+          "label": "Show collection description"
+        },
+        "show_collection_image": {
+          "label": "Show collection background image",
+          "info": "This will use the the category image set in the collection. This background image will be the one shown on mobile and smaller size screen and sit behind the category text and background colour if it is set above, use an image with a 1:1 aspect ratio. [Learn more](https:\/\/help.shopify.com\/manual\/shopify-admin\/productivity-tools\/image-editor#understanding-image-aspect-ratio). The image will cover the avaliable banner area so will change size a bit depending on the screen size"
+        },
+        "desktop_collection_image": {
+          "label": "Add desktop collection background image",
+          "info": "If you have chosen to show the background image you can overwrite here with a larger screens and desktop size image. This background image will sit behind the category text and background colour if it is set above, use an image with a 2.39:1 aspect ratio. [Learn more](https:\/\/help.shopify.com\/manual\/shopify-admin\/productivity-tools\/image-editor#understanding-image-aspect-ratio). The image will cover the avaliable banner area so will change size a bit depending on the screen size"
+        }
+      }
+    },
+    "faq": {
+      "name": "FAQ",
+      "settings": {
+        "faq_title": {
+          "label": "FAQ title"
+        },
+        "faq_title_tag": {
+          "label": "FAQ HTML heading tag"
+        },
+        "toc_show": {
+          "label": "Show table of contents"
+        },
+        "question_tag": {
+          "label": "Question HTML heading tag"
+        },
+        "enable_faq_schema": {
+          "label": "Enable FAQ schema"
+        }
+      },
+      "blocks": {
+        "faq_item": {
+          "name": "FAQ Item",
+          "settings": {
+            "question": {
+              "label": "Question"
+            },
+            "paragraph": {
+              "content": "For most FAQ's you don't need to add any HTML into the answer so you just use the rich text editor. However, if you want to insert a video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in Rich text and video for example in the liquid HTML."
+            },
+            "answer_richtext": {
+              "label": "Answer (Rich text)"
+            },
+            "answer_liquid": {
+              "label": "Answer (Liquid)"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "FAQ section"
+      }
+    },
     "featured-blog": {
       "name": "Blog posts",
       "settings": {
