@@ -31,9 +31,11 @@
   id='extended-collection-banner-{{ section.id }}'
   class='collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding'
 >
-  <div class='collection-hero__image-wrapper'>
-    {{ section.settings.image_with_text_image | image_url: width: 1500 | image_tag }}
-  </div>
+  {%- if section.settings.collection_banner_background_image -%}
+    <div class='collection-hero__image-wrapper'>
+      {{ section.settings.collection_banner_background_image | image_url: width: 1500 | image_tag }}
+    </div>
+  {%- endif -%}
   <div class='collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'>
     <div class='collection-hero__text-wrapper'>
       <h1 class='collection-hero__title'>
