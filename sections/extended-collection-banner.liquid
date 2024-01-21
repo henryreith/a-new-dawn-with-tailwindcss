@@ -66,6 +66,9 @@
   #extended-collection-banner-{{ section.id }} .collection-hero__description{
     margin-bottom: 0;
   }
+  #extended-collection-banner-{{ section.id }}.color-{{ section.settings.color_scheme }} h1{
+    color: {{ section.settings.color_scheme | color_modify: 'alpha', 0.9 }};
+  }
 {%- endstyle -%}
 
 <div
@@ -142,13 +145,14 @@
     {
       "type": "image_picker",
       "id": "collection_banner_background_image",
-      "label": "t:sections.extended-collection-banner.settings.desktop_collection_image.label",
-      "info": "t:sections.extended-collection-banner.settings.desktop_collection_image.info"
+      "label": "t:sections.extended-collection-banner.settings.collection_banner_background_image.label",
+      "info": "t:sections.extended-collection-banner.settings.collection_banner_background_image.info"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
+      "label": "t:sections.extended-collection-banner.settings.color_scheme.label",
+      "info": "t:sections.extended-collection-banner.settings.color_scheme.info",
       "default": "scheme-1"
     },
     {

@@ -695,10 +695,11 @@
           "label": "Show collection background image",
           "info": "This will use the the category image set in the collection. This background image will be the one shown on mobile and smaller size screen and sit behind the category text and background colour if it is set above, use an image with a 1:1 aspect ratio. [Learn more](https:\/\/help.shopify.com\/manual\/shopify-admin\/productivity-tools\/image-editor#understanding-image-aspect-ratio). The image will cover the avaliable banner area so will change size a bit depending on the screen size"
         },
-        "desktop_collection_image": {
-          "label": "Add desktop collection background image",
-          "info": "If you have chosen to show the background image you can overwrite here with a larger screens and desktop size image. This background image will sit behind the category text and background colour if it is set above, use an image with a 2.39:1 aspect ratio. [Learn more](https:\/\/help.shopify.com\/manual\/shopify-admin\/productivity-tools\/image-editor#understanding-image-aspect-ratio). The image will cover the avaliable banner area so will change size a bit depending on the screen size"
-        }
+        "color_scheme": {
+          "label": "Color of main paragraph text",
+          "info": "This will change the color of the main paragraph text"
+        },
+        ""
       }
     },
     "faq": {
