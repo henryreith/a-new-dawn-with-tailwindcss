@@ -49,12 +49,6 @@
     "text_with_liquid_UampX6": {
       "type": "text-with-liquid",
       "blocks": {
-        "liquid_bggQeg": {
-          "type": "liquid",
-          "settings": {
-            "custom_liquid": "<p>Your custom Liquid code here<\/p>\nHi me"
-          }
-        },
         "heading_9XcTx4": {
           "type": "heading",
           "settings": {
@@ -79,15 +73,53 @@
         }
       },
       "block_order": [
-        "liquid_bggQeg",
         "heading_9XcTx4",
         "text_FxLKNf",
         "button_UcfEqe"
       ],
       "settings": {
+        "custom_liquid1": "<p>Your custom Liquid code here<\/p>",
         "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_AxWDCJ": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_PQjHPP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Key Facts",
+            "heading_size": "h1"
+          }
+        },
+        "text_akDrmQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>“if it's not compostable, it's got plastic in it”<\/em><\/p><p><\/p><ul><li>Compostable products will degrade to nothing within a specific timeframe of the composting process (see product specs)<\/li><li>Typically biodegradable products are not considered eco-friendly because they take much longer to break down (up to 1,000 years) and will leave some type of residue. For example the computer you're looking at today is “biodegradable” - “it will break down at some point”.<\/li><li>Compostable products have been scientifically tested to break down in the presence of heat, moisture & micro organisms to form compost.<\/li><\/ul>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PQjHPP",
+        "text_akDrmQ"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
         "content_layout": "no-overlap",
         "section_color_scheme": "",
         "color_scheme": "",
@@ -101,6 +133,7 @@
   "order": [
     "main",
     "image_with_text_7agMYX",
-    "text_with_liquid_UampX6"
+    "text_with_liquid_UampX6",
+    "image_with_text_AxWDCJ"
   ]
 }
