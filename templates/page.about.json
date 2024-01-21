@@ -6,9 +6,61 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "text_with_liquid_UampX6": {
+      "type": "text-with-liquid",
+      "blocks": {
+        "liquid_bggQeg": {
+          "type": "liquid",
+          "settings": {
+            "custom_liquid": "<p>Your custom Liquid code here<\/p>\nHi me"
+          }
+        },
+        "heading_9XcTx4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text_FxLKNf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_UcfEqe": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "liquid_bggQeg",
+        "heading_9XcTx4",
+        "text_FxLKNf",
+        "button_UcfEqe"
+      ],
+      "settings": {
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "text_with_liquid_UampX6"
   ]
 }
