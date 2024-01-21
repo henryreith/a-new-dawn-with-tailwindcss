@@ -18,9 +18,10 @@
   <div class='page-width'>
     <div class='image-with-text image-with-text--{{ section.settings.content_layout }} isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == section.settings.section_color_scheme %} collapse-corners{% endunless %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
       <div class='image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}'>
-        <!-- Custom Liquid Area -->
+        {% # Custom Liquid Area %}
         <div class='image-with-text__custom-liquid-item grid__item'>
           <div class='image-with-text__custom-liquid'>
+            {{ section.settings.custom_liquid1 }}
             {%- for block in section.blocks -%}
               {%- if block.type == 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
@@ -28,7 +29,7 @@
             {%- endfor -%}
           </div>
         </div>
-        <!-- Text Content Area -->
+        {% # Text Content Area %}
         <div class='image-with-text__text-item grid__item'>
           <div
             id='ImageWithText--{{ section.id }}'
@@ -81,6 +82,12 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid1",
+      "label": "Custom Liquid",
+      "default": "<p>Your custom Liquid code here</p>"
+    },
     {
       "type": "select",
       "id": "layout",
