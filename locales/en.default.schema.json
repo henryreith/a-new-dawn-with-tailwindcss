@@ -691,15 +691,17 @@
         "show_collection_description": {
           "label": "Show collection description"
         },
-        "show_collection_image": {
-          "label": "Show collection background image",
-          "info": "This will use the the category image set in the collection. This background image will be the one shown on mobile and smaller size screen and sit behind the category text and background colour if it is set above, use an image with a 1:1 aspect ratio. [Learn more](https:\/\/help.shopify.com\/manual\/shopify-admin\/productivity-tools\/image-editor#understanding-image-aspect-ratio). The image will cover the avaliable banner area so will change size a bit depending on the screen size"
+        "collection_banner_background_image": {
+          "label": "Collection background image",
+          "info": "This background image will sit behind the category text and background color if you select a color scheme with a background or gradient above, use an image with a 1:1 aspect ratio. [Learn more](https:\/\/help.shopify.com\/manual\/shopify-admin\/productivity-tools\/image-editor#understanding-image-aspect-ratio). The image will cover the avaliable banner area so will change size a bit depending on the screen size"
+        },
+        "collection_banner_background_image_opactity": {
+          "label": "Collection background image opacity as a percentage"
         },
         "color_scheme": {
           "label": "Color of main paragraph text",
           "info": "This will change the color of the main paragraph text"
-        },
-        ""
+        }
       }
     },
     "faq": {

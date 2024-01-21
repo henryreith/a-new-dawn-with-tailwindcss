@@ -54,6 +54,7 @@
       min-width: 100%;
       height: auto;
       min-height: 100%;
+      opacity: {{ section.settings.collection_banner_background_image_opactity | divided_by: 100 }};
     }
     #extended-collection-banner-{{ section.id }} .collection-hero__inner{
       position: relative;
@@ -136,11 +137,11 @@
       "label": "t:sections.extended-collection-banner.settings.show_collection_description.label"
     },
     {
-      "type": "checkbox",
-      "id": "show_collection_image",
-      "default": false,
-      "label": "t:sections.extended-collection-banner.settings.show_collection_image.label",
-      "info": "t:sections.extended-collection-banner.settings.show_collection_image.info"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.extended-collection-banner.settings.color_scheme.label",
+      "info": "t:sections.extended-collection-banner.settings.color_scheme.info",
+      "default": "scheme-1"
     },
     {
       "type": "image_picker",
@@ -149,11 +150,13 @@
       "info": "t:sections.extended-collection-banner.settings.collection_banner_background_image.info"
     },
     {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.extended-collection-banner.settings.color_scheme.label",
-      "info": "t:sections.extended-collection-banner.settings.color_scheme.info",
-      "default": "scheme-1"
+      "type": "range",
+      "id": "collection_banner_background_image_opactity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "t:sections.extended-collection-banner.settings.collection_banner_background_image_opactity.label",
+      "default": 10
     },
     {
       "type": "text_alignment",
