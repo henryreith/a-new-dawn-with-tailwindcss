@@ -2,9 +2,48 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "image_with_text_7agMYX": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_MdPKtB": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Mission",
+            "heading_size": "h1"
+          }
+        },
+        "text_4RkJYi": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our mission is to eradicate the 4% of landfill that is dog poop wrapped in plastic bags.<\/p><p>Wrapping organic matter in a plastic bag makes no sense, as organic waste inside plastic will never break down. So we’ve decided to change that with eco-friendly, non-plastic compostable dog poop bags which break down in just 3 months!<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MdPKtB",
+        "text_4RkJYi"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "text_with_liquid_UampX6": {
@@ -61,6 +100,7 @@
   },
   "order": [
     "main",
+    "image_with_text_7agMYX",
     "text_with_liquid_UampX6"
   ]
 }
