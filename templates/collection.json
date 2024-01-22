@@ -11,6 +11,45 @@
         "padding_bottom": 36
       }
     },
+    "benefit_inline_RGt6RV": {
+      "type": "benefit-inline",
+      "blocks": {
+        "benefit_EHet83": {
+          "type": "benefit",
+          "settings": {
+            "title": "100% ECO FRIENDLY",
+            "icon": "shopify:\/\/shop_images\/MASTER_-_Oh_Crap_Logo_-_Word_Only_979b5344-df08-4b43-a2f3-98fd2333401c.svg"
+          }
+        },
+        "benefit_JKkwaB": {
+          "type": "benefit",
+          "settings": {
+            "title": "100% COMPOSTABLE",
+            "icon": "shopify:\/\/shop_images\/oh-crap-dog-bag-holder-front-on_679a687a-65f9-4c83-8f71-7c1e1010076b.jpg"
+          }
+        },
+        "benefit_CHpykK": {
+          "type": "benefit",
+          "settings": {
+            "title": "NOT PLASTIC",
+            "icon": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Green_4510d896-f65a-44d9-a71d-7c6085a0c465.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_EHet83",
+        "benefit_JKkwaB",
+        "benefit_CHpykK"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "items_per_row": 3,
+        "mobile_display": "wrapped",
+        "animations_reveal_on_scroll": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -64,51 +103,12 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "benefit_inline_RGt6RV": {
-      "type": "benefit-inline",
-      "blocks": {
-        "benefit_EHet83": {
-          "type": "benefit",
-          "settings": {
-            "title": "100% ECO FRIENDLY",
-            "icon": "shopify:\/\/shop_images\/MASTER_-_Oh_Crap_Logo_-_Word_Only_979b5344-df08-4b43-a2f3-98fd2333401c.svg"
-          }
-        },
-        "benefit_JKkwaB": {
-          "type": "benefit",
-          "settings": {
-            "title": "100% COMPOSTABLE",
-            "icon": "shopify:\/\/shop_images\/oh-crap-dog-bag-holder-front-on_679a687a-65f9-4c83-8f71-7c1e1010076b.jpg"
-          }
-        },
-        "benefit_CHpykK": {
-          "type": "benefit",
-          "settings": {
-            "title": "NOT PLASTIC",
-            "icon": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Green_4510d896-f65a-44d9-a71d-7c6085a0c465.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "benefit_EHet83",
-        "benefit_JKkwaB",
-        "benefit_CHpykK"
-      ],
-      "settings": {
-        "color_scheme": "",
-        "items_per_row": 3,
-        "mobile_display": "wrapped",
-        "animations_reveal_on_scroll": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "banner",
+    "benefit_inline_RGt6RV",
     "product-grid",
-    "faq_VeGhxA",
-    "benefit_inline_RGt6RV"
+    "faq_VeGhxA"
   ]
 }
