@@ -1,6 +1,3 @@
-{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
-
 {%- liquid
   assign social_icons = true
   if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -11,6 +8,14 @@
   endif
 -%}
 
+{% style %}
+  @media screen and (min-width: 750px) {
+    .announcement-bar__message {
+      padding: 1.25rem 0;
+    }
+  }
+{% endstyle %}
+
 {% if social_icons %}
   {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 {% endif %}
@@ -19,12 +24,12 @@
   class='utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} utility-bar--bottom-border{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}'
   {{ block.shopify_attributes }}
 >
-  <div class='page-width utility-bar__grid{% if language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}'>
+  <div class='page-width utility-bar__grid{% if language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}'>
     {%- if section.settings.show_social and social_icons -%}
       {%- render 'social-icons' -%}
     {%- endif -%}
     <div
-      class='announcement-bar'
+      class='announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}'
       role='region'
       aria-label='{{ 'sections.header.announcement' | t }}'
       {{ block.shopify_attributes }}
