@@ -3,6 +3,18 @@
 {%- endif -%}
 
 {%- style -%}
+    #benefits-inline-section-{{ section.id }}.section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+  @media screen and (min-width: 750px) {
+        #benefits-inline-section-{{ section.id }}.section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+  }
+
   .benefits-section {
     display: flex;
     justify-content: center;
@@ -39,7 +51,8 @@
 {%- endstyle -%}
 
 <div
-  class='benefits-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+  id='benefits-inline-section-{{ section.id }}'
+  class='benefits-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
   {% if section.settings.animations_reveal_on_scroll %}
     data-cascade
   {% endif %}
@@ -52,7 +65,7 @@
       {% endif %}
     >
       <div class='benefits-icon'>
-        {{ block.settings.icon_svg }}
+        {{ block.settings.icon }}
       </div>
       <div class='benefits-title'>
         {{ block.settings.title | escape }}
@@ -64,8 +77,9 @@
 {% schema %}
 {
   "name": "Benefits Inline",
+  "tag": "section",
   "class": "benefits-section",
-  "max_blocks": 25,
+  "max_blocks": 6,
   "disabled_on": {
     "groups": ["header"]
   },
@@ -77,7 +91,7 @@
       "default": "scheme-1"
     },
     {
-      "type": "number",
+      "type": "range",
       "id": "items_per_row",
       "label": "Items per row on desktop",
       "default": 3,
@@ -106,6 +120,26 @@
       "id": "animations_reveal_on_scroll",
       "label": "Animate reveal on scroll",
       "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
     }
   ],
   "blocks": [
@@ -119,10 +153,9 @@
           "label": "Benefit title"
         },
         {
-          "type": "liquid",
-          "id": "icon_svg",
-          "label": "SVG code for the icon",
-          "default": "<svg>...</svg>"
+          "type": "image_picker",
+          "id": "icon",
+          "label": "SVG or PNG benefit icon"
         }
       ]
     }
