@@ -52,7 +52,7 @@
       {% endif %}
     >
       <div class='benefits-icon'>
-        {{ block.settings.icon_svg | strip_newlines }}
+        {{ block.settings.icon_svg }}
       </div>
       <div class='benefits-title'>
         {{ block.settings.title | escape }}
@@ -102,12 +102,6 @@
       "id": "animations_reveal_on_scroll",
       "label": "Animate reveal on scroll",
       "default": true
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text color",
-      "default": "#333333"
     }
   ],
   "blocks": [
@@ -131,7 +125,13 @@
   ],
   "presets": [
     {
-      "name": "Benefits Inline"
+      "name": "Benefits Inline",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "benefit"
+        }
+      ]
     }
   ]
 }
