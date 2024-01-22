@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   prefix: 'tw-',
   content: [
@@ -18,9 +19,9 @@ module.exports = {
       sm: '320px',
       md: '750px',
       lg: '990px',
-      xlg: '1280px',
+      xlg: '1200px',
       // x2lg: '1920px',
-      pageMaxWidth: '1280px',
+      pageMaxWidth: '1300px',
     },
     extend: {
       fontFamily: {

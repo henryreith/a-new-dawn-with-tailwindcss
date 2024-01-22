@@ -13,18 +13,18 @@
 
   #faq-toc-inner {
       border: 1px solid #999;
+      margin-top: 1rem 2rem;
       padding: 1rem 2rem;
       border-radius: 4px;
       margin-bottom: 2rem;
   }
 
-  #faq-toc {{ section.settings.toc_title_tag }} {
+  #faq-toc {{ section.settings.faq_title_tag }} {
     margin-bottom: 1rem;
   }
 
   #faq-toc ul {
-      list-style: none;
-      padding: 0;
+    margin-bottom: 0;
   }
 
   #faq-toc li a {
@@ -48,7 +48,7 @@
         {{- section.settings.faq_title | escape -}}
       </{{ faq_title_tag }}>
 
-      {% if section.setting.toc_show %}
+      {% if section.settings.toc_show %}
         <div id='faq-toc-inner'>
           <ul>
             {% for block in section.blocks %}
