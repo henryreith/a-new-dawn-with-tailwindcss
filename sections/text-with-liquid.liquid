@@ -1,3 +1,4 @@
+{% # Tried to use all the css of the image with text section so we don't have to rewrite the same css, and can always use Dawns best practises when it comes to this template %}
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -19,14 +20,10 @@
     <div class='image-with-text image-with-text--{{ section.settings.content_layout }} isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == section.settings.section_color_scheme %} collapse-corners{% endunless %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
       <div class='image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}'>
         {% # Custom Liquid Area %}
-        <div class='image-with-text__custom-liquid-item grid__item'>
+        {% # It's a hack just to add the .image-with-text__content to the liquid wrapper so we don't have to create a whole new class just to wrap the liquid in, but it just adds all the required flex classes to centralise the content %}
+        <div class='image-with-text__custom-liquid-item grid__item image-with-text__content'>
           <div class='image-with-text__custom-liquid'>
-            {{ section.settings.custom_liquid1 }}
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'custom_liquid' -%}
-                {{ block.settings.custom_liquid }}
-              {%- endif -%}
-            {%- endfor -%}
+            {{ section.settings.custom_liquid }}
           </div>
         </div>
         {% # Text Content Area %}
@@ -84,7 +81,7 @@
   "settings": [
     {
       "type": "liquid",
-      "id": "custom_liquid1",
+      "id": "custom_liquid",
       "label": "Custom Liquid",
       "default": "<p>Your custom Liquid code here</p>"
     },
@@ -382,27 +379,12 @@
           "label": "t:sections.image-with-text.blocks.button.settings.outline_button.label"
         }
       ]
-    },
-    {
-      "type": "liquid",
-      "name": "Custom Liquid",
-      "settings": [
-        {
-          "type": "liquid",
-          "id": "custom_liquid",
-          "label": "Custom Liquid",
-          "default": "<p>Your custom Liquid code here</p>"
-        }
-      ]
     }
   ],
   "presets": [
     {
       "name": "t:sections.image-with-text.presets.name",
       "blocks": [
-        {
-          "type": "liquid"
-        },
         {
           "type": "heading"
         },
