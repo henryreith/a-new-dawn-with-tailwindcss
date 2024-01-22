@@ -83,6 +83,8 @@
       padding-top: 0.5rem;
     }
   }
+
+
 </style>
 
 {%- style -%}
@@ -98,6 +100,20 @@
   {% # SVG Logo Snippit %}
   header svg.logo{
       height: 4rem
+    }
+
+    {% # Custom Logo Padding %}
+    .header--middle-center .header__heading-logo{
+    height: 4rem;
+    width: 100%;
+    }
+    @media only screen and (min-width: 990px) {
+        .header--middle-center .header__heading-link{
+            padding: 1.75rem 1.5rem;
+        }
+        .header--middle-center .header__heading-logo{
+            height: 6rem;
+        }
     }
 
   @media screen and (min-width: 750px) {
@@ -202,7 +218,7 @@
             {%- else -%}
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
-          {% endcomment %}
+            {% endcomment %}
             <div class="header__heading-logo-wrapper">
               {%- render 'logo-svg' -%}
             </div>
