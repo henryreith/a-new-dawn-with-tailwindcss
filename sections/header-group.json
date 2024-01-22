@@ -5,7 +5,7 @@
     "announcement_bar_simple_tr9jQJ": {
       "type": "announcement-bar-simple",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "show_line_separator": true,
         "show_social": false,
         "enable_country_selector": false,

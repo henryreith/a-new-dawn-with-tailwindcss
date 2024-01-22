@@ -96,6 +96,8 @@
     "badge_corner_radius": 40,
     "sale_badge_color_scheme": "scheme-1",
     "sold_out_badge_color_scheme": "scheme-3",
+    "brand_headline": "",
+    "brand_description": "",
     "social_facebook_link": "https:\/\/www.facebook.com\/OhCrapPets",
     "social_instagram_link": "http:\/\/instagram.com\/OhCrapPets",
     "social_youtube_link": "",
