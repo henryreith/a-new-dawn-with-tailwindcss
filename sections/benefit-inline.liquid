@@ -1,0 +1,138 @@
+{%- if settings.animations_reveal_on_scroll -%}
+  <script src='{{ 'animations.js' | asset_url }}' defer='defer'></script>
+{%- endif -%}
+
+{%- style -%}
+  .benefits-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em 2em;
+    padding: 1em 0;
+  }
+
+  @media screen and (min-width: 990px) {
+    .benefits-section {
+      gap: 0.5em {{ 100 | divided_by: section.settings.items_per_row | round: 2 }}%;
+    }
+  }
+
+  .benefits-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .benefits-item svg {
+    height: 1em;
+    width: auto;
+  }
+
+  {% if section.settings.animations_reveal_on_scroll %}
+    .benefits-section {
+      overflow: hidden;
+    }
+  {% endif %}
+{%- endstyle -%}
+
+<div
+  class='benefits-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+  {% if section.settings.animations_reveal_on_scroll %}
+    data-cascade
+  {% endif %}
+>
+  {%- for block in section.blocks -%}
+    <div
+      class='benefits-item'
+      {% if section.settings.animations_reveal_on_scroll %}
+        style='--animation-order: {{ forloop.index }};'
+      {% endif %}
+    >
+      <div class='benefits-icon'>
+        {{ block.settings.icon_svg | strip_newlines }}
+      </div>
+      <div class='benefits-title'>
+        {{ block.settings.title | escape }}
+      </div>
+    </div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.benefits.name",
+  "class": "benefits-section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "number",
+      "id": "items_per_row",
+      "label": "Items per row on desktop",
+      "default": 3,
+      "min": 1,
+      "max": 6,
+      "step": 1
+    },
+    {
+      "type": "select",
+      "id": "mobile_display",
+      "label": "Mobile display style",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "Stacked"
+        },
+        {
+          "value": "wrapped",
+          "label": "Flex Wrapped"
+        }
+      ],
+      "default": "wrapped"
+    },
+    {
+      "type": "checkbox",
+      "id": "animations_reveal_on_scroll",
+      "label": "Animate reveal on scroll",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "t:sections.benefits.blocks.benefit.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Benefit title"
+        },
+        {
+          "type": "liquid",
+          "id": "icon_svg",
+          "label": "SVG code for the icon",
+          "default": "<svg>...</svg>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Inline"
+    }
+  ]
+}
+{% endschema %}
