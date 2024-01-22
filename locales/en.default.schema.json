@@ -507,8 +507,11 @@
         "name": "Announcement bar"
       }
     },
-    "announcement-bar-custom-html": {
-      "name": "Announcement bar custom HTML"
+    "announcement-bar-simple": {
+      "name": "Simple announcement bar",
+      "presets": {
+        "name": "Simple announcement bar"
+      }
     },
     "apps": {
       "name": "Apps",
