@@ -5,7 +5,6 @@
       "settings": {
         "show_collection_description": true,
         "color_scheme": "scheme-2",
-        "collection_banner_background_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg",
         "collection_banner_background_image_opactity": 10,
         "text_alignment": "center",
         "padding_top": 36,
