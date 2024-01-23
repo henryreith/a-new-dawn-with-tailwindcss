@@ -42,8 +42,19 @@
         <span class='submenu__item-text tw-text-base tw-font-medium'>{{ block.settings.text }}</span>
         {%- if block.settings.image != blank -%}
           <img
-            src='{{ block.settings.image | img_url: '300x' }}'
-            alt='{{ block.settings.text }}'
+            srcset='
+              {% if block.settings.image.width >= 350 %}{{ block.settings.image | image_url: width: 350 }} 350w,{% endif %}
+              {% if block.settings.image.width >= 750 %}{{ block.settings.image | image_url: width: 750 }} 750w,{% endif %}
+              {% if block.settings.image.width >= 1100 %}{{ block.settings.image | image_url: width: 1100 }} 1100w,{% endif %}
+              {{ block.settings.image | image_url }} {{ block.settings.image }}w
+            '
+            sizes='(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw'
+            src='{{ block.settings.image | image_url: width: 1100 }}'
+            loading='eager'
+            fetchpriority='high'
+            width='{{ block.settings.image.width }}'
+            height='{{ block.settings.image.height }}'
+            alt='{{ block.settings.image.alt | escape }}'
             class='submenu__item-image tw-block tw-w-12 tw-h-12 tw-rounded-full tw-object-cover'
           >
         {%- endif -%}
@@ -59,6 +70,9 @@
 {
   "name": "Sub-menu",
   "class": "submenu",
+  "enabled_on": {
+    "groups": ["header"]
+  },
   "max_blocks": 6,
   "settings": [
     {
