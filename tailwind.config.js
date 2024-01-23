@@ -10,17 +10,10 @@ module.exports = {
   ],
   theme: {
     screens: {
-      /* sm: '320px',
-      md: '750px',
-      lg: '990px',
-      xlg: '1440px',
-      x2lg: '1920px',
-      pageMaxWidth: '1440px', */
       sm: '320px',
       md: '750px',
       lg: '990px',
       xlg: '1200px',
-      // x2lg: '1920px',
       pageMaxWidth: '1300px',
     },
     extend: {
