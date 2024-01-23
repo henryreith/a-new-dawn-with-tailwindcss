@@ -26,11 +26,11 @@
     font-weight: 700;
     color: rgba(var(--color-foreground), 0.6);
   }
-  .benefits-section.border-top{
+  #benefits-inline-section-{{ section.id }}.border-top{
     border-top: 1px solid rgba(var(--color-foreground), 0.75);
   }
 
-  .benefits-section.border-bottom{
+  #benefits-inline-section-{{ section.id }}.border-bottom{
     border-bottom: 1px solid rgba(var(--color-foreground), 0.75);
   }
 
@@ -60,13 +60,13 @@
 
 <div
   id='benefits-inline-section-{{ section.id }}'
-  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} border-top{% endif %}{% if section.settings.border_on_bottom %} border-bottom{% endif %}'
   {% if section.settings.animations_reveal_on_scroll %}
     data-cascade
   {% endif %}
 >
   <div
-    class='benefits-section page-width {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}{% if section.settings.border_on_top %} border-top{% endif %}{% if section.settings.border_on_bottom %} border-bottom{% endif %}'
+    class='benefits-section page-width {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
     {% if section.settings.animations_reveal_on_scroll %}
       data-cascade
     {% endif %}
