@@ -28,6 +28,9 @@
   {% endif %}
 
   {% if section.settings.show_eyecatcher_above_section %}
+    #benefits-inline-section-{{ section.id }}{
+        position: relative;
+    }
     #benefits-inline-section-{{ section.id }}::before{
         content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMzAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MCwwQzI2LjQ2LDAsMjUsMzAsMCwzMGgxMDBDNzUsMzAsNzMuNTQsMCw1MCwwWiIvPjwvc3ZnPg==');
         width: 14.7rem;
