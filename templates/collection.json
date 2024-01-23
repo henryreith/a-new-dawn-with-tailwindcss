@@ -44,8 +44,8 @@
       "settings": {
         "color_scheme": "",
         "animations_reveal_on_scroll": true,
-        "show_eyecatcher_above_section": false,
-        "border_on_top": true,
+        "show_eyecatcher_above_section": true,
+        "border_on_top": false,
         "border_on_bottom": true,
         "padding_top": 36,
         "padding_bottom": 36
