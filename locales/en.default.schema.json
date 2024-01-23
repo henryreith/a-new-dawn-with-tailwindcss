@@ -527,6 +527,9 @@
     "benefits-inline": {
       "name": "Benefits inline",
       "settings": {
+        "font_size": {
+          "label": "Font size"
+        },
         "animations_reveal_on_scroll": {
           "label": "Reveal sections on scroll"
         },

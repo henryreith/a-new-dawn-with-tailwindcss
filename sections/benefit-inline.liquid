@@ -42,7 +42,7 @@
     {% endif %}
 
   .benefits-inline-section__inner-wrap {
-    font-size: 2.6rem;
+    font-size: {{ section.settings.font_size | times: 0.1 }}rem;
     font-weight: 700;
     color: rgba(var(--color-foreground), 0.6);
   }
@@ -51,7 +51,7 @@
     fill: rgba(var(--color-foreground), 0.6);
   }
   .benefits-inline-section__icon svg, .benefits-inline-section__icon img {
-    height: 2.6rem;
+    height: {{ section.settings.font_size | times: 0.1 }}rem;
     width: auto;
     }
 {%- endstyle -%}
@@ -108,6 +108,16 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.benefits-inline.settings.font_size",
+      "default": 26
     },
     {
       "type": "checkbox",
