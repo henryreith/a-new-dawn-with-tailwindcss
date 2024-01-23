@@ -1,4 +1,4 @@
-{%- if settings.animations_reveal_on_scroll -%}
+{%- if section.settings.animations_reveal_on_scroll -%}
   <script src='{{ 'animations.js' | asset_url }}' defer='defer'></script>
 {%- endif -%}
 
@@ -20,22 +20,25 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5em 2em;
-    padding: 1em 0;
+    flex-direction: column;
+    gap: 0.75rem 2rem;
+    font-size: 2.6rem;
+    font-weight: 700;
   }
 
   @media screen and (min-width: 990px) {
     .benefits-section {
-      gap: 0.5em {{ 100 | divided_by: section.settings.items_per_row | round: 2 }}%;
+        flex-direction: row;
+        gap: 1rem 3rem;
     }
   }
 
   .benefits-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     text-align: center;
-    flex-direction: column;
-    gap: 0.5em;
+    flex-direction: row;
+    gap: 0.75rem;
   }
 
   .benefits-item svg {
@@ -52,26 +55,37 @@
 
 <div
   id='benefits-inline-section-{{ section.id }}'
-  class='benefits-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
   {% if section.settings.animations_reveal_on_scroll %}
     data-cascade
   {% endif %}
 >
-  {%- for block in section.blocks -%}
-    <div
-      class='benefits-item'
-      {% if section.settings.animations_reveal_on_scroll %}
-        style='--animation-order: {{ forloop.index }};'
-      {% endif %}
-    >
-      <div class='benefits-icon'>
-        {{ block.settings.icon }}
+  <div
+    class='benefits-section page-width {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+    {% if section.settings.animations_reveal_on_scroll %}
+      data-cascade
+    {% endif %}
+  >
+    {%- for block in section.blocks -%}
+      <div
+        class='benefits-item'
+        {% if section.settings.animations_reveal_on_scroll %}
+          style='--animation-order: {{ forloop.index }};'
+        {% endif %}
+      >
+        <div class='benefits-icon'>
+          {% if block.settings.icon_html != blank %}
+            {{ block.settings.icon_html }}
+          {% else %}
+            {{ block.settings.icon_image | image_url | image_tag }}
+          {% endif %}
+        </div>
+        <div class='benefits-title'>
+          {{ block.settings.title | escape }}
+        </div>
       </div>
-      <div class='benefits-title'>
-        {{ block.settings.title | escape }}
-      </div>
-    </div>
-  {%- endfor -%}
+    {%- endfor -%}
+  </div>
 </div>
 
 {% schema %}
@@ -153,8 +167,21 @@
           "label": "Benefit title"
         },
         {
+          "type": "header",
+          "label": "Icon"
+        },
+        {
+          "type": "paragraph",
+          "label": "If the icons appear at the top of the page, add inline svg code as this will load the icon directly in the code meaning it will be seen on page load. If the icon is lower down the page add the icon as a SVG or PNG image."
+        },
+        {
+          "type": "html",
+          "id": "icon_html",
+          "label": "Add inline SVG icon"
+        },
+        {
           "type": "image_picker",
-          "id": "icon",
+          "id": "icon_image",
           "label": "SVG or PNG benefit icon"
         }
       ]
