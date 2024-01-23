@@ -24,6 +24,14 @@
     gap: 0.75rem 2rem;
     font-size: 2.6rem;
     font-weight: 700;
+    color: rgba(var(--color-foreground), 0.6);
+  }
+  .benefits-section.border-top{
+    border-top: 1px solid rgba(var(--color-foreground), 0.75);
+  }
+
+  .benefits-section.border-bottom{
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.75);
   }
 
   @media screen and (min-width: 990px) {
@@ -41,16 +49,13 @@
     gap: 0.75rem;
   }
 
-  .benefits-item svg {
-    height: 1em;
-    width: auto;
+  .color-{{ section.settings.color_scheme }} .benefits-item svg {
+    fill: rgba(var(--color-foreground), 0.6);
   }
-
-  {% if section.settings.animations_reveal_on_scroll %}
-    .benefits-section {
-      overflow: hidden;
+  .benefits-icon svg, .benefit-icon image {
+    height: 2.6rem;
+    width: auto;
     }
-  {% endif %}
 {%- endstyle -%}
 
 <div
@@ -61,7 +66,7 @@
   {% endif %}
 >
   <div
-    class='benefits-section page-width {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+    class='benefits-section page-width {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}{% if section.settings.border_on_top %} border-top{% endif %}{% if section.settings.border_on_bottom %} border-bottom{% endif %}'
     {% if section.settings.animations_reveal_on_scroll %}
       data-cascade
     {% endif %}
@@ -136,6 +141,18 @@
       "id": "animations_reveal_on_scroll",
       "label": "Animate reveal on scroll",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_top",
+      "label": "Add a divider line above the section",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_bottom",
+      "label": "Add a divider line below the section",
+      "default": false
     },
     {
       "type": "range",
