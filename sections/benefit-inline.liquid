@@ -77,7 +77,9 @@
           {% if block.settings.icon_html != blank %}
             {{ block.settings.icon_html }}
           {% else %}
-            {{ block.settings.icon_image | image_url | image_tag }}
+            {% if block.settings.icon_image != blank %}
+              {{ block.settings.icon_image | image_url | image_tag }}
+            {% endif %}
           {% endif %}
         </div>
         <div class='benefits-title'>
