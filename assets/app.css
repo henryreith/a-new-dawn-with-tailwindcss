@@ -596,6 +596,11 @@ ul, ol{
        column-gap: 0.75rem;
 }
 
+.tw-gap-x-9 {
+  -moz-column-gap: 2.25rem;
+       column-gap: 2.25rem;
+}
+
 .tw-border-t {
   border-top-width: 1px;
 }
@@ -629,5 +634,18 @@ ul, ol{
   .lg\:tw-gap-x-12 {
     -moz-column-gap: 3rem;
          column-gap: 3rem;
+  }
+
+  .lg\:tw-gap-x-14 {
+    -moz-column-gap: 3.5rem;
+         column-gap: 3.5rem;
+  }
+
+  .lg\:tw-gap-y-6 {
+    row-gap: 1.5rem;
+  }
+
+  .lg\:tw-gap-y-10 {
+    row-gap: 2.5rem;
   }
 }
