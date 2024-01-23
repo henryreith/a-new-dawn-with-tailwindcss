@@ -15,7 +15,31 @@
         }
   }
 
-  .benefits-section {
+  {% if section.settings.border_on_top %}
+    #benefits-inline-section-{{ section.id }}{
+    border-top: 1px solid rgba(var(--color-foreground), 0.25);
+  }
+  {% endif %}
+
+  {% if section.settings.border_on_bottom %}
+    #benefits-inline-section-{{ section.id }}{
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.25);
+  }
+  {% endif %}
+
+  {% if section.settings.show_eyecatcher_above_section %}
+    #benefits-inline-section-{{ section.id }}::before{
+        content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMzAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MCwwQzI2LjQ2LDAsMjUsMzAsMCwzMGgxMDBDNzUsMzAsNzMuNTQsMCw1MCwwWiIvPjwvc3ZnPg==');
+        width: 14.7rem;
+        height: 4.4rem;
+        top: -7.95rem;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+    }
+    {% endif %}
+
+  .benefits-section--inner-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,16 +51,8 @@
     color: rgba(var(--color-foreground), 0.6);
   }
 
-  #benefits-inline-section-{{ section.id }}.border-top{
-    border-top: 1px solid rgba(var(--color-foreground), 0.75);
-  }
-
-  #benefits-inline-section-{{ section.id }}.border-bottom{
-    border-bottom: 1px solid rgba(var(--color-foreground), 0.75);
-  }
-
   @media screen and (min-width: 990px) {
-    .benefits-section {
+    .benefits-section--inner-wrap {
         flex-direction: row;
         gap: 1rem 3rem;
     }
@@ -61,13 +77,13 @@
 
 <div
   id='benefits-inline-section-{{ section.id }}'
-  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} border-top{% endif %}{% if section.settings.border_on_bottom %} border-bottom{% endif %}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
   {% if section.settings.animations_reveal_on_scroll %}
     data-cascade
   {% endif %}
 >
   <div
-    class='benefits-section page-width {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+    class='benefits-section--inner-wrap page-width {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
     {% if section.settings.animations_reveal_on_scroll %}
       data-cascade
     {% endif %}
@@ -116,6 +132,12 @@
       "type": "checkbox",
       "id": "animations_reveal_on_scroll",
       "label": "Animate reveal on scroll",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_eyecatcher_above_section",
+      "label": "Add eyecatcher above section",
       "default": true
     },
     {
