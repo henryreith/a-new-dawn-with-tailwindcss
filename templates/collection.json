@@ -45,9 +45,9 @@
         "color_scheme": "",
         "font_size": 26,
         "animations_reveal_on_scroll": true,
-        "show_eyecatcher_above_section": false,
+        "show_eyecatcher_above_section": true,
         "border_on_top": false,
-        "border_on_bottom": false,
+        "border_on_bottom": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
