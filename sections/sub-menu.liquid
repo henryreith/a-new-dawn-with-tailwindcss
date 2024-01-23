@@ -1,0 +1,108 @@
+{%- if section.settings.animations_reveal_on_scroll -%}
+  <script src='{{ 'animations.js' | asset_url }}' defer='defer'></script>
+{%- endif -%}
+
+{%- style -%}
+  .submenu__badge {
+    background-color: var(--color-accent);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 750px) {
+    .submenu__item-image {
+      display: block;
+    }
+    .submenu__item-text {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 751px) {
+    .submenu__item-image {
+      display: none;
+    }
+  }
+{%- endstyle -%}
+
+<div class='submenu tw-bg-white tw-py-2 tw-border-t tw-border-b tw-border-gray-200'>
+  <div class='tw-container tw-mx-auto tw-flex tw-flex-wrap tw-justify-center'>
+    {%- for block in section.blocks -%}
+      <a
+        href='{{ block.settings.link }}'
+        class='submenu__item tw-mx-2 tw-my-1 tw-flex tw-items-center tw-gap-2 tw-relative'
+        {% if section.settings.animations_reveal_on_scroll %}
+          data-scroll-trigger
+        {% endif %}
+      >
+        <span class='submenu__item-text tw-text-base tw-font-medium'>{{ block.settings.text }}</span>
+        {%- if block.settings.image != blank -%}
+          <img
+            src='{{ block.settings.image | img_url: '300x' }}'
+            alt='{{ block.settings.text }}'
+            class='submenu__item-image tw-block tw-w-12 tw-h-12 tw-rounded-full tw-object-cover'
+          >
+        {%- endif -%}
+        {%- if block.settings.badge_text != blank -%}
+          <span class='submenu__badge tw-absolute tw-top-0 tw-right-0'>{{ block.settings.badge_text }}</span>
+        {%- endif -%}
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sub-menu",
+  "class": "submenu",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "animations_reveal_on_scroll",
+      "label": "Animate reveal on scroll",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "submenu_item",
+      "name": "Menu item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Menu item text",
+          "default": "Menu item"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Menu item link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Menu item image (mobile only)"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge text",
+          "default": "New"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sub-menu",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
