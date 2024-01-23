@@ -8,22 +8,24 @@
         padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
 
-  @media screen and (min-width: 750px) {
+    @media screen and (min-width: 750px) {
         .section-{{ section.id }}-padding {
             padding-top: {{ section.settings.padding_top }}px;
             padding-bottom: {{ section.settings.padding_bottom }}px;
         }
-  }
+    }
 
   {% if section.settings.border_on_top or section.settings.border_on_bottom %}
-    border-color: rgba(var(--color-foreground), 0.25);
+    #section-{{ section.id }} {
+        border-color: rgba(var(--color-foreground), 0.25);
+    }
   {% endif %}
 
   {% if section.settings.show_eyecatcher_above_section %}
-    #benefits-inline-section-{{ section.id }} .benefits-section--inner-wrap{
+    .benefits-inline-section__inner-wrap{
         position: relative;
     }
-    #benefits-inline-section-{{ section.id }} .benefits-section--inner-wrap::before{
+    .benefits-inline-section__inner-wrap::before{
         content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMzAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MCwwQzI2LjQ2LDAsMjUsMzAsMCwzMGgxMDBDNzUsMzAsNzMuNTQsMCw1MCwwWiIvPjwvc3ZnPg==');
         width: 14.7rem;
         height: 4.4rem;
@@ -33,68 +35,48 @@
         z-index: 1;
     }
     @media screen and (min-width: 750px) {
-        #benefits-inline-section-{{ section.id }} .benefits-section--inner-wrap::before{
+        .benefits-inline-section__inner-wrap::before {
             top: calc(-4.4rem + -{{ section.settings.padding_top }}px);
         }
     }
     {% endif %}
 
-  .benefits-section--inner-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    gap: 0.75rem 2rem;
+  .benefits-inline-section__inner-wrap {
     font-size: 2.6rem;
     font-weight: 700;
     color: rgba(var(--color-foreground), 0.6);
   }
 
-  @media screen and (min-width: 990px) {
-    .benefits-section--inner-wrap {
-        flex-direction: row;
-        gap: 1rem 3rem;
-    }
-  }
-
-  .benefits-item {
-    display: inline-flex;
-    align-items: center;
-    text-align: center;
-    flex-direction: row;
-    gap: 0.75rem;
-  }
-
-  .color-{{ section.settings.color_scheme }} .benefits-item svg {
+  .color-{{ section.settings.color_scheme }} .benefits-inline-section__item svg {
     fill: rgba(var(--color-foreground), 0.6);
   }
-  .benefits-icon svg, .benefit-icon image {
+  .benefits-inline-section__icon svg, .benefits-inline-section__icon img {
     height: 2.6rem;
     width: auto;
     }
 {%- endstyle -%}
 
 <div
-  class='section-{{ section.id }}-padding{% if section.settings.border_on_top %} border-t {% endif %}{% if section.settings.border_on_bottom %} border-b {% endif %} color-{{ section.settings.color_scheme }} gradient'
+  id='section-{{ section.id }}'
+  class='section-{{ section.id }}-padding{% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %} color-{{ section.settings.color_scheme }} gradient'
   {% if section.settings.animations_reveal_on_scroll %}
     data-cascade
   {% endif %}
 >
   <div
-    class='benefits-section--inner-wrap page-width {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+    class='benefits-inline-section__inner-wrap page-width tw-flex tw-flex-col lg:tw-flex-row tw-justify-center tw-items-center tw-gap-y-3 tw-gap-x-8 lg:tw-gap-y-5 lg:tw-gap-x-12 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
     {% if section.settings.animations_reveal_on_scroll %}
       data-cascade
     {% endif %}
   >
     {%- for block in section.blocks -%}
       <div
-        class='benefits-item'
+        class='benefits-inline-section__item tw-flex tw-items-center tw-text-center tw-flex-row tw-gap-x-3'
         {% if section.settings.animations_reveal_on_scroll %}
           style='--animation-order: {{ forloop.index }};'
         {% endif %}
       >
-        <div class='benefits-icon'>
+        <div class='benefits-inline-section__icon'>
           {% if block.settings.icon_html != blank %}
             {{ block.settings.icon_html }}
           {% else %}
@@ -103,7 +85,7 @@
             {% endif %}
           {% endif %}
         </div>
-        <div class='benefits-title'>
+        <div class='benefits-inline-section__title'>
           {{ block.settings.title | escape }}
         </div>
       </div>
@@ -113,9 +95,9 @@
 
 {% schema %}
 {
-  "name": "Benefits Inline",
+  "name": "t:sections.benefits-inline.name",
   "tag": "section",
-  "class": "benefits-section",
+  "class": "benefits-inline-section",
   "max_blocks": 6,
   "disabled_on": {
     "groups": ["header"]
@@ -130,25 +112,25 @@
     {
       "type": "checkbox",
       "id": "animations_reveal_on_scroll",
-      "label": "Animate reveal on scroll",
+      "label": "t:sections.benefits-inline.settings.animations_reveal_on_scroll.label",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "show_eyecatcher_above_section",
-      "label": "Add eyecatcher above section",
+      "label": "t:sections.benefits-inline.settings.show_eyecatcher_above_section.label",
       "default": false
     },
     {
       "type": "checkbox",
       "id": "border_on_top",
-      "label": "Add a divider line above the section",
+      "label": "t:sections.benefits-inline.settings.border_on_top.label",
       "default": false
     },
     {
       "type": "checkbox",
       "id": "border_on_bottom",
-      "label": "Add a divider line below the section",
+      "label": "t:sections.benefits-inline.settings.border_on_bottom.label",
       "default": false
     },
     {
@@ -175,37 +157,37 @@
   "blocks": [
     {
       "type": "benefit",
-      "name": "t:sections.benefits.blocks.benefit.name",
+      "name": "t:sections.benefits-inline.blocks.benefit.name",
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Benefit title"
+          "label": "t:sections.benefits-inline.blocks.benefit.settings.title.label"
         },
         {
           "type": "header",
-          "content": "Icon"
+          "content": "t:sections.benefits-inline.blocks.benefit.settings.header.content"
         },
         {
           "type": "paragraph",
-          "content": "If the icons appear at the top of the page, add inline svg code as this will load the icon directly in the code meaning it will be seen on page load. If the icon is lower down the page add the icon as a SVG or PNG image."
+          "content": "t:sections.benefits-inline.blocks.benefit.settings.paragraph.content"
         },
         {
           "type": "html",
           "id": "icon_html",
-          "label": "Add inline SVG icon"
+          "label": "t:sections.benefits-inline.blocks.benefit.settings.icon_html.label"
         },
         {
           "type": "image_picker",
           "id": "icon_image",
-          "label": "SVG or PNG benefit icon"
+          "label": "t:sections.benefits-inline.blocks.benefit.settings.icon_image.label"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Benefits Inline",
+      "name": "t:sections.benefits-inline.presets.name",
       "category": "Custom",
       "blocks": [
         {

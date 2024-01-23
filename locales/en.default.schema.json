@@ -524,6 +524,48 @@
         "name": "Apps"
       }
     },
+    "benefits-inline": {
+      "name": "Benefits inline",
+      "settings": {
+        "animations_reveal_on_scroll": {
+          "label": "Reveal sections on scroll"
+        },
+        "show_eyecatcher_above_section": {
+          "label": "Show eyecatcher above section"
+        },
+        "border_on_top": {
+          "label": "Show border on top"
+        },
+        "border_on_bottom": {
+          "label": "Show border on bottom"
+        }
+      },
+      "blocks": {
+        "benefit": {
+          "name": "Benefit",
+          "settings": {
+            "title": {
+              "label": "Benefit title"
+            },
+            "header": {
+              "content": "Icon"
+            },
+            "paragraph": {
+              "content": "If the icons appear at the top of the page, add inline svg code as this will load the icon directly in the code meaning it will be seen on page load. If the icon is lower down the page add the icon as a SVG or PNG image."
+            },
+            "icon_html": {
+              "label": "Add inline SVG icon"
+            },
+            "icon_image": {
+              "label": "SVG or PNG benefit icon"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Benefits inline"
+      }
+    },
     "collage": {
       "name": "Collage",
       "settings": {
