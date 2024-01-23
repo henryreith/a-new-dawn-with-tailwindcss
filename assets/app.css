@@ -562,6 +562,18 @@ ul, ol{
   --tw-backdrop-sepia:  ;
 }
 
+.tw-mt-0 {
+  margin-top: 0px;
+}
+
+.tw-mb-4 {
+  margin-bottom: 1rem;
+}
+
+.tw-mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .tw-flex {
   display: flex;
 }
