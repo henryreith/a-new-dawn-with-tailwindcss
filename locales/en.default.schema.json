@@ -730,6 +730,18 @@
         "name": "Custom Liquid"
       }
     },
+    "custom-liquid-in-page-width-wrapper": {
+      "name": "Custom Liquid in page-width wrapper",
+      "settings": {
+        "custom_liquid": {
+          "label": "Liquid code",
+          "info": "Add app snippets or other code to create advanced customizations. [Learn more](https:\/\/shopify.dev\/docs\/api\/liquid)"
+        }
+      },
+      "presets": {
+        "name": "Custom Liquid in page-width wrapper"
+      }
+    },
     "extended-collection-banner": {
       "name": "Ext collection banner",
       "settings": {
