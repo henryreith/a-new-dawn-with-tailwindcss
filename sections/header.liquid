@@ -198,7 +198,6 @@
         <h1 class="header__heading">
       {%- endif -%}
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-            {% comment %}
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -218,10 +217,11 @@
             {%- else -%}
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
-            {% endcomment %}
+            {% comment %}
             <div class="header__heading-logo-wrapper">
-              {%- render 'logo-svg' -%}
+              {%- render 'logo-svg' -%} 
             </div>
+            {% endcomment %}
           </a>
       {%- if request.page_type == 'index' -%}
         </h1>
@@ -262,6 +262,11 @@
             {%- else -%}
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
+            {% comment %}
+            <div class="header__heading-logo-wrapper">
+              {%- render 'logo-svg' -%} 
+            </div>
+            {% endcomment %}
           </a>
       {%- if request.page_type == 'index' -%}
         </h1>
