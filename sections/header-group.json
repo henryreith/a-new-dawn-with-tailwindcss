@@ -38,6 +38,7 @@
           "settings": {
             "text": "Dog Poop Bags",
             "link": "shopify:\/\/products\/dog-poop-bags",
+            "image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
             "badge_text": "New"
           }
         },
@@ -46,6 +47,7 @@
           "settings": {
             "text": "Treats",
             "link": "shopify:\/\/pages\/about",
+            "image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Green_4510d896-f65a-44d9-a71d-7c6085a0c465.jpg",
             "badge_text": ""
           }
         },
@@ -54,6 +56,7 @@
           "settings": {
             "text": "Test Item",
             "link": "shopify:\/\/products\/test-single-product-no-sale",
+            "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
             "badge_text": ""
           }
         }
@@ -64,7 +67,10 @@
         "submenu_item_WbYwFL"
       ],
       "settings": {
-        "animations_reveal_on_scroll": false
+        "color_scheme": "",
+        "animations_reveal_on_scroll": false,
+        "padding_top": 10,
+        "padding_bottom": 10
       }
     }
   },
