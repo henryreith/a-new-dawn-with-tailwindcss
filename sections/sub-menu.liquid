@@ -15,11 +15,17 @@
       }
   }
 
+  {% if section.settings.border_on_top or section.settings.border_on_bottom %}
+    #section-{{ section.id }} {
+        border-color: rgba(var(--color-foreground), 0.1);
+    }
+  {% endif %}
+
   .submenu__badge {
     background-color: rgb(var(--color-button));
     color: rgb(var(--color-button-text));
-    line-height: 1;
-    padding: 0.10rem 0.65rem;
+    font-size: 1rem;
+    padding: 0.1rem 0.45rem;
     border-radius: 4px;
     font-weight: 700;
     text-transform: uppercase;
@@ -49,7 +55,7 @@
 {%- endstyle -%}
 
 <div
-  id='submenu-section-{{ section.id }}'
+  id='section-{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
 >
   <div class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} tw-mx-auto tw-flex tw-flex-wrap tw-justify-center'>
@@ -63,9 +69,7 @@
       >
         <span class='submenu__item-text tw-font-medium'>
           {%- if block.settings.badge_text != blank -%}
-            <span class='submenu__badge tw-mr-4'
-              ><small>{{ block.settings.badge_text }}</small></span
-            >
+            <span class='submenu__badge tw-mr-4'>{{ block.settings.badge_text }}</span>
           {%- endif -%}
           {{ block.settings.text }}
         </span>
