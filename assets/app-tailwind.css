@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-    /* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's css too */
+    html,
+    :host {
+    line-height: 1.5;
+    font-family: var(--font-body-family), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+    
+    /* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's css too */    
     h1,
     h2,
     h3,
@@ -101,6 +107,3 @@
         padding: inherit;
     }
 }
-
-/* Overwrite Dawn's Base Styles */
-/* Header */

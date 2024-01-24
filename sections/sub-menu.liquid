@@ -3,43 +3,71 @@
 {%- endif -%}
 
 {%- style -%}
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+  }
+
   .submenu__badge {
-    background-color: var(--color-accent);
-    color: white;
+    background-color: rgb(var(--color-badge-background));
+    color: rgb(var(--color-badge-foreground));
     padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
+    border-radius: 4px;
     font-weight: 700;
     text-transform: uppercase;
   }
 
-  @media screen and (max-width: 750px) {
-    .submenu__item-image {
-      display: block;
-    }
-    .submenu__item-text {
-      display: none;
-    }
+  .submenu__item-text{
+    font-size: 1rem;
+    line-height: 1;
   }
 
-  @media screen and (min-width: 751px) {
-    .submenu__item-image {
-      display: none;
-    }
+  @media screen and (min-width: 750px) {
+      .submenu__item-text{
+      font-size: 1.4rem;
+      line-height: 1;
+      }
+  }
+
+  .submenu__item-image {
+      display: block;
+  }
+
+  @media screen and (min-width: 750px) {
+      .submenu__item-image {
+          display: none;
+      }
   }
 {%- endstyle -%}
 
-<div class='submenu tw-bg-white tw-py-2 tw-border-t tw-border-b tw-border-gray-200'>
-  <div class='tw-container tw-mx-auto tw-flex tw-flex-wrap tw-justify-center'>
+<div
+  id='submenu-section-{{ section.id }}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
+>
+  <div class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} tw-mx-auto tw-flex tw-flex-wrap tw-justify-center'>
     {%- for block in section.blocks -%}
       <a
         href='{{ block.settings.link }}'
-        class='submenu__item tw-mx-2 tw-my-1 tw-flex tw-items-center tw-gap-2 tw-relative'
+        class='submenu__item tw-mx-4 tw-my-1 tw-flex tw-items-center tw-gap-4'
         {% if section.settings.animations_reveal_on_scroll %}
           data-scroll-trigger
         {% endif %}
       >
-        <span class='submenu__item-text tw-text-base tw-font-medium'>{{ block.settings.text }}</span>
+        <span class='submenu__item-text tw-font-medium'>
+          {%- if block.settings.badge_text != blank -%}
+            <span class='submenu__badge tw-mr-2'
+              ><small>{{ block.settings.badge_text }}</small></span
+            >
+          {%- endif -%}
+          {{ block.settings.text }}
+        </span>
         {%- if block.settings.image != blank -%}
           <img
             srcset='
@@ -58,9 +86,6 @@
             class='submenu__item-image tw-block tw-w-12 tw-h-12 tw-rounded-full tw-object-cover'
           >
         {%- endif -%}
-        {%- if block.settings.badge_text != blank -%}
-          <span class='submenu__badge tw-absolute tw-top-0 tw-right-0'>{{ block.settings.badge_text }}</span>
-        {%- endif -%}
       </a>
     {%- endfor -%}
   </div>
@@ -76,10 +101,36 @@
   "max_blocks": 6,
   "settings": [
     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-2"
+    },
+    {
       "type": "checkbox",
       "id": "animations_reveal_on_scroll",
       "label": "Animate reveal on scroll",
       "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 10
     }
   ],
   "blocks": [

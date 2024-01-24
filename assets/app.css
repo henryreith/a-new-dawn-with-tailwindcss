@@ -444,6 +444,12 @@ video {
   display: none;
 }
 
+html,
+    :host {
+  line-height: 1.5;
+  font-family: var(--font-body-family), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 /* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's css too */
 
 h1,
@@ -624,35 +630,23 @@ ul, ol{
   }
 }
 
-.tw-absolute {
-  position: absolute;
-}
-
-.tw-relative {
-  position: relative;
-}
-
-.tw-top-0 {
-  top: 0px;
-}
-
-.tw-right-0 {
-  right: 0px;
-}
-
 .tw-mx-auto {
   margin-left: auto;
   margin-right: auto;
 }
 
-.tw-mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+.tw-mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .tw-my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+}
+
+.tw-mr-2 {
+  margin-right: 0.5rem;
 }
 
 .tw-block {
@@ -691,8 +685,8 @@ ul, ol{
   justify-content: center;
 }
 
-.tw-gap-2 {
-  gap: 0.5rem;
+.tw-gap-4 {
+  gap: 1rem;
 }
 
 .tw-gap-y-3 {
@@ -721,28 +715,18 @@ ul, ol{
   border-bottom-width: 1px;
 }
 
-.tw-border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
-}
-
-.tw-bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .tw-object-cover {
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.tw-py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
 .tw-text-center {
   text-align: center;
+}
+
+.tw-text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .tw-text-base {
@@ -753,10 +737,6 @@ ul, ol{
 .tw-font-medium {
   font-weight: 500;
 }
-
-/* Overwrite Dawn's Base Styles */
-
-/* Header */
 
 @media (min-width: 990px) {
   .lg\:tw-flex-row {
