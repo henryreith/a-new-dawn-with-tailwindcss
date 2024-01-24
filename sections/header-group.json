@@ -67,10 +67,10 @@
         "submenu_item_WbYwFL"
       ],
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-4",
         "animations_reveal_on_scroll": false,
-        "padding_top": 10,
-        "padding_bottom": 10
+        "padding_top": 14,
+        "padding_bottom": 14
       }
     }
   },
