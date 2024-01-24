@@ -1,30 +1,46 @@
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}rem;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}rem;
+        padding-bottom: {{ section.settings.padding_bottom }}rem;
+      }
+    }
+
+    .image-with-text-overlay__overlay-media{
+      display: block;
+      background-color: rgba(var(--color-foreground), 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .image-with-text-overlay__overlay-media > *:not(.zoom):not(.deferred-media__poster-button), .media model-viewer {
+      display: block;
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+  }
+  .image-with-text-overlay__overlay-media > img {
+      object-fit: cover;
+      object-position: center center;
+      transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+    .image-with-text-overlay__overlay{
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
     }
-  }
-  .image-with-text-overlay__overlay-media{
-    isplay: block;
-    background-color: rgba(var(--color-foreground), 0.1);
-    position: relative;
-    overflow: hidden;
-  }
-  .image-with-text-overlay__overlay{
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
 {%- endstyle -%}
 
 {%- liquid
@@ -261,20 +277,20 @@
       "id": "padding_top",
       "min": 0,
       "max": 100,
-      "step": 4,
-      "unit": "px",
+      "step": 1,
+      "unit": "rem",
       "label": "t:sections.all.padding.padding_top",
-      "default": 40
+      "default": 15
     },
     {
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
       "max": 100,
-      "step": 4,
-      "unit": "px",
+      "step": 1,
+      "unit": "rem",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 52
+      "default": 15
     }
   ],
   "blocks": [
