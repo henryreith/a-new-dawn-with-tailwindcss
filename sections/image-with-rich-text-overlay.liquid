@@ -1,46 +1,17 @@
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}rem;
+  }
+
+  @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}rem;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}rem;
+      padding-top: {{ section.settings.padding_top }}rem;
+      padding-bottom: {{ section.settings.padding_bottom }}rem;
     }
-
-    @media screen and (min-width: 750px) {
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}rem;
-        padding-bottom: {{ section.settings.padding_bottom }}rem;
-      }
-    }
-
-    .image-with-text-overlay__overlay-media{
-      display: block;
-      background-color: rgba(var(--color-foreground), 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-    .image-with-text-overlay__overlay-media > *:not(.zoom):not(.deferred-media__poster-button), .media model-viewer {
-      display: block;
-      max-width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
   }
-  .image-with-text-overlay__overlay-media > img {
-      object-fit: cover;
-      object-position: center center;
-      transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-    .image-with-text-overlay__overlay{
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-    }
 {%- endstyle -%}
 
 {%- liquid
@@ -66,24 +37,26 @@
 -%}
 
 <div class='isolate{% unless section.settings.full_width %} page-width{% endunless %}'>
-  <div class='image-with-text-overlay__overlay image-with-text-overlay__overlay-media'>
-    {%- liquid
-      assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
-      assign image_class = 'banner__media-image-half'
-      assign sizes = full_width
-    -%}
-    {{
-      section.settings.image
-      | image_url: width: 3840
-      | image_tag:
-        width: section.settings.image.width,
-        height: image_height,
-        class: image_class,
-        sizes: sizes,
-        widths: widths,
-        fetchpriority: fetch_priority
-    }}
-  </div>
+  {% if section.settings.image %}
+    <div class='image-with-text-overlay__overlay image-with-text-overlay__overlay-media'>
+      {%- liquid
+        assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+        assign image_class = 'tw-absolute tw-top-0 tw-overflow-hidden tw-w-full tw-h-full tw-object-cover tw-object-center'
+        assign sizes = full_width
+      -%}
+      {{
+        section.settings.image
+        | image_url: width: 3840
+        | image_tag:
+          width: section.settings.image.width,
+          height: image_height,
+          class: image_class,
+          sizes: sizes,
+          widths: widths,
+          fetchpriority: fetch_priority
+      }}
+    </div>
+  {% endif %}
   <div class='rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding'>
     <div class='rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}'>
       <div class='rich-text__blocks {{ section.settings.content_alignment }}'>
