@@ -71,8 +71,8 @@
         "animations_reveal_on_scroll": false,
         "border_on_top": false,
         "border_on_bottom": true,
-        "padding_top": 14,
-        "padding_bottom": 14
+        "padding_top": 13,
+        "padding_bottom": 12
       }
     }
   },
