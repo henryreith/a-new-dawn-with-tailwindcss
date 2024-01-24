@@ -17,8 +17,10 @@ module.exports = {
       pageMaxWidth: '1300px',
     },
     fontSize: {
-      sm: '1.2rem',
-      base: '1.5rem',
+      xs: '1rem', // 10px
+      sm: '1.2rem', // 12px
+      smd: '1.4rem', // 14px
+      base: '1.5rem', // 15px
       xl: 'calc(1.7rem * var(--font-heading-scale))',
       '2xl': 'calc(2rem * var(--font-heading-scale))',
       '3xl': 'calc(3rem * var(--font-heading-scale))',
