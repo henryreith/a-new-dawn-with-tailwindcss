@@ -450,6 +450,10 @@ html,
   font-family: var(--font-body-family);
 }
 
+body{
+  letter-spacing: 0.01rem;
+}
+
 /* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's css too */
 
 h1,
@@ -768,6 +772,10 @@ ul, ol{
 
 .tw-uppercase {
   text-transform: uppercase;
+}
+
+.tw-tracking-normal {
+  letter-spacing: 0em;
 }
 
 /* end @layer base */
