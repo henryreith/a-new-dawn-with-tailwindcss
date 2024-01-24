@@ -58,7 +58,7 @@
 
 <div
   id='section-{{ section.id }}'
-  class='section-{{ section.id }}-padding{% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %} color-{{ section.settings.color_scheme }} gradient'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
   {% if section.settings.animations_reveal_on_scroll %}
     data-cascade
   {% endif %}

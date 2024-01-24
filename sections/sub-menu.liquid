@@ -49,7 +49,7 @@
 
 <div
   id='submenu-section-{{ section.id }}'
-  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
 >
   <div class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} tw-mx-auto tw-flex tw-flex-wrap tw-justify-center'>
     {%- for block in section.blocks -%}
@@ -110,6 +110,18 @@
       "type": "checkbox",
       "id": "animations_reveal_on_scroll",
       "label": "Animate reveal on scroll",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_top",
+      "label": "t:sections.benefits-inline.settings.border_on_top.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_bottom",
+      "label": "t:sections.benefits-inline.settings.border_on_bottom.label",
       "default": false
     },
     {
