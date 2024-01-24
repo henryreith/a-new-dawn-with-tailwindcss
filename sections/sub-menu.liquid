@@ -16,9 +16,10 @@
   }
 
   .submenu__badge {
-    background-color: rgb(var(--color-badge-background));
-    color: rgb(var(--color-badge-foreground));
-    padding: 0.25rem 0.5rem;
+    background-color: rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
+    line-height: 1;
+    padding: 0.10rem 0.65rem;
     border-radius: 4px;
     font-weight: 700;
     text-transform: uppercase;
@@ -62,7 +63,7 @@
       >
         <span class='submenu__item-text tw-font-medium'>
           {%- if block.settings.badge_text != blank -%}
-            <span class='submenu__badge tw-mr-2'
+            <span class='submenu__badge tw-mr-4'
               ><small>{{ block.settings.badge_text }}</small></span
             >
           {%- endif -%}
