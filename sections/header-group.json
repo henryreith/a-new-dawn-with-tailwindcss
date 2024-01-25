@@ -69,10 +69,10 @@
       "settings": {
         "color_scheme": "scheme-4",
         "animations_reveal_on_scroll": false,
-        "border_on_top": true,
-        "border_on_bottom": true,
-        "padding_top": 14,
-        "padding_bottom": 14
+        "border_on_top": false,
+        "border_on_bottom": false,
+        "padding_top": 15,
+        "padding_bottom": 15
       }
     }
   },
