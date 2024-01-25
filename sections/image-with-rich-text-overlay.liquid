@@ -16,16 +16,6 @@
   #image-with-text-overlay-{{ section.id }} .gradient {
     background: rgba(var(--color-background), {{ section.settings.image_overlay_opacity | divided_by: 100.0 }});
   }
-
-  .banner__media.animate--zoom-in {
-    clip-path: inset(0px);
-  }
-
-  .banner__media.animate--zoom-in > img:not(.zoom):not(.deferred-media__poster-button),
-  .banner__media.animate--zoom-in > svg:not(.zoom):not(.deferred-media__poster-button) {
-    position: fixed;
-    height: 100vh;
-  }
 {%- endstyle -%}
 
 {%- liquid
@@ -55,7 +45,7 @@
 >
   <div class='isolate{% unless section.settings.full_width %} page-width{% endunless %}'>
     {% if section.settings.image %}
-      <div class='image-with-text-overlay__overlay {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %} tw-h-full tw-w-full tw-absolute tw-left-0 tw-right-0'>
+      <div class='image-with-text-overlay__overlay banner__media {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %} tw-h-full tw-w-full tw-absolute tw-left-0 tw-right-0'>
         {%- liquid
           assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
           assign image_class = 'tw-absolute tw-top-0 tw-overflow-hidden tw-w-full tw-h-full tw-object-cover tw-object-center'
