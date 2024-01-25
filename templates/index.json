@@ -332,49 +332,25 @@
         "padding_bottom": 20
       }
     },
-    "liquid_with_text_qHQz6e": {
-      "type": "liquid-with-text",
+    "simple_text_and_image_fyaQUr": {
+      "type": "simple-text-and-image",
       "blocks": {
-        "heading_cbK4Cz": {
-          "type": "heading",
+        "custom_liquid_pwhewP": {
+          "type": "custom_liquid",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "text_TRUUhJ": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "text_style": "body"
-          }
-        },
-        "button_JKrk7t": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
+            "custom_liquid": "<p>Your custom liquid here<\/p>"
           }
         }
       },
       "block_order": [
-        "heading_cbK4Cz",
-        "text_TRUUhJ",
-        "button_JKrk7t"
+        "custom_liquid_pwhewP"
       ],
       "settings": {
-        "custom_liquid": "<p>Your custom Liquid code here<\/p>",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "center",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
+        "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
         "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "mobile_image_order": "1",
+        "padding_top": 15,
+        "padding_bottom": 15
       }
     }
   },
@@ -387,6 +363,6 @@
     "custom_liquid_in_page_width_wrapper_zzXfKk",
     "rich_text_X66yqC",
     "image_with_rich_text_overlay_4iaxgC",
-    "liquid_with_text_qHQz6e"
+    "simple_text_and_image_fyaQUr"
   ]
 }
