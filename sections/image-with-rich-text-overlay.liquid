@@ -16,6 +16,11 @@
   #image-with-text-overlay-{{ section.id }} .gradient {
     background: rgba(var(--color-background), {{ section.settings.image_overlay_opacity | divided_by: 100.0 }});
   }
+  {% if section.settings.show_text_shadow %}
+    #image-with-text-overlay-{{ section.id }} .rich-text__wrapper {
+      text-shadow: 0 0 1rem rgba(var(--color-background), {{ section.settings.text_shadow_opacity | divided_by: 100.0 }});
+    }
+  {% endif %}
 {%- endstyle -%}
 
 {%- liquid
@@ -163,7 +168,7 @@
       "id": "image_overlay_opacity",
       "min": 0,
       "max": 100,
-      "step": 10,
+      "step": 1,
       "unit": "%",
       "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
       "default": 0
@@ -195,6 +200,27 @@
       ],
       "default": "none",
       "label": "t:sections.all.animation.image_behavior.label"
+    },
+    {
+      "type": "header",
+      "content": "Add Background Shadow to Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_shadow",
+      "default": false,
+      "label": "Show Text Shadow"
+    },
+    {
+      "type": "range",
+      "id": "text_shadow_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Text shadow opacity",
+      "info": "Percentage of text shadow. The color will be the background color of the color scheme selected above. Adding a text shadow will make the text more readable if the background image is busy.",
+      "default": 30
     },
     {
       "type": "select",
