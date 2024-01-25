@@ -663,6 +663,14 @@ ul, ol{
   top: 0px;
 }
 
+.tw-left-0 {
+  left: 0px;
+}
+
+.tw-right-0 {
+  right: 0px;
+}
+
 .tw-mx-auto {
   margin-left: auto;
   margin-right: auto;
