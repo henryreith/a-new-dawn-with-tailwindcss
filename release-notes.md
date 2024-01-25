@@ -1,3 +1,14 @@
+### Customisation
+## Added Sections
+- Announcement bar - simple. So HTML can be added stright to the template and not via blocks
+- Image with rich text overlay
+- Sub menu
+- Liquid template with page-width already added
+
+## Settings updates
+- Preload main stylesheets in theme.liquid at top of file as print and add on.load to change it to screen. This means they start to be be loaded instantly, and then they are left in as full stylesheet loads later on in the head, which means it will render block if they aren't loaded yet. 
+- Change default color scheme color rgba from 0.75 opacity to 0.9 so there is less of a difference between headers and main text color, plus when using mid-dark colors the text is more readable.
+
 Dawn 12.0.0 introduces additional customization options by adding color scheme pickers to new areas, and new ways to visually display product filters. It also introduces some performance improvements related to image loading. 
 
 ### Added

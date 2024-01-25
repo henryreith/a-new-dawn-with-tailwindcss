@@ -1,5 +1,5 @@
 {% # this template is based on the rich text template. I've tried to keep as much the same as possible so any updates to that template are reflected in here %}
-{% # Image overlay / background opacity could be improved with the : after method shared in this codepen codepen.io/jonathanedempsey/pen/wvKwpdK %}
+{% # Image overlay / background opacity could be improved with the :after method shared in this codepen codepen.io/jonathanedempsey/pen/wvKwpdK - 25 Jan 24, this has now been implimented but worth checking it works on all devices %}
 {% # Want to come back and add functionality for up to three background images which can rotate with css based on this example: youtube.com/watch?v=j2aTsQnY_DA & codepen.io/fcalderan/pen/njKmQQ %}
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
@@ -78,7 +78,7 @@
   class='tw-overflow-hidden banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'
 >
   <div class='isolate{% unless section.settings.full_width %} page-width{% endunless %}'>
-    <div class='rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding'>
+    <div class='rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding tw-overflow-hidden'>
       {% if section.settings.image %}
         <div
           class='image-with-text-overlay__overlay banner__media {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %} tw-h-full tw-w-full tw-absolute tw-left-0 tw-right-0 tw--z-2'

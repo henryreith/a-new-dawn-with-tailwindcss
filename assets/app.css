@@ -696,6 +696,10 @@ ul, ol{
   display: flex;
 }
 
+.tw-hidden {
+  display: none;
+}
+
 .tw-h-10 {
   height: 2.5rem;
 }
