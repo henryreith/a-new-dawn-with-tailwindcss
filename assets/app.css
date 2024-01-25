@@ -659,16 +659,16 @@ ul, ol{
   position: absolute;
 }
 
-.tw-top-0 {
-  top: 0px;
-}
-
 .tw-left-0 {
   left: 0px;
 }
 
 .tw-right-0 {
   right: 0px;
+}
+
+.tw-top-0 {
+  top: 0px;
 }
 
 .tw-mx-auto {
