@@ -759,6 +759,21 @@ ul, ol{
   row-gap: 0.75rem;
 }
 
+.tw-gap-x-8 {
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+
+.tw-gap-x-10 {
+  -moz-column-gap: 2.5rem;
+       column-gap: 2.5rem;
+}
+
+.tw-gap-x-12 {
+  -moz-column-gap: 3rem;
+       column-gap: 3rem;
+}
+
 .tw-overflow-hidden {
   overflow: hidden;
 }
@@ -799,6 +814,11 @@ ul, ol{
   padding-bottom: 0.25rem;
 }
 
+.tw-py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .tw-text-center {
   text-align: center;
 }
@@ -828,6 +848,18 @@ ul, ol{
 }
 
 /* end @layer base */
+
+@media (min-width: 750px) {
+  .md\:tw-gap-x-10 {
+    -moz-column-gap: 2.5rem;
+         column-gap: 2.5rem;
+  }
+
+  .md\:tw-py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
 
 @media (min-width: 990px) {
   .lg\:tw-hidden {
