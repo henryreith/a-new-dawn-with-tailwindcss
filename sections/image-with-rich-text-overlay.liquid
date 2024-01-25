@@ -1,3 +1,5 @@
+{% # this template is based on the rich text template. I've tried to keep as much the same as possible so any updates to that template are reflected in here %}
+{% # Want to come back and add functionality for up to three background images which can rotate with css based on this example: youtube.com/watch?v=j2aTsQnY_DA %}
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -65,6 +67,7 @@
   <div class='isolate{% unless section.settings.full_width %} page-width{% endunless %}'>
     {% if section.settings.image %}
       <div class='image-with-text-overlay__overlay banner__media {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %} tw-h-full tw-w-full tw-absolute tw-left-0 tw-right-0'>
+        {% # Image setup borrowed from the image banner, will come back and clean up unused settings %}
         {%- liquid
           assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
           assign image_class = 'tw-absolute tw-top-0 tw-overflow-hidden tw-w-full tw-h-full tw-object-cover tw-object-center'
