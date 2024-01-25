@@ -5,7 +5,8 @@
       "settings": {
         "show_collection_description": true,
         "color_scheme": "scheme-2",
-        "collection_banner_background_image_opactity": 5,
+        "collection_banner_background_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
+        "collection_banner_background_image_opactity": 0,
         "text_alignment": "center",
         "padding_top": 36,
         "padding_bottom": 48
