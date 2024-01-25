@@ -1,26 +1,40 @@
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}rem;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}rem;
-  }
-
-  @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}rem;
-      padding-bottom: {{ section.settings.padding_bottom }}rem;
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}rem;
     }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}rem;
+        padding-bottom: {{ section.settings.padding_bottom }}rem;
+      }
+    }
+    {% if section.settings.image_behavior == "zoom-in" %}
+  .banner__media.animate--zoom-in {
+    clip-path: inset(0px);
   }
 
-  #image-with-text-overlay-{{ section.id }} .gradient {
-    background: rgba(var(--color-background), {{ section.settings.image_overlay_opacity | divided_by: 100.0 }});
+  .banner__media.animate--zoom-in > img:not(.zoom):not(.deferred-media__poster-button),
+  .banner__media.animate--zoom-in > svg:not(.zoom):not(.deferred-media__poster-button) {
+    position: fixed;
+    height: 100vh;
   }
-  {% if section.settings.show_text_shadow %}
-    #image-with-text-overlay-{{ section.id }} .rich-text__wrapper {
-      text-shadow: 0 0 1rem rgba(var(--color-background), {{ section.settings.text_shadow_opacity | divided_by: 100.0 }});
-    }
   {% endif %}
+
+    #image-with-text-overlay-{{ section.id }} .gradient {
+      background: rgba(var(--color-background), {{ section.settings.image_overlay_opacity | divided_by: 100.0 }});
+    }
+    {% if section.settings.show_text_shadow %}
+      #image-with-text-overlay-{{ section.id }} .rich-text__wrapper .rich-text__buttons {
+        text-shadow: none;
+      }
+      #image-with-text-overlay-{{ section.id }} .rich-text__wrapper:not(.rich-text__buttons) {
+        text-shadow: 0 0 1rem rgba(var(--color-background), {{ section.settings.text_shadow_opacity | divided_by: 100.0 }});
+      }
+    {% endif %}
 {%- endstyle -%}
 
 {%- liquid
