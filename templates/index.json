@@ -42,7 +42,7 @@
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "scheme-3",
-        "image_behavior": "fixed",
+        "image_behavior": "zoom-in",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
@@ -312,7 +312,7 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg",
         "image_overlay_opacity": 30,
-        "image_behavior": "fixed",
+        "image_behavior": "zoom-in",
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-3",
