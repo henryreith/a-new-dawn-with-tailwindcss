@@ -2,14 +2,14 @@
 
 {%- style -%}
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}rem;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}rem;
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
 
     @media screen and (min-width: 750px) {
       .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}rem;
-        padding-bottom: {{ section.settings.padding_bottom }}rem;
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
 
@@ -25,7 +25,7 @@
   id='text-and-image--{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
 >
-  <div class='tw-flex tw-flex-wrap tw-justify-between tw-items-center'>
+  <div class='page-width tw-flex tw-flex-wrap tw-justify-between tw-items-center'>
     <div class='text-and-image--{{ section.id }}__text tw-w-3/4 tw-p-4'>
       {%- for block in section.blocks -%}
         {%- case block.type -%}
@@ -39,8 +39,19 @@
     <div class='text-and-image--{{ section.id }}__image tw-w-1/4 tw-p-4'>
       {% if section.settings.image != blank %}
         <img
+          srcset='
+            {% if section.settings.image.width >= 350 %}{{ section.settings.image | image_url: width: 350 }} 350w,{% endif %}
+            {% if section.settings.image.width >= 750 %}{{ section.settings.image | image_url: width: 750 }} 750w,{% endif %}
+            {% if section.settings.image.width >= 1100 %}{{ section.settings.image | image_url: width: 1100 }} 1100w,{% endif %}
+            {{ section.settings.image | image_url }} {{ section.settings.image.width }}w
+          '
+          sizes='(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw'
+          src='{{ section.settings.image | image_url: width: 1100 }}'
+          loading='lazy'
+          fetchpriority='auto'
           class='tw-w-full tw-h-auto'
-          src='{{ section.settings.image | img_url: '800x' }}'
+          width='{{ section.settings.image.width }}'
+          height='{{ section.settings.image.height }}'
           alt='{{ section.settings.image.alt | escape }}'
         >
       {% endif %}
@@ -84,9 +95,9 @@
       "min": 0,
       "max": 100,
       "step": 1,
-      "unit": "rem",
+      "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 15
+      "default": 36
     },
     {
       "type": "range",
@@ -94,9 +105,9 @@
       "min": 0,
       "max": 100,
       "step": 1,
-      "unit": "rem",
+      "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 15
+      "default": 36
     }
   ],
   "blocks": [
