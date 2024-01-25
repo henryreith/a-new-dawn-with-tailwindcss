@@ -42,6 +42,12 @@ module.exports = {
         h5: 'calc(1.2rem * var(--font-heading-scale))', // h5 size
         h6: 'calc(1rem * var(--font-heading-scale))',  // h6 size
       },
+      zIndex: {
+        '-1': '-1',
+        '-2': '-2',
+        '-3': '-3',
+        '-4': '-4',
+      },
     },
     color: {
       black: '#000000',

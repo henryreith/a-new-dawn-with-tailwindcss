@@ -671,6 +671,18 @@ ul, ol{
   top: 0px;
 }
 
+.tw--z-50 {
+  z-index: -50;
+}
+
+.tw-z-10 {
+  z-index: 10;
+}
+
+.tw--z-2 {
+  z-index: -2;
+}
+
 .tw-mx-auto {
   margin-left: auto;
   margin-right: auto;

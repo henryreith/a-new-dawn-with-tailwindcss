@@ -27,17 +27,29 @@
   }
   {% endif %}
 
-    #image-with-text-overlay-{{ section.id }} .gradient {
-      background: rgba(var(--color-background), {{ section.settings.image_overlay_opacity | divided_by: 100.0 }});
+  #image-with-text-overlay-{{ section.id }} .rich-text{
+    color: rgba(var(--color-foreground), 0.98);
+  }
+
+  #image-with-text-overlay-{{ section.id }} .rich-text:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--color-background), {{ section.settings.image_overlay_opacity | divided_by: 100.0 }});
+    content: "";
+    z-index: -1;
+  }
+
+  {% if section.settings.show_text_shadow %}
+    #image-with-text-overlay-{{ section.id }} .rich-text__wrapper .rich-text__buttons {
+      text-shadow: none;
     }
-    {% if section.settings.show_text_shadow %}
-      #image-with-text-overlay-{{ section.id }} .rich-text__wrapper .rich-text__buttons {
-        text-shadow: none;
-      }
-      #image-with-text-overlay-{{ section.id }} .rich-text__wrapper:not(.rich-text__buttons) {
-        text-shadow: 0 0 1rem rgba(var(--color-background), {{ section.settings.text_shadow_opacity | divided_by: 100.0 }});
-      }
-    {% endif %}
+    #image-with-text-overlay-{{ section.id }} .rich-text__wrapper:not(.rich-text__buttons) {
+      text-shadow: 0 0 1rem rgba(var(--color-background), {{ section.settings.text_shadow_opacity | divided_by: 100.0 }});
+    }
+  {% endif %}
 {%- endstyle -%}
 
 {%- liquid
@@ -66,30 +78,33 @@
   class='tw-overflow-hidden banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'
 >
   <div class='isolate{% unless section.settings.full_width %} page-width{% endunless %}'>
-    {% if section.settings.image %}
-      <div class='image-with-text-overlay__overlay banner__media {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %} tw-h-full tw-w-full tw-absolute tw-left-0 tw-right-0'>
-        {% # Image setup borrowed from the image banner, will come back and clean up unused settings %}
-        {%- liquid
-          assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
-          assign image_class = 'tw-absolute tw-top-0 tw-overflow-hidden tw-w-full tw-h-full tw-object-cover tw-object-center'
-          assign sizes = full_width
-        -%}
-        {{
-          section.settings.image
-          | image_url: width: 3840
-          | image_tag:
-            width: section.settings.image.width,
-            height: image_height,
-            class: image_class,
-            sizes: sizes,
-            widths: widths,
-            fetchpriority: fetch_priority
-        }}
-      </div>
-    {% endif %}
     <div class='rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding'>
+      {% if section.settings.image %}
+        <div
+          class='image-with-text-overlay__overlay banner__media {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %} tw-h-full tw-w-full tw-absolute tw-left-0 tw-right-0 tw--z-2'
+        >
+          {% # Image setup borrowed from the image banner, will come back and clean up unused settings %}
+          {%- liquid
+            assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+            assign image_class = 'tw-absolute tw-top-0 tw-overflow-hidden tw-w-full tw-h-full tw-object-cover tw-object-center'
+            assign sizes = full_width
+          -%}
+          {{
+            section.settings.image
+            | image_url: width: 3840
+            | image_tag:
+              width: section.settings.image.width,
+              height: image_height,
+              class: image_class,
+              sizes: sizes,
+              widths: widths,
+              fetchpriority: fetch_priority
+          }}
+        </div>
+      {% endif -%}
+      {%- # End if section.settings.image %}
       <div class='rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}'>
-        <div class='rich-text__blocks {{ section.settings.content_alignment }}'>
+        <div class='rich-text__blocks {{ section.settings.content_alignment }} tw-z-10'>
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'heading' -%}
