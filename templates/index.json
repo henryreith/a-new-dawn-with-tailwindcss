@@ -311,12 +311,12 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg",
-        "image_overlay_opacity": 30,
+        "image_overlay_opacity": 70,
         "image_behavior": "fixed",
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-3",
-        "full_width": false,
+        "full_width": true,
         "padding_top": 20,
         "padding_bottom": 20
       }
