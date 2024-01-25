@@ -277,6 +277,14 @@
             "heading_size": "h1"
           }
         },
+        "caption_qaxMwX": {
+          "type": "caption",
+          "settings": {
+            "caption": "Add a tagline",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
         "text_WxihYn": {
           "type": "text",
           "settings": {
@@ -297,6 +305,7 @@
       },
       "block_order": [
         "heading_PHUeaj",
+        "caption_qaxMwX",
         "text_WxihYn",
         "button_jLbWkT"
       ],
@@ -306,7 +315,7 @@
         "image_behavior": "ambient",
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "full_width": true,
         "padding_top": 20,
         "padding_bottom": 20
