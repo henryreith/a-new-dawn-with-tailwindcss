@@ -216,15 +216,6 @@
         "padding_bottom": 36
       }
     },
-    "custom_liquid_in_page_width_wrapper_zzXfKk": {
-      "type": "custom-liquid-in-page-width-wrapper",
-      "settings": {
-        "custom_liquid": "Test info",
-        "color_scheme": "scheme-2",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "rich_text_X66yqC": {
       "type": "rich-text",
       "blocks": {
@@ -332,13 +323,22 @@
         "padding_bottom": 20
       }
     },
+    "custom_liquid_in_page_width_wrapper_zzXfKk": {
+      "type": "custom-liquid-in-page-width-wrapper",
+      "settings": {
+        "custom_liquid": "<p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p>\n\n<p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p>",
+        "color_scheme": "scheme-2",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "simple_text_and_image_fyaQUr": {
       "type": "simple-text-and-image",
       "blocks": {
         "custom_liquid_pwhewP": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<p>Your custom liquid here<\/p>"
+            "custom_liquid": "<p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p><p>Test infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest infoTest info<\/p>"
           }
         }
       },
@@ -360,9 +360,9 @@
     "featured_collection",
     "featured_product_WVxdGX",
     "multicolumn",
-    "custom_liquid_in_page_width_wrapper_zzXfKk",
     "rich_text_X66yqC",
     "image_with_rich_text_overlay_4iaxgC",
+    "custom_liquid_in_page_width_wrapper_zzXfKk",
     "simple_text_and_image_fyaQUr"
   ]
 }
