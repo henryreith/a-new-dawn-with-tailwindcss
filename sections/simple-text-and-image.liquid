@@ -1,0 +1,128 @@
+{{ 'section-text-and-image.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}rem;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}rem;
+        padding-bottom: {{ section.settings.padding_bottom }}rem;
+      }
+    }
+
+
+  @media screen and (max-width: 749px) {
+        .text-and-image--{{ section.id }}__image {
+            order: {{ section.settings.mobile_image_order }};
+        }
+    }
+{%- endstyle -%}
+
+<div
+  id='text-and-image--{{ section.id }}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
+>
+  <div class='tw-flex tw-flex-wrap tw-justify-between tw-items-center'>
+    <div class='text-and-image--{{ section.id }}__text tw-w-3/4 tw-p-4'>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'custom_liquid' -%}
+            <div class='custom-liquid'>
+              {{ block.settings.custom_liquid }}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+    <div class='text-and-image--{{ section.id }}__image tw-w-1/4 tw-p-4'>
+      {% if section.settings.image != blank %}
+        <img
+          class='tw-w-full tw-h-auto'
+          src='{{ section.settings.image | img_url: '800x' }}'
+          alt='{{ section.settings.image.alt | escape }}'
+        >
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Simple Text 3/4 Image 1/4",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_order",
+      "label": "Mobile image order",
+      "options": [
+        { "value": "0", "label": "Show image first" },
+        { "value": "1", "label": "Show image second" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 15
+    }
+  ],
+  "blocks": [
+    {
+      "type": "custom_liquid",
+      "name": "Liquid For Text",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Liquid content",
+          "default": "<p>Your custom liquid here</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple Text 3/4 Image 1/4",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "custom_liquid"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -708,12 +708,24 @@ ul, ol{
   height: 100%;
 }
 
+.tw-h-auto {
+  height: auto;
+}
+
 .tw-w-10 {
   width: 2.5rem;
 }
 
 .tw-w-full {
   width: 100%;
+}
+
+.tw-w-1\/4 {
+  width: 25%;
+}
+
+.tw-w-3\/4 {
+  width: 75%;
 }
 
 .tw-flex-row {
@@ -738,6 +750,10 @@ ul, ol{
 
 .tw-justify-center {
   justify-content: center;
+}
+
+.tw-justify-between {
+  justify-content: space-between;
 }
 
 .tw-gap-x-3 {
@@ -802,6 +818,10 @@ ul, ol{
 .tw-object-center {
   -o-object-position: center;
      object-position: center;
+}
+
+.tw-p-4 {
+  padding: 1rem;
 }
 
 .tw-px-2 {
