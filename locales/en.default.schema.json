@@ -3152,7 +3152,7 @@
         "custom_liquid": {
           "label": "Custom Liquid"
         },
-        "image_picker": {
+        "image": {
           "label": "Image"
         },
         "mobile_image_order": {
