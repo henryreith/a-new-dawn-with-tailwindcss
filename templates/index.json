@@ -178,10 +178,11 @@
         "column2": {
           "type": "column",
           "settings": {
+            "image": "shopify:\/\/shop_images\/MASTER_-_Oh_Crap_Logo_-_Word_Only_979b5344-df08-4b43-a2f3-98fd2333401c.svg",
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Hello",
+            "link": "shopify:\/\/pages\/test-page"
           }
         },
         "column3": {
