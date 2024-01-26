@@ -280,7 +280,7 @@
       "type": "custom-liquid",
       "settings": {
         "custom_liquid": "<h3 class=\"center\">Description<\/h3>\n<div id=\"extened_description\">{{ product.description }}<\/div>",
-        "color_scheme": "",
+        "color_scheme": "scheme-5",
         "section_page_width": "narrow",
         "padding_top": 36,
         "padding_bottom": 36
