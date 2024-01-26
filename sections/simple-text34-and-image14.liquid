@@ -47,7 +47,7 @@
         </{{ title_tag }}>
       </div>
     {%- endif -%}
-    <div class='text-and-image-3/4-1/4__image tw-col-span-12 md:tw-col-span-2 lg:tw-col-span-3 {% if section.settings.mobile_image_order == "image_first" %} tw-order-1 {% endif %} md:tw-order-2'>
+    <div class='text-and-image-3/4-1/4__image tw-col-span-12 md:tw-col-span-2 lg:tw-col-span-3 {% if section.settings.mobile_image_order == "image_first" %} tw-order-1 {% else %} tw-order-2 {% endif %} md:tw-order-2'>
       {% if section.settings.image != blank %}
         <img
           srcset='
@@ -67,7 +67,7 @@
         >
       {% endif %}
     </div>
-    <div class='text-and-image-3/4-1/4__text tw-col-span-12 md:tw-col-span-10 lg:tw-col-span-9 {% if section.settings.mobile_image_order == "image_first" %} tw-order-2 {% endif %} md:tw-order-1'>
+    <div class='text-and-image-3/4-1/4__text tw-col-span-12 md:tw-col-span-10 lg:tw-col-span-9 {% if section.settings.mobile_image_order == "image_first" %} tw-order-2 {% else %} tw-order-1 {% endif %} md:tw-order-1'>
       <div class='custom-liquid'>
         {{ section.settings.custom_liquid }}
       </div>
