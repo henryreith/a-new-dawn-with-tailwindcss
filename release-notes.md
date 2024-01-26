@@ -5,6 +5,9 @@
 - Sub menu
 - Liquid template with page-width already added
 
+## Customised Default Sections
+- Custom Liquid - Added option to define page width.
+
 ## Settings updates
 - Preload main stylesheets in theme.liquid at top of file as print and add on.load to change it to screen. This means they start to be be loaded instantly, and then they are left in as full stylesheet loads later on in the head, which means it will render block if they aren't loaded yet. 
 - Change default color scheme color rgba from 0.75 opacity to 0.9 so there is less of a difference between headers and main text color, plus when using mid-dark colors the text is more readable.
