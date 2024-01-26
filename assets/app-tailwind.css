@@ -104,6 +104,14 @@
     margin-block-end: 1.67em;
     }
 
+    /* Overwrite tailwind's default paragraph styling that removes all p tag margins, adding margin after p tags */
+    * > p {
+        margin-bottom: 1rem;
+    }
+    * > p:last-child {
+        margin-bottom: 0;
+    }
+
     /* Overwrite tailwind's default lists styling */
     ul, ol{
         list-style: inherit;
