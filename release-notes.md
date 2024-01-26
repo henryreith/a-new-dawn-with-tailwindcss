@@ -6,7 +6,10 @@
 - Liquid template with page-width already added
 
 ## Customised Default Sections
-- Custom Liquid - Added option to define page width.
+- custom-liquid.liquid - Added option to define page width.
+
+## Customised Default Snippets
+- social-icons.liquid: Updated social media snippet to include title='Connect with {{ shop_name }} on XNetwork' & target='_blank' on links
 
 ## Settings updates
 - Preload main stylesheets in theme.liquid at top of file as print and add on.load to change it to screen. This means they start to be be loaded instantly, and then they are left in as full stylesheet loads later on in the head, which means it will render block if they aren't loaded yet. 
