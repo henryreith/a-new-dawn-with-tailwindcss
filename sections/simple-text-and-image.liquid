@@ -13,7 +13,7 @@
     }
   }
 
-  {%- if section.settings.mobile_image_order == "0" %}
+  {%- if section.settings.mobile_image_order == "image_first" %}
   @media screen and (max-width: 749px) {
     .text-and-image--{{ section.id }}__image {
         order: 0;
@@ -22,7 +22,7 @@
         order: 1;
     }
   }
-  {%- elsif section.settings.mobile_image_order == "1" %}
+  {%- elsif section.settings.mobile_image_order == "image_second" %}
   @media screen and (max-width: 749px) {
     .text-and-image--{{ section.id }}__text {
         order: 0;
@@ -35,21 +35,19 @@
 {%- endstyle -%}
 
 <div
-  id='text-and-image--{{ section.id }}'
+  id='text-and-image-3/4-1/4--{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
 >
-  <div class='page-width tw-grid tw-grid-cols-10 tw-gap-x-10 tw-gap-y-4'>
-    <div class='text-and-image--{{ section.id }}__text md:tw-order-2 tw-col-span-10 md:tw-col-span-8 lg:tw-col-span-7'>
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'custom_liquid' -%}
-            <div class='custom-liquid'>
-              {{ block.settings.custom_liquid }}
-            </div>
-        {%- endcase -%}
-      {%- endfor -%}
-    </div>
-    <div class='text-and-image--{{ section.id }}__image md:tw-order-1 tw-col-span-10 md:tw-col-span-2 lg:tw-col-span-3'>
+  <div class='page-width tw-grid tw-grid-cols-12 tw-gap-x-10 tw-gap-y-6'>
+    {%- if section.settings.title != blank -%}
+      <div class='text-and-image-3/4-1/4__title tw-col-span-12'>
+        {% assign title_tag = section.settings.title_tag %}
+        <{{ title_tag }}>
+          {{- section.settings.title | escape -}}
+        </{{ title_tag }}>
+      </div>
+    {%- endif -%}
+    <div class='text-and-image-3/4-1/4__image tw-col-span-12 md:tw-col-span-2 lg:tw-col-span-3 {% if section.settings.mobile_image_order == "image_first" %} tw-order-1 {% endif %} md:tw-order-2'>
       {% if section.settings.image != blank %}
         <img
           srcset='
@@ -69,6 +67,11 @@
         >
       {% endif %}
     </div>
+    <div class='text-and-image-3/4-1/4__text tw-col-span-12 md:tw-col-span-10 lg:tw-col-span-9 {% if section.settings.mobile_image_order == "image_first" %} tw-order-2 {% endif %} md:tw-order-1'>
+      <div class='custom-liquid'>
+        {{ section.settings.custom_liquid }}
+      </div>
+    </div>
   </div>
 </div>
 
@@ -81,6 +84,49 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "t:sections.faq.settings.faq_title_tag.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Liquid content",
+      "default": "<p>Your custom liquid here</p>"
+    },
     {
       "type": "image_picker",
       "id": "image",
@@ -97,10 +143,10 @@
       "id": "mobile_image_order",
       "label": "Mobile image order",
       "options": [
-        { "value": "0", "label": "Show image first" },
-        { "value": "1", "label": "Show image second" }
+        { "value": "image_first", "label": "Show image first" },
+        { "value": "image_second", "label": "Show image second" }
       ],
-      "default": "1"
+      "default": "image_first"
     },
     {
       "type": "range",
@@ -123,29 +169,10 @@
       "default": 36
     }
   ],
-  "blocks": [
-    {
-      "type": "custom_liquid",
-      "name": "Liquid For Text",
-      "settings": [
-        {
-          "type": "liquid",
-          "id": "custom_liquid",
-          "label": "Liquid content",
-          "default": "<p>Your custom liquid here</p>"
-        }
-      ]
-    }
-  ],
   "presets": [
     {
       "name": "Simple Text 3/4 Image 1/4",
-      "category": "Custom",
-      "blocks": [
-        {
-          "type": "custom_liquid"
-        }
-      ]
+      "category": "Custom"
     }
   ]
 }
