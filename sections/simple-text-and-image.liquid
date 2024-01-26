@@ -38,8 +38,8 @@
   id='text-and-image--{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
 >
-  <div class='page-width tw-flex tw-flex-wrap tw-justify-between tw-items-center'>
-    <div class='text-and-image--{{ section.id }}__text md:tw-w-3/4 tw-p-4'>
+  <div class='page-width tw-grid tw-grid-cols-10 tw-gap-x-10 tw-gap-y-4'>
+    <div class='text-and-image--{{ section.id }}__text md:tw-order-2 tw-col-span-10 md:tw-col-span-8 lg:tw-col-span-7'>
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'custom_liquid' -%}
@@ -49,7 +49,7 @@
         {%- endcase -%}
       {%- endfor -%}
     </div>
-    <div class='text-and-image--{{ section.id }}__image md:tw-w-1/4 tw-p-4'>
+    <div class='text-and-image--{{ section.id }}__image md:tw-order-1 tw-col-span-10 md:tw-col-span-2 lg:tw-col-span-3'>
       {% if section.settings.image != blank %}
         <img
           srcset='
