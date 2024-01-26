@@ -136,6 +136,47 @@
         "padding_bottom": 36
       }
     },
+    "benefit_inline_k6d7aw": {
+      "type": "benefit-inline",
+      "blocks": {
+        "benefit_yxUJ7m": {
+          "type": "benefit",
+          "settings": {
+            "title": "100% COMPOSTABLE",
+            "icon_html": ""
+          }
+        },
+        "benefit_rtjg43": {
+          "type": "benefit",
+          "settings": {
+            "title": "NOT PLASTIC",
+            "icon_html": ""
+          }
+        },
+        "benefit_dFYwBN": {
+          "type": "benefit",
+          "settings": {
+            "title": "100% EARTH FRIENDLY",
+            "icon_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_yxUJ7m",
+        "benefit_rtjg43",
+        "benefit_dFYwBN"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "font_size": 26,
+        "animations_reveal_on_scroll": true,
+        "show_eyecatcher_above_section": false,
+        "border_on_top": true,
+        "border_on_bottom": true,
+        "padding_top": 26,
+        "padding_bottom": 26
+      }
+    },
     "custom_liquid_in_page_width_wrapper_tJGwQw": {
       "type": "custom-liquid-in-page-width-wrapper",
       "settings": {
@@ -247,6 +288,7 @@
   },
   "order": [
     "main",
+    "benefit_inline_k6d7aw",
     "custom_liquid_in_page_width_wrapper_tJGwQw",
     "image-with-text",
     "multicolumn",
