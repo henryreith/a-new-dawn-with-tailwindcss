@@ -3157,10 +3157,10 @@
         },
         "mobile_image_order": {
           "label": "Mobile Image Order",
-          "options__1": {
+          "image_first": {
             "label": "Image First"
           },
-          "options__2": {
+          "image_second": {
             "label": "Text First"
           }
         }
