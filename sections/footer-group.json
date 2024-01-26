@@ -25,12 +25,36 @@
             "heading": "Our mission",
             "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
           }
+        },
+        "image_9DXnqC": {
+          "type": "image",
+          "settings": {
+            "image": "{{ shop.brand.logo }}",
+            "image_width": 100,
+            "alignment": "center"
+          }
+        },
+        "link_list_Eb8Pnx": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "footer"
+          }
+        },
+        "brand_information_dWCzfK": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
         }
       },
       "block_order": [
         "footer-0",
         "footer-1",
-        "footer-2"
+        "footer-2",
+        "image_9DXnqC",
+        "link_list_Eb8Pnx",
+        "brand_information_dWCzfK"
       ],
       "settings": {
         "color_scheme": "scheme-1",
