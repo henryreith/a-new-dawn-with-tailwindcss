@@ -50,7 +50,14 @@
         },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {
+          }
+        },
+        "custom_liquid_cLkbqt": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{product.description | truncatewords: 23, \".\" }}\n<a href='#extended_diescription' style='text-decoration:underline'>Continue reading...<\/a>"
           }
         },
         "collapsible-row-0": {
@@ -73,6 +80,7 @@
         },
         "collapsible-row-2": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Dimensions",
             "icon": "ruler",
@@ -94,12 +102,6 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "custom_liquid_cLkbqt": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{{product.description}}"
-          }
         }
       },
       "block_order": [
@@ -111,12 +113,12 @@
         "quantity_selector",
         "buy_buttons",
         "description",
+        "custom_liquid_cLkbqt",
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
         "collapsible-row-3",
-        "share",
-        "custom_liquid_cLkbqt"
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
