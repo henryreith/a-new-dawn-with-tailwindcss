@@ -94,6 +94,12 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "custom_liquid_cLkbqt": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{product.description}}"
+          }
         }
       },
       "block_order": [
@@ -109,7 +115,8 @@
         "collapsible-row-1",
         "collapsible-row-2",
         "collapsible-row-3",
-        "share"
+        "share",
+        "custom_liquid_cLkbqt"
       ],
       "settings": {
         "enable_sticky_info": true,
