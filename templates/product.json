@@ -284,6 +284,15 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "custom_liquid_NwBgD9": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n#extened_description{\nwidth: 100%\n}\n @media screen and (min-width: 992px) {\n#extened_description{\nwidth: 80%;\nmargin: auto\n}\n}\n<\/style>\n<h3 class=\"center\">Description<\/h3>\n<div id=\"extened_description\">{{ product.description }}<\/div>",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -292,6 +301,7 @@
     "custom_liquid_in_page_width_wrapper_tJGwQw",
     "image-with-text",
     "multicolumn",
-    "related-products"
+    "related-products",
+    "custom_liquid_NwBgD9"
   ]
 }
