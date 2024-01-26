@@ -3141,7 +3141,7 @@
       }
     },
     "simple-text34-and-image14": {
-      "name": "Simple Text 3/4 Image 1/4",
+      "name": "Simple Text 3\/4 Image 1\/4",
       "settings": {
         "title": {
           "label": "Title"
@@ -3166,7 +3166,7 @@
         }
       },
       "presets": {
-        "name": "Simple Text 3/4 Image 1/4"
+        "name": "Simple Text 3\/4 Image 1\/4"
       }
     },
     "slideshow": {
