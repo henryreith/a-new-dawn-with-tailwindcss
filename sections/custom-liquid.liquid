@@ -11,9 +11,20 @@
     }
   }
 {%- endstyle -%}
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="section-{{ section.id }}-padding">
-    {{ section.settings.custom_liquid }}
+
+{%- assign page_width_class = 'page-width' -%}
+{%- case section.settings.section_page_width -%}
+  {%- when 'narrow' -%}
+    {%- assign page_width_class = 'page-width page-width--narrow' -%}
+  {%- when 'full_width' -%}
+    {%- assign page_width_class = '' -%}
+{%- endcase -%}
+
+<div class='color-{{ section.settings.color_scheme }} gradient'>
+  <div class='section-{{ section.id }}-padding'>
+    <div class='{{ page_width_class }}'>
+      {{ section.settings.custom_liquid }}
+    </div>
   </div>
 </div>
 
@@ -36,6 +47,26 @@
       "default": "scheme-1"
     },
     {
+      "type": "select",
+      "id": "section_page_width",
+      "label": "t:sections.custom-liquid.settings.section_page_width.label",
+      "options": [
+        {
+          "label": "t:sections.custom-liquid.settings.options.options__1",
+          "value": "full_width"
+        },
+        {
+          "label": "t:sections.custom-liquid.settings.options.options__2",
+          "value": "wide"
+        },
+        {
+          "label": "t:sections.custom-liquid.settings.options.options__3",
+          "value": "narrow"
+        }
+      ],
+      "default": "width"
+    },
+    {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
     },
@@ -47,7 +78,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 40
+      "default": 36
     },
     {
       "type": "range",
@@ -57,7 +88,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 52
+      "default": 36
     }
   ],
   "presets": [

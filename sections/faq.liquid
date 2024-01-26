@@ -1,38 +1,42 @@
 {%- style -%}
-  .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
 
-  @media screen and (min-width: 750px) {
-      .section-{{ section.id }}-padding {
-          padding-top: {{ section.settings.padding_top }}px;
-          padding-bottom: {{ section.settings.padding_bottom }}px;
-      }
-  }
+    @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+    }
 
-  #faq-toc-inner {
-      border: 1px solid #999;
-      margin-top: 1rem 2rem;
-      padding: 1rem 2rem;
-      border-radius: 4px;
-      margin-bottom: 2rem;
-  }
+    #faq-toc-inner {
+        border: 1px solid #999;
+        margin-top: 1rem 2rem;
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        margin-bottom: 2rem;
+    }
 
-  #faq-toc {{ section.settings.faq_title_tag }} {
-    margin-bottom: 1rem;
-  }
+    #faq-toc {{ section.settings.faq_title_tag }} {
+      margin-bottom: 1rem;
+    }
 
-  #faq-toc ul {
-    margin-bottom: 0;
-  }
+    #faq-toc ul {
+      margin-bottom: 0;
+    }
 
-  #faq-toc li a {
-      text-decoration: none;
-  }
-
-  .faq-question {
-      margin-bottom: 2rem;
+    #faq-toc li a {
+        text-decoration: none;
+    }
+    .faq-question {
+        margin-bottom: 2rem;
+    }
+    @media screen and (min-width: 750px) {
+    .faq-question {
+        margin-bottom: 2.5rem;
+    }
   }
 {%- endstyle -%}
 
@@ -69,14 +73,13 @@
         <{{ question_tag }}>
           {{- block.settings.question | escape -}}
         </{{ question_tag }}>
-        <div class='faq-answer'>
-          {% if block.settings.answer_richtext %}
-            {{- block.settings.answer_richtext -}}
-          {% endif %}
-          {% if block.settings.answer_liquid %}
-            {{- block.settings.answer_liquid -}}
-          {% endif %}
-        </div>
+
+        {% if block.settings.answer_richtext %}
+          {{- block.settings.answer_richtext -}}
+        {% endif %}
+        {% if block.settings.answer_liquid %}
+          {{- block.settings.answer_liquid -}}
+        {% endif %}
       </div>
     {% endfor %}
   </div>

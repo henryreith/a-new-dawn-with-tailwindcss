@@ -724,6 +724,18 @@
         "custom_liquid": {
           "label": "Liquid code",
           "info": "Add app snippets or other code to create advanced customizations. [Learn more](https:\/\/shopify.dev\/docs\/api\/liquid)"
+        },
+        "section_page_width": {
+          "label": "Section width",
+          "options__1": {
+            "label": "Full width"
+          },
+          "options__2": {
+            "label": "Page width"
+          },
+          "options__3": {
+            "label": "Narrow page width"
+          }
         }
       },
       "presets": {
