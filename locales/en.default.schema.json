@@ -3140,6 +3140,35 @@
         "name": "Video"
       }
     },
+    "simple-text34-and-image14": {
+      "name": "Simple Text 3/4 Image 1/4",
+      "settings": {
+        "title": {
+          "label": "Title"
+        },
+        "title_tag": {
+          "label": "Title Tag"
+        },
+        "custom_liquid": {
+          "label": "Custom Liquid"
+        },
+        "image_picker": {
+          "label": "Image"
+        },
+        "mobile_image_order": {
+          "label": "Mobile Image Order",
+          "options__1": {
+            "label": "Image First"
+          },
+          "options__2": {
+            "label": "Text First"
+          }
+        }
+      },
+      "presets": {
+        "name": "Simple Text 3/4 Image 1/4"
+      }
+    },
     "slideshow": {
       "name": "Slideshow",
       "settings": {
