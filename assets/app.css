@@ -720,6 +720,18 @@ ul, ol{
   margin-right: 0.75rem;
 }
 
+.tw-mb-8 {
+  margin-bottom: 2rem;
+}
+
+.tw-mb-0 {
+  margin-bottom: 0px;
+}
+
+.tw-mb-4 {
+  margin-bottom: 1rem;
+}
+
 .tw-flex {
   display: flex;
 }
@@ -816,12 +828,24 @@ ul, ol{
   border-radius: 9999px;
 }
 
+.tw-rounded-\[4px\] {
+  border-radius: 4px;
+}
+
+.tw-border {
+  border-width: 1px;
+}
+
 .tw-border-b {
   border-bottom-width: 1px;
 }
 
 .tw-border-t {
   border-top-width: 1px;
+}
+
+.tw-border-solid {
+  border-style: solid;
 }
 
 .tw-object-cover {
@@ -842,6 +866,26 @@ ul, ol{
 .tw-py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.tw-px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.tw-py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.tw-px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.tw-py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .tw-text-center {
@@ -872,6 +916,11 @@ ul, ol{
   letter-spacing: 0em;
 }
 
+.tw-no-underline {
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
+
 /* end @layer base */
 
 @media (min-width: 750px) {
@@ -889,6 +938,10 @@ ul, ol{
 
   .md\:tw-col-span-2 {
     grid-column: span 2 / span 2;
+  }
+
+  .md\:tw-mb-10 {
+    margin-bottom: 2.5rem;
   }
 
   .md\:tw-gap-x-10 {

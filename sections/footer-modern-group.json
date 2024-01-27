@@ -1,0 +1,24 @@
+{
+    "name": "Footer",
+    "type": "footer",
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "blocks": {
+            "footer-0": {
+                "type": "link_list",
+                "settings": {
+                  "heading": "Quick links",
+                  "menu": "footer"
+                }
+              }
+        },
+        "block_order": [
+            "footer-0"
+          ]
+      }
+    },
+    "order": [
+        "footer"
+    ]
+}
