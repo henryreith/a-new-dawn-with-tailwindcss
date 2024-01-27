@@ -1,6 +1,6 @@
 {
-    "name": "Footer",
-    "type": "footer",
+    "name": "Footer Modern",
+    "type": "footer-modern",
     "sections": {
       "footer": {
         "type": "footer",

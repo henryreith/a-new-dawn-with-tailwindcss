@@ -1,8 +1,343 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #footer-m {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #footer-m {
+      margin-top: {{ section.settings.margin_top }}px;
+    }
+
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<footer
+  id='footer-m'
+  class='color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding'
+>
+  {% # Logo and Social Icons %}
+  <div class='tw-flex tw-justify-between tw-items-center tw-border-b tw-py-4'>
+    <div class='footer__logo'>
+      {% # Logo %}
+      {% if section.settings.footer_logo != blank %}
+        <img src='{{ section.settings.footer_logo | img_url: '200x' }}' alt='{{ shop.name }}'>
+      {% else %}
+        <h1>{{ shop.name }}</h1>
+      {% endif %}
+    </div>
+    <div class='footer__social tw-flex tw-gap-4'>
+      {% # Social Icons %}
+      {% if section.settings.enable_follow_on_shop %}
+        {% for block in section.blocks %}
+          {% if block.type == 'social_media' %}
+            <a
+              href='{{ block.settings.link }}'
+              target='_blank'
+              aria-label='{{ block.settings.name }}'
+              class='tw-inline-block'
+            >
+              {{ block.settings.icon | svg_tag }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Tagline and Main Content -->
+  <div class='tw-text-center tw-py-4'>
+    <p class='tw-text-lg tw-font-semibold'>
+      {{ section.settings.footer_tagline }}
+    </p>
+    <a href='{{ section.settings.footer_tagline_link }}' class='tw-text-sm tw-underline'>
+      {{ 'Learn more' | t }}
+    </a>
+  </div>
+
+  {% assign footer_grid_class = '' %}
+  {% if section.blocks.size == 9 %}
+    {% assign footer_grid_class = 'grid--3-col-tablet' %}
+  {% elsif section.blocks.size > 6 %}
+    {% assign footer_grid_class = 'grid--4-col-desktop' %}
+  {% elsif section.blocks.size > 4 %}
+    {% assign footer_grid_class = 'grid--3-col-tablet' %}
+  {% endif %}
+
+  <div class='tw-grid {{ footer_grid_class }} tw-gap-4 tw-py-4'>
+    <!-- Dynamic blocks for footer content -->
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'link_list' %}
+          <!-- Footer link list block -->
+          <div class='footer__linklist'>
+            <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading | t }}</h3>
+            {% if block.settings.menu != blank %}
+              <ul class='tw-list-none tw-m-0 tw-p-0'>
+                {% for link in linklists[block.settings.menu].links %}
+                  <li>
+                    <a href='{{ link.url }}' class='tw-text-gray-600 hover:tw-text-gray-900'>{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% when 'text' %}
+          <!-- Text block -->
+          <div class='footer__text'>
+            <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading | t }}</h3>
+            <p>{{ block.settings.text | t }}</p>
+          </div>
+        {% when 'image' %}
+          <!-- Image block -->
+          <div class='footer__image'>
+            {% if block.settings.image != blank %}
+              <img
+                src='{{ block.settings.image | img_url: '200x' }}'
+                alt='{{ block.settings.heading }}'
+                class='tw-w-full'
+              >
+            {% endif %}
+          </div>
+          <!-- More block types can be added here -->
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+  <!-- Footer Aside for Localization and Payment Methods -->
+  <div class='footer__aside tw-py-4'>
+    <div class='tw-flex tw-justify-between'>
+      <!-- Location Dropdown -->
+      <div class='footer__localization'>
+        {% if section.settings.enable_country_selector %}
+          <!-- Country Selector -->
+          {{ form | country_selector }}
+        {% endif %}
+      </div>
+      <!-- Payment Methods -->
+      <div class='footer__payment-methods tw-flex tw-items-center'>
+        {% if section.settings.payment_enable %}
+          <!-- Payment Icons -->
+          {{ 'payment_icons' | payment_icons }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+{% # Footer Modern End %}
+
 {% schema %}
 {
   "name": "Footer Modern",
-  "settings": [],
-  "blocks": [],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__9.content",
+      "info": "t:sections.footer.settings.header__9.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_follow_on_shop",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_follow_on_shop.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__3.content",
+      "info": "t:sections.footer.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__5.content",
+      "info": "t:sections.footer.settings.header__6.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__7.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.payment_enable.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__8.content",
+      "info": "t:sections.footer.settings.header__8.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy",
+      "default": false,
+      "label": "t:sections.footer.settings.show_policy.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.footer.settings.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.text.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "<p>Share contact information, store details, and brand content with your customers.</p>",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 550,
+          "step": 5,
+          "unit": "px",
+          "label": "Image width",
+          "default": 100
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image alignment on large screen",
+          "options": [
+            {
+              "value": "",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    }
+  ],
   "default": {}
 }
 {% endschema %}
