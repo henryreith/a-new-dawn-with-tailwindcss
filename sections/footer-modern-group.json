@@ -1,9 +1,9 @@
 {
-    "name": "Footer Modern",
-    "type": "footer-modern",
+    "name": "Footer",
+    "type": "footer",
     "sections": {
       "footer": {
-        "type": "footer",
+        "type": "footer-modern",
         "blocks": {
             "footer-0": {
                 "type": "link_list",
