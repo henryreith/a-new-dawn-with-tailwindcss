@@ -1,42 +1,18 @@
 {%- style -%}
-    .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-    }
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
 
-    @media screen and (min-width: 750px) {
-        .section-{{ section.id }}-padding {
-            padding-top: {{ section.settings.padding_top }}px;
-            padding-bottom: {{ section.settings.padding_bottom }}px;
-        }
-    }
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+  }
 
-    #faq-toc-inner {
-        border: 1px solid #999;
-        margin-top: 1rem 2rem;
-        padding: 1rem 2rem;
-        border-radius: 4px;
-        margin-bottom: 2rem;
-    }
-
-    #faq-toc {{ section.settings.faq_title_tag }} {
-      margin-bottom: 1rem;
-    }
-
-    #faq-toc ul {
-      margin-bottom: 0;
-    }
-
-    #faq-toc li a {
-        text-decoration: none;
-    }
-    .faq-question {
-        margin-bottom: 2rem;
-    }
-    @media screen and (min-width: 750px) {
-    .faq-question {
-        margin-bottom: 2.5rem;
-    }
+  #faq-section-{{ section.id }} .faq-section__toc-inner {
+      border-color: rgba(var(--color-foreground), 0.8);
   }
 {%- endstyle -%}
 
@@ -46,18 +22,20 @@
 >
   <div class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
     {% # Table of Contents %}
-    <div id='faq-toc'>
+    <div class='faq-toc'>
       {% assign faq_title_tag = section.settings.faq_title_tag %}
-      <{{ faq_title_tag }}>
+      <{{ faq_title_tag }} class='faq-section__title tw-mb-4'>
         {{- section.settings.faq_title | escape -}}
       </{{ faq_title_tag }}>
 
       {% if section.settings.toc_show %}
-        <div id='faq-toc-inner'>
-          <ul>
+        <div class='faq-section__toc-inner tw-px-8 tw-py-4 tw-mb-8 tw-border tw-border-solid tw-rounded-[4px]'>
+          <ul class='faq-section__toc-list tw-mb-0'>
             {% for block in section.blocks %}
-              <li>
-                <a href='#{{ block.id }}'>{{ block.settings.question }}</a>
+              <li class='faq-section__toc-item'>
+                <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
+                  {{- block.settings.question -}}
+                </a>
               </li>
             {% endfor %}
           </ul>
@@ -68,9 +46,9 @@
 
     {% # FAQ Questions %}
     {% for block in section.blocks %}
-      <div id='{{ block.id }}' class='faq-question'>
+      <div id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10'>
         {% assign question_tag = section.settings.question_tag %}
-        <{{ question_tag }}>
+        <{{ question_tag }} class='faq-section__question'>
           {{- block.settings.question | escape -}}
         </{{ question_tag }}>
 
