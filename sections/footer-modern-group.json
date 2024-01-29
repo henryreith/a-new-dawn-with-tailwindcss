@@ -12,13 +12,6 @@
             "menu": "main-menu"
           }
         },
-        "link_list_aFBMqe": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Secondary Menu",
-            "menu": "footer"
-          }
-        },
         "text_QjE4nQ": {
           "type": "text",
           "settings": {
@@ -37,7 +30,6 @@
       },
       "block_order": [
         "footer-0",
-        "link_list_aFBMqe",
         "text_QjE4nQ",
         "image_xmUc3r"
       ],
