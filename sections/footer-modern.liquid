@@ -38,41 +38,49 @@
     endif
   -%}
   <div class='page-width'>
-    {% # Logo and Social Icons %}
-    <div class='tw-flex tw-justify-between tw-items-center tw-border-b tw-py-4'>
-      <div class='footer__logo'>
-        {% # Logo %}
-        {% if section.settings.footer_logo != blank %}
-          <img src='{{ section.settings.footer_logo | img_url: '200x' }}' alt='{{ shop.name }}'>
-          <img
-            srcset='{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x'
-            src='{{ block.settings.image | image_url: width: 760 }}'
-            alt='{{ block.settings.image.alt | escape }}'
-            loading='lazy'
-            width='{{ block.settings.image.width }}'
-            height='{{ block.settings.image.height }}'
-          >
-        {% else %}
-          <h2>{{ shop.name }}</h2>
-        {% endif %}
+    {% # Logo, Social Icons, Byline %}
+    <div class='tw-grid tw-grid-cols-2 tw-gap-x-10 tw-gap-y-6 tw-border-b tw-py-4'>
+      <div class='tw-col-span-2 md:tw-col-span-1 tw-order-1'>
+        <div class='footer__logo tw-w-full tw-max-w-60'>
+          {% # Logo %}
+          {% if section.settings.footer_logo != blank %}
+            <img
+              src='{{ section.settings.footer_logo | img_url }}'
+              alt='{{ section.settings.footer_logo | escape }}'
+              class='tw-w-full tw-h-full'
+              loading='lazy'
+              width='{{ section.settings.footer_logo.width }}'
+              height='{{ section.settings.footer_logo.height }}'
+            >
+
+          {% else %}
+            <h2>{{ shop.name }}</h2>
+          {% endif %}
+        </div>
       </div>
-      <div class='footer__social tw-flex tw-gap-4'>
-        {% # Social Icons %}
-        {%- if section.settings.show_social and has_social_icons -%}
-          {%- render 'social-icons', class: 'footer__list-social' -%}
-        {%- endif -%}
+      {% if section.settings.footer_tagline %}
+        <div class='tw-col-span-2 tw-order-2 lg:tw-order-3 tw-text-center lg:tw-text-left lg:text-left'>
+          <a href='{{ section.settings.footer_tagline_link }}' class='tw-flex tw-justify-between tw-items-center'>
+            <div class='footer__tagline--text'>{{ section.settings.footer_tagline }}</div>
+            {% if section.settings.footer_tagline_link %}
+              <div class='footer__tagline--icon'>
+                {% render 'icon-arrow' %}
+              </div>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+      <div class='tw-col-span-2 lg:tw-justify-self-end md:tw-col-span-1 tw-order-3 lg:tw-order-2'>
+        <div class='footer__social'>
+          {% # Social Icons %}
+          {%- if section.settings.show_social and has_social_icons -%}
+            {%- render 'social-icons', class: 'footer__list-social' -%}
+          {%- endif -%}
+        </div>
       </div>
     </div>
 
-    <!-- Tagline and Main Content -->
-    <div class='tw-text-center tw-py-4'>
-      <p class='tw-text-lg tw-font-semibold'>
-        {{ section.settings.footer_tagline }}
-      </p>
-      <a href='{{ section.settings.footer_tagline_link }}' class='tw-text-sm tw-underline'>
-        {{ 'Learn more' | t }}
-      </a>
-    </div>
+    {% # Dynamic blocks for footer content %}
 
     {% assign footer_grid_class = '' %}
     {% if section.blocks.size == 9 %}
@@ -161,6 +169,27 @@
       "type": "image_picker",
       "id": "footer_logo",
       "label": "t:sections.footer-modern.settings.footer_logo.label"
+    },
+    {
+      "type": "liquid",
+      "id": "footer_tagline",
+      "label": "Business tagline"
+    },
+    {
+      "type": "url",
+      "id": "footer_tagline_link",
+      "label": "Tagline link"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "default": true,
+      "label": "t:sections.footer.settings.show_newsletter.label"
     },
     {
       "type": "header",

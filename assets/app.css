@@ -711,8 +711,16 @@ ul, ol{
   order: 2;
 }
 
+.tw-order-3 {
+  order: 3;
+}
+
 .tw-col-span-12 {
   grid-column: span 12 / span 12;
+}
+
+.tw-col-span-2 {
+  grid-column: span 2 / span 2;
 }
 
 .tw-m-0 {
@@ -744,8 +752,8 @@ ul, ol{
   margin-right: 0.75rem;
 }
 
-.tw-inline-block {
-  display: inline-block;
+.tw-block {
+  display: block;
 }
 
 .tw-flex {
@@ -772,8 +780,36 @@ ul, ol{
   width: 2.5rem;
 }
 
+.tw-w-28 {
+  width: 7rem;
+}
+
 .tw-w-full {
   width: 100%;
+}
+
+.tw-max-w-full {
+  max-width: 100%;
+}
+
+.tw-max-w-28 {
+  max-width: 7rem;
+}
+
+.tw-max-w-36 {
+  max-width: 9rem;
+}
+
+.tw-max-w-48 {
+  max-width: 12rem;
+}
+
+.tw-max-w-56 {
+  max-width: 14rem;
+}
+
+.tw-max-w-60 {
+  max-width: 15rem;
 }
 
 .tw-list-none {
@@ -782,6 +818,10 @@ ul, ol{
 
 .tw-grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.tw-grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .tw-flex-row {
@@ -810,6 +850,10 @@ ul, ol{
 
 .tw-justify-between {
   justify-content: space-between;
+}
+
+.tw-justify-items-end {
+  justify-items: end;
 }
 
 .tw-gap-4 {
@@ -842,6 +886,10 @@ ul, ol{
 
 .tw-gap-y-6 {
   row-gap: 1.5rem;
+}
+
+.tw-justify-self-end {
+  justify-self: end;
 }
 
 .tw-overflow-hidden {
@@ -981,6 +1029,10 @@ ul, ol{
     grid-column: span 2 / span 2;
   }
 
+  .md\:tw-col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
   .md\:tw-mb-10 {
     margin-bottom: 2.5rem;
   }
@@ -992,6 +1044,14 @@ ul, ol{
 }
 
 @media (min-width: 990px) {
+  .lg\:tw-order-2 {
+    order: 2;
+  }
+
+  .lg\:tw-order-3 {
+    order: 3;
+  }
+
   .lg\:tw-col-span-3 {
     grid-column: span 3 / span 3;
   }
@@ -1015,5 +1075,13 @@ ul, ol{
 
   .lg\:tw-gap-y-5 {
     row-gap: 1.25rem;
+  }
+
+  .lg\:tw-justify-self-end {
+    justify-self: end;
+  }
+
+  .lg\:tw-text-left {
+    text-align: left;
   }
 }
