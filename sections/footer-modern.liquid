@@ -39,7 +39,7 @@
   -%}
   <div class='page-width'>
     {% # Logo, Social Icons, Byline %}
-    <div class='tw-grid tw-grid-cols-2 tw-gap-x-10 tw-gap-y-6 tw-border-b tw-pb-8'>
+    <div class='tw-grid tw-grid-cols-2 tw-gap-x-10 tw-gap-y-6 tw-border-b tw-pb-8 tw-mb-8'>
       <div class='tw-col-span-2 md:tw-col-span-1 tw-justify-self-center md:tw-justify-self-start'>
         <div class='footer__logo tw-w-full tw-max-w-60'>
           {% # Logo %}
@@ -85,28 +85,30 @@
 
     {% # Dynamic blocks for footer content %}
 
-    {% assign footer_grid_class = '' %}
-    {% if section.blocks.size == 9 %}
-      {% assign footer_grid_class = 'grid--3-col-tablet' %}
-    {% elsif section.blocks.size > 6 %}
-      {% assign footer_grid_class = 'grid--4-col-desktop' %}
-    {% elsif section.blocks.size > 4 %}
-      {% assign footer_grid_class = 'grid--3-col-tablet' %}
-    {% endif %}
+    {%- liquid
+      assign footer_grid_class = 'tw-grid-cols-2 tw-text-center md:tw-text-left'
+      if section.blocks.size == 9
+        assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-3'
+      elsif section.blocks.size > 6
+        assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-4'
+      elsif section.blocks.size > 4
+        assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-3'
+      endif
+    -%}
 
-    <div class='tw-grid {{ footer_grid_class }} tw-gap-4 tw-py-4'>
+    <div class='tw-grid {{ footer_grid_class }} tw-gap-x-4 tw-gap-y-6 tw-py-4'>
       <!-- Dynamic blocks for footer content -->
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'link_list' %}
             <!-- Footer link list block -->
             <div class='footer__linklist'>
-              <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading | t }}</h3>
+              <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading }}</h3>
               {% if block.settings.menu != blank %}
                 <ul class='tw-list-none tw-m-0 tw-p-0'>
                   {% for link in linklists[block.settings.menu].links %}
                     <li>
-                      <a href='{{ link.url }}' class='tw-text-gray-600 hover:tw-text-gray-900'>{{ link.title }}</a>
+                      <a href='{{ link.url }}' class=''>{{ link.title }}</a>
                     </li>
                   {% endfor %}
                 </ul>
@@ -115,8 +117,8 @@
           {% when 'text' %}
             <!-- Text block -->
             <div class='footer__text'>
-              <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading | t }}</h3>
-              <p>{{ block.settings.text | t }}</p>
+              <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading }}</h3>
+              <p>{{ block.settings.text }}</p>
             </div>
           {% when 'image' %}
             <!-- Image block -->
