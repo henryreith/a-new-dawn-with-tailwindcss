@@ -30,8 +30,8 @@
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
-            "image_width": 100,
-            "alignment": "center"
+            "image_width": 385,
+            "alignment": ""
           }
         }
       },
