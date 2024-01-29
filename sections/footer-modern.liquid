@@ -47,6 +47,11 @@
       if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
         assign has_social_icons = false
       endif
+
+      assign enable_country_selector = false
+      if section.settings.enable_country_selector and localization.available_countries.size > 1
+        assign enable_country_selector = true
+      endif
     -%}
     <div class='page-width'>
       {% # Logo, Social Icons, Byline %}
@@ -159,10 +164,12 @@
       </div>
 
       {% # Copywrite section %}
-      <small class='copyright__content tw-text-center tw-mt-6 !tw-block'
-        >&copy; {{ 'now' | date: '%Y' }}
-        {{ shop.name | link_to: routes.root_url -}}
-      </small>
+      {% if section.settings.copywrite_text != blank and enable_country_selector == true %}
+        <small class='copyright__content tw-text-center'
+          >&copy; {{ 'now' | date: '%Y' }}
+          {{ section.settings.copywrite_text }}
+        </small>
+      {% endif %}
       {% # END Copywrite section %}
 
       {%- if section.settings.show_policy -%}
@@ -233,11 +240,12 @@
           </div>
         {%- else -%}
           {% # Copywrite section %}
-          <small class='copyright__content tw-text-center'
-            >&copy; {{ 'now' | date: '%Y' }}
-
-            Oh Crap Pty Ltd (ABN: 91 654 369 285). All Right Reserved
-          </small>
+          {% if section.settings.copywrite_text != blank %}
+            <small class='copyright__content tw-text-center'
+              >&copy; {{ 'now' | date: '%Y' }}
+              {{ section.settings.copywrite_text }}
+            </small>
+          {% endif %}
           {% # END Copywrite section %}
         {%- endif -%}
         {% # Payment Methods %}
@@ -330,6 +338,11 @@
       "type": "header",
       "content": "t:sections.footer.settings.header__8.content",
       "info": "t:sections.footer.settings.header__8.info"
+    },
+    {
+      "type": "text",
+      "id": "copywrite_text",
+      "label": "Add all the text after you want after the copywrite symbol & year"
     },
     {
       "type": "checkbox",
