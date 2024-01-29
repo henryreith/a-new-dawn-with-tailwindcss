@@ -40,7 +40,7 @@
   <div class='page-width'>
     {% # Logo, Social Icons, Byline %}
     <div class='tw-grid tw-grid-cols-2 tw-gap-x-10 tw-gap-y-6 tw-border-b tw-py-4'>
-      <div class='tw-col-span-2 md:tw-col-span-1 tw-order-1'>
+      <div class='tw-col-span-2 md:tw-col-span-1 tw-justify-self-center md:tw-justify-self-start'>
         <div class='footer__logo tw-w-full tw-max-w-60'>
           {% # Logo %}
           {% if section.settings.footer_logo != blank %}
@@ -58,23 +58,23 @@
           {% endif %}
         </div>
       </div>
-      {% if section.settings.footer_tagline %}
-        <div class='tw-col-span-2 tw-order-2 lg:tw-order-3 tw-text-center lg:tw-text-left lg:text-left'>
-          <a href='{{ section.settings.footer_tagline_link }}' class='tw-flex tw-justify-between tw-items-center'>
-            <div class='footer__tagline--text'>{{ section.settings.footer_tagline }}</div>
-            {% if section.settings.footer_tagline_link %}
-              <div class='footer__tagline--icon'>
-                {% render 'icon-arrow' %}
-              </div>
-            {% endif %}
-          </a>
-        </div>
-      {% endif %}
-      <div class='tw-col-span-2 lg:tw-justify-self-end md:tw-col-span-1 tw-order-3 lg:tw-order-2'>
+
+      <div class='tw-col-span-2 md:tw-order-3 tw-text-center md:tw-text-left'>
+        <a href='{{ section.settings.footer_tagline_link }}' class='tw-flex tw-justify-between tw-items-center'>
+          <div class='footer__tagline--text'>{{ section.settings.footer_tagline }}</div>
+          {% if section.settings.footer_tagline_link %}
+            <div class='footer__tagline--icon'>
+              {% render 'icon-arrow' %}
+            </div>
+          {% endif %}
+        </a>
+      </div>
+
+      <div class='tw-col-span-2 lg:tw-justify-self-end md:tw-col-span-1 md:tw-order-2'>
         <div class='footer__social'>
           {% # Social Icons %}
           {%- if section.settings.show_social and has_social_icons -%}
-            {%- render 'social-icons', class: 'footer__list-social' -%}
+            {%- render 'social-icons', class: 'footer__list-social md:!tw-justify-end' -%}
           {%- endif -%}
         </div>
       </div>
@@ -179,17 +179,6 @@
       "type": "url",
       "id": "footer_tagline_link",
       "label": "Tagline link"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__1.content",
-      "info": "t:sections.footer.settings.header__1.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_newsletter",
-      "default": true,
-      "label": "t:sections.footer.settings.show_newsletter.label"
     },
     {
       "type": "header",

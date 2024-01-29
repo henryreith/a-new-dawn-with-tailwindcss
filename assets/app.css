@@ -723,6 +723,14 @@ ul, ol{
   grid-column: span 2 / span 2;
 }
 
+.tw-col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.tw-col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
 .tw-m-0 {
   margin: 0px;
 }
@@ -892,6 +900,14 @@ ul, ol{
   justify-self: end;
 }
 
+.\!tw-justify-self-end {
+  justify-self: end !important;
+}
+
+.tw-justify-self-center {
+  justify-self: center;
+}
+
 .tw-overflow-hidden {
   overflow: hidden;
 }
@@ -1021,6 +1037,10 @@ ul, ol{
     order: 2;
   }
 
+  .md\:tw-order-3 {
+    order: 3;
+  }
+
   .md\:tw-col-span-10 {
     grid-column: span 10 / span 10;
   }
@@ -1037,9 +1057,21 @@ ul, ol{
     margin-bottom: 2.5rem;
   }
 
+  .md\:\!tw-justify-end {
+    justify-content: flex-end !important;
+  }
+
   .md\:tw-gap-x-10 {
     -moz-column-gap: 2.5rem;
          column-gap: 2.5rem;
+  }
+
+  .md\:tw-justify-self-start {
+    justify-self: start;
+  }
+
+  .md\:tw-text-left {
+    text-align: left;
   }
 }
 
@@ -1052,6 +1084,10 @@ ul, ol{
     order: 3;
   }
 
+  .lg\:tw-order-1 {
+    order: 1;
+  }
+
   .lg\:tw-col-span-3 {
     grid-column: span 3 / span 3;
   }
@@ -1060,12 +1096,24 @@ ul, ol{
     grid-column: span 9 / span 9;
   }
 
+  .lg\:tw-col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
   .lg\:tw-hidden {
     display: none;
   }
 
   .lg\:tw-flex-row {
     flex-direction: row;
+  }
+
+  .lg\:\!tw-justify-end {
+    justify-content: flex-end !important;
+  }
+
+  .lg\:tw-justify-end {
+    justify-content: flex-end;
   }
 
   .lg\:tw-gap-x-12 {
@@ -1077,8 +1125,16 @@ ul, ol{
     row-gap: 1.25rem;
   }
 
+  .lg\:tw-justify-self-start {
+    justify-self: start;
+  }
+
   .lg\:tw-justify-self-end {
     justify-self: end;
+  }
+
+  .lg\:\!tw-justify-self-end {
+    justify-self: end !important;
   }
 
   .lg\:tw-text-left {
