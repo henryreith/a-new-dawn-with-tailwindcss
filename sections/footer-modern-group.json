@@ -2,6 +2,16 @@
   "name": "Footer",
   "type": "footer",
   "sections": {
+    "custom_liquid_fyLdXa": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "Image etc",
+        "color_scheme": "",
+        "section_page_width": "page_width",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
     "footer": {
       "type": "footer-modern",
       "blocks": {
@@ -58,6 +68,7 @@
     }
   },
   "order": [
+    "custom_liquid_fyLdXa",
     "footer"
   ]
 }
