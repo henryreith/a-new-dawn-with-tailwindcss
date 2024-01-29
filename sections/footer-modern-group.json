@@ -22,26 +22,25 @@
             "menu": "main-menu"
           }
         },
-        "text_QjE4nQ": {
-          "type": "text",
+        "link_list_gj7YVY": {
+          "type": "link_list",
           "settings": {
-            "heading": "Heading",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "heading": "Quick links",
+            "menu": "footer"
           }
         },
-        "image_xmUc3r": {
-          "type": "image",
+        "text_GMVcUQ": {
+          "type": "text",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
-            "image_width": 385,
-            "alignment": ""
+            "heading": "Share and Win",
+            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
           }
         }
       },
       "block_order": [
         "footer-0",
-        "text_QjE4nQ",
-        "image_xmUc3r"
+        "link_list_gj7YVY",
+        "text_GMVcUQ"
       ],
       "custom_css": [
         ".footer__social .list-social__item {background-color: rgb(var(--color-button)); border-radius: 9999px; margin-left: 1.2rem;}",
