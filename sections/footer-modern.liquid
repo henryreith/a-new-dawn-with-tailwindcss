@@ -16,8 +16,8 @@
   }
 
   #footer__aside {
-    padding-top: {{ section.settings.aside_padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.aside_padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.aside_padding_top }}px;
+    padding-bottom: {{ section.settings.aside_padding_bottom }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -28,11 +28,6 @@
     #footer__inner {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-
-    #footer__aside {
-      padding-top: {{ section.settings.aside_padding_top }}px;
-      padding-bottom: {{ section.settings.aside_padding_bottom }}px;
     }
   }
 

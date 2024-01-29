@@ -1,15 +1,22 @@
 ### Customisation
 ## Added Sections
 - Announcement bar - simple. So HTML can be added stright to the template and not via blocks
+- FAQ section
+- Collection banner - Image with rich text overlay
+- Inline Benefits: icon + headline text
 - Image with rich text overlay
 - Sub menu
-- Liquid template with page-width already added
+- Footer - Modern look to the footer. Including logo, tagline, social icons. Block based so can be customised in the theme editor & footer aside for currency selector, payment icons, but country selector has been left off for now.
+
+## Added Snippets
+- Breadcrumbs
 
 ## Customised Default Sections
 - custom-liquid.liquid - Added option to define page width.
 
 ## Customised Default Snippets
 - social-icons.liquid: Updated social media snippet to include title='Connect with {{ shop_name }} on XNetwork' & target='_blank' on links
+
 
 ## Settings updates
 - Preload main stylesheets in theme.liquid at top of file as print and add on.load to change it to screen. This means they start to be be loaded instantly, and then they are left in as full stylesheet loads later on in the head, which means it will render block if they aren't loaded yet. 
