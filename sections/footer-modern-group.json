@@ -9,12 +9,20 @@
           "type": "link_list",
           "settings": {
             "heading": "Quick links",
+            "menu": "main-menu"
+          }
+        },
+        "link_list_aFBMqe": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Secondary Menu",
             "menu": "footer"
           }
         }
       },
       "block_order": [
-        "footer-0"
+        "footer-0",
+        "link_list_aFBMqe"
       ],
       "custom_css": [
         ".footer__social .list-social__item {color: #ffffff; background: green; border-radius: 9999px; margin-left: 1.2rem;}",
