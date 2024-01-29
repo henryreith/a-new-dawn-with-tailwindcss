@@ -760,6 +760,10 @@ ul, ol{
   margin-right: 0.75rem;
 }
 
+.tw-ml-4 {
+  margin-left: 1rem;
+}
+
 .tw-block {
   display: block;
 }
@@ -974,6 +978,18 @@ ul, ol{
   padding-bottom: 1rem;
 }
 
+.tw-pl-4 {
+  padding-left: 1rem;
+}
+
+.tw-pb-8 {
+  padding-bottom: 2rem;
+}
+
+.tw-pt-16 {
+  padding-top: 4rem;
+}
+
 .tw-text-center {
   text-align: center;
 }
@@ -1059,6 +1075,10 @@ ul, ol{
 
   .md\:\!tw-justify-end {
     justify-content: flex-end !important;
+  }
+
+  .md\:tw-justify-between {
+    justify-content: space-between;
   }
 
   .md\:tw-gap-x-10 {

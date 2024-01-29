@@ -39,7 +39,7 @@
   -%}
   <div class='page-width'>
     {% # Logo, Social Icons, Byline %}
-    <div class='tw-grid tw-grid-cols-2 tw-gap-x-10 tw-gap-y-6 tw-border-b tw-py-4'>
+    <div class='tw-grid tw-grid-cols-2 tw-gap-x-10 tw-gap-y-6 tw-border-b tw-pb-8'>
       <div class='tw-col-span-2 md:tw-col-span-1 tw-justify-self-center md:tw-justify-self-start'>
         <div class='footer__logo tw-w-full tw-max-w-60'>
           {% # Logo %}
@@ -60,10 +60,13 @@
       </div>
 
       <div class='tw-col-span-2 md:tw-order-3 tw-text-center md:tw-text-left'>
-        <a href='{{ section.settings.footer_tagline_link }}' class='tw-flex tw-justify-between tw-items-center'>
+        <a
+          href='{{ section.settings.footer_tagline_link }}'
+          class='tw-flex tw-justify-center md:tw-justify-between tw-items-center'
+        >
           <div class='footer__tagline--text'>{{ section.settings.footer_tagline }}</div>
           {% if section.settings.footer_tagline_link %}
-            <div class='footer__tagline--icon'>
+            <div class='footer__tagline--icon tw-ml-4'>
               {% render 'icon-arrow' %}
             </div>
           {% endif %}
@@ -173,7 +176,7 @@
     {
       "type": "liquid",
       "id": "footer_tagline",
-      "label": "Business tagline"
+      "label": "Business tagline (liquid)"
     },
     {
       "type": "url",
