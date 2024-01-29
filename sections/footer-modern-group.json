@@ -19,7 +19,7 @@
       "settings": {
         "color_scheme": "",
         "footer_logo": "{{ shop.brand.logo }}",
-        "footer_tagline": "<span style=\"font-size: 2rem\"><i>\n\"Change the world\nOne Poop At A Time\"\n<i>\n<\/span>",
+        "footer_tagline": "<span style=\"font-size: 2rem\">\n\"Change the world One Poop At A Time\"\n<\/span>",
         "footer_tagline_link": "shopify:\/\/pages\/about",
         "enable_follow_on_shop": true,
         "show_social": true,
