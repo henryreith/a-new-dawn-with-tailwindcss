@@ -55,6 +55,7 @@
         "enable_follow_on_shop": true,
         "show_social": true,
         "enable_language_selector": true,
+        "copywrite_text": "Oh Crap Pty Ltd (ABN: 91 654 369 285). All Right Reserved",
         "show_policy": true,
         "margin_top": 0,
         "padding_top": 36,
