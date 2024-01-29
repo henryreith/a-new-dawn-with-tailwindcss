@@ -38,7 +38,7 @@
         ".footer__social .list-social__item .icon {color: #ffffff;}"
       ],
       "settings": {
-        "color_scheme": "scheme-00c1a33f-94a1-495e-a9e3-307522f8fcf5",
+        "color_scheme": "scheme-27244cb7-c5e8-44f4-8d36-07b36a3affa4",
         "footer_logo": "{{ shop.brand.logo }}",
         "footer_tagline": "<span style=\"font-size: 2rem\">\n\"Change the world One Poop At A Time\"\n<\/span>",
         "footer_tagline_link": "shopify:\/\/pages\/about",
