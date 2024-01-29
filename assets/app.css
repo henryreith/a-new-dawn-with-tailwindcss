@@ -792,6 +792,10 @@ ul, ol{
   margin-top: 1rem;
 }
 
+.tw-mt-6 {
+  margin-top: 1.5rem;
+}
+
 .tw-block {
   display: block;
 }

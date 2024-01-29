@@ -158,8 +158,15 @@
         {% endfor %}
       </div>
 
+      {% # Copywrite section %}
+      <small class='copyright__content tw-text-center tw-mt-6 !tw-block'
+        >&copy; {{ 'now' | date: '%Y' }}
+        {{ shop.name | link_to: routes.root_url -}}
+      </small>
+      {% # END Copywrite section %}
+
       {%- if section.settings.show_policy -%}
-        <ul class='policies list-unstyled tw-text-center tw-mt-4 !tw-block'>
+        <ul class='policies list-unstyled tw-text-center !tw-block'>
           {%- for policy in shop.policies -%}
             {%- if policy != blank -%}
               <li>
@@ -180,8 +187,8 @@
     <div class='page-width'>
       <div class='tw-flex-none md:tw-flex tw-justify-between tw-gap-y-8'>
         {% # Location Dropdown %}
-        <div class='footer__localization isolate !tw-p-0'>
-          {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+          <div class='footer__localization isolate !tw-p-0'>
             <noscript>
               {%- form 'localization', id: 'FooterCountryFormNoScript', class: 'localization-form tw-p-0' -%}
                 <div class='localization-form__select'>
@@ -223,8 +230,15 @@
                 </div>
               {%- endform -%}
             </localization-form>
-          {%- endif -%}
-        </div>
+          </div>
+        {%- else -%}
+          {% # Copywrite section %}
+          <small class='copyright__content'
+            >&copy; {{ 'now' | date: '%Y' }}
+            {{ shop.name | link_to: routes.root_url -}}
+          </small>
+          {% # END Copywrite section %}
+        {%- endif -%}
         {% # Payment Methods %}
         <div class='footer__payment-methods lg:tw-flex lg:tw-items-center'>
           {%- if section.settings.payment_enable -%}
