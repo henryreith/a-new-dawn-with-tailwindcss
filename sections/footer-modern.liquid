@@ -165,7 +165,7 @@
 
       {% # Copywrite section %}
       {% if section.settings.copywrite_text != blank and enable_country_selector == true %}
-        <small class='copyright__content tw-text-center'
+        <small class='copyright__content tw-text-center !tw-block'
           >&copy; {{ 'now' | date: '%Y' }}
           {{ section.settings.copywrite_text }}
         </small>
@@ -241,7 +241,7 @@
         {%- else -%}
           {% # Copywrite section %}
           {% if section.settings.copywrite_text != blank %}
-            <small class='copyright__content tw-text-center'
+            <small class='copyright__content tw-text-center md:tw-text-left'
               >&copy; {{ 'now' | date: '%Y' }}
               {{ section.settings.copywrite_text }}Test
             </small>
@@ -333,16 +333,20 @@
       "default": true,
       "label": "t:sections.footer.settings.enable_language_selector.label"
     },
-
     {
       "type": "header",
-      "content": "t:sections.footer.settings.header__8.content",
-      "info": "t:sections.footer.settings.header__8.info"
+      "content": "Copywrite Text",
+      "info": "Add all the text after you want after the copywrite symbol & year"
     },
     {
       "type": "text",
       "id": "copywrite_text",
-      "label": "Add all the text after you want after the copywrite symbol & year"
+      "label": "Copywrite text"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__8.content",
+      "info": "t:sections.footer.settings.header__8.info"
     },
     {
       "type": "checkbox",
