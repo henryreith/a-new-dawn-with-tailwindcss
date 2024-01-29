@@ -16,6 +16,9 @@
       "block_order": [
         "footer-0"
       ],
+      "custom_css": [
+        ".footer__social .list-social__item {color: #ffffff; background: green; border-radius: 9999px; margin-left: 1rem;}"
+      ],
       "settings": {
         "color_scheme": "",
         "footer_logo": "{{ shop.brand.logo }}",
