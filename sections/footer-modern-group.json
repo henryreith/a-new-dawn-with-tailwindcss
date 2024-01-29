@@ -38,19 +38,22 @@
         ".footer__social .list-social__item .icon {color: #ffffff;}"
       ],
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-00c1a33f-94a1-495e-a9e3-307522f8fcf5",
         "footer_logo": "{{ shop.brand.logo }}",
         "footer_tagline": "<span style=\"font-size: 2rem\">\n\"Change the world One Poop At A Time\"\n<\/span>",
         "footer_tagline_link": "shopify:\/\/pages\/about",
         "enable_follow_on_shop": true,
         "show_social": true,
-        "enable_country_selector": true,
         "enable_language_selector": true,
-        "payment_enable": true,
         "show_policy": true,
         "margin_top": 0,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "aside_color_scheme": "scheme-3",
+        "enable_country_selector": true,
+        "payment_enable": true,
+        "aside_padding_top": 8,
+        "aside_padding_bottom": 8
       }
     }
   },
