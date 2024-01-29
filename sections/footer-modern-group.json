@@ -34,7 +34,7 @@
         "image_xmUc3r"
       ],
       "custom_css": [
-        ".footer__social .list-social__item {color: #ffffff; background: green; border-radius: 9999px; margin-left: 1.2rem;}",
+        ".footer__social .list-social__item {color: #ffffff; background-color: var(--color-button); border-radius: 9999px; margin-left: 1.2rem;}",
         ".footer__social .list-social__item .icon {color: #ffffff;}"
       ],
       "settings": {
