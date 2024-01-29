@@ -34,8 +34,8 @@
         "image_xmUc3r"
       ],
       "custom_css": [
-        ".footer__social .list-social__item {color: #ffffff; background-color: var(--color-button); border-radius: 9999px; margin-left: 1.2rem;}",
-        ".footer__social .list-social__item .icon {color: #ffffff;}"
+        ".footer__social .list-social__item {background-color: var(--color-button); border-radius: 9999px; margin-left: 1.2rem;}",
+        ".footer__social .list-social__item .icon {color: var(--color-background-contrast);}"
       ],
       "settings": {
         "color_scheme": "scheme-27244cb7-c5e8-44f4-8d36-07b36a3affa4",
