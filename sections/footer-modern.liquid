@@ -233,9 +233,10 @@
           </div>
         {%- else -%}
           {% # Copywrite section %}
-          <small class='copyright__content'
+          <small class='copyright__content tw-text-center'
             >&copy; {{ 'now' | date: '%Y' }}
-            {{ shop.name | link_to: routes.root_url -}}
+
+            Oh Crap Pty Ltd (ABN: 91 654 369 285). All Right Reserved
           </small>
           {% # END Copywrite section %}
         {%- endif -%}
