@@ -35,12 +35,28 @@
             "heading": "Share and Win",
             "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
           }
+        },
+        "seo_menu_4BnmjN": {
+          "type": "seo_menu",
+          "settings": {
+            "seo_menu_title": "Top Categories",
+            "seo_menu_links": "footer"
+          }
+        },
+        "seo_menu_pxNfgU": {
+          "type": "seo_menu",
+          "settings": {
+            "seo_menu_title": "Top Products",
+            "seo_menu_links": "main-menu"
+          }
         }
       },
       "block_order": [
         "footer-0",
         "link_list_gj7YVY",
-        "text_GMVcUQ"
+        "text_GMVcUQ",
+        "seo_menu_4BnmjN",
+        "seo_menu_pxNfgU"
       ],
       "custom_css": [
         ".footer__social .list-social__item {background-color: rgb(var(--color-button)); border-radius: 9999px; margin-left: 1.2rem;}",
