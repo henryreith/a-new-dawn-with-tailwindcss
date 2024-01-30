@@ -71,7 +71,7 @@
         "show_social": true,
         "enable_language_selector": true,
         "seo_menu_columns": "4",
-        "pre_copywrite_text": "<p style=\"text-align:center\">Proudly Australian owned &amp; operated with <span><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 512 512\" ><path fill=\"rgb(var(--color-button))\" d=\"M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z\"\/><\/svg><\/span>.<\/p>",
+        "pre_copywrite_text": "<p style=\"text-align:center\">Proudly Australian owned &amp; operated with <span style='\n    width: 1.4rem;\n    display: inline-block;\n    height: 1.4rem;\n'><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 512 512\" ><path fill=\"rgb(var(--color-button))\" d=\"M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z\"\/><\/svg><\/span>.<\/p>",
         "copywrite_text": "Oh Crap Pty Ltd (ABN: 91 654 369 285). All Right Reserved",
         "show_policy": true,
         "margin_top": 0,
