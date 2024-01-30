@@ -5,10 +5,10 @@
     "custom_liquid_fyLdXa": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "Image etc",
+        "custom_liquid": "<div style=\"border-top-width:1px;padding-top:36px\">\n<div class=\"page-width\">Image etc\n<\/div>\n<\/div>",
         "color_scheme": "scheme-1",
-        "section_page_width": "page_width",
-        "padding_top": 36,
+        "section_page_width": "full_width",
+        "padding_top": 0,
         "padding_bottom": 36
       }
     },
