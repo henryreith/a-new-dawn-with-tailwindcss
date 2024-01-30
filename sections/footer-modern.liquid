@@ -87,7 +87,7 @@
     -%}
     <div class='page-width'>
       {% # Logo, Social Icons, Byline %}
-      <div class='tw-grid tw-grid-cols-2 tw-gap-x-10 tw-gap-y-6 tw-border-b tw-pb-8 tw-mb-8'>
+      <div class='tw-grid tw-grid-cols-2 tw-gap-x-10 tw-gap-y-6 tw-border-b tw-pb-12 tw-mb-12'>
         <div class='tw-col-span-2 md:tw-col-span-1 tw-justify-self-center md:tw-justify-self-start'>
           <div class='footer__logo tw-w-full tw-max-w-60'>
             {% # Logo %}
@@ -231,6 +231,7 @@
       {% # END SEO Menus %}
 
       {% # START Made With Love / General Liquid Area %}
+      {{ section.settings.pre_copywrite_text }}
       {% # END Made With Love / General Liquid Area %}
 
       {% # Copywrite section %}

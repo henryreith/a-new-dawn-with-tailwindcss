@@ -118,7 +118,7 @@
     * > p {
         margin-bottom: 1rem;
     }
-    * > p:last-child {
+    * > p:last-child, * > p:only-child {
         margin-bottom: 0;
     }
 
