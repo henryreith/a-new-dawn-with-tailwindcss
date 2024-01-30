@@ -195,7 +195,7 @@
           assign seo_menu_columns = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3'
         endif
       -%}
-      <div class='footer__inner--s-menus tw-mt-12 tw-mb-12 tw-grid {{ seo_menu_columns }} tw-gap-4'>
+      <div class='footer__inner--s-menus tw-mt-12 tw-pb-12 tw-mb-12 tw-grid {{ seo_menu_columns }} tw-gap-4 tw-border-b'>
         {% for block in section.blocks %}
           {% if block.type == 'seo_menu' %}
             <div class='footer__s-menu-block accordion footer__linklist tw-text-center md:tw-text-left !tw-border-none !tw-m-0'>
@@ -229,6 +229,9 @@
       </div>
       {% # END .footer__inner--s-menus %}
       {% # END SEO Menus %}
+
+      {% # START Made With Love / General Liquid Area %}
+      {% # END Made With Love / General Liquid Area %}
 
       {% # Copywrite section %}
       {% if section.settings.copywrite_text != blank and enable_country_selector == true %}
@@ -363,7 +366,7 @@
     {
       "type": "liquid",
       "id": "footer_tagline",
-      "label": "Business tagline (liquid)"
+      "label": "Business tagline (liquid code)"
     },
     {
       "type": "url",
@@ -423,6 +426,16 @@
         }
       ],
       "default": "4"
+    },
+    {
+      "type": "header",
+      "content": "Pre Copywrite Area",
+      "info": "Add anything you want in this area before you get to the copywrite and policies area. For example Proudly Australian owned & operated with love."
+    },
+    {
+      "type": "liquid",
+      "id": "pre_copywrite_text",
+      "label": "Pre Copywrite Area (liquid)"
     },
     {
       "type": "header",
