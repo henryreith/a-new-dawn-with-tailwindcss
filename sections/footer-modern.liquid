@@ -46,6 +46,8 @@
   .footer__localization .localization-form:only-child .localization-form__select{
     margin: 0;
   }
+
+  .acc
 {%- endstyle -%}
 
 <footer
@@ -188,55 +190,47 @@
         {% endfor %}
       </div>
 
-      <!-- SEO Menus -->
-      <div class='footer__inner--s-menus tw-mt-8 tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4'>
+      {% # START SEO Menus %}
+      {%- liquid
+        assign seo_menu_columns = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4'
+        if section.settings.seo_menu_columns == 3
+          assign seo_menu_columns = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3'
+        endif
+      -%}
+      <div class='footer__inner--s-menus tw-mt-12 tw-mb-12 tw-grid {{ seo_menu_columns }} tw-gap-4'>
         {% for block in section.blocks %}
           {% if block.type == 'seo_menu' %}
-            <div class='footer__s-menu-block'>
-              <h3>{{ block.settings.seo_menu_title }}</h3>
-              {% if block.settings.seo_menu_links != blank %}
-                <ul>
-                  {% for link in linklists[block.settings.seo_menu_links].links %}
-                    <li>
-                      <a href='{{ link.url }}'>{{ link.title }}</a>
-                    </li>
-                  {% endfor %}
-                </ul>
-              {% endif %}
+            <div class='footer__s-menu-block accordion footer__linklist tw-text-center md:tw-text-left !tw-border-none !tw-m-0'>
+              <details id='Details-FooterSMenuAccordion-{{ block.id }}'>
+                <summary class='!tw-pb-4'>
+                  <div class='summary__title !tw-block'>
+                    <div class='h4 accordion__title inline-richtext'>
+                      {{ block.settings.seo_menu_title }}
+                      {% render 'icon-caret' %}
+                    </div>
+                  </div>
+                </summary>
+                {% if block.settings.seo_menu_links != blank %}
+                  <div
+                    id='FooterSMenuAccordion-{{ block.id }}'
+                    class='accordion__content !tw-px-0 !tw-py-0 !tw-m-0 !tw-break-normal'
+                  >
+                    <ul class='tw-list-none tw-m-0 tw-p-0 !tw-pl-0'>
+                      {% for link in linklists[block.settings.seo_menu_links].links %}
+                        <li class='tw-mb-1'>
+                          <a href='{{ link.url }}'>{{ link.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endif %}
+              </details>
             </div>
           {% endif %}
         {% endfor %}
       </div>
-
-      <div id='footer__inner--s-menu-wrapper'>
-        <div class='grid'>Content</div>
-
-        <div class='quick-add-hidden'>
-          <details id='Details-FooterSMenuAccordion-1'>
-            <summary>
-              <div class='summary__title'>
-                <div class='h4 accordion__title inline-richtext'>Title {% render 'icon-caret' %}</div>
-              </div>
-            </summary>
-            <div class='accordion__content rte !tw-px-0 !tw-py-4' id='FooterSMenuAccordion-1'>
-              <ul class='tw-list-none tw-m-0 tw-p-0 !tw-pl-0'>
-                <li>
-                  <a href='/' class=''>Home</a>
-                </li>
-
-                <li>
-                  <a href='/collections/all' class=''>Catalog</a>
-                </li>
-
-                <li>
-                  <a href='/pages/contact' class=''>Contact</a>
-                </li>
-              </ul>
-            </div>
-          </details>
-        </div>
-      </div>
-      {% # END .footer__inner--s-menu-wrapper %}
+      {% # END .footer__inner--s-menus %}
+      {% # END SEO Menus %}
 
       {% # Copywrite section %}
       {% if section.settings.copywrite_text != blank and enable_country_selector == true %}
@@ -410,6 +404,27 @@
       "id": "enable_language_selector",
       "default": true,
       "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "SEO Menu Settings",
+      "info": "How many columns do you want the SEO Menu section to be on desktop screens?"
+    },
+    {
+      "type": "select",
+      "id": "seo_menu_columns",
+      "label": "SEO Menu Columns",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "4"
     },
     {
       "type": "header",

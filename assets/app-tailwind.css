@@ -122,6 +122,20 @@
         margin-bottom: 0;
     }
 
+    a {
+        color: rgba(var(--color-link), var(--alpha-link));
+        transition: all var(--duration-medium) ease;
+        text-underline-offset: 0.38rem;
+        text-decoration-thickness: 0;
+    }
+
+    a:hover {
+        color: rgb(var(--color-link));
+        text-decoration: underline;
+        text-decoration-thickness: 0.1rem;
+        text-underline-offset: 0.3rem;
+    }
+
     hr {
         height: 0.1rem;
     }
@@ -133,3 +147,4 @@
         padding: inherit;
     }
 } /* end @layer base */
+
