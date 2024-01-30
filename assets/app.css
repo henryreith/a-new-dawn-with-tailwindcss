@@ -796,6 +796,10 @@ ul, ol{
   margin-top: 1.5rem;
 }
 
+.tw-mt-8 {
+  margin-top: 2rem;
+}
+
 .tw-block {
   display: block;
 }
@@ -806,6 +810,10 @@ ul, ol{
 
 .tw-flex {
   display: flex;
+}
+
+.\!tw-flex {
+  display: flex !important;
 }
 
 .tw-grid {
@@ -1059,6 +1067,26 @@ ul, ol{
   padding-bottom: 1rem;
 }
 
+.\!tw-px-0 {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.\!tw-py-0 {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.tw-px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.\!tw-py-4 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
 .tw-pl-4 {
   padding-left: 1rem;
 }
@@ -1111,8 +1139,20 @@ ul, ol{
   padding-top: 1rem;
 }
 
+.\!tw-pt-4 {
+  padding-top: 1rem !important;
+}
+
+.tw-pl-0 {
+  padding-left: 0px;
+}
+
 .tw-text-center {
   text-align: center;
+}
+
+.\!tw-text-center {
+  text-align: center !important;
 }
 
 .tw-text-sm {
@@ -1258,6 +1298,10 @@ ul, ol{
   .md\:tw-text-left {
     text-align: left;
   }
+
+  .md\:\!tw-text-left {
+    text-align: left !important;
+  }
 }
 
 @media (min-width: 990px) {
@@ -1291,6 +1335,14 @@ ul, ol{
 
   .lg\:tw-hidden {
     display: none;
+  }
+
+  .lg\:tw-grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:tw-grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:tw-flex-row {

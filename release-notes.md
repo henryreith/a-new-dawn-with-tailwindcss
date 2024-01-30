@@ -13,6 +13,7 @@
 
 ## Customised Default Sections
 - custom-liquid.liquid - Added option to define page width.
+- cart-drawer.liquid - Made 48rem wide using css in the template so it doesn't look like every other dawn site.
 
 ## Customised Default Snippets
 - social-icons.liquid: Updated social media snippet to include title='Connect with {{ shop_name }} on XNetwork' & target='_blank' on links

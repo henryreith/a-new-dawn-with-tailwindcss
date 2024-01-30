@@ -1,9 +1,12 @@
 {% comment %}theme-check-disable UndefinedObject{% endcomment %}
 {{ 'section-footer.css' | asset_url | stylesheet_tag }}
-{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  {{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{% endcomment %}
 {{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   #footer-m {
@@ -16,8 +19,8 @@
   }
 
   #footer__aside {
-    padding-top: {{ section.settings.aside_padding_top }}px;
-    padding-bottom: {{ section.settings.aside_padding_bottom }}px;
+    padding-top: {{ section.settings.aside_padding_top | times: 1.5 | round: 0 }}px;
+    padding-bottom: {{ section.settings.aside_padding_bottom | times: 1.5 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -29,6 +32,14 @@
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
+    #footer__aside {
+      padding-top: {{ section.settings.aside_padding_top }}px;
+      padding-bottom: {{ section.settings.aside_padding_bottom }}px;
+    }
+  }
+
+  .policies li:first-child:before {
+    display: none;
   }
 
   {% # Localization Footer Styles Overwrite %}
@@ -51,6 +62,27 @@
       assign enable_country_selector = false
       if section.settings.enable_country_selector and localization.available_countries.size > 1
         assign enable_country_selector = true
+      endif
+    -%}
+    {%- liquid
+      assign non_seo_menu_blocks_count = 0
+      assign seo_menu_blocks_count = 0
+
+      for block in section.blocks
+        if block.type != 'seo_menu'
+          assign non_seo_menu_blocks_count = non_seo_menu_blocks_count | plus: 1
+        else
+          assign seo_menu_blocks_count = seo_menu_blocks_count | plus: 1
+        endif
+      endfor
+
+      assign footer_grid_class = 'tw-grid-cols-2'
+      if non_seo_menu_blocks_count >= 6
+        assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3'
+      elsif non_seo_menu_blocks_count >= 4
+        assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4'
+      elsif non_seo_menu_blocks_count >= 3
+        assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-3'
       endif
     -%}
     <div class='page-width'>
@@ -101,67 +133,110 @@
 
       {% # Dynamic blocks for footer content %}
 
-      {%- liquid
-        assign footer_grid_class = 'tw-grid-cols-2'
-        if section.blocks.size == 9
-          assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-3'
-        elsif section.blocks.size > 6
-          assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-4'
-        elsif section.blocks.size >= 3
-          assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-3'
-        endif
-      -%}
-
       <div class='tw-grid {{ footer_grid_class }} tw-gap-x-4 tw-gap-y-6 tw-pt-4'>
         <!-- Dynamic blocks for footer content -->
         {% for block in section.blocks %}
-          {% case block.type %}
-            {%- when '@app' -%}
-              {% render block %}
-            {% when 'link_list' %}
-              <!-- Footer link list block -->
-              <div class='footer__linklist tw-text-center md:tw-text-left'>
-                <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading }}</h3>
-                {% if block.settings.menu != blank %}
-                  <ul class='tw-list-none tw-m-0 tw-p-0'>
-                    {% for link in linklists[block.settings.menu].links %}
-                      <li>
-                        <a href='{{ link.url }}' class=''>{{ link.title }}</a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </div>
-            {% when 'text' %}
-              <!-- Text block -->
-              <div class='footer__text tw-text-center md:tw-text-left'>
-                <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading }}</h3>
-                <p>{{ block.settings.subtext }}</p>
-              </div>
-            {%- when 'image' -%}
-              <div class='footer-block__details-content footer-block-image {{ block.settings.alignment }}'>
-                {%- if block.settings.image != blank -%}
-                  {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
-                  <div
-                    class='footer-block__image-wrapper'
-                    style='max-width: min(100%, {{ block.settings.image_width }}px);'
-                  >
-                    <img
-                      srcset='{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x'
-                      src='{{ block.settings.image | image_url: width: 760 }}'
-                      alt='{{ block.settings.image.alt | escape }}'
-                      loading='lazy'
-                      width='{{ block.settings.image.width }}'
-                      height='{{ block.settings.image.height }}'
-                    >
+          {% if block.type != 'seo_menu' %}
+            <div class='footer__inner--dynamic-block'>
+              {% case block.type %}
+                {%- when '@app' -%}
+                  {% render block %}
+                {% when 'link_list' %}
+                  <!-- Footer link list block -->
+                  <div class='footer__linklist tw-text-center md:tw-text-left'>
+                    <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading }}</h3>
+                    {% if block.settings.menu != blank %}
+                      <ul class='tw-list-none tw-m-0 tw-p-0'>
+                        {% for link in linklists[block.settings.menu].links %}
+                          <li>
+                            <a href='{{ link.url }}' class=''>{{ link.title }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
                   </div>
-                {%- else -%}
-                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
-                {%- endif -%}
-              </div>
-          {% endcase %}
+                {% when 'text' %}
+                  <!-- Text block -->
+                  <div class='footer__text tw-text-center md:tw-text-left'>
+                    <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading }}</h3>
+                    <p>{{ block.settings.subtext }}</p>
+                  </div>
+                {%- when 'image' -%}
+                  <div class='footer-block__details-content footer-block-image {{ block.settings.alignment }}'>
+                    {%- if block.settings.image != blank -%}
+                      {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
+                      <div
+                        class='footer-block__image-wrapper'
+                        style='max-width: min(100%, {{ block.settings.image_width }}px);'
+                      >
+                        <img
+                          srcset='{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x'
+                          src='{{ block.settings.image | image_url: width: 760 }}'
+                          alt='{{ block.settings.image.alt | escape }}'
+                          loading='lazy'
+                          width='{{ block.settings.image.width }}'
+                          height='{{ block.settings.image.height }}'
+                        >
+                      </div>
+                    {%- else -%}
+                      {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                    {%- endif -%}
+                  </div>
+              {% endcase %}
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
+
+      <!-- SEO Menus -->
+      <div class='footer__inner--s-menus tw-mt-8 tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4'>
+        {% for block in section.blocks %}
+          {% if block.type == 'seo_menu' %}
+            <div class='footer__s-menu-block'>
+              <h3>{{ block.settings.seo_menu_title }}</h3>
+              {% if block.settings.seo_menu_links != blank %}
+                <ul>
+                  {% for link in linklists[block.settings.seo_menu_links].links %}
+                    <li>
+                      <a href='{{ link.url }}'>{{ link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div id='footer__inner--s-menu-wrapper'>
+        <div class='grid'>Content</div>
+
+        <div class='quick-add-hidden'>
+          <details id='Details-FooterSMenuAccordion-1'>
+            <summary>
+              <div class='summary__title'>
+                <div class='h4 accordion__title inline-richtext'>Title {% render 'icon-caret' %}</div>
+              </div>
+            </summary>
+            <div class='accordion__content rte !tw-px-0 !tw-py-4' id='FooterSMenuAccordion-1'>
+              <ul class='tw-list-none tw-m-0 tw-p-0 !tw-pl-0'>
+                <li>
+                  <a href='/' class=''>Home</a>
+                </li>
+
+                <li>
+                  <a href='/collections/all' class=''>Catalog</a>
+                </li>
+
+                <li>
+                  <a href='/pages/contact' class=''>Contact</a>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+      {% # END .footer__inner--s-menu-wrapper %}
 
       {% # Copywrite section %}
       {% if section.settings.copywrite_text != blank and enable_country_selector == true %}
@@ -173,7 +248,7 @@
       {% # END Copywrite section %}
 
       {%- if section.settings.show_policy -%}
-        <ul class='policies list-unstyled tw-text-center !tw-block'>
+        <ul class='policies list-unstyled tw-text-center !tw-flex tw-content-center tw-justify-center'>
           {%- for policy in shop.policies -%}
             {%- if policy != blank -%}
               <li>
@@ -186,6 +261,7 @@
         </ul>
       {%- endif -%}
     </div>
+
     {% # .page-width %}
   </div>
   {% # END #footer__inner %}
@@ -241,10 +317,12 @@
         {%- else -%}
           {% # Copywrite section %}
           {% if section.settings.copywrite_text != blank %}
-            <small class='copyright__content tw-text-center md:tw-text-left'
-              >&copy; {{ 'now' | date: '%Y' }}
-              {{ section.settings.copywrite_text }}Test
-            </small>
+            <div class='lg:tw-flex lg:tw-items-center'>
+              <small class='copyright__content tw-block tw-text-center lg:tw-text-left'
+                >&copy; {{ 'now' | date: '%Y' }}
+                {{ section.settings.copywrite_text }}
+              </small>
+            </div>
           {% endif %}
           {% # END Copywrite section %}
         {%- endif -%}
@@ -253,7 +331,7 @@
           {%- if section.settings.payment_enable -%}
             <div class='footer__payment !tw-mt-0'>
               <span class='visually-hidden'>{{ 'sections.footer.payment' | t }}</span>
-              <ul class='list list-payment !tw-pt-6 md:!tw-pt-0' role='list'>
+              <ul class='list list-payment !tw-pt-4 md:!tw-pt-0' role='list'>
                 {%- for type in shop.enabled_payment_types -%}
                   <li class='list-payment__item'>
                     {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
@@ -530,6 +608,22 @@
             }
           ],
           "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "seo_menu",
+      "name": "SEO Menu Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "seo_menu_title",
+          "label": "SEO Menu Title"
+        },
+        {
+          "type": "link_list",
+          "id": "seo_menu_links",
+          "label": "SEO Menu Links"
         }
       ]
     }

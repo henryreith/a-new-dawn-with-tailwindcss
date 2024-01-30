@@ -331,11 +331,12 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
+      
 
       {%- if shop.customer_accounts_enabled -%}
+        {% # <span class='header__icon__my-account header__menu-item list-menu__item link link--text focus-inset'>My account</span> %}
         <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
-          {% render 'icon-account' %}
+          {% render 'icon-account' %} 
           <span class="visually-hidden">
             {%- liquid
               if customer
@@ -345,8 +346,11 @@
               endif
             -%}
           </span>
+          
         </a>
       {%- endif -%}
+
+      {% render 'header-search', input_id: 'Search-In-Modal' %}
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}
