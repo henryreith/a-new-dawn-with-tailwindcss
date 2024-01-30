@@ -69,6 +69,7 @@
     {%- for block in section.blocks -%}
       <div
         class='benefits-inline-section__item tw-flex tw-items-center tw-text-center tw-flex-row tw-gap-x-3 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+        {{ block.shopify_attributes }}
         {% if section.settings.animations_reveal_on_scroll %}
           data-cascade
           style='--animation-order: {{ forloop.index }};'

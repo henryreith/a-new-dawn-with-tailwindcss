@@ -137,7 +137,7 @@
         <!-- Dynamic blocks for footer content -->
         {% for block in section.blocks %}
           {% if block.type != 'seo_menu' %}
-            <div class='footer__inner--dynamic-block'>
+            <div class='footer__inner--dynamic-block' {{ block.shopify_attributes }}>
               {% case block.type %}
                 {%- when '@app' -%}
                   {% render block %}
@@ -198,7 +198,10 @@
       <div class='footer__inner--s-menus tw-mt-12 tw-pb-12 tw-mb-12 tw-grid {{ seo_menu_columns }} tw-gap-4 tw-border-b'>
         {% for block in section.blocks %}
           {% if block.type == 'seo_menu' %}
-            <div class='footer__s-menu-block accordion footer__linklist tw-text-center md:tw-text-left !tw-border-none !tw-m-0'>
+            <div
+              class='footer__s-menu-block accordion footer__linklist tw-text-center md:tw-text-left !tw-border-none !tw-m-0'
+              {{ block.shopify_attributes }}
+            >
               <details id='Details-FooterSMenuAccordion-{{ block.id }}'>
                 <summary class='!tw-pb-4'>
                   <div class='summary__title !tw-block'>
