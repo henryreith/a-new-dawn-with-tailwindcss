@@ -5,11 +5,11 @@
     "custom_liquid_fyLdXa": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "Image etc\n<hr style=\"margin-top:3rem\">",
-        "color_scheme": "scheme-27244cb7-c5e8-44f4-8d36-07b36a3affa4",
+        "custom_liquid": "Image etc",
+        "color_scheme": "scheme-1",
         "section_page_width": "page_width",
         "padding_top": 48,
-        "padding_bottom": 12
+        "padding_bottom": 48
       }
     },
     "footer": {
