@@ -51,12 +51,13 @@
   id='section-{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
 >
-  <div class='page-width{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} tw-mx-auto tw-flex tw-flex-wrap tw-justify-center tw-items-start tw-gap-x-8 md:tw-gap-x-10'>
+  <div class='page-width tw-mx-auto tw-flex tw-flex-wrap tw-justify-center tw-items-start tw-gap-x-8 md:tw-gap-x-10'>
     {%- for block in section.blocks -%}
       <a
         href='{{ block.settings.link }}'
-        class='submenu__item tw-flex tw-flex-row tw-items-center tw-justify-center'
+        class='submenu__item tw-flex tw-flex-row tw-items-center tw-justify-center{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
         {% if section.settings.animations_reveal_on_scroll %}
+          data-cascade
           style='--animation-order: {{ forloop.index }};'
         {% endif %}
       >

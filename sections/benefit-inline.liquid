@@ -64,15 +64,13 @@
   {% endif %}
 >
   <div
-    class='benefits-inline-section__inner-wrap page-width tw-flex tw-flex-col lg:tw-flex-row tw-justify-center tw-items-center tw-gap-y-3 tw-gap-x-9 lg:tw-gap-y-5 lg:tw-gap-x-12 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
-    {% if section.settings.animations_reveal_on_scroll %}
-      data-cascade
-    {% endif %}
+    class='benefits-inline-section__inner-wrap page-width tw-flex tw-flex-col lg:tw-flex-row tw-justify-center tw-items-center tw-gap-y-3 tw-gap-x-9 lg:tw-gap-y-5 lg:tw-gap-x-12'
   >
     {%- for block in section.blocks -%}
       <div
-        class='benefits-inline-section__item tw-flex tw-items-center tw-text-center tw-flex-row tw-gap-x-3'
+        class='benefits-inline-section__item tw-flex tw-items-center tw-text-center tw-flex-row tw-gap-x-3 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
         {% if section.settings.animations_reveal_on_scroll %}
+          data-cascade
           style='--animation-order: {{ forloop.index }};'
         {% endif %}
       >
