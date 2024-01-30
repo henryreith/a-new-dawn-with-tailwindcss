@@ -56,6 +56,7 @@
       <a
         href='{{ block.settings.link }}'
         class='submenu__item tw-flex tw-flex-row tw-items-center tw-justify-center{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+        {{ block.shopify_attributes }}
         {% if section.settings.animations_reveal_on_scroll %}
           data-cascade
           style='--animation-order: {{ forloop.index }};'
