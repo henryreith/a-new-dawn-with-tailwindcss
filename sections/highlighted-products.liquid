@@ -18,7 +18,7 @@
     {% for block in section.blocks %}
       <div class='highlighted-products__slide'>
         {% assign product = all_products[block.settings.product] %}
-        <img src='{{ product.featured_image | img_url: '300x300' }}' alt='{{ product.title }}'>
+        <img src='{{ product.featured_image | image_url: '300x300' }}' alt='{{ product.title }}'>
         <div class='highlighted-products__description'>{{ block.settings.custom_description }}</div>
         <!-- Add to cart form would go here -->
       </div>
@@ -86,7 +86,7 @@
   ],
   "presets": [
     {
-      "name": "Default",
+      "name": "Highlighted Products",
       "category": "Custom",
       "blocks": [
         {
