@@ -248,22 +248,26 @@
     "highlighted_products_jwhF6k": {
       "type": "highlighted-products",
       "blocks": {
-        "text_4XH4dM": {
-          "type": "text",
+        "product_variant_PQG4tG": {
+          "type": "product_variant",
           "settings": {
-            "text": "42544313237725"
+            "variant_id": "42544313303261",
+            "custom_varient_title": "1 Month Supply",
+            "custom_description": "This is a great product!"
           }
         },
-        "text_rzBVNh": {
-          "type": "text",
+        "product_variant_EicFDL": {
+          "type": "product_variant",
           "settings": {
-            "text": "42544313270493"
+            "variant_id": "42544313237725",
+            "custom_varient_title": "6 Month Supply",
+            "custom_description": "This is a great product!"
           }
         }
       },
       "block_order": [
-        "text_4XH4dM",
-        "text_rzBVNh"
+        "product_variant_PQG4tG",
+        "product_variant_EicFDL"
       ],
       "settings": {
         "title": "Featured Products",
