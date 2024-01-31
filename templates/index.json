@@ -244,6 +244,35 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "highlighted_products_jwhF6k": {
+      "type": "highlighted-products",
+      "blocks": {
+        "product_He6VfQ": {
+          "type": "product",
+          "settings": {
+            "product": "test-product",
+            "custom_description": "This is a great product!"
+          }
+        },
+        "product_QD7ffJ": {
+          "type": "product",
+          "settings": {
+            "product": "dog-poop-bags",
+            "custom_description": "This is a great product!"
+          }
+        }
+      },
+      "block_order": [
+        "product_He6VfQ",
+        "product_QD7ffJ"
+      ],
+      "settings": {
+        "title": "Featured Products",
+        "subtext": "Check out our featured products!",
+        "background_color": "#ffffff",
+        "text_color": "#000000"
+      }
     }
   },
   "order": [
@@ -252,6 +281,7 @@
     "featured_collection",
     "featured_product_WVxdGX",
     "multicolumn",
-    "featured_collection_dpiwjx"
+    "featured_collection_dpiwjx",
+    "highlighted_products_jwhF6k"
   ]
 }
