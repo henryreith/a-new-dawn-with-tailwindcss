@@ -192,7 +192,7 @@
         "settings": {
           "background": "#3e5641",
           "background_gradient": "",
-          "text": "#fff",
+          "text": "#ffffff",
           "button": "#6dab3c",
           "button_label": "#ffffff",
           "secondary_button_label": "#6dab3c",
@@ -397,5 +397,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "button#CartDrawer-Checkout {color: RGB(var(--color-secondary-button-text));}"
+    ]
   }
 }
