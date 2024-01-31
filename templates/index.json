@@ -324,15 +324,6 @@
         "padding_bottom": 20
       }
     },
-    "custom_liquid_in_page_width_wrapper_zzXfKk": {
-      "type": "custom-liquid-in-page-width-wrapper",
-      "settings": {
-        "custom_liquid": "<h3>Hello<\/h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. <\/p>\n\n<p>Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. <\/p>\n\n<p>Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. <\/p>",
-        "color_scheme": "scheme-2",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "simple_text34_and_image14_8fEKCF": {
       "type": "simple-text34-and-image14",
       "settings": {
@@ -342,6 +333,34 @@
         "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
         "color_scheme": "scheme-5",
         "mobile_image_order": "image_first",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_dpiwjx": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "dog-poop-bags",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -355,7 +374,7 @@
     "multicolumn",
     "rich_text_X66yqC",
     "image_with_rich_text_overlay_4iaxgC",
-    "custom_liquid_in_page_width_wrapper_zzXfKk",
-    "simple_text34_and_image14_8fEKCF"
+    "simple_text34_and_image14_8fEKCF",
+    "featured_collection_dpiwjx"
   ]
 }
