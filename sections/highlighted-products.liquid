@@ -17,9 +17,34 @@
   <div class='highlighted-products__slider'>
     {% for block in section.blocks %}
       {% if block.type == 'product_variant' %}
+        {{ shop.variants[variant_id] }}
+        {% assign variant_id = block.settings.variant_id %}
+        {% assign variant_found = false %}
+
+        {% for product in collections.all.products %}
+          {% for variant in product.variants %}
+            {% if variant.id == variant_id %}
+              {% assign variant_found = true %}
+              <h2>Variant Title: {{ variant.title }}</h2>
+              <p>Price: {{ variant.price | money_with_currency }}</p>
+              <p>SKU: {{ variant.sku }}</p>
+              <!-- Add more properties as needed -->
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          {% if variant_found %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% unless variant_found %}
+          <p>Variant not found.</p>
+        {% endunless %}
+
         {% assign variant_id = block.settings.variant_id %}
         {% assign variant = shop.variants[variant_id] %}
-        {{ shop.variants[variant_id] }}
+        {{ variant }}
+
         {% if variant %}
           <div class='highlighted-products__slide' {{ block.shopify_attributes }}>
             <img src='{{ variant.featured_image | img_url: '300x300' }}' alt='{{ variant.product.title }}'>
@@ -83,6 +108,15 @@
       "type": "product_variant",
       "name": "Product Variant Block",
       "settings": [
+        {
+          "type": "header",
+          "content": "Product Variant Block"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Please select the product which the variant belongs to."
+        },
         {
           "type": "text",
           "id": "variant_id",
