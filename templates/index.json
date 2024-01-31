@@ -261,11 +261,21 @@
             "product": "dog-poop-bags",
             "custom_description": "This is a great product!"
           }
+        },
+        "product_list_VmbrqT": {
+          "type": "product_list",
+          "settings": {
+            "product_list": [
+              "dog-poop-bags",
+              "test-product"
+            ]
+          }
         }
       },
       "block_order": [
         "product_He6VfQ",
-        "product_QD7ffJ"
+        "product_QD7ffJ",
+        "product_list_VmbrqT"
       ],
       "settings": {
         "title": "Featured Products",
