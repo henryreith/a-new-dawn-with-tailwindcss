@@ -254,7 +254,10 @@
             "product": "dog-poop-bags",
             "variant_id": "42544313303261",
             "custom_varient_title": "1 Month Supply",
-            "custom_description": "This is a great product!"
+            "custom_description": "This is a great product!",
+            "image_1": "shopify:\/\/shop_images\/45_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
+            "image_2": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
+            "image_3": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_d4a58994-44ec-4129-b70a-a3420b17405d.jpg"
           }
         },
         "product_variant_EicFDL": {
@@ -263,7 +266,11 @@
             "product": "dog-poop-bags",
             "variant_id": "42544313237725",
             "custom_varient_title": "6 Month Supply",
-            "custom_description": "This is a great product!"
+            "custom_description": "This is a great product!",
+            "image_1": "shopify:\/\/shop_images\/180_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
+            "image_2": "shopify:\/\/shop_images\/oh-crap-dog-bag-holder-front-on_2dfa88e1-68b6-400d-a649-c8bc1161d0f8.jpg",
+            "image_3": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
+            "image_4": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
           }
         }
       },
