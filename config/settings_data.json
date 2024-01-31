@@ -400,7 +400,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      "button#CartDrawer-Checkout {color: RGB(var(--color-secondary-button-text));}"
+      "button#CartDrawer-Checkout {background-color: rgba(var(--color-button), var(--alpha-button-background)); color: rgb(var(--color-button-text));}"
     ]
   }
 }
