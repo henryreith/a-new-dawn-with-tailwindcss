@@ -245,61 +245,6 @@
         "padding_bottom": 36
       }
     },
-    "slideshow_MpQ7jU": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_fUaRYD": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_8mKdDW": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "slide_fUaRYD",
-        "slide_8mKdDW"
-      ],
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "medium",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
     "highlighted_products_jwhF6k": {
       "type": "highlighted-products",
       "blocks": {
@@ -309,7 +254,7 @@
             "product": "dog-poop-bags",
             "variant_id": "42544313303261",
             "custom_varient_title": "1 Month Supply",
-            "custom_description": "This is a great product!",
+            "custom_description": "45 Bags. Box contains 3 rolls of 15 bags.\nAll new design - Fit's Oh Crap & standard dog poop bag holders. plus $4.50 shipping.",
             "image_1": "shopify:\/\/shop_images\/45_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
             "image_2": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
             "image_3": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_d4a58994-44ec-4129-b70a-a3420b17405d.jpg"
@@ -321,7 +266,7 @@
             "product": "dog-poop-bags",
             "variant_id": "42544313237725",
             "custom_varient_title": "6 Month Supply",
-            "custom_description": "This is a great product!",
+            "custom_description": "180 Bags. 12 rolls of 15 bags.\nAll new design - Fit's Oh Crap & standard dog poop bag holders. plus $9.50 shipping.",
             "image_1": "shopify:\/\/shop_images\/180_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
             "image_2": "shopify:\/\/shop_images\/oh-crap-dog-bag-holder-front-on_2dfa88e1-68b6-400d-a649-c8bc1161d0f8.jpg",
             "image_3": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
@@ -348,7 +293,6 @@
     "featured_product_WVxdGX",
     "multicolumn",
     "featured_collection_dpiwjx",
-    "slideshow_MpQ7jU",
     "highlighted_products_jwhF6k"
   ]
 }
