@@ -1,0 +1,87 @@
+<!-- Section: Highlighted Products -->
+{% stylesheet %}
+  /* Add your custom styles here. */
+  .highlighted-products {
+    background-color: {{ section.settings.background_color }};
+  }
+  .highlighted-products__title {
+    color: {{ section.settings.text_color }};
+  }
+  /* Additional styles for swiper if not using Dawn's built-in slider */
+{% endstylesheet %}
+
+<div class='highlighted-products page-width'>
+  <h2 class='highlighted-products__title'>{{ section.settings.title }}</h2>
+  <p class='highlighted-products__subtext'>{{ section.settings.subtext }}</p>
+  <!-- Product Slider -->
+  <div class='highlighted-products__slider'>
+    {% for block in section.blocks %}
+      <div class='highlighted-products__slide'>
+        {% assign product = all_products[block.settings.product] %}
+        <img src='{{ product.featured_image | img_url: '300x300' }}' alt='{{ product.title }}'>
+        <div class='highlighted-products__description'>{{ block.settings.custom_description }}</div>
+        <!-- Add to cart form would go here -->
+      </div>
+    {% endfor %}
+  </div>
+  <!-- Initialize slider using Dawn's built-in slider or SwiperJS -->
+  <script>
+    // Your slider initialization code here
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Highlighted Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Check out our featured products!"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_description",
+          "label": "Custom Description",
+          "default": "This is a great product!"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default"
+    }
+  ]
+}
+{% endschema %}
