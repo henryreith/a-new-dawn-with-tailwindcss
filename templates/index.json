@@ -251,6 +251,7 @@
         "product_variant_PQG4tG": {
           "type": "product_variant",
           "settings": {
+            "product": "dog-poop-bags",
             "variant_id": "42544313303261",
             "custom_varient_title": "1 Month Supply",
             "custom_description": "This is a great product!"
@@ -259,6 +260,7 @@
         "product_variant_EicFDL": {
           "type": "product_variant",
           "settings": {
+            "product": "dog-poop-bags",
             "variant_id": "42544313237725",
             "custom_varient_title": "6 Month Supply",
             "custom_description": "This is a great product!"
