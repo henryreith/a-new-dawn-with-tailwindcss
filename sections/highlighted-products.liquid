@@ -22,6 +22,7 @@
         <div class='highlighted-products__description'>{{ block.settings.custom_description }}</div>
         <!-- Add to cart form would go here -->
       </div>
+      {{ block.settings.product_list | json }}
     {% endfor %}
   </div>
   <!-- Initialize slider using Dawn's built-in slider or SwiperJS -->
@@ -66,6 +67,17 @@
     }
   ],
   "blocks": [
+    {
+      "type": "text",
+      "name": "Text Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Varient ID"
+        }
+      ]
+    },
     {
       "type": "product",
       "name": "Product Block",
