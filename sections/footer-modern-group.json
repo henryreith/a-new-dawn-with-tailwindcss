@@ -59,8 +59,8 @@
         "seo_menu_pxNfgU"
       ],
       "custom_css": [
-        ".footer__social .list-social__item {background-color: rgb(var(--color-button)); border-radius: 9999px; margin-left: 1.2rem;}",
-        ".footer__social .list-social__item .icon {color: rgb(var(--color-button-text));}"
+        ".footer__social-icons .list-social__item {background-color: rgb(var(--color-button)); border-radius: 9999px; margin-left: 1.2rem;}",
+        ".footer__social-icons .list-social__item .icon {color: rgb(var(--color-button-text));}"
       ],
       "settings": {
         "color_scheme": "scheme-27244cb7-c5e8-44f4-8d36-07b36a3affa4",
