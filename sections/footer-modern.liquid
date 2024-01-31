@@ -93,16 +93,16 @@
             {% # Logo %}
             {% if section.settings.footer_logo != blank %}
               <img
-                src='{{ section.settings.footer_logo | img_url }}'
+                src='{{ section.settings.footer_logo | image_url }}'
                 alt='{{ section.settings.footer_logo | escape }}'
-                class='tw-w-full tw-h-full'
+                class='footer__logo-image tw-w-full tw-h-full'
                 loading='lazy'
                 width='{{ section.settings.footer_logo.width }}'
                 height='{{ section.settings.footer_logo.height }}'
               >
 
             {% else %}
-              <h2>{{ shop.name }}</h2>
+              <h2 class='footer__logo-text'>{{ shop.name }}</h2>
             {% endif %}
           </div>
         </div>
@@ -112,7 +112,7 @@
             href='{{ section.settings.footer_tagline_link }}'
             class='tw-flex tw-justify-center md:tw-justify-between tw-items-center'
           >
-            <div class='footer__tagline--text'>{{ section.settings.footer_tagline }}</div>
+            <span class='footer__tagline--text'>{{ section.settings.footer_tagline }}</span>
             {% if section.settings.footer_tagline_link %}
               <div class='footer__tagline--icon tw-ml-4'>
                 {% render 'icon-arrow' %}
@@ -122,7 +122,7 @@
         </div>
 
         <div class='tw-col-span-2 lg:tw-justify-self-end md:tw-col-span-1 md:tw-order-2'>
-          <div class='footer__social'>
+          <div class='footer__social-icons'>
             {% # Social Icons %}
             {%- if section.settings.show_social and has_social_icons -%}
               {%- render 'social-icons', class: 'footer__list-social md:!tw-justify-end' -%}
@@ -195,16 +195,16 @@
           assign seo_menu_columns = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3'
         endif
       -%}
-      <div class='footer__inner--s-menus tw-mt-12 tw-pb-12 tw-mb-12 tw-grid {{ seo_menu_columns }} tw-gap-4 tw-border-b'>
+      <div class='footer__seo-menus tw-mt-12 tw-pb-12 tw-mb-12 tw-grid {{ seo_menu_columns }} tw-gap-4 tw-border-b'>
         {% for block in section.blocks %}
           {% if block.type == 'seo_menu' %}
             <div
-              class='footer__s-menu-block accordion footer__linklist tw-text-center md:tw-text-left !tw-border-none !tw-m-0'
+              class='footer__seo-menu accordion footer__linklist tw-text-center md:tw-text-left !tw-border-none !tw-m-0'
               {{ block.shopify_attributes }}
             >
-              <details id='Details-FooterSMenuAccordion-{{ block.id }}'>
-                <summary class='!tw-pb-4'>
-                  <div class='summary__title !tw-block'>
+              <details class='footer__seo-menu-details' id='Details-FooterSMenuAccordion-{{ block.id }}'>
+                <summary class='footer__seo-menu-summary !tw-pb-4'>
+                  <div class='footer__seo-menu-title summary__title !tw-block'>
                     <div class='h4 accordion__title inline-richtext'>
                       {{ block.settings.seo_menu_title }}
                       {% render 'icon-caret' %}
@@ -214,11 +214,11 @@
                 {% if block.settings.seo_menu_links != blank %}
                   <div
                     id='FooterSMenuAccordion-{{ block.id }}'
-                    class='accordion__content !tw-px-0 !tw-py-0 !tw-m-0 !tw-break-normal'
+                    class='footer__seo-menu-content accordion__content !tw-px-0 !tw-py-0 !tw-m-0 !tw-break-normal'
                   >
-                    <ul class='tw-list-none tw-m-0 tw-p-0 !tw-pl-0'>
+                    <ul class='footer__seo-menu-list tw-list-none tw-m-0 tw-p-0 !tw-pl-0'>
                       {% for link in linklists[block.settings.seo_menu_links].links %}
-                        <li class='tw-mb-1'>
+                        <li class='footer__seo-menu-item tw-mb-1'>
                           <a href='{{ link.url }}'>{{ link.title }}</a>
                         </li>
                       {% endfor %}
@@ -326,9 +326,9 @@
           {% # END Copywrite section %}
         {%- endif -%}
         {% # Payment Methods %}
-        <div class='footer__payment-methods lg:tw-flex lg:tw-items-center'>
+        <div class='lg:tw-flex lg:tw-items-center'>
           {%- if section.settings.payment_enable -%}
-            <div class='footer__payment !tw-mt-0'>
+            <div class='footer__payment-methods !tw-mt-0'>
               <span class='visually-hidden'>{{ 'sections.footer.payment' | t }}</span>
               <ul class='list list-payment !tw-pt-4 md:!tw-pt-0' role='list'>
                 {%- for type in shop.enabled_payment_types -%}
