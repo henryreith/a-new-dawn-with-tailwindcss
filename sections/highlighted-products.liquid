@@ -19,8 +19,9 @@
       {% if block.type == 'product_variant' %}
         {% assign variant_id = block.settings.variant_id %}
         {% assign variant = shop.variants[variant_id] %}
+        {{ shop.variants[variant_id] }}
         {% if variant %}
-          <div class='highlighted-products__slide'>
+          <div class='highlighted-products__slide' {{ block.shopify_attributes }}>
             <img src='{{ variant.featured_image | img_url: '300x300' }}' alt='{{ variant.product.title }}'>
             <div class='highlighted-products__description'>{{ block.settings.custom_description }}</div>
             <div class='highlighted-products__price'>{{ variant.price | money }}</div>
@@ -34,54 +35,6 @@
           <p>Variant with ID {{ variant_id }} not found.</p>
         {% endif %}
       {% endif %}
-    {% endfor %}
-
-    {% for block in section.blocks %}
-      <div class='highlighted-products__slide' {{ block.shopify_attributes }}>
-        {%
-          # product_varient_id = block.settings.text
-          # assign product = ''
-        %}
-
-        {{ shop.variants[block.settings.text] }}
-
-        {% assign variant = false %}
-        {% for product in collections.all.products %}
-          {% for product_variant in product.variants %}
-            {% if product_variant.id == block.settings.text %}
-              {% assign variant = product_variant %}
-              {% assign product = product %}
-            {% endif %}
-          {% endfor %}
-        {% endfor %}
-
-        {% if variant %}
-          <img src='{{ product.featured_image | image_url: '300x300' }}' alt='{{ product.title }}'>
-          <div class='highlighted-products__description'>{{ product.description }}</div>
-          <p>Price: {{ variant.price }}</p>
-          <form action='/cart/add' method='post'>
-            <input type='hidden' name='id' value='{{ variant.id }}'>
-            <input type='submit' value='Add to Cart'>
-          </form>
-        {% else %}
-          <p>Product not found.</p>
-        {% endif %}
-
-        {% comment %}
-          {% for product in collections.all.products %}
-            {% for variant in product.variants %}
-              {% if variant.id == product_varient_id %}
-                {% assign product = product %}
-              {% endif %}
-            {% endfor %}
-          {% endfor %}
-          {{ product | json }}
-        {% endcomment %}
-        <img src='{{ product.featured_image | image_url: '300x300' }}' alt='{{ product.title }}'>
-        <div class='highlighted-products__description'>{{ block.settings.custom_description }}</div>
-        <!-- Add to cart form would go here -->
-      </div>
-      {{ block.settings.product_list | json }}
     {% endfor %}
   </div>
   <!-- Initialize slider using Dawn's built-in slider or SwiperJS -->
