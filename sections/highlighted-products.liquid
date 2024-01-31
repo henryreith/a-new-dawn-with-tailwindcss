@@ -16,12 +16,57 @@
   <!-- Product Slider -->
   <div class='highlighted-products__slider'>
     {% for block in section.blocks %}
+      {% if block.type == 'product_variant' %}
+        {% assign variant_id = block.settings.variant_id %}
+        {% assign variant = shop.variants[variant_id] %}
+        {% if variant %}
+          <div class='highlighted-products__slide'>
+            <img src='{{ variant.featured_image | img_url: '300x300' }}' alt='{{ variant.product.title }}'>
+            <div class='highlighted-products__description'>{{ block.settings.custom_description }}</div>
+            <div class='highlighted-products__price'>{{ variant.price | money }}</div>
+            <form action='/cart/add' method='post' enctype='multipart/form-data'>
+              <input type='hidden' name='id' value='{{ variant_id }}'>
+              <input type='number' name='quantity' value='1' min='1'>
+              <input type='submit' value='Add to cart'>
+            </form>
+          </div>
+        {% else %}
+          <p>Variant with ID {{ variant_id }} not found.</p>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% for block in section.blocks %}
       <div class='highlighted-products__slide' {{ block.shopify_attributes }}>
         {%
           # product_varient_id = block.settings.text
           # assign product = ''
         %}
-        {{ block.settings.text }}
+
+        {{ shop.variants[block.settings.text] }}
+
+        {% assign variant = false %}
+        {% for product in collections.all.products %}
+          {% for product_variant in product.variants %}
+            {% if product_variant.id == block.settings.text %}
+              {% assign variant = product_variant %}
+              {% assign product = product %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+
+        {% if variant %}
+          <img src='{{ product.featured_image | image_url: '300x300' }}' alt='{{ product.title }}'>
+          <div class='highlighted-products__description'>{{ product.description }}</div>
+          <p>Price: {{ variant.price }}</p>
+          <form action='/cart/add' method='post'>
+            <input type='hidden' name='id' value='{{ variant.id }}'>
+            <input type='submit' value='Add to Cart'>
+          </form>
+        {% else %}
+          <p>Product not found.</p>
+        {% endif %}
+
         {% comment %}
           {% for product in collections.all.products %}
             {% for variant in product.variants %}
@@ -82,41 +127,26 @@
   ],
   "blocks": [
     {
-      "type": "text",
-      "name": "Text Block",
+      "type": "product_variant",
+      "name": "Product Variant Block",
       "settings": [
         {
           "type": "text",
-          "id": "text",
-          "label": "Varient ID"
-        }
-      ]
-    },
-    {
-      "type": "product",
-      "name": "Product Block",
-      "settings": [
+          "id": "variant_id",
+          "label": "Variant ID",
+          "info": "Enter the variant ID here."
+        },
         {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
+          "type": "text",
+          "id": "custom_varient_title",
+          "label": "Custom Varient Title",
+          "default": "1 Month Supply"
         },
         {
           "type": "textarea",
           "id": "custom_description",
           "label": "Custom Description",
           "default": "This is a great product!"
-        }
-      ]
-    },
-    {
-      "type": "product_list",
-      "name": "product list",
-      "settings": [
-        {
-          "type": "product_list",
-          "id": "product_list",
-          "label": "Product List"
         }
       ]
     }
@@ -127,7 +157,7 @@
       "category": "Custom",
       "blocks": [
         {
-          "type": "product"
+          "type": "product_variant"
         }
       ]
     }
