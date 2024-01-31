@@ -201,7 +201,7 @@
         "column3"
       ],
       "settings": {
-        "title": "",
+        "title": "Benefits",
         "heading_size": "h1",
         "image_width": "third",
         "image_ratio": "adapt",
@@ -213,126 +213,6 @@
         "color_scheme": "scheme-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "rich_text_X66yqC": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_PD63JH": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
-          }
-        },
-        "text_TQcQrr": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
-        },
-        "button_mb7XCP": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        },
-        "caption_wweTEG": {
-          "type": "caption",
-          "settings": {
-            "caption": "Add a tagline",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        }
-      },
-      "block_order": [
-        "heading_PD63JH",
-        "text_TQcQrr",
-        "button_mb7XCP",
-        "caption_wweTEG"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "image_with_rich_text_overlay_4iaxgC": {
-      "type": "image-with-rich-text-overlay",
-      "blocks": {
-        "heading_PHUeaj": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
-          }
-        },
-        "caption_qaxMwX": {
-          "type": "caption",
-          "settings": {
-            "caption": "Add a tagline",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        },
-        "text_WxihYn": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
-        },
-        "button_jLbWkT": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_PHUeaj",
-        "caption_qaxMwX",
-        "text_WxihYn",
-        "button_jLbWkT"
-      ],
-      "settings": {
-        "image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg",
-        "image_overlay_opacity": 70,
-        "image_behavior": "fixed",
-        "show_text_shadow": true,
-        "text_shadow_opacity": 30,
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "full_width": true,
-        "padding_top": 20,
-        "padding_bottom": 20
-      }
-    },
-    "simple_text34_and_image14_8fEKCF": {
-      "type": "simple-text34-and-image14",
-      "settings": {
-        "title": "",
-        "title_tag": "h3",
-        "custom_liquid": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. <\/p>\n\n<p>Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. <\/p>\n\n<p>Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. <\/p>",
-        "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
-        "color_scheme": "scheme-5",
-        "mobile_image_order": "image_first",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -372,9 +252,6 @@
     "featured_collection",
     "featured_product_WVxdGX",
     "multicolumn",
-    "rich_text_X66yqC",
-    "image_with_rich_text_overlay_4iaxgC",
-    "simple_text34_and_image14_8fEKCF",
     "featured_collection_dpiwjx"
   ]
 }
