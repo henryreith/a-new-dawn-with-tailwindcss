@@ -16,7 +16,7 @@
   <!-- Product Slider -->
   <div class='highlighted-products__slider'>
     {% for block in section.blocks %}
-      <div class='highlighted-products__slide'>
+      <div class='highlighted-products__slide' {{ block.shopify_attributes }}>
         {% assign product = all_products[block.settings.product] %}
         <img src='{{ product.featured_image | image_url: '300x300' }}' alt='{{ product.title }}'>
         <div class='highlighted-products__description'>{{ block.settings.custom_description }}</div>
