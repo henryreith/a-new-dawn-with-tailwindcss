@@ -48,6 +48,9 @@ module.exports = {
         '-3': '-3',
         '-4': '-4',
       },
+      listStyleType: {
+        circle: 'circle',
+      },
     },
     color: {
       black: '#000000',

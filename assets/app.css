@@ -456,6 +456,9 @@ html,
 
 body{
   letter-spacing: 0.01rem;
+  line-height: calc(1 + 0.6 / var(--font-body-scale));
+  line-height: clamp(2.6rem, calc(1.5rem + 0.0375 * (100vw - 50rem)), 2.8rem);
+  line-height: clamp(2.4rem, 2.1500rem + 0.5000vw, 2.8rem);
 }
 
 /* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's css too */
@@ -560,11 +563,12 @@ h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
 /* Overwrite tailwind's default paragraph styling that removes all p tag margins, adding margin after p tags */
 
 * > p {
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-top: clamp(1.2rem, 0.9500rem + 0.5000vw, 1.6rem);
 }
 
-* > p:last-child, * > p:only-child {
-  margin-bottom: 0;
+* > p:first-child, * > p:only-child {
+  margin-top: 0;
 }
 
 a {
@@ -830,12 +834,20 @@ ul, ol{
   width: 100%;
 }
 
+.tw-w-5\/6 {
+  width: 83.333333%;
+}
+
 .tw-max-w-60 {
   max-width: 15rem;
 }
 
 .tw-flex-none {
   flex: none;
+}
+
+.tw-list-circle {
+  list-style-type: circle;
 }
 
 .tw-list-none {
@@ -852,6 +864,10 @@ ul, ol{
 
 .tw-grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tw-grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .tw-flex-row {
@@ -886,8 +902,16 @@ ul, ol{
   justify-content: space-between;
 }
 
+.tw-justify-evenly {
+  justify-content: space-evenly;
+}
+
 .tw-gap-4 {
   gap: 1rem;
+}
+
+.tw-gap-6 {
+  gap: 1.5rem;
 }
 
 .tw-gap-x-10 {
@@ -913,10 +937,6 @@ ul, ol{
 .tw-gap-x-9 {
   -moz-column-gap: 2.25rem;
        column-gap: 2.25rem;
-}
-
-.tw-gap-y-3 {
-  row-gap: 0.75rem;
 }
 
 .tw-gap-y-6 {
@@ -1048,6 +1068,10 @@ ul, ol{
   text-align: center;
 }
 
+.tw-align-middle {
+  vertical-align: middle;
+}
+
 .tw-text-smd {
   font-size: 1.4rem;
 }
@@ -1163,6 +1187,10 @@ ul, ol{
     display: none;
   }
 
+  .lg\:tw-w-5\/6 {
+    width: 83.333333%;
+  }
+
   .lg\:tw-grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1179,9 +1207,9 @@ ul, ol{
     align-items: center;
   }
 
-  .lg\:tw-gap-x-12 {
-    -moz-column-gap: 3rem;
-         column-gap: 3rem;
+  .lg\:tw-gap-x-20 {
+    -moz-column-gap: 5rem;
+         column-gap: 5rem;
   }
 
   .lg\:tw-gap-y-5 {

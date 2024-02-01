@@ -15,6 +15,9 @@
 
     body{
         letter-spacing: 0.01rem;
+        line-height: calc(1 + 0.6 / var(--font-body-scale));
+        line-height: clamp(2.6rem, calc(1.5rem + 0.0375 * (100vw - 50rem)), 2.8rem); 
+        line-height: clamp(2.4rem, 2.1500rem + 0.5000vw, 2.8rem);
     }
     
     /* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's css too */    
@@ -116,10 +119,11 @@
 
     /* Overwrite tailwind's default paragraph styling that removes all p tag margins, adding margin after p tags */
     * > p {
-        margin-bottom: 1rem;
+        margin-top: 1rem;
+        margin-top: clamp(1.2rem, 0.9500rem + 0.5000vw, 1.6rem);
     }
-    * > p:last-child, * > p:only-child {
-        margin-bottom: 0;
+    * > p:first-child, * > p:only-child {
+        margin-top: 0;
     }
 
     a {
