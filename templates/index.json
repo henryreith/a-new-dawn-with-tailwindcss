@@ -279,15 +279,15 @@
         "product_variant_EicFDL"
       ],
       "settings": {
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-00c1a33f-94a1-495e-a9e3-307522f8fcf5",
         "animations_reveal_on_scroll": true,
         "border_on_top": false,
         "border_on_bottom": false,
         "title": "Featured Products",
         "subtext": "Check out our featured products!",
         "enable_buy_now_button": false,
-        "padding_top": 26,
-        "padding_bottom": 26,
+        "padding_top": 40,
+        "padding_bottom": 60,
         "card_color_scheme": "scheme-27244cb7-c5e8-44f4-8d36-07b36a3affa4",
         "card_background_color": "#ffffff"
       }
