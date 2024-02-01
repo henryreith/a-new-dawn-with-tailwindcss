@@ -209,6 +209,17 @@
           "secondary_button_label": "{{ shop.brand.colors.primary[0].background }}",
           "shadow": "#121212"
         }
+      },
+      "scheme-8c222fc8-3dc4-43dd-8e29-3185e5c1935e": {
+        "settings": {
+          "background": "#6dab3c",
+          "background_gradient": "",
+          "text": "#fff",
+          "button": "#fff",
+          "button_label": "#6dab3c",
+          "secondary_button_label": "#797575",
+          "shadow": "#121212"
+        }
       }
     }
   },
