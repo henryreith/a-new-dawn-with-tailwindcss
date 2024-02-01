@@ -1,0 +1,64 @@
+{% comment %}
+  Renders product buy-buttons.
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} product form id.
+  - section_id: {String} id of section to which this snippet belongs.
+
+    I haven't built the 'block' settings yet, but i'll keep it in here so i can build it later if i decide to include it in blocks.
+  Usage:
+  {% render 'buy-buttons-variant', block: block, product: product, variant: variant, product_form_id: product_form_id, section_id: section.id %}
+{% endcomment %}
+
+<div class='quick-add no-js-hidden'>
+  {%- liquid
+    assign product_form_id = 'quick-add-' | append: section_id | append: product_form_id
+  -%}
+
+  <product-form data-section-id='{{ section.id }}'>
+    {%- form 'product',
+      product,
+      id: product_form_id,
+      class: 'form',
+      novalidate: 'novalidate',
+      data-type: 'add-to-cart-form'
+    -%}
+      <input
+        type='hidden'
+        name='id'
+        value='{{ variant.id }}'
+        class='product-variant-id'
+        {% if variant.available == false %}
+          disabled
+        {% endif %}
+      >
+
+      <button
+        id='{{ product_form_id }}-submit'
+        type='submit'
+        name='add'
+        class='quick-add__submit button button--full-width button--secondary'
+        aria-haspopup='dialog'
+        aria-labelledby='{{ product_form_id }}-submit title-{{ section_id }}-{{ variant.id }}'
+        aria-live='polite'
+        data-sold-out-message='true'
+        {% if variant.available == false %}
+          disabled
+        {% endif %}
+      >
+        <span>
+          {%- if variant.available -%}
+            {{ 'products.product.add_to_cart' | t }}
+          {%- else -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- endif -%}
+        </span>
+        <span class='sold-out-message hidden'>
+          {{ 'products.product.sold_out' | t }}
+        </span>
+        {%- render 'loading-spinner' -%}
+      </button>
+    {%- endform -%}
+  </product-form>
+</div>
