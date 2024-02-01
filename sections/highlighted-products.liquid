@@ -9,97 +9,105 @@
   }
   /* Additional styles for swiper if not using Dawn's built-in slider */
 {% endstylesheet %}
+<div
+  id='section-{{ section.id }}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
+  {% if section.settings.animations_reveal_on_scroll %}
+    data-cascade
+  {% endif %}
+>
+  <div class='highlighted-products page-width'>
+    <h2 class='highlighted-products__title'>{{ section.settings.title }}</h2>
+    <div class='highlighted-products__subtext'>{{ section.settings.subtext }}</div>
 
-<div class='highlighted-products page-width'>
-  <h2 class='highlighted-products__title'>{{ section.settings.title }}</h2>
-  <p class='highlighted-products__subtext'>{{ section.settings.subtext }}</p>
-  <!-- Product Slider -->
-  <div class='highlighted-products__slider'>
-    {% for block in section.blocks %}
-      {% if block.type == 'product_variant' %}
-        {% assign selected_product = block.settings.product %}
-        {% assign selected_variant_id = block.settings.variant_id | plus: 0 %}
+    {% # Product Slider %}
+    <div class='highlighted-products__slider--wrapper lg:tw-w-5/6 tw-mx-auto tw-flex tw-justify-center'>
+      <div class='highlighted-products__slider tw-grid tw-grid-cols-3 tw-justify-evenly tw-gap-6'>
+        {% for block in section.blocks %}
+          {% if block.type == 'product_variant' %}
+            <div
+              class='highlighted-products__slider--slide color-{{ section.settings.card_color_scheme }} gradient'
+              style='background-color:{{ section.settings.card_background_color }}'
+              {{ block.shopify_attributes }}
+            >
+              {% assign selected_product = block.settings.product %}
+              {% assign selected_variant_id = block.settings.variant_id | plus: 0 %}
 
-        {% assign variant_found = false %}
-        {% for variant in selected_product.variants %}
-          {% if variant.id == selected_variant_id %}
-            {% assign variant_found = true %}
+              {% assign variant_found = false %}
+              {% for variant in selected_product.variants %}
+                {% if variant.id == selected_variant_id %}
+                  {% assign variant_found = true %}
 
-            {% comment %}
-              {% for i in (1..10) %}
-                {% capture image_setting %}image_{{ i }}{% endcapture %}
-                {% if block.settings[image_setting] %}
-                  <img src='{{ block.settings[image_setting] | img_url }}' alt='Image {{ i }}'>
-                  {{ block.settings[image_setting] }}
+                  <div class='highlighted-products__slider--product title'>
+                    <span>{{ block.settings.custom_varient_title }}</span>
+                  </div>
+                  <div class='highlighted-products__slider--price'>
+                    <p>Price: {{ variant.price | money_with_currency }}</p>
+                  </div>
+
                   {%- liquid
-                    assign height = block.settings[image_setting].width | divided_by: block.settings[image_setting].aspect_ratio | round
                     assign sizes = '100vw'
-                    assign widths = '375, 550, 750, 1100, 1500, 1780, 2000'
-                    assign fetch_priority = 'auto'
-                    if section.index == 1
-                      assign fetch_priority = 'high'
-                    endif
+                    assign widths = '375, 550, 750, 1100, 1500'
+                    assign image_classes = 'swiper-lazy'
                   -%}
-                  {%- if forloop.first %}
-                    {{
-                      block.settings[image_setting]
-                      | image_url: width: 2000
-                      | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
-                    }}
-                  {%- else -%}
-                    {{
-                      block.settings.image
-                      | image_url: width: 2000
-                      | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
-                    }}
-                  {%- endif -%}
+                  {% for i in (1..10) %}
+                    {% capture image_setting %}image_{{ i }}{% endcapture %}
+                    {% if block.settings[image_setting] %}
+                      {%- liquid
+                        assign height = block.settings[image_setting].width | divided_by: block.settings[image_setting].aspect_ratio | round
+                        assign fetch_priority = 'auto'
+                        if section.index == 1 and forloop.first
+                          assign fetch_priority = 'high'
+                          assign loading = 'eager'
+                        endif
+                      -%}
+                      {{
+                        block.settings[image_setting]
+                        | image_url: width: 1500
+                        | image_tag:
+                          height: height,
+                          class: image_classes,
+                          sizes: sizes,
+                          widths: widths,
+                          fetchpriority: fetch_priority
+                      }}
+                    {% endif %}
+                  {% endfor %}
+                  <!-- Custom Description -->
+                  <div class='highlighted-products__description'>
+                    {{ block.settings.custom_description | escape }}
+                  </div>
+
+                  {%
+                    render 'buy-button-variant',
+                    product: selected_product,
+                    variant: variant,
+                    product_form_id: variant.id,
+                    section_id: section.id,
+                    enable_buy_now_button: section.settings.enable_buy_now_button,
+                  %}
+
+                  {% break %}
                 {% endif %}
               {% endfor %}
-            {% endcomment %}
-            {%- liquid
-              assign sizes = '100vw'
-              assign widths = '375, 550, 750, 1100, 1500'
-              assign image_classes = 'swiper-lazy'
-            -%}
-            {% for i in (1..10) %}
-              {% capture image_setting %}image_{{ i }}{% endcapture %}
-              {% if block.settings[image_setting] %}
-                {%- liquid
-                  assign height = block.settings[image_setting].width | divided_by: block.settings[image_setting].aspect_ratio | round
-                  assign fetch_priority = 'auto'
-                  if section.index == 1 and forloop.first
-                    assign fetch_priority = 'high'
-                    assign loading = 'eager'
-                  endif
-                -%}
-                {{
-                  block.settings[image_setting]
-                  | image_url: width: 1500
-                  | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
-                }}
-              {% endif %}
-            {% endfor %}
 
-            <h2>Variant Title: {{ variant.title }}</h2>
-            <p>{{ block.settings.custom_description }}</p>
-            <p>Price: {{ variant.price | money_with_currency }}</p>
-            <p>SKU: {{ variant.sku }}</p>
-            <!-- Add more properties as needed -->
-            {% break %}
+              {% unless variant_found %}
+                <p>Variant not found in product.</p>
+              {% endunless %}
+            </div>
           {% endif %}
         {% endfor %}
-
-        {% unless variant_found %}
-          <p>Variant not found 1.</p>
-        {% endunless %}
-      {% endif %}
-    {% endfor %}
+      </div>
+      {% # END Slider %}
+    </div>
+    {% # END .highlighted-products__slider--wrapper %}
+    <!-- Initialize slider using Dawn's built-in slider or SwiperJS -->
+    <script>
+      // Your slider initialization code here
+    </script>
   </div>
-  <!-- Initialize slider using Dawn's built-in slider or SwiperJS -->
-  <script>
-    // Your slider initialization code here
-  </script>
 </div>
+{% # END #section-ID %}
 
 {% schema %}
 {
@@ -112,28 +120,86 @@
   },
   "settings": [
     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "animations_reveal_on_scroll",
+      "label": "t:sections.benefits-inline.settings.animations_reveal_on_scroll.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_top",
+      "label": "t:sections.benefits-inline.settings.border_on_top.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_bottom",
+      "label": "t:sections.benefits-inline.settings.border_on_bottom.label",
+      "default": false
+    },
+    {
       "type": "text",
       "id": "title",
       "label": "Title",
       "default": "Featured Products"
     },
     {
-      "type": "textarea",
+      "type": "liquid",
       "id": "subtext",
-      "label": "Subtext",
-      "default": "Check out our featured products!"
+      "label": "Add an elevator pictch about your highlighted products here.",
+      "default": "Check out our featured products! They do X, Y & Z."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_buy_now_button",
+      "label": "Enable Buy Now Button along side add to cart for each varient",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 26
+    },
+    {
+      "type": "header",
+      "content": "Card Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Select the color scheme for the cards below. This will set the header, footer and add to cart cart button. You can then select the description area background color below"
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
     },
     {
       "type": "color",
-      "id": "background_color",
-      "label": "Background Color",
+      "id": "card_background_color",
+      "label": "Card Background Color",
       "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text Color",
-      "default": "#000000"
     }
   ],
   "blocks": [
