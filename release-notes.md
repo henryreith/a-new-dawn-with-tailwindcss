@@ -20,6 +20,9 @@
 ## Customised Default Snippets
 - social-icons.liquid: Updated social media snippet to include title='Connect with {{ shop_name }} on XNetwork' & target='_blank' on links
 
+## Customised CSS
+component-loading-spinner.css - Updated the dashoffset from 280 to 285 and 50% from 75 to 80 just so it doesn't look like other Dawn sites. Small differences make the difference
+
 
 ## Settings updates
 - Preload main stylesheets in theme.liquid at top of file as print and add on.load to change it to screen. This means they start to be be loaded instantly, and then they are left in as full stylesheet loads later on in the head, which means it will render block if they aren't loaded yet. 
