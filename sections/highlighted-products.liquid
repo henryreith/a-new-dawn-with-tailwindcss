@@ -25,14 +25,63 @@
           {% if variant.id == selected_variant_id %}
             {% assign variant_found = true %}
 
+            {% comment %}
+              {% for i in (1..10) %}
+                {% capture image_setting %}image_{{ i }}{% endcapture %}
+                {% if block.settings[image_setting] %}
+                  <img src='{{ block.settings[image_setting] | img_url }}' alt='Image {{ i }}'>
+                  {{ block.settings[image_setting] }}
+                  {%- liquid
+                    assign height = block.settings[image_setting].width | divided_by: block.settings[image_setting].aspect_ratio | round
+                    assign sizes = '100vw'
+                    assign widths = '375, 550, 750, 1100, 1500, 1780, 2000'
+                    assign fetch_priority = 'auto'
+                    if section.index == 1
+                      assign fetch_priority = 'high'
+                    endif
+                  -%}
+                  {%- if forloop.first %}
+                    {{
+                      block.settings[image_setting]
+                      | image_url: width: 2000
+                      | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
+                    }}
+                  {%- else -%}
+                    {{
+                      block.settings.image
+                      | image_url: width: 2000
+                      | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+                    }}
+                  {%- endif -%}
+                {% endif %}
+              {% endfor %}
+            {% endcomment %}
+            {%- liquid
+              assign sizes = '100vw'
+              assign widths = '375, 550, 750, 1100, 1500'
+              assign image_classes = 'swiper-lazy'
+            -%}
             {% for i in (1..10) %}
               {% capture image_setting %}image_{{ i }}{% endcapture %}
               {% if block.settings[image_setting] %}
-                <img src='{{ block.settings[image_setting] | img_url }}' alt='Image {{ i }}'>
+                {%- liquid
+                  assign height = block.settings[image_setting].width | divided_by: block.settings[image_setting].aspect_ratio | round
+                  assign fetch_priority = 'auto'
+                  if section.index == 1 and forloop.first
+                    assign fetch_priority = 'high'
+                    assign loading = 'eager'
+                  endif
+                -%}
+                {{
+                  block.settings[image_setting]
+                  | image_url: width: 1500
+                  | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
+                }}
               {% endif %}
             {% endfor %}
 
             <h2>Variant Title: {{ variant.title }}</h2>
+            <p>{{ block.settings.custom_description }}</p>
             <p>Price: {{ variant.price | money_with_currency }}</p>
             <p>SKU: {{ variant.sku }}</p>
             <!-- Add more properties as needed -->
@@ -114,10 +163,9 @@
           "default": "1 Month Supply"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "custom_description",
-          "label": "Custom Description",
-          "default": "This is a great product!"
+          "label": "Custom Description"
         },
         {
           "type": "header",
