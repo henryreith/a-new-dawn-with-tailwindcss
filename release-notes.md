@@ -6,10 +6,12 @@
 - Inline Benefits: icon + headline text
 - Image with rich text overlay
 - Sub menu
+- Highlighted Products - Section to show off specific variants. Can be used on any page. Can be used to show off specific variants of a product.
 - Footer - Modern look to the footer. Including logo, tagline, social icons. Block based so can be customised in the theme editor & footer aside for currency selector, payment icons, but country selector has been left off for now.
 
 ## Added Snippets
 - Breadcrumbs
+- Buy now / Add to cart button for individual variants. Used in highlighted products section where we display popular varients vs the whole product.
 
 ## Customised Default Sections
 - custom-liquid.liquid - Added option to define page width.
