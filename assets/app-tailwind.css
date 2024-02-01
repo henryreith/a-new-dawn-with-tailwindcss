@@ -4,13 +4,15 @@
 
 @layer base {
     html {
-    scroll-behavior: smooth;
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     html,
     :host {
-    line-height: 1.5;
-    font-family: var(--font-body-family);
+        line-height: 1.5;
+        font-family: var(--font-body-family);
     }
 
     body{
@@ -149,6 +151,11 @@
         list-style: inherit;
         margin: inherit;
         padding: inherit;
+    }
+
+    /* When synamic buttons are showing add a margin to top of dynamic so they don't sit on top of each other */
+    [data-type="add-to-cart-form"] > [data-shopify="payment-button"]{
+        margin-top: 1rem !important;
     }
 } /* end @layer base */
 

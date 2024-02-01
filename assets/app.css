@@ -446,6 +446,8 @@ video {
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html,
@@ -595,6 +597,12 @@ ul, ol{
   list-style: inherit;
   margin: inherit;
   padding: inherit;
+}
+
+/* When synamic buttons are showing add a margin to top of dynamic so they don't sit on top of each other */
+
+[data-type="add-to-cart-form"] > [data-shopify="payment-button"]{
+  margin-top: 1rem !important;
 }
 
 *, ::before, ::after {
@@ -790,8 +798,16 @@ ul, ol{
   margin-right: 0.75rem;
 }
 
+.tw-mt-10 {
+  margin-top: 2.5rem;
+}
+
 .tw-mt-12 {
   margin-top: 3rem;
+}
+
+.tw-mt-16 {
+  margin-top: 4rem;
 }
 
 .\!tw-block {
@@ -832,10 +848,6 @@ ul, ol{
 
 .tw-w-full {
   width: 100%;
-}
-
-.tw-w-5\/6 {
-  width: 83.333333%;
 }
 
 .tw-max-w-60 {
@@ -906,12 +918,12 @@ ul, ol{
   justify-content: space-evenly;
 }
 
-.tw-gap-4 {
-  gap: 1rem;
+.tw-gap-12 {
+  gap: 3rem;
 }
 
-.tw-gap-6 {
-  gap: 1.5rem;
+.tw-gap-4 {
+  gap: 1rem;
 }
 
 .tw-gap-x-10 {
@@ -1010,6 +1022,14 @@ ul, ol{
   padding: 0px;
 }
 
+.tw-p-4 {
+  padding: 1rem;
+}
+
+.tw-p-7 {
+  padding: 1.75rem;
+}
+
 .\!tw-px-0 {
   padding-left: 0px !important;
   padding-right: 0px !important;
@@ -1018,6 +1038,11 @@ ul, ol{
 .\!tw-py-0 {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
+}
+
+.tw-px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .tw-px-2 {
@@ -1035,9 +1060,19 @@ ul, ol{
   padding-bottom: 0.25rem;
 }
 
+.tw-py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .tw-py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.tw-py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .\!tw-pb-4 {
@@ -1056,6 +1091,10 @@ ul, ol{
   padding-bottom: 3rem;
 }
 
+.tw-pb-6 {
+  padding-bottom: 1.5rem;
+}
+
 .tw-pr-4 {
   padding-right: 1rem;
 }
@@ -1068,8 +1107,8 @@ ul, ol{
   text-align: center;
 }
 
-.tw-align-middle {
-  vertical-align: middle;
+.tw-text-\[3\.8rem\] {
+  font-size: 3.8rem;
 }
 
 .tw-text-smd {
@@ -1218,6 +1257,15 @@ ul, ol{
 
   .lg\:tw-justify-self-end {
     justify-self: end;
+  }
+
+  .lg\:tw-p-8 {
+    padding: 2rem;
+  }
+
+  .lg\:tw-px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .lg\:tw-text-left {
