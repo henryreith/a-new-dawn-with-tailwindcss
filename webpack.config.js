@@ -75,7 +75,8 @@ module.exports = (env) => {
       }),
       new CopyWebpackPlugin({
         patterns: [
-          { from: 'node_modules/swiper/swiper-bundle.min.js', to: 'swiper.min.js' },
+          { from: 'node_modules/swiper/swiper-bundle.min.js', to: 'swiper-bundle.min.js' },
+          { from: 'src/js/highlighted_products.js', to: 'highlighted_products.js'}
           // Add other files or directories here
         ],
       }),
