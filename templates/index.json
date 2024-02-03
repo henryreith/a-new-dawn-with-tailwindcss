@@ -1,51 +1,58 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero_home_page_xiRKQB": {
+      "type": "hero-home-page",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slider_yjw7nJ": {
+          "type": "slider",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
+            "slide_title": "@doggy1",
+            "slide_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg"
           }
         },
-        "text": {
-          "type": "text",
+        "slider_Rz8Vkc": {
+          "type": "slider",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "slide_title": "@doggy_Boo",
+            "slide_image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg"
           }
         },
-        "button": {
-          "type": "buttons",
+        "slider_wF7MJn": {
+          "type": "slider",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "slide_title": "Water Park",
+            "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+          }
+        },
+        "slider_rKMaJF": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "Product",
+            "slide_image": "shopify:\/\/shop_images\/180_Oh_Crap_Compostable_Dog_Poop_Bags.jpg"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "slider_yjw7nJ",
+        "slider_Rz8Vkc",
+        "slider_wF7MJn",
+        "slider_rKMaJF"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
-        "image_overlay_opacity": 30,
-        "image_height": "medium",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "image_behavior": "zoom-in",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "color_scheme": "",
+        "animations_reveal_on_scroll": true,
+        "border_on_top": false,
+        "border_on_bottom": false,
+        "title": "<h1>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags<\/span>.<\/h1>",
+        "subtext": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic<\/span> Dog Poop Bag.<\/h2>",
+        "reviewsio": "4.9\/5",
+        "card_color_scheme": "",
+        "card_background_color": "#ffffff",
+        "card_padding": 36,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "slide_color_scheme": "",
+        "slide_background_color": "#ffffff"
       }
     },
     "rich_text": {
@@ -294,7 +301,7 @@
     }
   },
   "order": [
-    "image_banner",
+    "hero_home_page_xiRKQB",
     "rich_text",
     "featured_collection",
     "featured_product_WVxdGX",
