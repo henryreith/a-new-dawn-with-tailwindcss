@@ -49,7 +49,7 @@
         "card_color_scheme": "",
         "card_background_color": "#ffffff",
         "card_padding": 36,
-        "padding_top": 20,
+        "padding_top": 36,
         "padding_bottom": 20,
         "slide_color_scheme": "",
         "slide_background_color": "#ffffff"
@@ -91,7 +91,7 @@
         "animations_reveal_on_scroll": true,
         "show_eyecatcher_above_section": true,
         "border_on_top": false,
-        "border_on_bottom": false,
+        "border_on_bottom": true,
         "padding_top": 26,
         "padding_bottom": 26
       }
