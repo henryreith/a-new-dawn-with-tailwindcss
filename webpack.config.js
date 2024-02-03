@@ -12,11 +12,11 @@ module.exports = (env) => {
     // Adjust the mode based on the passed environment variable
     mode: isProduction ? 'production' : 'development',
     // Enable source maps conditionally
-    devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
+    devtool: isProduction ? false : 'cheap-module-source-map',
     entry: {
-      swiper: './src/scss/swiper.scss',
-      base: './assets/base.css',
-      app: './assets/app.css',
+      swiperStyles: './src/scss/swiper.scss',
+      // base: './assets/base.css',
+      // app: './assets/app.css',
       // Add other entry points for JS or CSS here
     },
     output: {
@@ -58,12 +58,15 @@ module.exports = (env) => {
     optimization: {
       minimizer: [
         new TerserPlugin({
-          test: /\.js(\?.*)?$/i,
-          parallel: true, // Enable parallel processing
+            parallel: true, // Enable parallel processing
+            terserOptions: {
+                format: {
+                    comments: false,
+                },
+            },
+            extractComments: false,
         }),
-        new CssMinimizerPlugin({
-          parallel: true, // Enable parallel processing
-        }),
+        new CssMinimizerPlugin(),
       ],
     },
     plugins: [
@@ -72,7 +75,7 @@ module.exports = (env) => {
       }),
       new CopyWebpackPlugin({
         patterns: [
-          { from: 'node_modules/swiper/swiper-bundle.min.js', to: 'assets/swiper.min.js' },
+          { from: 'node_modules/swiper/swiper-bundle.min.js', to: 'swiper.min.js' },
           // Add other files or directories here
         ],
       }),
