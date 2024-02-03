@@ -705,6 +705,10 @@ ul, ol{
   --tw-backdrop-sepia:  ;
 }
 
+.tw-invisible {
+  visibility: hidden;
+}
+
 .tw-absolute {
   position: absolute;
 }
@@ -737,12 +741,32 @@ ul, ol{
   order: 2;
 }
 
+.tw-order-3 {
+  order: 3;
+}
+
+.tw-order-4 {
+  order: 4;
+}
+
+.tw-order-5 {
+  order: 5;
+}
+
 .tw-col-span-12 {
   grid-column: span 12 / span 12;
 }
 
 .tw-col-span-2 {
   grid-column: span 2 / span 2;
+}
+
+.tw-col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.tw-row-span-1 {
+  grid-row: span 1 / span 1;
 }
 
 .\!tw-m-0 {
@@ -830,6 +854,10 @@ ul, ol{
   display: grid;
 }
 
+.tw-hidden {
+  display: none;
+}
+
 .tw-h-10 {
   height: 2.5rem;
 }
@@ -862,12 +890,28 @@ ul, ol{
   flex: none;
 }
 
+.tw-shrink {
+  flex-shrink: 1;
+}
+
 .tw-list-circle {
   list-style-type: circle;
 }
 
 .tw-list-none {
   list-style-type: none;
+}
+
+.tw-grid-flow-row {
+  grid-auto-flow: row;
+}
+
+.tw-grid-flow-col {
+  grid-auto-flow: column;
+}
+
+.tw-grid-flow-row-dense {
+  grid-auto-flow: row dense;
 }
 
 .tw-grid-cols-1 {
@@ -902,6 +946,10 @@ ul, ol{
   align-content: center;
 }
 
+.tw-content-start {
+  align-content: flex-start;
+}
+
 .tw-items-start {
   align-items: flex-start;
 }
@@ -928,6 +976,14 @@ ul, ol{
 
 .tw-gap-4 {
   gap: 1rem;
+}
+
+.tw-gap-1 {
+  gap: 0.25rem;
+}
+
+.tw-gap-0 {
+  gap: 0px;
 }
 
 .tw-gap-x-10 {
@@ -961,6 +1017,14 @@ ul, ol{
 
 .tw-gap-y-8 {
   row-gap: 2rem;
+}
+
+.tw-self-start {
+  align-self: flex-start;
+}
+
+.tw-self-stretch {
+  align-self: stretch;
 }
 
 .tw-justify-self-center {
@@ -1224,6 +1288,22 @@ ul, ol{
 }
 
 @media (min-width: 990px) {
+  .lg\:tw-visible {
+    visibility: visible;
+  }
+
+  .lg\:tw-order-last {
+    order: 9999;
+  }
+
+  .lg\:tw-order-3 {
+    order: 3;
+  }
+
+  .lg\:tw-order-4 {
+    order: 4;
+  }
+
   .lg\:tw-col-span-3 {
     grid-column: span 3 / span 3;
   }
@@ -1234,6 +1314,14 @@ ul, ol{
 
   .lg\:tw-row-span-4 {
     grid-row: span 4 / span 4;
+  }
+
+  .lg\:tw-row-start-1 {
+    grid-row-start: 1;
+  }
+
+  .lg\:tw-row-end-4 {
+    grid-row-end: 4;
   }
 
   .lg\:tw-flex {
@@ -1256,6 +1344,14 @@ ul, ol{
     grid-auto-flow: column;
   }
 
+  .lg\:tw-grid-flow-row-dense {
+    grid-auto-flow: row dense;
+  }
+
+  .lg\:tw-grid-flow-col-dense {
+    grid-auto-flow: column dense;
+  }
+
   .lg\:tw-grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1270,6 +1366,10 @@ ul, ol{
 
   .lg\:tw-grid-rows-4 {
     grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:tw-grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:tw-flex-row {
