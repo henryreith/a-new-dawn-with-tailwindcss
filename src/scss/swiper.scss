@@ -1,1 +1,39 @@
-// Add Swiper Moduels below 
+// Custom Swiper JS Styles
+
+/* Swiper Variables */
+// Import variables
+@import "./swiper/swiper_variables";
+
+// Core
+@import "../../node_modules/swiper/swiper.scss";
+
+// Moduels
+// Copied from the v9 swiper.scss setup so there may be some missing for the current version
+@import "../../node_modules/swiper/modules/a11y.scss";
+@import "../../node_modules/swiper/modules/autoplay.scss";
+// @import "../../node_modules/swiper/modules/controller.scss";
+@import "../../node_modules/swiper/modules/effect-cards.scss";
+// @import "../../node_modules/swiper/modules/effect-coverflow.scss";
+// @import "../../node_modules/swiper/modules/effect-creative.scss";
+// @import "../../node_modules/swiper/modules/effect-cube.scss";
+// @import "../../node_modules/swiper/modules/effect-fade.scss";
+// @import "../../node_modules/swiper/modules/effect-flip.scss";
+// @import "../../node_modules/swiper/modules/free-mode.scss";
+// @import "../../node_modules/swiper/modules/grid.scss";
+// @import "../../node_modules/swiper/modules/hash-navigation.scss";
+// @import "../../node_modules/swiper/modules/history.scss";
+// @import "../../node_modules/swiper/modules/keyboard.scss";
+// @import "../../node_modules/swiper/modules/manipulation.scss";
+// @import "../../node_modules/swiper/modules/mousewheel.scss";
+@import "../../node_modules/swiper/modules/navigation.scss";
+@import "../../node_modules/swiper/modules/pagination.scss";
+// @import "../../node_modules/swiper/modules/parallax.scss";
+// @import "../../node_modules/swiper/modules/scrollbar.scss";
+// @import "../../node_modules/swiper/modules/thumbs.scss";
+// @import "../../node_modules/swiper/modules/virtual.scss";
+// @import "../../node_modules/swiper/modules/zoom.scss";
+
+@font-face {
+    font-family: 'swiper-icons';
+    font-display: swap;
+  }
