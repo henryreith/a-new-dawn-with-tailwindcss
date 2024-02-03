@@ -6,19 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
+    "build": "webpack --env production=true",
+    "dev": "webpack --watch --env development=true",
+    "copy-node-modules": "webpack --env copyOnly",
     "watch": "webpack --watch",
-    "build": "webpack --mode production"
+    "tailwind:watch": "npx tailwindcss -i ./src/tailwind/app-tailwind.css -o ./assets/app.css --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TrellisCommerce/shopify-dawn-tailwind-starter-base.git"
+    "url": "git+https://github.com/henryreith/a-new-dawn-with-tailwindcss.git"
   },
-  "author": "Trellis",
+  "author": "Henry Reith",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TrellisCommerce/shopify-dawn-tailwind-starter-base/issues"
+    "url": "https://github.com/henryreith/a-new-dawn-with-tailwindcss/issues"
   },
-  "homepage": "https://github.com/TrellisCommerce/shopify-dawn-tailwind-starter-base#readme",
+  "homepage": "https://github.com/henryreith/a-new-dawn-with-tailwindcss#readme",
   "devDependencies": {
     "@babel/core": "^7.23.7",
     "@babel/preset-env": "^7.23.8",
@@ -29,12 +32,16 @@
     "css-minimizer-webpack-plugin": "^6.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
-    "mini-css-extract-plugin": "^2.7.7",
+    "mini-css-extract-plugin": "^2.8.0",
     "postcss": "^8.4.12",
     "postcss-loader": "^7.3.4",
     "prettier": "^2.5.1",
+    "sass": "^1.70.0",
+    "sass-loader": "^14.1.0",
+    "style-loader": "^3.3.4",
     "tailwindcss": "^3.4.1",
-    "webpack": "^5.89.0",
+    "terser-webpack-plugin": "^5.3.10",
+    "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
