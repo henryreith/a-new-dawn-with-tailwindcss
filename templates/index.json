@@ -39,13 +39,13 @@
         "slider_rKMaJF"
       ],
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "animations_reveal_on_scroll": true,
         "border_on_top": false,
         "border_on_bottom": false,
         "title": "<h1>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags<\/span>.<\/h1>",
         "subtext": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic<\/span> Dog Poop Bag.<\/h2>",
-        "reviewsio": "4.9\/5",
+        "reviewsio": "<div class=\"reviews-io-nuggets-bar-widget\" data-widget-id=\"apiZsA7RfX5BHwOl\" data-store-name=\"oh-crap\" lang=\"en\" data-sku=\"[! Product specific SKU's for which nuggets should shown: e.g sku1;sku2; removing the brackets !]\" tags=\"[! Remove brackets and provide tags if you wish to filter nuggets based on tags: e.g tag1;tag2 !]\" branch=\"[! Remove brakcets and provide a branch name if you wish to filter nuggets by branch !]\"><\/div>\n        <script src=\"\/\/widget.reviews.io\/modern-widgets\/nuggets.js\" async><\/script>",
         "card_color_scheme": "",
         "card_background_color": "#ffffff",
         "card_padding": 36,
