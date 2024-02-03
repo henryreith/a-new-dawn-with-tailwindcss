@@ -5,8 +5,14 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env) => {
+  // Determine if we're doing a production build or not
+  const isProduction = env.production === true;
+
   return {
-    mode: 'production',
+    // Adjust the mode based on the passed environment variable
+    mode: isProduction ? 'production' : 'development',
+    // Enable source maps conditionally
+    devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
     entry: {
       swiper: './src/scss/swiper.scss',
       base: './assets/base.css',
@@ -53,8 +59,11 @@ module.exports = (env) => {
       minimizer: [
         new TerserPlugin({
           test: /\.js(\?.*)?$/i,
+          parallel: true, // Enable parallel processing
         }),
-        new CssMinimizerPlugin(),
+        new CssMinimizerPlugin({
+          parallel: true, // Enable parallel processing
+        }),
       ],
     },
     plugins: [
