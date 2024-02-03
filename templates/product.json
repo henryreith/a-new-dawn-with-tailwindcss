@@ -57,7 +57,7 @@
         "custom_liquid_cLkbqt": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{{product.description | truncatewords: 23, \".\" }}\n{% if template.name == 'product' %}\n<a href='{{ product.url }}#extended_diescription' style='text-decoration:underline'>Continue reading...<\/a>\n{% else %}\n...\n{% endif %}"
+            "custom_liquid": "{{product.description | truncatewords: 23, \".\" }}\n{% if template.name == 'product' %}\n<a href='#extended_diescription' style='text-decoration:underline'>Continue reading...<\/a>\n{% else %}\n...\n{% endif %}"
           }
         },
         "collapsible-row-0": {
