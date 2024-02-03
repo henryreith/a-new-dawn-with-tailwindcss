@@ -251,6 +251,53 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "highlighted_products_jwhF6k": {
+      "type": "highlighted-products",
+      "blocks": {
+        "product_variant_PQG4tG": {
+          "type": "product_variant",
+          "settings": {
+            "product": "dog-poop-bags",
+            "variant_id": "42544313303261",
+            "custom_varient_title": "1 Month Supply",
+            "custom_description": "45 Bags. Box contains 3 rolls of 15 bags.<br>\nAll new design - Fit's Oh Crap & standard dog poop bag holders. plus $4.50 shipping.",
+            "image_1": "shopify:\/\/shop_images\/45_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
+            "image_2": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
+            "image_3": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_d4a58994-44ec-4129-b70a-a3420b17405d.jpg"
+          }
+        },
+        "product_variant_EicFDL": {
+          "type": "product_variant",
+          "settings": {
+            "product": "dog-poop-bags",
+            "variant_id": "42544313237725",
+            "custom_varient_title": "6 Month Supply",
+            "custom_description": "180 Bags. 12 rolls of 15 bags.<br>\nAll new design - Fit's Oh Crap & standard dog poop bag holders. plus $9.50 shipping.",
+            "image_1": "shopify:\/\/shop_images\/180_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
+            "image_2": "shopify:\/\/shop_images\/oh-crap-dog-bag-holder-front-on_2dfa88e1-68b6-400d-a649-c8bc1161d0f8.jpg",
+            "image_3": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
+            "image_4": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "product_variant_PQG4tG",
+        "product_variant_EicFDL"
+      ],
+      "settings": {
+        "color_scheme": "scheme-8c222fc8-3dc4-43dd-8e29-3185e5c1935e",
+        "animations_reveal_on_scroll": true,
+        "border_on_top": false,
+        "border_on_bottom": false,
+        "title": "Oh Crap - Australia's No1 Non-Plastic Dog Poop Bag",
+        "subtext": "<p class=\"text-white\" >Award winning eco-friendly dog poop bags that are certified compostable. They are made from an alternative to plastic called cornstarch and break down in just 3 months! Plus they are 3x thicker than average poo bags so you don't get that warm, wet feeling every time you pick up your furry friends business. Join the #OhCrapFamily today and start <i>changing the world one poop at a time.<\/i><\/p>",
+        "enable_buy_now_button": false,
+        "padding_top": 40,
+        "padding_bottom": 60,
+        "card_color_scheme": "scheme-27244cb7-c5e8-44f4-8d36-07b36a3affa4",
+        "card_background_color": "#ffffff"
+      }
     }
   },
   "order": [
@@ -259,6 +306,7 @@
     "featured_collection",
     "featured_product_WVxdGX",
     "multicolumn",
-    "featured_collection_dpiwjx"
+    "featured_collection_dpiwjx",
+    "highlighted_products_jwhF6k"
   ]
 }
