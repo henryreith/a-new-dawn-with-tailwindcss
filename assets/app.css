@@ -1232,6 +1232,10 @@ ul, ol{
     grid-column: span 9 / span 9;
   }
 
+  .lg\:tw-row-span-4 {
+    grid-row: span 4 / span 4;
+  }
+
   .lg\:tw-flex {
     display: flex;
   }
@@ -1248,12 +1252,24 @@ ul, ol{
     width: auto;
   }
 
+  .lg\:tw-grid-flow-col {
+    grid-auto-flow: column;
+  }
+
   .lg\:tw-grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:tw-grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:tw-grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:tw-grid-rows-4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:tw-flex-row {
