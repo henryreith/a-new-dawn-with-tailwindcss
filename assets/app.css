@@ -850,6 +850,10 @@ ul, ol{
   width: 100%;
 }
 
+.tw-w-3\/5 {
+  width: 60%;
+}
+
 .tw-max-w-60 {
   max-width: 15rem;
 }
@@ -1075,6 +1079,16 @@ ul, ol{
   padding-bottom: 2rem;
 }
 
+.tw-px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.tw-px-48 {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
 .\!tw-pb-4 {
   padding-bottom: 1rem !important;
 }
@@ -1230,6 +1244,10 @@ ul, ol{
     width: 83.333333%;
   }
 
+  .lg\:tw-w-auto {
+    width: auto;
+  }
+
   .lg\:tw-grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1268,8 +1286,19 @@ ul, ol{
     padding-right: 4rem;
   }
 
+  .lg\:tw-px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
   .lg\:tw-text-left {
     text-align: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .xlg\:tw-w-5\/6 {
+    width: 83.333333%;
   }
 }
 

@@ -18,6 +18,7 @@ module.exports = (env) => {
       // base: './assets/base.css',
       // app: './assets/app.css',
       // Add other entry points for JS or CSS here
+      highlighted_products: './src/js/highlighted_products.js',
     },
     output: {
       path: path.resolve(__dirname, 'assets'),
@@ -76,8 +77,8 @@ module.exports = (env) => {
       new CopyWebpackPlugin({
         patterns: [
           { from: 'node_modules/swiper/swiper-bundle.min.js', to: 'swiper-bundle.min.js' },
-          { from: 'src/js/highlighted_products.js', to: 'highlighted_products.js'}
           // Add other files or directories here
+          // { from: 'src/js/highlighted_products.js', to: 'highlighted_products.js' }
         ],
       }),
     ],
