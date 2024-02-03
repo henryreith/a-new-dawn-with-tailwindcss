@@ -55,6 +55,47 @@
         "slide_background_color": "#ffffff"
       }
     },
+    "benefit_inline_r8EHBj": {
+      "type": "benefit-inline",
+      "blocks": {
+        "benefit_fTH766": {
+          "type": "benefit",
+          "settings": {
+            "title": "AWESOME",
+            "icon_html": ""
+          }
+        },
+        "benefit_YdDf3q": {
+          "type": "benefit",
+          "settings": {
+            "title": "GREAT",
+            "icon_html": ""
+          }
+        },
+        "benefit_kVeCdF": {
+          "type": "benefit",
+          "settings": {
+            "title": "FANTASTIC",
+            "icon_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_fTH766",
+        "benefit_YdDf3q",
+        "benefit_kVeCdF"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "font_size": 26,
+        "animations_reveal_on_scroll": true,
+        "show_eyecatcher_above_section": true,
+        "border_on_top": false,
+        "border_on_bottom": false,
+        "padding_top": 26,
+        "padding_bottom": 26
+      }
+    },
     "rich_text": {
       "type": "rich-text",
       "blocks": {
@@ -302,6 +343,7 @@
   },
   "order": [
     "hero_home_page_xiRKQB",
+    "benefit_inline_r8EHBj",
     "rich_text",
     "featured_collection",
     "featured_product_WVxdGX",
