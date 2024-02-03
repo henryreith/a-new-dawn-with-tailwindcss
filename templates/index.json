@@ -93,7 +93,7 @@
         "border_on_top": false,
         "border_on_bottom": true,
         "padding_top": 26,
-        "padding_bottom": 26
+        "padding_bottom": 15
       }
     },
     "rich_text": {
