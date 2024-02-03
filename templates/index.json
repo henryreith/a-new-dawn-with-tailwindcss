@@ -45,7 +45,7 @@
         "border_on_bottom": false,
         "title": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags<\/span>.<\/h1>",
         "subtext": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic<\/span> Dog Poop Bag.<\/h2>",
-        "reviewsio": "<div id=\"reviewsio_hero_summary\" style='max-width: 35em;\n    margin: 0.5em 0;\n    min-height: 55px;'>\n                <div class=\"reviews-io-rating-bar-widget\" data-widget-id=\"jXLfhonmWcpzUR87\" data-store-name=\"oh-crap\" lang=\"en\"><\/div>\n                <script src=\"\/\/widget.reviews.io\/modern-widgets\/rating-bar.js\" async><\/script>\n            <\/div>",
+        "reviewsio": "<div id=\"reviewsio_hero_summary\" style='max-width: 25em;\n    margin: 0.5em 0;\n    min-height: 55px;'>\n                <div class=\"reviews-io-rating-bar-widget\" data-widget-id=\"jXLfhonmWcpzUR87\" data-store-name=\"oh-crap\" lang=\"en\"><\/div>\n                <script src=\"\/\/widget.reviews.io\/modern-widgets\/rating-bar.js\" async><\/script>\n            <\/div>",
         "card_color_scheme": "",
         "card_background_color": "#ffffff",
         "card_padding": 36,
