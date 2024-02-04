@@ -30,13 +30,29 @@
             "slide_title": "Product",
             "slide_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg"
           }
+        },
+        "slider_qGnXNA": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "Dog 5",
+            "slide_image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg"
+          }
+        },
+        "slider_MEwknh": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "@Dog_6",
+            "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+          }
         }
       },
       "block_order": [
         "slider_yjw7nJ",
         "slider_Rz8Vkc",
         "slider_wF7MJn",
-        "slider_rKMaJF"
+        "slider_rKMaJF",
+        "slider_qGnXNA",
+        "slider_MEwknh"
       ],
       "settings": {
         "color_scheme": "scheme-2",
@@ -47,8 +63,6 @@
         "subtext": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic<\/span> Dog Poop Bag.<\/h2>",
         "reviewsio": "<div id=\"reviewsio_hero_summary\" style='max-width: 25em;\n    margin: 0.5em 0;\n    min-height: 55px;text-align:left'>\n                <div class=\"reviews-io-rating-bar-widget\" data-widget-id=\"jXLfhonmWcpzUR87\" data-store-name=\"oh-crap\" lang=\"en\"><\/div>\n                <script src=\"\/\/widget.reviews.io\/modern-widgets\/rating-bar.js\" async><\/script>\n            <\/div>",
         "card_color_scheme": "",
-        "card_background_color": "#ffffff",
-        "card_padding": 36,
         "padding_top": 36,
         "padding_bottom": 15,
         "slide_color_scheme": "",
