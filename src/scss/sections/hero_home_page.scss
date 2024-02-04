@@ -1,0 +1,97 @@
+/* Swipers */
+#home_hero{
+    // Hide slides until swiper is loaded apart from the first slide. The hero_slider_loaded class is added in the js file for this section
+	.swiper {
+		.swiper-slide{
+		 	display: none;
+		}
+		.swiper-slide:first-child{
+			display: block;
+		}
+		.hero_slider_loaded{
+			display: block !important;
+		}
+	}
+
+	.swiper-slide{
+		text-align: center;
+		// font-size: 16px;
+		// color: #d4d4d4;
+		background: #fff;
+		// display: block;
+		// justify-content: center;
+		// align-items: center;
+		// width: 90%;
+		padding: 3rem 2rem 2rem 2rem;
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			margin-bottom: 1em;
+			aspect-ratio: 1 / 1;
+			background: #fafafa;
+            position: relative;
+		}
+	}
+
+	// Custom Swiper Styles
+	.hero__swiper--sm {
+		width: 100%;
+		margin: auto;
+		// padding-bottom: 1em;
+		.swiper-slide{
+			width: 70%;
+			display: block;
+			@media screen and (max-width: 480px) {
+				font-size: 0.9em;
+			}
+		}
+	   	.hero_first_slide_sm{
+			margin-left: 15%;
+			margin-right: 15%;
+	   	}
+		.swiper-slide:first-child.hero_slider_loaded{
+			margin-left: 15%;
+		}
+		.swiper-3d .swiper-slide-shadow-left, {
+			background-image: linear-gradient(to left,rgba(0,0,0,.15),transparent);
+		}
+		.swiper-3d .swiper-slide-shadow-right {
+			background-image: linear-gradient(to right,rgba(0,0,0,.15),transparent);
+		}
+	}
+
+}
+
+/* Reviews.io */
+.RatingBarWidget-prefix .R-flex-center-xxs{
+    justify-content: left !important;
+    text-align: left !important;
+}
+
+
+// Make reviews io logo bigger
+.RatingBarWidget-prefix .RatingBarWidget .R-PlatformIcon{
+    height: 2.3rem !important;
+}
+
+// Make stars bigger
+.RatingBarWidget-prefix .R-RatingStars--sm .R-RatingStars__stars .stars__icon{
+    font-size: 2.5rem !important;
+    -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.95) 30%, #000 50%, rgba(0,0,0,.95) 70%);
+    -webkit-mask-size: 200%;
+    animation: shine 2s linear infinite;
+    -webkit-text-stroke: 1px rgba(0,0,0,.05);
+    background-image: #ffd700 !important;
+}
+
+@keyframes shine {
+    from { -webkit-mask-position: 150%; }
+    to { -webkit-mask-position: -50%; }
+  }
+
+.R-TextBody{
+    margin-top: 0.25em !important;
+    font-size: 1.7rem !important;
+}
