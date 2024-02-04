@@ -35,6 +35,11 @@
         z-index: 1;
     }
     @media screen and (min-width: 750px) {
+      .benefits-inline-section__inner-wrap::before{
+        left: 5rem
+      }
+    }
+    @media screen and (min-width: 750px) {
         .benefits-inline-section__inner-wrap::before {
             top: calc(-4.4rem + -{{ section.settings.padding_top }}px);
         }
