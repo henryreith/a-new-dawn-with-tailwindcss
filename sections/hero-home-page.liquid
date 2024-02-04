@@ -1,9 +1,10 @@
+{{ 'hero_home_page_style.min.css' | asset_url | stylesheet_tag }}
 {{ 'swiperStyles.min.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+      padding-top: {{ section.settings.padding_top | times: 1 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 1 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -20,63 +21,75 @@
     data-cascade
   {% endif %}
 >
-  <div class='hero page-width'>
+  <div id='home_hero' class='hero page-width tw-overflow-hidden'>
     {% # Hero Grid %}
-    <div class='hero__container tw-grid lg:tw-grid-cols-2  tw-content-start tw-gap-12'>
-      <div class='tw-flex tw-flex-col tw-gap-12'>
+    <div class='hero__container tw-grid lg:tw-grid-cols-2 tw-content-start tw-gap-12'>
+      <div class='tw-flex tw-flex-col tw-gap-10'>
         <div class='hero__title'>{{ section.settings.title }}</div>
         <div class='hero__subtext'>{{ section.settings.subtext }}</div>
         <div
-          class='hero__slider--container color-{{ section.settings.card_color_scheme }} gradient'
+          class='hero__slider--container lg:tw-invisible lg:tw-hidden color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
         >
-          {% # Swiper %}
-          <div class='swiper hero__swiper'>
-            <div class='swiper-wrapper'>
+          {% # Mobile Swiper %}
+          <div class='swiper hero__swiper--sm'>
+            <div class='swiper-wrapper tw-pb-16'>
               {% for block in section.blocks %}
-                <div class='swiper-slide' {{ block.shopify_attributes }}>
-                  {%- liquid
-                    assign sizes = '100vw'
-                    assign widths = '375, 550, 750, 1100, 1500'
-                    assign image_classes = 'hero__slider--image'
-                    assign height = block.settings.slide_image.width | divided_by: block.settings.slide_image.aspect_ratio | round
-                    assign fetch_priority = 'auto'
-                    if section.index == 1 and forloop.first
-                      assign fetch_priority = 'high'
-                    endif
-                  -%}
-                  {{
-                    block.settings.slide_image
-                    | image_url: width: 1500
-                    | image_tag:
-                      height: height,
-                      class: image_classes,
-                      sizes: sizes,
-                      widths: widths,
-                      fetchpriority: fetch_priority
-                  }}
-                  <div class='tw-center'>{{ block.settings.slide_title }}</div>
+                {%- liquid
+                  assign swiper_slide_class = 'swiper-slide'
+                  if forloop.first
+                    assign swiper_slide_class = 'swiper-slide hero_first_slide_sm'
+                  endif
+                -%}
+                <div class='{{ swiper_slide_class }}' {{ block.shopify_attributes }}>
+                  <div class='swiper-slide-inner'>
+                    {%- liquid
+                      assign sizes = '100vw'
+                      assign widths = '375, 550, 750, 1100, 1500'
+                      assign image_classes = 'hero__slider--image'
+                      assign height = block.settings.slide_image.width | divided_by: block.settings.slide_image.aspect_ratio | round
+                      assign fetch_priority = 'auto'
+                      if section.index == 1 and forloop.first
+                        assign fetch_priority = 'high'
+                      endif
+                    -%}
+                    {{
+                      block.settings.slide_image
+                      | image_url: width: 1500
+                      | image_tag:
+                        height: height,
+                        class: image_classes,
+                        sizes: sizes,
+                        widths: widths,
+                        fetchpriority: fetch_priority
+                    }}
+                    <div class='tw-center'>{{ block.settings.slide_title }}</div>
+                  </div>
                 </div>
               {% endfor %}
             </div>
             {% # Add Navigation %}
-            <div class='swiper-button-next'></div>
-            <div class='swiper-button-prev'></div>
+            <div class='swiper-pagination'></div>
           </div>
           {% # END Swiper %}
         </div>
 
         <div class='hero__cta'>
-          <a href='#bags' class='button'>Shop Now</a>
+          <a
+            href='#bags'
+            style='color:#fff;background:#6dab3c;text-align: center; min-width: 30%;padding: 1em 3em;font-size: 1.65em;display:inline-table;border-radius: 0.4em;font-weight:600'
+            >Shop Now</a
+          >
         </div>
-        <div class='hero__reviewsio'>{{ section.settings.reviewsio }}</div>
+        <div class='hero__reviewsio tw-mb-16'>{{ section.settings.reviewsio }}</div>
       </div>
-      <div class='tw-invisible lg:tw-visible'>
+      {% # START Second column %}
+      <div class='tw-invisible tw-hidden lg:tw-visible lg:tw-flex'>
         <div
-          class='hero__slider--container color-{{ section.settings.card_color_scheme }} gradient'
+          class='hero__slider--container tw-m-auto tw-max-w-[38rem] color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
         >
           {% # Swiper %}
-          <div class='swiper hero__swiper_lg'>
-            <div class='swiper-wrapper'>
+          <div class='swiper hero__swiper--lg'>
+            <div class='swiper-wrapper tw-pb-20'>
               {% for block in section.blocks %}
                 <div class='swiper-slide' {{ block.shopify_attributes }}>
                   {%- liquid
@@ -104,8 +117,7 @@
               {% endfor %}
             </div>
             {% # Add Navigation %}
-            <div class='swiper-button-next'></div>
-            <div class='swiper-button-prev'></div>
+            <div class='swiper-pagination'></div>
           </div>
           {% # END Swiper %}
         </div>
@@ -157,7 +169,7 @@
       "type": "liquid",
       "id": "title",
       "label": "Title (Liquid)",
-      "default": "<h1>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags</span>.</h1>"
+      "default": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags</span>.</h1>"
     },
     {
       "type": "liquid",
@@ -180,22 +192,6 @@
       "id": "card_color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
-    },
-    {
-      "type": "color",
-      "id": "card_background_color",
-      "label": "Card Background Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "card_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding",
-      "default": 36
     },
     {
       "type": "header",
