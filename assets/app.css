@@ -777,6 +777,10 @@ ul, ol{
   margin: 0px;
 }
 
+.tw-m-auto {
+  margin: auto;
+}
+
 .tw-mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -834,6 +838,14 @@ ul, ol{
   margin-top: 4rem;
 }
 
+.tw-mb-20 {
+  margin-bottom: 5rem;
+}
+
+.tw-mb-16 {
+  margin-bottom: 4rem;
+}
+
 .\!tw-block {
   display: block !important;
 }
@@ -884,6 +896,26 @@ ul, ol{
 
 .tw-max-w-60 {
   max-width: 15rem;
+}
+
+.tw-max-w-lg {
+  max-width: 32rem;
+}
+
+.tw-max-w-3xl {
+  max-width: 48rem;
+}
+
+.tw-max-w-2xl {
+  max-width: 42rem;
+}
+
+.tw-max-w-xl {
+  max-width: 36rem;
+}
+
+.tw-max-w-\[38rem\] {
+  max-width: 38rem;
 }
 
 .tw-flex-none {
@@ -966,8 +998,16 @@ ul, ol{
   justify-content: space-between;
 }
 
+.tw-justify-around {
+  justify-content: space-around;
+}
+
 .tw-justify-evenly {
   justify-content: space-evenly;
+}
+
+.tw-justify-items-center {
+  justify-items: center;
 }
 
 .tw-gap-12 {
@@ -984,6 +1024,10 @@ ul, ol{
 
 .tw-gap-0 {
   gap: 0px;
+}
+
+.tw-gap-10 {
+  gap: 2.5rem;
 }
 
 .tw-gap-x-10 {
@@ -1072,6 +1116,10 @@ ul, ol{
   border-style: none !important;
 }
 
+.tw-bg-transparent {
+  background-color: transparent;
+}
+
 .tw-object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1096,6 +1144,10 @@ ul, ol{
 
 .tw-p-7 {
   padding: 1.75rem;
+}
+
+.tw-p-12 {
+  padding: 3rem;
 }
 
 .\!tw-px-0 {
@@ -1179,6 +1231,22 @@ ul, ol{
 
 .tw-pt-4 {
   padding-top: 1rem;
+}
+
+.tw-pb-4 {
+  padding-bottom: 1rem;
+}
+
+.tw-pb-8 {
+  padding-bottom: 2rem;
+}
+
+.tw-pb-20 {
+  padding-bottom: 5rem;
+}
+
+.tw-pb-16 {
+  padding-bottom: 4rem;
 }
 
 .tw-text-center {
@@ -1290,6 +1358,10 @@ ul, ol{
 @media (min-width: 990px) {
   .lg\:tw-visible {
     visibility: visible;
+  }
+
+  .lg\:tw-invisible {
+    visibility: hidden;
   }
 
   .lg\:tw-order-last {
