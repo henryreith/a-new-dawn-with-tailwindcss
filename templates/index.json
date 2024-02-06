@@ -24,13 +24,6 @@
             "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
           }
         },
-        "slider_rKMaJF": {
-          "type": "slider",
-          "settings": {
-            "slide_title": "Product",
-            "slide_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg"
-          }
-        },
         "slider_qGnXNA": {
           "type": "slider",
           "settings": {
@@ -44,15 +37,22 @@
             "slide_title": "@Dog_6",
             "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
           }
+        },
+        "slider_Lr9eRq": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "Product 2",
+            "slide_image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_6e7df95a-f56d-4aa5-8d79-0255eec9df05.jpg"
+          }
         }
       },
       "block_order": [
         "slider_yjw7nJ",
         "slider_Rz8Vkc",
         "slider_wF7MJn",
-        "slider_rKMaJF",
         "slider_qGnXNA",
-        "slider_MEwknh"
+        "slider_MEwknh",
+        "slider_Lr9eRq"
       ],
       "settings": {
         "color_scheme": "scheme-2",
