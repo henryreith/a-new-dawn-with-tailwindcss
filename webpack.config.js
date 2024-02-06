@@ -59,12 +59,18 @@ module.exports = (env) => {
       ],
     },
     optimization: {
+      minimize: true,
       minimizer: [
         new TerserPlugin({
             parallel: true, // Enable parallel processing
             terserOptions: {
                 format: {
                     comments: false,
+                },
+                // Enable Tree Shaking https://dev.to/fritzlolpro/getting-started-with-tree-shaking-in-webpack-2bcg
+                compress: {
+                  unused: true,
+                  dead_code: true,
                 },
             },
             extractComments: false,
