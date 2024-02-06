@@ -741,32 +741,12 @@ ul, ol{
   order: 2;
 }
 
-.tw-order-3 {
-  order: 3;
-}
-
-.tw-order-4 {
-  order: 4;
-}
-
-.tw-order-5 {
-  order: 5;
-}
-
 .tw-col-span-12 {
   grid-column: span 12 / span 12;
 }
 
 .tw-col-span-2 {
   grid-column: span 2 / span 2;
-}
-
-.tw-col-span-1 {
-  grid-column: span 1 / span 1;
-}
-
-.tw-row-span-1 {
-  grid-row: span 1 / span 1;
 }
 
 .\!tw-m-0 {
@@ -806,6 +786,10 @@ ul, ol{
   margin-bottom: 3rem;
 }
 
+.tw-mb-16 {
+  margin-bottom: 4rem;
+}
+
 .tw-mb-3 {
   margin-bottom: 0.75rem;
 }
@@ -836,14 +820,6 @@ ul, ol{
 
 .tw-mt-16 {
   margin-top: 4rem;
-}
-
-.tw-mb-20 {
-  margin-bottom: 5rem;
-}
-
-.tw-mb-16 {
-  margin-bottom: 4rem;
 }
 
 .\!tw-block {
@@ -886,32 +862,16 @@ ul, ol{
   width: 2.5rem;
 }
 
-.tw-w-full {
-  width: 100%;
-}
-
 .tw-w-3\/5 {
   width: 60%;
 }
 
+.tw-w-full {
+  width: 100%;
+}
+
 .tw-max-w-60 {
   max-width: 15rem;
-}
-
-.tw-max-w-lg {
-  max-width: 32rem;
-}
-
-.tw-max-w-3xl {
-  max-width: 48rem;
-}
-
-.tw-max-w-2xl {
-  max-width: 42rem;
-}
-
-.tw-max-w-xl {
-  max-width: 36rem;
 }
 
 .tw-max-w-\[38rem\] {
@@ -922,28 +882,12 @@ ul, ol{
   flex: none;
 }
 
-.tw-shrink {
-  flex-shrink: 1;
-}
-
 .tw-list-circle {
   list-style-type: circle;
 }
 
 .tw-list-none {
   list-style-type: none;
-}
-
-.tw-grid-flow-row {
-  grid-auto-flow: row;
-}
-
-.tw-grid-flow-col {
-  grid-auto-flow: column;
-}
-
-.tw-grid-flow-row-dense {
-  grid-auto-flow: row dense;
 }
 
 .tw-grid-cols-1 {
@@ -956,10 +900,6 @@ ul, ol{
 
 .tw-grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.tw-grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .tw-flex-row {
@@ -998,16 +938,12 @@ ul, ol{
   justify-content: space-between;
 }
 
-.tw-justify-around {
-  justify-content: space-around;
-}
-
 .tw-justify-evenly {
   justify-content: space-evenly;
 }
 
-.tw-justify-items-center {
-  justify-items: center;
+.tw-gap-10 {
+  gap: 2.5rem;
 }
 
 .tw-gap-12 {
@@ -1016,18 +952,6 @@ ul, ol{
 
 .tw-gap-4 {
   gap: 1rem;
-}
-
-.tw-gap-1 {
-  gap: 0.25rem;
-}
-
-.tw-gap-0 {
-  gap: 0px;
-}
-
-.tw-gap-10 {
-  gap: 2.5rem;
 }
 
 .tw-gap-x-10 {
@@ -1061,14 +985,6 @@ ul, ol{
 
 .tw-gap-y-8 {
   row-gap: 2rem;
-}
-
-.tw-self-start {
-  align-self: flex-start;
-}
-
-.tw-self-stretch {
-  align-self: stretch;
 }
 
 .tw-justify-self-center {
@@ -1146,10 +1062,6 @@ ul, ol{
   padding: 1.75rem;
 }
 
-.tw-p-12 {
-  padding: 3rem;
-}
-
 .\!tw-px-0 {
   padding-left: 0px !important;
   padding-right: 0px !important;
@@ -1158,11 +1070,6 @@ ul, ol{
 .\!tw-py-0 {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
-}
-
-.tw-px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
 }
 
 .tw-px-2 {
@@ -1195,16 +1102,6 @@ ul, ol{
   padding-bottom: 2rem;
 }
 
-.tw-px-24 {
-  padding-left: 6rem;
-  padding-right: 6rem;
-}
-
-.tw-px-48 {
-  padding-left: 12rem;
-  padding-right: 12rem;
-}
-
 .\!tw-pb-4 {
   padding-bottom: 1rem !important;
 }
@@ -1221,6 +1118,14 @@ ul, ol{
   padding-bottom: 3rem;
 }
 
+.tw-pb-16 {
+  padding-bottom: 4rem;
+}
+
+.tw-pb-20 {
+  padding-bottom: 5rem;
+}
+
 .tw-pb-6 {
   padding-bottom: 1.5rem;
 }
@@ -1231,22 +1136,6 @@ ul, ol{
 
 .tw-pt-4 {
   padding-top: 1rem;
-}
-
-.tw-pb-4 {
-  padding-bottom: 1rem;
-}
-
-.tw-pb-8 {
-  padding-bottom: 2rem;
-}
-
-.tw-pb-20 {
-  padding-bottom: 5rem;
-}
-
-.tw-pb-16 {
-  padding-bottom: 4rem;
 }
 
 .tw-text-center {
@@ -1364,36 +1253,12 @@ ul, ol{
     visibility: hidden;
   }
 
-  .lg\:tw-order-last {
-    order: 9999;
-  }
-
-  .lg\:tw-order-3 {
-    order: 3;
-  }
-
-  .lg\:tw-order-4 {
-    order: 4;
-  }
-
   .lg\:tw-col-span-3 {
     grid-column: span 3 / span 3;
   }
 
   .lg\:tw-col-span-9 {
     grid-column: span 9 / span 9;
-  }
-
-  .lg\:tw-row-span-4 {
-    grid-row: span 4 / span 4;
-  }
-
-  .lg\:tw-row-start-1 {
-    grid-row-start: 1;
-  }
-
-  .lg\:tw-row-end-4 {
-    grid-row-end: 4;
   }
 
   .lg\:tw-flex {
@@ -1404,24 +1269,12 @@ ul, ol{
     display: none;
   }
 
-  .lg\:tw-w-5\/6 {
-    width: 83.333333%;
-  }
-
   .lg\:tw-w-auto {
     width: auto;
   }
 
-  .lg\:tw-grid-flow-col {
-    grid-auto-flow: column;
-  }
-
-  .lg\:tw-grid-flow-row-dense {
-    grid-auto-flow: row dense;
-  }
-
-  .lg\:tw-grid-flow-col-dense {
-    grid-auto-flow: column dense;
+  .lg\:tw-grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:tw-grid-cols-3 {
@@ -1430,18 +1283,6 @@ ul, ol{
 
   .lg\:tw-grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .lg\:tw-grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .lg\:tw-grid-rows-4 {
-    grid-template-rows: repeat(4, minmax(0, 1fr));
-  }
-
-  .lg\:tw-grid-rows-2 {
-    grid-template-rows: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:tw-flex-row {
@@ -1472,11 +1313,6 @@ ul, ol{
   .lg\:tw-px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
-  }
-
-  .lg\:tw-px-12 {
-    padding-left: 3rem;
-    padding-right: 3rem;
   }
 
   .lg\:tw-text-left {
