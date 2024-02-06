@@ -26,7 +26,7 @@
 
     {% # Product Slider %}
     <div class='highlighted-products__slider--wrapper xlg:tw-w-5/6 tw-mt-16 tw-mx-auto tw-flex tw-justify-center'>
-      <div class='highlighted-products__slider tw-grid lg:tw-grid-cols-3 tw-justify-evenly tw-items-start tw-gap-12'>
+      <div class='highlighted-products__slider tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-justify-evenly tw-items-start tw-gap-12'>
         {% for block in section.blocks %}
           {% if block.type == 'product_variant' %}
             <div
@@ -56,7 +56,7 @@
                     <div class='swiper-wrapper'>
                       {%- liquid
                         assign sizes = '100vw'
-                        assign widths = '375, 550, 750, 1100, 1500'
+                        assign widths = '375, 550, 750, 1100'
                         assign image_classes = 'swiper-lazy'
                       -%}
                       {% for i in (1..10) %}
@@ -72,7 +72,7 @@
                           <div class='swiper-slide'>
                             {{
                               block.settings[image_setting]
-                              | image_url: width: 1500
+                              | image_url: width: 1100
                               | image_tag:
                                 height: height,
                                 class: image_classes,
@@ -124,7 +124,6 @@
 </div>
 {% # END #section-ID %}
 {% # I am sure this can be imporved with modules %}
-<script src='{{ 'swiper-bundle.min.js' | asset_url }}' defer='defer'></script>
 <script src='{{ 'highlighted_products.min.js' | asset_url }}' defer='defer'></script>
 
 {% schema %}
