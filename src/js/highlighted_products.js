@@ -18,7 +18,7 @@ const initHighlightedProductsSwiper = () => {
   new Swiper(".highlighted-products__swiper", HighlightedProductsSwiperConfig);
 };
 
-let highlightedProductsSwiper;
+// let highlightedProductsSwiper;
 
 // Wait for the DOM to fully load before initializing the Swiper slider
 document.addEventListener('DOMContentLoaded', () => {

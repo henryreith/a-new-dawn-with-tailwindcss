@@ -63,9 +63,9 @@
                         {% capture image_setting %}image_{{ i }}{% endcapture %}
                         {% if block.settings[image_setting] %}
                           {%- liquid
-                            assign height = block.settings[image_setting].width | divided_by: block.settings[image_setting].aspect_ratio | round
+                            assign height = block.settings[image_setting].height
                             assign fetch_priority = 'auto'
-                            if section.index == 1 and forloop.first
+                            if section.index == 1 and forloop.index == 1
                               assign fetch_priority = 'high'
                             endif
                           -%}
