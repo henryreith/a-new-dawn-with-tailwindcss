@@ -44,23 +44,29 @@
                   <div class='swiper-slide-inner'>
                     {%- liquid
                       assign sizes = '100vw'
-                      assign widths = '375, 550, 750, 1100, 1500'
+                      assign widths = '375, 550, 750, 1100'
                       assign image_classes = 'hero__slider--image'
                       assign height = block.settings.slide_image.width | divided_by: block.settings.slide_image.aspect_ratio | round
                       assign fetch_priority = 'auto'
+                      assign lazy_loading = 'lazy'
+                      assign preload = ''
                       if section.index == 1 and forloop.first
                         assign fetch_priority = 'high'
+                        assign preload = 'true'
+                        assign lazy_loading = ''
                       endif
                     -%}
                     {{
                       block.settings.slide_image
-                      | image_url: width: 1500
+                      | image_url: width: 1100
                       | image_tag:
                         height: height,
                         class: image_classes,
                         sizes: sizes,
                         widths: widths,
-                        fetchpriority: fetch_priority
+                        fetchpriority: fetch_priority,
+                        preload: preload,
+                        loading: lazy_loading
                     }}
                     <div class='tw-center'>{{ block.settings.slide_title }}</div>
                   </div>
@@ -94,23 +100,29 @@
                 <div class='swiper-slide' {{ block.shopify_attributes }}>
                   {%- liquid
                     assign sizes = '100vw'
-                    assign widths = '375, 550, 750, 1100, 1500'
+                    assign widths = '375, 550, 750, 1100'
                     assign image_classes = 'hero__slider--image'
                     assign height = block.settings.slide_image.width | divided_by: block.settings.slide_image.aspect_ratio | round
                     assign fetch_priority = 'auto'
+                    assign lazy_loading = 'lazy'
+                    assign preload = ''
                     if section.index == 1 and forloop.first
                       assign fetch_priority = 'high'
+                      assign preload = 'true'
+                      assign lazy_loading = ''
                     endif
                   -%}
                   {{
                     block.settings.slide_image
-                    | image_url: width: 1500
+                    | image_url: width: 1100
                     | image_tag:
                       height: height,
                       class: image_classes,
                       sizes: sizes,
                       widths: widths,
-                      fetchpriority: fetch_priority
+                      fetchpriority: fetch_priority,
+                      preload: preload,
+                      loading: lazy_loading
                   }}
                   <div class='tw-center'>{{ block.settings.slide_title }}</div>
                 </div>
@@ -127,9 +139,76 @@
   </div>
 </div>
 {% # END #section-ID %}
-{% # I am sure this can be imporved with modules %}
-<script src='{{ 'swiper-bundle.min.js' | asset_url }}'></script>
-<script src='{{ 'hero_home_page.min.js' | asset_url }}'></script>
+{% # Preload script as this will always be at the top of the page, so loading it as fast as possible is key %}
+{{ 'hero_home_page.min.js' | asset_url | preload_tag: as: 'script', type: 'text/javascript' }}
+<script src='{{ 'hero_home_page.min.js' | asset_url }}' defer='defer'></script>
+
+{% comment %}
+  {{ 'hero_home_page.min.js' | asset_url | preload_tag: as: 'script', type: 'text/javascript' }}
+  It may be worth the 'cost' of loading another domain for the file size savings it offers in the long run need to test more.
+  <script type='module'>
+    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
+
+    // const swiper = new Swiper(...)
+    const swiper = new Swiper('.hero__swiper', {
+      lazy: true,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+      },
+    });
+
+    // Define base configuration for Hero Swiper
+    const baseSwiperConfig = {
+      spaceBetween: 10,
+      speed: 1200,
+      // initialSlide: 1,
+      autoplay: { delay: 3000 },
+      loop: true,
+      lazyPreloaderClass: 'swiper-lazy-preloader',
+      lazyPreloadPrevNext: 1,
+      loopedSlides: 2,
+      updateOnWindowResize: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        type: 'bullets',
+      },
+      effect: 'cards',
+      cardsEffect: {
+        perSlideOffset: 8,
+        perSlideRotate: 2,
+        rotate: true,
+        slideShadows: true,
+      },
+      a11y: {
+        enabled: true,
+        prevSlideMessage: 'Previous slide',
+        nextSlideMessage: 'Next slide',
+      },
+      on: {
+        init: function () {
+          // console.log('swiper initialized');
+          const elements = document.querySelectorAll('.hero .swiper-slide');
+          elements.forEach((element) => {
+            element.classList.add('hero_slider_loaded');
+          });
+        },
+      },
+    };
+
+    // Define Swiper initialization functions
+    const initHero2DesktopSwiper = () => new Swiper('.hero__swiper--lg', baseSwiperConfig);
+
+    // Initialize hero Swipers immediately
+    let hero2DesktopSwiper = initHero2DesktopSwiper();
+
+    // Wait for DOM content to load before initializing Swipers again
+    document.addEventListener('DOMContentLoaded', (event) => {
+      hero2DesktopSwiper = initHero2DesktopSwiper();
+    });
+  </script>
+{% endcomment %}
 
 {% schema %}
 {

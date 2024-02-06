@@ -1,7 +1,7 @@
 /* Swipers */
 #home_hero{
     // Hide slides until swiper is loaded apart from the first slide. The hero_slider_loaded class is added in the js file for this section
-	.swiper {
+	/* .swiper {
 		.swiper-slide{
 		 	display: none;
 		}
@@ -11,7 +11,7 @@
 		.hero_slider_loaded{
 			display: block !important;
 		}
-	}
+	} */
 
 	.swiper-slide{
 		text-align: center;
@@ -41,8 +41,12 @@
 		margin: auto;
 		// padding-bottom: 1em;
 		.swiper-slide{
-			width: 70%;
-			display: block;
+			// width: 70%;
+			// display: block;
+            padding: 0;
+            .swiper-slide-inner{
+                // margin: 3rem 2rem 2rem 2rem;
+            }
 			@media screen and (max-width: 480px) {
 				font-size: 0.9em;
 			}
