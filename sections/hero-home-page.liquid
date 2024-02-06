@@ -23,8 +23,8 @@
 >
   <div id='home_hero' class='hero page-width tw-overflow-hidden'>
     {% # Hero Grid %}
-    <div class='hero__container tw-grid lg:tw-grid-cols-2 tw-content-start tw-gap-12'>
-      <div class='tw-flex tw-flex-col tw-gap-10'>
+    <div class='hero__container tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-content-start tw-gap-12'>
+      <div class='tw-gap-12 tw-flex tw-flex-col'>
         <div class='hero__title'>{{ section.settings.title }}</div>
         <div class='hero__subtext'>{{ section.settings.subtext }}</div>
         <div
@@ -36,40 +36,38 @@
               {% for block in section.blocks %}
                 {%- liquid
                   assign swiper_slide_class = 'swiper-slide'
-                  if forloop.first
+                  if forloop.second
                     assign swiper_slide_class = 'swiper-slide hero_first_slide_sm'
                   endif
                 -%}
                 <div class='{{ swiper_slide_class }}' {{ block.shopify_attributes }}>
-                  <div class='swiper-slide-inner'>
-                    {%- liquid
-                      assign sizes = '100vw'
-                      assign widths = '375, 550, 750, 1100'
-                      assign image_classes = 'hero__slider--image'
-                      assign height = block.settings.slide_image.width | divided_by: block.settings.slide_image.aspect_ratio | round
-                      assign fetch_priority = 'auto'
-                      assign lazy_loading = 'lazy'
-                      assign preload = ''
-                      if section.index == 1 and forloop.first
-                        assign fetch_priority = 'high'
-                        assign preload = 'true'
-                        assign lazy_loading = ''
-                      endif
-                    -%}
-                    {{
-                      block.settings.slide_image
-                      | image_url: width: 1100
-                      | image_tag:
-                        height: height,
-                        class: image_classes,
-                        sizes: sizes,
-                        widths: widths,
-                        fetchpriority: fetch_priority,
-                        preload: preload,
-                        loading: lazy_loading
-                    }}
-                    <div class='tw-center'>{{ block.settings.slide_title }}</div>
-                  </div>
+                  {%- liquid
+                    assign sizes = '100vw'
+                    assign widths = '375, 550, 750, 1100'
+                    assign image_classes = 'hero__slider--image'
+                    assign height = block.settings.slide_image.height
+                    assign fetch_priority = 'auto'
+                    assign lazy_loading = 'lazy'
+                    assign preload = ''
+                    if section.index == 1 and forloop.index == 2
+                      assign fetch_priority = 'high'
+                      assign preload = 'true'
+                      assign lazy_loading = ''
+                    endif
+                  -%}
+                  {{
+                    block.settings.slide_image
+                    | image_url: width: 1100
+                    | image_tag:
+                      height: height,
+                      class: image_classes,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority,
+                      preload: preload,
+                      loading: lazy_loading
+                  }}
+                  <div class='tw-center'>{{ block.settings.slide_title }}</div>
                 </div>
               {% endfor %}
             </div>
@@ -94,7 +92,7 @@
           class='hero__slider--container tw-m-auto tw-max-w-[38rem] color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
         >
           {% # Swiper %}
-          <div class='swiper hero__swiper--lg'>
+          <div class='swiper hero__swiper--lg hero__swiper--onload-o-hidden'>
             <div class='swiper-wrapper tw-pb-20'>
               {% for block in section.blocks %}
                 <div class='swiper-slide' {{ block.shopify_attributes }}>
@@ -102,11 +100,11 @@
                     assign sizes = '100vw'
                     assign widths = '375, 550, 750, 1100'
                     assign image_classes = 'hero__slider--image'
-                    assign height = block.settings.slide_image.width | divided_by: block.settings.slide_image.aspect_ratio | round
+                    assign height = block.settings.slide_image.height
                     assign fetch_priority = 'auto'
                     assign lazy_loading = 'lazy'
                     assign preload = ''
-                    if section.index == 1 and forloop.first
+                    if section.index == 1 and forloop.index == 2
                       assign fetch_priority = 'high'
                       assign preload = 'true'
                       assign lazy_loading = ''
@@ -135,8 +133,9 @@
         </div>
       </div>
     </div>
-    {% # END Slider %}
+    {% # END Hero__Container %}
   </div>
+  {% # END Home_hero %}
 </div>
 {% # END #section-ID %}
 {% # Preload script as this will always be at the top of the page, so loading it as fast as possible is key %}
