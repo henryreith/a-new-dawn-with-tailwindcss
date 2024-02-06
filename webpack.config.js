@@ -82,13 +82,13 @@ module.exports = (env) => {
       new MiniCssExtractPlugin({
         filename: '[name].min.css',
       }),
-      new CopyWebpackPlugin({
+      /* new CopyWebpackPlugin({
         patterns: [
           { from: 'node_modules/swiper/swiper-bundle.min.js', to: 'swiper-bundle.min.js' },
           // Add other files or directories here
           // { from: 'src/js/highlighted_products.js', to: 'highlighted_products.js' }
         ],
-      }),
+      }), */
     ],
   };
 };
