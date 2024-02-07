@@ -358,5 +358,8 @@
 
     {% # Custom stylesheets or other code added to Dawn %}
     {{ 'annimations.min.css' | asset_url | stylesheet_tag }}
+
+    {% # Add Cart Reccomendations Section JS %}
+    <script src='{{ 'cart_reccomendtions.min.js' | asset_url }}' defer='defer'></script>
   </body>
 </html>
