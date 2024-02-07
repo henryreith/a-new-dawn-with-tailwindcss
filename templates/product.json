@@ -272,7 +272,7 @@
         "collapsible_row_GyCQUR"
       ],
       "settings": {
-        "caption": "",
+        "caption": "Caption",
         "heading": "FAQ's",
         "heading_size": "h1",
         "heading_alignment": "center",
@@ -280,6 +280,7 @@
         "color_scheme": "",
         "container_color_scheme": "",
         "open_first_collapsible_row": false,
+        "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
         "image_ratio": "adapt",
         "desktop_layout": "image_second",
         "padding_top": 36,
