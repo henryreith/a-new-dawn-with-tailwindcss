@@ -16,6 +16,16 @@ const HighlightedProductsSwiperConfig = {
 
 // Initializes the Swiper slider for highlighted products
 const initHighlightedProductsSwiper = () => {
+  return new Swiper(".highlighted-products__swiper", HighlightedProductsSwiperConfig);
+};
+
+// Wait for the DOM to fully load before initializing the Swiper slider
+document.addEventListener('DOMContentLoaded', () => {
+  const highlightedProductsSwiper = initHighlightedProductsSwiper();
+});
+/* Only being used in the DOM so no need to export it
+// Initializes the Swiper slider for highlighted products
+const initHighlightedProductsSwiper = () => {
   new Swiper(".highlighted-products__swiper", HighlightedProductsSwiperConfig);
 };
 
@@ -25,3 +35,4 @@ const initHighlightedProductsSwiper = () => {
 document.addEventListener('DOMContentLoaded', () => {
   highlightedProductsSwiper = initHighlightedProductsSwiper();
 });
+*/

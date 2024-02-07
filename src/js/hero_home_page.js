@@ -46,11 +46,7 @@ const mobileSwiperConfig = {
       autoplay: false,
     }
   },
-  a11y: {
-    enabled: true,
-    prevSlideMessage: 'Previous slide',
-    nextSlideMessage: 'Next slide',
-  },
+  a11y: true,
   on: {
     init: function () {
       // console.log('swiper initialized');
@@ -100,11 +96,7 @@ const largeSwiperConfig = {
     rotate: true,
     slideShadows: true,
   },
-  a11y: {
-    enabled: true,
-    prevSlideMessage: 'Previous slide',
-    nextSlideMessage: 'Next slide',
-  },
+  a11y: true,
   on: {
     init: function () {
       // console.log('swiper initialized');
@@ -116,16 +108,13 @@ const largeSwiperConfig = {
   },
 };
 
-// Initializes the Swiper slider for highlighted products
+// Initializes the Swiper sliders
 const initSwipers = () => {
   new Swiper(".hero__swiper--sm", mobileSwiperConfig);
   new Swiper(".hero__swiper--lg", largeSwiperConfig);
 };
 
-// let mobileSwiper;
-// let largeSwiper;
-
-// Wait for the DOM to fully load before initializing the Swiper slider
+// Wait for the DOM to fully load before initializing the Swiper sliders
 document.addEventListener('DOMContentLoaded', () => {
-  Swipers = initSwipers();
+  initSwipers();
 });
