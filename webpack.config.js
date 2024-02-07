@@ -18,9 +18,13 @@ module.exports = (env) => {
       // base: './assets/base.css',
       // app: './assets/app.css',
       // Add other entry points for JS or CSS here
-      highlighted_products: './src/js/highlighted_products.js',
+      
+      // SCSS
       hero_home_page_style: './src/scss/sections/hero_home_page.scss',
+      annimations: './src/scss/utils/annimations.scss',
+      // JS
       hero_home_page: './src/js/hero_home_page.js',
+      highlighted_products: './src/js/highlighted_products.js',
     },
     output: {
       path: path.resolve(__dirname, 'assets'),

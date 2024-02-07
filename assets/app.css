@@ -942,10 +942,6 @@ ul, ol{
   justify-content: space-evenly;
 }
 
-.tw-gap-10 {
-  gap: 2.5rem;
-}
-
 .tw-gap-12 {
   gap: 3rem;
 }
@@ -1171,12 +1167,7 @@ ul, ol{
 }
 
 .tw-no-underline {
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
-}
-
-.\!\[clip\:rect\(0\2c 0\2c 0\2c 0\)\] {
-  clip: rect(0,0,0,0) !important;
+  text-decoration-line: none;
 }
 
 /* end @layer base */
