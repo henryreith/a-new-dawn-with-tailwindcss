@@ -38,6 +38,11 @@
     }
   }
 
+  #footer__tagline:hover .footer__tagline--icon{
+    transition: transform 0.214s ease;
+    transform: translateX(5px);
+  }
+
   .policies li:first-child:before {
     display: none;
   }
@@ -109,6 +114,7 @@
 
         <div class='tw-col-span-2 md:tw-order-3 tw-text-center md:tw-text-left'>
           <a
+            id='footer__tagline'
             href='{{ section.settings.footer_tagline_link }}'
             class='tw-flex tw-justify-center md:tw-justify-between tw-items-center'
           >
