@@ -17,28 +17,39 @@
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
 >
   <div
-    class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-8'
+    class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-8 lg:tw-gap-16'
   >
     {% for block in section.blocks %}
       {% # .contact-info-grid-item # %}
       <div
-        class='contact-info-grid-item'
+        class='contact-info-grid-item tw-px-12 tw-py-16 tw-flex tw-flex-row lg:tw-flex-col tw-gap-8 tw-border tw-border-solid tw-rounded-md'
         {{ block.shopify_attributes }}
         {% if settings.animations_reveal_on_scroll %}
           data-cascade
           style='--animation-order: {{ forloop.index }};'
         {% endif %}
       >
-        <div class='contact-info-grid-item__icon'>
-          {{
-            block.settings.icon
-            | image_url: width: 512
-            | image_tag: height: block.settings.icon.height, sizes: '100vw', widths: '50, 75, 100, 150, 200, 256, 512'
-          }}
-        </div>
+        {% if block.settings.icon != blank %}
+          <div class='contact-info-grid-item__icon'>
+            {{
+              block.settings.icon
+              | image_url: width: 256
+              | image_tag:
+                width: block.settings.icon.width,
+                height: block.settings.icon.height,
+                sizes: '100vw',
+                widths: '50, 75, 100, 150, 200, 256',
+                class: 'tw-h-12 tw-w-auto'
+            }}
+          </div>
+        {% endif %}
         <div class='contact-info-grid-item__content'>
-          <div class='contact-info-grid-item__title h3'>{{ block.settings.title }}</div>
-          <div class='contact-info-grid-item__text'>{{ block.settings.content }}</div>
+          {% if block.settings.title != blank %}
+            <div class='contact-info-grid-item__title h3 tw-mb-2'>{{ block.settings.title }}</div>
+          {% endif %}
+          {% if block.settings.content != blank %}
+            <div class='contact-info-grid-item__text'>{{ block.settings.content }}</div>
+          {% endif %}
         </div>
       </div>
       {% # END .contact-info-grid-item %}
