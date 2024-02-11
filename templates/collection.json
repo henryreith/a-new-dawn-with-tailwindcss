@@ -92,32 +92,14 @@
         "faq_item_x3WCFt": {
           "type": "faq_item",
           "settings": {
-            "question": "What are the best dog poop bags for the environment?",
-            "answer_richtext": "<p>The best dog poop bags for the environment are <strong>compostable dog poop bags<\/strong>. Compostable means the dog poop bags break down into organic material within 6 months. Biodegradable or any other type of dog poop bag that isn’t certified compostable is marketing speak for it’s a plastic dog poop bag.<\/p>",
-            "answer_liquid": ""
-          }
-        },
-        "faq_item_grMmfy": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Why Does Oh Crap Only Offer Compostable Dog Poop Bags?",
-            "answer_richtext": "<p>Unlike some other Aussie & foreign brands that offer degradable, biodegradable, oxo-degradable, and photodegradable dog poop bags and sometimes even try to fool you with eco-friendly sounding names, we only offer compostable dog poop bags. So if you see Oh Crap Dog Poop Bags, you know they are compostable.<\/p><p><strong>Why? Simply, if it’s not compostable, it’s got plastic in it.<\/strong> That plastic might break down quickly, but it’s just breaking down into the microplastics that end up inside every fish, animal and us.<\/p><p>Check out the section below on the differences between biodegradable dog poop bags and compostable dog poop bags.<\/p>",
-            "answer_liquid": ""
-          }
-        },
-        "faq_item_3prk9A": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What’s the difference between biodegradable and compostable dog poop bags?",
-            "answer_richtext": "<p>This is something we get asked every day, and for a good reason - it’s been made complicated by marketers. All compostable products are biodegradable, but not all biodegradable products are compostable. Biodegradable is a word that was taken over by marketers in an effort to greenwash our brains. Biodegradable can be translated as ‘will break down at some point’, so that could be a year from now or, more likely, hundreds of years from now. And it’s likely to leave millions of microplastics that we all know by this point is why we all have plastic inside of us.<\/p><p><strong>Compostable, on the other hand, has government tests around it, so you know what you are getting - and the Aussie government tests are some of the most stringent in the world.<\/strong> In Australia, our standards are AS 5810 for Home Composting and AS 4736 for Commercial Composting. The AS 4736 standard requires that <strong>90% of the original material is gone after 12 weeks, and it’s completely biodegraded after 6 months.<\/strong><\/p><p>In the dog poop bag world, if you see biodegradable and no compostable logos, that is code for the dog poop bag has got plastic in it. If you see the Aussie composting logos, you know it’s passed the government tests here for compostability.<\/p>",
+            "question": "Example Question?",
+            "answer_richtext": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus elit, accumsan quis quam ut, ultricies auctor felis. Donec sollicitudin elit et enim condimentum consequat. <strong>Aliquam at lacinia turpis. <\/strong>Maecenas id malesuada nisi. Nulla facilisi. Sed elementum pulvinar odio malesuada cursus. Phasellus enim ex, cursus ut euismod eget, semper in nisl. <\/p><p><strong>Vivamus ultrices<\/strong> sapien eu lacus rutrum consequat. Nulla pharetra lectus id ultrices ultrices. Maecenas viverra, ex id fermentum euismod, velit mauris<\/p>",
             "answer_liquid": ""
           }
         }
       },
       "block_order": [
-        "faq_item_x3WCFt",
-        "faq_item_grMmfy",
-        "faq_item_3prk9A"
+        "faq_item_x3WCFt"
       ],
       "settings": {
         "faq_title": "FAQ:",
