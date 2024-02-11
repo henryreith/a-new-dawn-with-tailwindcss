@@ -46,7 +46,7 @@
 
     {% # FAQ Questions %}
     {% for block in section.blocks %}
-      <div id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10'>
+      <div id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10' {{ block.shopify_attributes }}>
         {% assign question_tag = section.settings.question_tag %}
         <{{ question_tag }} class='faq-section__question'>
           {{- block.settings.question | escape -}}
