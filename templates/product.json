@@ -32,7 +32,6 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_picker_type": "swatch",
             "swatch_shape": "circle"
           }
         },
@@ -177,155 +176,12 @@
         "padding_bottom": 26
       }
     },
-    "image-with-text": {
-      "type": "image-with-text",
-      "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "image-with-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
-      ],
+    "custom_liquid_aN3qeb": {
+      "type": "custom-liquid",
       "settings": {
-        "image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "collapsible_content_waEUrn": {
-      "type": "collapsible-content",
-      "blocks": {
-        "collapsible_row_fLeGag": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "eye",
-            "row_content": "<p>Content in here<\/p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_PmNLmC": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
-          }
-        },
-        "collapsible_row_HnDEtF": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
-          }
-        },
-        "collapsible_row_7tzr4G": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
-          }
-        },
-        "collapsible_row_GyCQUR": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_row_fLeGag",
-        "collapsible_row_PmNLmC",
-        "collapsible_row_HnDEtF",
-        "collapsible_row_7tzr4G",
-        "collapsible_row_GyCQUR"
-      ],
-      "settings": {
-        "caption": "Caption",
-        "heading": "FAQ's",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "none",
-        "color_scheme": "",
-        "container_color_scheme": "",
-        "open_first_collapsible_row": false,
-        "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column-0": {
-          "type": "column",
-          "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column-1": {
-          "type": "column",
-          "settings": {
-            "title": "Hassle-Free Exchanges",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column-0",
-        "column-1"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
+        "custom_liquid": "<h3 id=\"#extended_diescription\" class=\"center\">Description<\/h3>\n<div id=\"extened_description\">{{ product.description }}<\/div>",
+        "color_scheme": "scheme-5",
+        "section_page_width": "narrow",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -348,16 +204,6 @@
         "padding_bottom": 28
       }
     },
-    "custom_liquid_aN3qeb": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<h3 id=\"#extended_diescription\" class=\"center\">Description<\/h3>\n<div id=\"extened_description\">{{ product.description }}<\/div>",
-        "color_scheme": "scheme-5",
-        "section_page_width": "narrow",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "quick_order_list_MNfUFR": {
       "type": "quick-order-list",
       "settings": {
@@ -372,11 +218,8 @@
   "order": [
     "main",
     "benefit_inline_k6d7aw",
-    "image-with-text",
-    "collapsible_content_waEUrn",
-    "multicolumn",
-    "related-products",
     "custom_liquid_aN3qeb",
+    "related-products",
     "quick_order_list_MNfUFR"
   ]
 }
