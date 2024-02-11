@@ -16,10 +16,50 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "contact_info_grid_h6gTHH": {
+      "type": "contact-info-grid",
+      "blocks": {
+        "contact_info_grid_item_nG7xDC": {
+          "type": "contact_info_grid_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/oh-crap-non-plastic-compostable-biodegradable-dog-poop-bags-380-bag-pack-side-angle-with-rolls-20200129.jpg",
+            "title": "Email",
+            "content": "<p>team@ohcrap.com.au<\/p>"
+          }
+        },
+        "contact_info_grid_item_wtKHjr": {
+          "type": "contact_info_grid_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Oh_Crap_Logo-R.svg",
+            "title": "Address",
+            "content": "<p>Oh Crap Dog Poop Bags, PO Box 6337, Highton, VIC, 3216<\/p>"
+          }
+        },
+        "contact_info_grid_item_PypzFi": {
+          "type": "contact_info_grid_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/oh-crap-dog-bag-holder-front-on_d2caaf37-a60d-4ff5-8eee-d6ce3e1f6e73.jpg",
+            "title": "Phone",
+            "content": "<p>Phone: 1300 36 24 76<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "contact_info_grid_item_nG7xDC",
+        "contact_info_grid_item_wtKHjr",
+        "contact_info_grid_item_PypzFi"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "form"
+    "form",
+    "contact_info_grid_h6gTHH"
   ]
 }
