@@ -1,0 +1,248 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+  }
+
+  #faq-section-{{ section.id }} .faq-section__toc-inner {
+      border-color: rgba(var(--color-foreground), 0.8);
+  }
+{%- endstyle -%}
+
+<div
+  id='faq-section-{{ section.id }}'
+  class='section-{{ section.id }}-padding'
+>
+  <div class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+    {% # Table of Contents %}
+    <div class='faq-toc'>
+      {% assign faq_title_tag = section.settings.faq_title_tag %}
+      <{{ faq_title_tag }} class='faq-section__title tw-mb-4'>
+        {{- section.settings.faq_title | escape -}}
+      </{{ faq_title_tag }}>
+
+      {% if section.settings.toc_show %}
+        <div class='faq-section__toc-inner tw-px-8 tw-py-4 tw-mb-8 tw-border tw-border-solid tw-rounded-[4px]'>
+          <ul class='faq-section__toc-list tw-mb-0 tw-list-circle'>
+            {% for block in section.blocks %}
+              <li class='faq-section__toc-item'>
+                <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
+                  {{- block.settings.question -}}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% # END #faq-toc-inner %}
+      {%- endif -%}
+    </div>
+
+    {% # FAQ Questions %}
+    {% for block in section.blocks %}
+      <div id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10'>
+        {% assign question_tag = section.settings.question_tag %}
+        <{{ question_tag }} class='faq-section__question'>
+          {{- block.settings.question | escape -}}
+        </{{ question_tag }}>
+
+        {% if block.settings.answer_richtext %}
+          {{- block.settings.answer_richtext -}}
+        {% endif %}
+        {% if block.settings.answer_liquid %}
+          {{- block.settings.answer_liquid -}}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  {% # END .page-width %}
+</div>
+{%- if section.settings.enable_faq_schema -%}
+  <script type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for block in section.blocks %}
+        {
+          "@type": "Question",
+          "name": {{ block.settings.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ block.settings.answer_richtext | strip_html }} {{ block.settings.answer_liquid | strip_html }}"
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+  </script>
+{%- endif -%}
+{% # END #faq-section-{{ section.id }} %}
+
+{% schema %}
+{
+  "name": "t:sections.faq.name",
+  "max_blocks": 25,
+  "class": "faq-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "t:sections.faq.settings.faq_title.label",
+      "default": "FAQ:"
+    },
+    {
+      "type": "select",
+      "id": "faq_title_tag",
+      "label": "t:sections.faq.settings.faq_title_tag.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
+          "value": "p",
+          "label": "P"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "checkbox",
+      "id": "toc_show",
+      "label": "t:sections.faq.settings.toc_show.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "question_tag",
+      "label": "t:sections.faq.settings.question_tag.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
+          "value": "p",
+          "label": "P"
+        }
+      ],
+      "default": "h4"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_faq_schema",
+      "label": "t:sections.faq.settings.enable_faq_schema.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "t:sections.faq.blocks.faq_item.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "t:sections.faq.blocks.faq_item.settings.question.label",
+          "default": "Your Question Here"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.faq.blocks.faq_item.settings.paragraph.content"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_richtext",
+          "label": "t:sections.faq.blocks.faq_item.settings.answer_richtext.label"
+        },
+        {
+          "type": "liquid",
+          "id": "answer_liquid",
+          "label": "t:sections.faq.blocks.faq_item.settings.answer_liquid.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.faq.presets.name",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "faq_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

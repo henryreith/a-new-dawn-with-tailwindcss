@@ -1,0 +1,326 @@
+{{ 'swiperStyles.min.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+  }
+{%- endstyle -%}
+<div
+  id='section-{{ section.id }}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
+  {% if section.settings.animations_reveal_on_scroll %}
+    data-cascade
+  {% endif %}
+>
+  <div class='highlighted-products page-width tw-text-center'>
+    <h2 class='highlighted-products__title'>{{ section.settings.title }}</h2>
+    <div class='highlighted-products__subtext tw-mt-10'>{{ section.settings.subtext }}</div>
+
+    {% # Product Slider %}
+    <div class='highlighted-products__slider--wrapper xlg:tw-w-5/6 tw-mt-16 tw-mx-auto tw-flex tw-justify-center'>
+      <div class='highlighted-products__slider tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-justify-evenly tw-items-start tw-gap-12'>
+        {% for block in section.blocks %}
+          {% if block.type == 'product_variant' %}
+            <div
+              class='highlighted-products__slider--slide color-{{ section.settings.card_color_scheme }} gradient'
+              {{ block.shopify_attributes }}
+            >
+              {% assign selected_product = block.settings.product %}
+              {% assign selected_variant_id = block.settings.variant_id | plus: 0 %}
+
+              {% assign variant_found = false %}
+              {% for variant in selected_product.variants %}
+                {% if variant.id == selected_variant_id %}
+                  {% assign variant_found = true %}
+
+                  <div class='highlighted-products__slider--product-title tw-font-bold tw-p-4 tw-border-b'>
+                    <span>{{ block.settings.custom_varient_title }}</span>
+                  </div>
+                  <div
+                    class='highlighted-products__slider--price tw-p-4 tw-py-8 tw-text-[3.8rem] tw-font-semibold'
+                    style='background-color:{{ section.settings.card_background_color }}'
+                  >
+                    <p>{{ variant.price | money }}</p>
+                  </div>
+
+                  {% # Swiper %}
+                  <div class='swiper highlighted-products__swiper'>
+                    <div class='swiper-wrapper'>
+                      {%- liquid
+                        assign sizes = '100vw'
+                        assign widths = '375, 550, 750, 1100'
+                        assign image_classes = 'swiper-lazy'
+                      -%}
+                      {% for i in (1..10) %}
+                        {% capture image_setting %}image_{{ i }}{% endcapture %}
+                        {% if block.settings[image_setting] %}
+                          {%- liquid
+                            assign height = block.settings[image_setting].height
+                            assign fetch_priority = 'auto'
+                            if section.index == 1 and forloop.index == 1
+                              assign fetch_priority = 'high'
+                            endif
+                          -%}
+                          <div class='swiper-slide'>
+                            {{
+                              block.settings[image_setting]
+                              | image_url: width: 1100
+                              | image_tag:
+                                height: height,
+                                class: image_classes,
+                                sizes: sizes,
+                                widths: widths,
+                                fetchpriority: fetch_priority
+                            }}
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% # Add Navigation %}
+                    <div class='swiper-button-next'></div>
+                    <div class='swiper-button-prev'></div>
+                  </div>
+                  <!-- Custom Description -->
+                  <div
+                    class='highlighted-products__description tw-p-7 lg:tw-p-8'
+                    style='background-color:{{ section.settings.card_background_color }}'
+                  >
+                    {{ block.settings.custom_description }}
+                  </div>
+                  <div class='highlighted-products__buy-buttons tw-w-3/5 tw-mx-auto tw-font-bold tw-py-10 tw-pb-6 lg:tw-w-auto lg:tw-px-16'>
+                    {% render 'buy-button-variant',
+                      product: selected_product,
+                      variant: variant,
+                      product_form_id: variant.id,
+                      section_id: section.id,
+                      enable_buy_now_button: section.settings.enable_buy_now_button,
+                      class: ''
+                    %}
+                  </div>
+
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+
+              {% unless variant_found %}
+                <p>Variant not found in product.</p>
+              {% endunless %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% # END Slider %}
+    </div>
+    {% # END .highlighted-products__slider--wrapper %}
+  </div>
+</div>
+{% # END #section-ID %}
+{% # I am sure this can be imporved with modules %}
+<script src='{{ 'highlighted_products.min.js' | asset_url }}' defer='defer'></script>
+
+{% schema %}
+{
+  "name": "Highlighted Products",
+  "tag": "section",
+  "class": "highlighted-products-section",
+  "max_blocks": 9,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "animations_reveal_on_scroll",
+      "label": "t:sections.benefits-inline.settings.animations_reveal_on_scroll.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_top",
+      "label": "t:sections.benefits-inline.settings.border_on_top.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_bottom",
+      "label": "t:sections.benefits-inline.settings.border_on_bottom.label",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "liquid",
+      "id": "subtext",
+      "label": "Add an elevator pictch about your highlighted products here.",
+      "default": "Check out our featured products! They do X, Y & Z."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_buy_now_button",
+      "label": "Enable Buy Now Button along side add to cart for each varient",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 26
+    },
+    {
+      "type": "header",
+      "content": "Card Colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Select the color scheme for the cards below. This will set the header, footer and add to cart cart button. You can then select the description area background color below"
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_variant",
+      "name": "Product Variant Block",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Product Variant Block"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Please select the product which the variant belongs to."
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "Variant ID",
+          "info": "Enter the variant ID here."
+        },
+        {
+          "type": "text",
+          "id": "custom_varient_title",
+          "label": "Custom Varient Title",
+          "default": "1 Month Supply"
+        },
+        {
+          "type": "liquid",
+          "id": "custom_description",
+          "label": "Custom Description"
+        },
+        {
+          "type": "header",
+          "content": "Custom Variant Images"
+        },
+        {
+          "type": "paragraph",
+          "content": "As we can't use all the images from the product as this will include images of all the varients we will add images we want to display in the carousel below instead. Upload up to 10 images for this variant."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "Image 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_5",
+          "label": "Image 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_6",
+          "label": "Image 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_7",
+          "label": "Image 7"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_8",
+          "label": "Image 8"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_9",
+          "label": "Image 9"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_10",
+          "label": "Image 10"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Highlighted Products",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "product_variant"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,669 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  {{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{% endcomment %}
+{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #footer-m {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+  }
+
+  #footer__inner {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  #footer__aside {
+    padding-top: {{ section.settings.aside_padding_top | times: 1.5 | round: 0 }}px;
+    padding-bottom: {{ section.settings.aside_padding_bottom | times: 1.5 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #footer-m {
+      margin-top: {{ section.settings.margin_top }}px;
+    }
+
+    #footer__inner {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    #footer__aside {
+      padding-top: {{ section.settings.aside_padding_top }}px;
+      padding-bottom: {{ section.settings.aside_padding_bottom }}px;
+    }
+  }
+
+  #footer__tagline:hover .footer__tagline--icon{
+    transition: transform 0.214s ease;
+    transform: translateX(5px);
+  }
+
+  .policies li:first-child:before {
+    display: none;
+  }
+
+  {% # Localization Footer Styles Overwrite %}
+  .footer__localization .localization-form:only-child .localization-form__select{
+    margin: 0;
+  }
+{%- endstyle -%}
+
+<footer
+  id='footer-m'
+  class='color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding'
+>
+  <div id='footer__inner'>
+    {%- liquid
+      assign has_social_icons = true
+      if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+        assign has_social_icons = false
+      endif
+
+      assign enable_country_selector = false
+      if section.settings.enable_country_selector and localization.available_countries.size > 1
+        assign enable_country_selector = true
+      endif
+    -%}
+    {%- liquid
+      assign non_seo_menu_blocks_count = 0
+      assign seo_menu_blocks_count = 0
+
+      for block in section.blocks
+        if block.type != 'seo_menu'
+          assign non_seo_menu_blocks_count = non_seo_menu_blocks_count | plus: 1
+        else
+          assign seo_menu_blocks_count = seo_menu_blocks_count | plus: 1
+        endif
+      endfor
+
+      assign footer_grid_class = 'tw-grid-cols-2'
+      if non_seo_menu_blocks_count >= 6
+        assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3'
+      elsif non_seo_menu_blocks_count >= 4
+        assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4'
+      elsif non_seo_menu_blocks_count >= 3
+        assign footer_grid_class = 'tw-grid-cols-1 md:tw-grid-cols-3'
+      endif
+    -%}
+    <div class='page-width'>
+      {% # Logo, Social Icons, Byline %}
+      <div class='tw-grid tw-grid-cols-2 tw-gap-x-10 tw-gap-y-6 tw-border-b tw-pb-12 tw-mb-12'>
+        <div class='tw-col-span-2 md:tw-col-span-1 tw-justify-self-center md:tw-justify-self-start'>
+          <div class='footer__logo tw-w-full tw-max-w-60'>
+            {% # Logo %}
+            {% if section.settings.footer_logo != blank %}
+              <img
+                src='{{ section.settings.footer_logo | image_url }}'
+                alt='{{ section.settings.footer_logo | escape }}'
+                class='footer__logo-image tw-w-full tw-h-full'
+                loading='lazy'
+                width='{{ section.settings.footer_logo.width }}'
+                height='{{ section.settings.footer_logo.height }}'
+              >
+
+            {% else %}
+              <h2 class='footer__logo-text'>{{ shop.name }}</h2>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class='tw-col-span-2 md:tw-order-3 tw-text-center md:tw-text-left'>
+          <a
+            id='footer__tagline'
+            href='{{ section.settings.footer_tagline_link }}'
+            class='tw-flex tw-justify-center md:tw-justify-between tw-items-center'
+          >
+            <span class='footer__tagline--text'>{{ section.settings.footer_tagline }}</span>
+            {% if section.settings.footer_tagline_link %}
+              <div class='footer__tagline--icon tw-ml-4'>
+                {% render 'icon-arrow' %}
+              </div>
+            {% endif %}
+          </a>
+        </div>
+
+        <div class='tw-col-span-2 lg:tw-justify-self-end md:tw-col-span-1 md:tw-order-2'>
+          <div class='footer__social-icons'>
+            {% # Social Icons %}
+            {%- if section.settings.show_social and has_social_icons -%}
+              {%- render 'social-icons', class: 'footer__list-social md:!tw-justify-end' -%}
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      {% # Dynamic blocks for footer content %}
+
+      <div class='tw-grid {{ footer_grid_class }} tw-gap-x-4 tw-gap-y-6 tw-pt-4'>
+        <!-- Dynamic blocks for footer content -->
+        {% for block in section.blocks %}
+          {% if block.type != 'seo_menu' %}
+            <div class='footer__inner--dynamic-block' {{ block.shopify_attributes }}>
+              {% case block.type %}
+                {%- when '@app' -%}
+                  {% render block %}
+                {% when 'link_list' %}
+                  <!-- Footer link list block -->
+                  <div class='footer__linklist tw-text-center md:tw-text-left'>
+                    <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading }}</h3>
+                    {% if block.settings.menu != blank %}
+                      <ul class='tw-list-none tw-m-0 tw-p-0'>
+                        {% for link in linklists[block.settings.menu].links %}
+                          <li>
+                            <a href='{{ link.url }}' class=''>{{ link.title }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </div>
+                {% when 'text' %}
+                  <!-- Text block -->
+                  <div class='footer__text tw-text-center md:tw-text-left'>
+                    <h3 class='tw-font-bold tw-mb-3'>{{ block.settings.heading }}</h3>
+                    <p>{{ block.settings.subtext }}</p>
+                  </div>
+                {%- when 'image' -%}
+                  <div class='footer-block__details-content footer-block-image {{ block.settings.alignment }}'>
+                    {%- if block.settings.image != blank -%}
+                      {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
+                      <div
+                        class='footer-block__image-wrapper'
+                        style='max-width: min(100%, {{ block.settings.image_width }}px);'
+                      >
+                        <img
+                          srcset='{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x'
+                          src='{{ block.settings.image | image_url: width: 760 }}'
+                          alt='{{ block.settings.image.alt | escape }}'
+                          loading='lazy'
+                          width='{{ block.settings.image.width }}'
+                          height='{{ block.settings.image.height }}'
+                        >
+                      </div>
+                    {%- else -%}
+                      {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                    {%- endif -%}
+                  </div>
+              {% endcase %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {% # START SEO Menus %}
+      {%- liquid
+        assign seo_menu_columns = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4'
+        if section.settings.seo_menu_columns == 3
+          assign seo_menu_columns = 'tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3'
+        endif
+      -%}
+      <div class='footer__seo-menus tw-mt-12 tw-pb-12 tw-mb-12 tw-grid {{ seo_menu_columns }} tw-gap-4 tw-border-b'>
+        {% for block in section.blocks %}
+          {% if block.type == 'seo_menu' %}
+            <div
+              class='footer__seo-menu accordion footer__linklist tw-text-center md:tw-text-left !tw-border-none !tw-m-0'
+              {{ block.shopify_attributes }}
+            >
+              <details class='footer__seo-menu-details' id='Details-FooterSMenuAccordion-{{ block.id }}'>
+                <summary class='footer__seo-menu-summary !tw-pb-4'>
+                  <div class='footer__seo-menu-title summary__title !tw-block'>
+                    <div class='h4 accordion__title inline-richtext'>
+                      {{ block.settings.seo_menu_title }}
+                      {% render 'icon-caret' %}
+                    </div>
+                  </div>
+                </summary>
+                {% if block.settings.seo_menu_links != blank %}
+                  <div
+                    id='FooterSMenuAccordion-{{ block.id }}'
+                    class='footer__seo-menu-content accordion__content !tw-px-0 !tw-py-0 !tw-m-0 !tw-break-normal'
+                  >
+                    <ul class='footer__seo-menu-list tw-list-none tw-m-0 tw-p-0 !tw-pl-0'>
+                      {% for link in linklists[block.settings.seo_menu_links].links %}
+                        <li class='footer__seo-menu-item tw-mb-1'>
+                          <a href='{{ link.url }}'>{{ link.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endif %}
+              </details>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% # END .footer__inner--s-menus %}
+      {% # END SEO Menus %}
+
+      {% # START Made With Love / General Liquid Area %}
+      {{ section.settings.pre_copywrite_text }}
+      {% # END Made With Love / General Liquid Area %}
+
+      {% # Copywrite section %}
+      {% if section.settings.copywrite_text != blank and enable_country_selector == true %}
+        <small class='copyright__content tw-text-center !tw-block'
+          >&copy; {{ 'now' | date: '%Y' }}
+          {{ section.settings.copywrite_text }}
+        </small>
+      {% endif %}
+      {% # END Copywrite section %}
+
+      {%- if section.settings.show_policy -%}
+        <ul class='policies list-unstyled tw-text-center !tw-flex tw-content-center tw-justify-center'>
+          {%- for policy in shop.policies -%}
+            {%- if policy != blank -%}
+              <li>
+                <small class='copyright__content'
+                  ><a href='{{ policy.url }}'>{{ policy.title }}</a></small
+                >
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    {% # .page-width %}
+  </div>
+  {% # END #footer__inner %}
+  {% # Footer Aside for Localization and Payment Methods %}
+  <div id='footer__aside' class='footer__aside color-{{ section.settings.aside_color_scheme }} gradient tw-py-4'>
+    <div class='page-width'>
+      <div class='tw-flex-none md:tw-flex tw-justify-between tw-gap-y-8'>
+        {% # Location Dropdown %}
+        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+          <div class='footer__localization isolate !tw-p-0'>
+            <noscript>
+              {%- form 'localization', id: 'FooterCountryFormNoScript', class: 'localization-form tw-p-0' -%}
+                <div class='localization-form__select'>
+                  <h2 class='visually-hidden' id='FooterCountryLabelNoScript'>
+                    {{ 'localization.country_label' | t }}
+                  </h2>
+                  <select
+                    class='localization-selector link'
+                    name='country_code'
+                    aria-labelledby='FooterCountryLabelNoScript'
+                  >
+                    {%- for country in localization.available_countries -%}
+                      <option
+                        value='{{ country.iso_code }}'
+                        {%- if country.iso_code == localization.country.iso_code %}
+                          selected
+                        {% endif %}
+                      >
+                        {{ country.name }} ({{ country.currency.iso_code }}
+                        {{ country.currency.symbol }})
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  {% render 'icon-caret' %}
+                </div>
+                <button class='button button--tertiary'>{{ 'localization.update_country' | t }}</button>
+              {%- endform -%}
+            </noscript>
+            <localization-form>
+              {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form !tw-m-0 !tw-p-0' -%}
+                <div class='no-js-hidden tw-flex tw-content-center'>
+                  <h2
+                    class='caption-large text-body !tw-mt-0 !tw-mb-0 tw-pr-4 tw-flex tw-items-center'
+                    id='FooterCountryLabel'
+                  >
+                    {{ 'localization.country_label' | t }}
+                  </h2>
+                  {%- render 'country-localization', localPosition: 'FooterCountry' -%}
+                </div>
+              {%- endform -%}
+            </localization-form>
+          </div>
+        {%- else -%}
+          {% # Copywrite section %}
+          {% if section.settings.copywrite_text != blank %}
+            <div class='lg:tw-flex lg:tw-items-center'>
+              <small class='copyright__content tw-block tw-text-center lg:tw-text-left'
+                >&copy; {{ 'now' | date: '%Y' }}
+                {{ section.settings.copywrite_text }}
+              </small>
+            </div>
+          {% endif %}
+          {% # END Copywrite section %}
+        {%- endif -%}
+        {% # Payment Methods %}
+        <div class='lg:tw-flex lg:tw-items-center'>
+          {%- if section.settings.payment_enable -%}
+            <div class='footer__payment-methods !tw-mt-0'>
+              <span class='visually-hidden'>{{ 'sections.footer.payment' | t }}</span>
+              <ul class='list list-payment !tw-pt-4 md:!tw-pt-0' role='list'>
+                {%- for type in shop.enabled_payment_types -%}
+                  <li class='list-payment__item'>
+                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    {% # END .page-width %}
+  </div>
+  {% # END .footer__aside %}
+</footer>
+{% # Footer Modern End %}
+
+{% schema %}
+{
+  "name": "Footer Modern",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main Footer settings"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "t:sections.footer-modern.settings.footer_logo.label"
+    },
+    {
+      "type": "liquid",
+      "id": "footer_tagline",
+      "label": "Business tagline (liquid code)"
+    },
+    {
+      "type": "url",
+      "id": "footer_tagline_link",
+      "label": "Tagline link"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__9.content",
+      "info": "t:sections.footer.settings.header__9.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_follow_on_shop",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_follow_on_shop.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__5.content",
+      "info": "t:sections.footer.settings.header__6.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "SEO Menu Settings",
+      "info": "How many columns do you want the SEO Menu section to be on desktop screens?"
+    },
+    {
+      "type": "select",
+      "id": "seo_menu_columns",
+      "label": "SEO Menu Columns",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "header",
+      "content": "Pre Copywrite Area",
+      "info": "Add anything you want in this area before you get to the copywrite and policies area. For example Proudly Australian owned & operated with love."
+    },
+    {
+      "type": "liquid",
+      "id": "pre_copywrite_text",
+      "label": "Pre Copywrite Area (liquid)"
+    },
+    {
+      "type": "header",
+      "content": "Copywrite Text",
+      "info": "Add all the text after you want after the copywrite symbol & year"
+    },
+    {
+      "type": "text",
+      "id": "copywrite_text",
+      "label": "Copywrite text"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__8.content",
+      "info": "t:sections.footer.settings.header__8.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy",
+      "default": false,
+      "label": "t:sections.footer.settings.show_policy.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.footer.settings.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Aside Footer settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "Below are the settings for the aside section of the footer which includes the country selector and payment methods. If neither is active the aside section will not be visible."
+    },
+    {
+      "type": "color_scheme",
+      "id": "aside_color_scheme",
+      "label": "Aside color scheme"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__3.content",
+      "info": "t:sections.footer.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__7.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.payment_enable.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "aside_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "aside_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.text.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "<p>Share contact information, store details, and brand content with your customers.</p>",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 550,
+          "step": 5,
+          "unit": "px",
+          "label": "Image width",
+          "default": 100
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image alignment on large screen",
+          "options": [
+            {
+              "value": "",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "seo_menu",
+      "name": "SEO Menu Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "seo_menu_title",
+          "label": "SEO Menu Title"
+        },
+        {
+          "type": "link_list",
+          "id": "seo_menu_links",
+          "label": "SEO Menu Links"
+        }
+      ]
+    }
+  ],
+  "default": {}
+}
+{% endschema %}

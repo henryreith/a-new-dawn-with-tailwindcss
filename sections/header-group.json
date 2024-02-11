@@ -2,43 +2,83 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "text_alignment": "center",
-            "color_scheme": "scheme-1",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "announcement-bar-0"
-      ]
+    "announcement_bar_simple_tr9jQJ": {
+      "type": "announcement-bar-simple",
+      "settings": {
+        "color_scheme": "scheme-5",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
     },
     "header": {
       "type": "header",
       "settings": {
-        "color_scheme": "scheme-1",
-        "logo_position": "middle-left",
+        "logo_position": "middle-center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
-        "sticky_header_type": "on-scroll-up",
+        "sticky_header_type": "none",
         "show_line_separator": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "mobile_logo_position": "center",
         "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "sub_menu_8rdzxV": {
+      "type": "sub-menu",
+      "blocks": {
+        "submenu_item_WVHtTJ": {
+          "type": "submenu_item",
+          "settings": {
+            "text": "Dog Poop Bags",
+            "link": "shopify:\/\/products\/dog-poop-bags",
+            "image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
+            "badge_text": "New"
+          }
+        },
+        "submenu_item_cXxCjd": {
+          "type": "submenu_item",
+          "settings": {
+            "text": "Treats",
+            "link": "shopify:\/\/pages\/about",
+            "image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Green_4510d896-f65a-44d9-a71d-7c6085a0c465.jpg",
+            "badge_text": ""
+          }
+        },
+        "submenu_item_WbYwFL": {
+          "type": "submenu_item",
+          "settings": {
+            "text": "Test Item",
+            "link": "shopify:\/\/products\/test-single-product-no-sale",
+            "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
+            "badge_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "submenu_item_WVHtTJ",
+        "submenu_item_cXxCjd",
+        "submenu_item_WbYwFL"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "animations_reveal_on_scroll": false,
+        "border_on_top": false,
+        "border_on_bottom": true,
+        "padding_top": 13,
+        "padding_bottom": 13
       }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "announcement_bar_simple_tr9jQJ",
+    "header",
+    "sub_menu_8rdzxV"
   ]
 }

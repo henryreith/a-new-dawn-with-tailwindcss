@@ -1,0 +1,171 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+  }
+  #extended-collection-banner-{{ section.id }}{
+      text-align: {{ section.settings.text_alignment }};
+  }
+  #extended-collection-banner-{{ section.id }}.section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      #extended-collection-banner-{{ section.id }}.section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+
+      .collection-hero__description--full-width{
+          max-width: 100%;
+      }
+  }
+
+  {%- if section.settings.collection_banner_background_image -%}
+    .collection-hero--with-bg-image{
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      margin: 0 auto;
+    }
+    .collection-hero--with-bg-image:after {
+      z-index: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      content: "";
+    }
+    .collection-hero--with-bg-image .collection-hero__image-wrapper{
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .collection-hero__image-wrapper img{
+      object-fit: cover;
+      width: auto;
+      min-width: 100%;
+      height: auto;
+      min-height: 100%;
+      opacity: {{ section.settings.collection_banner_background_image_opactity | divided_by: 100.00 }};
+    }
+    #extended-collection-banner-{{ section.id }} .collection-hero__inner{
+      position: relative;
+      z-index: 1;
+    }
+    #extended-collection-banner-{{ section.id }} .collection-hero__title{
+      margin-top: 0;
+    }
+  {%- endif -%}
+  .collection-hero__title{
+      margin-top: 0;
+      margin-bottom: 2.5rem;
+    }
+  #extended-collection-banner-{{ section.id }} .collection-hero__description{
+    margin-bottom: 0;
+  }
+  #extended-collection-banner-{{ section.id }}.color-{{ section.settings.color_scheme }} h1{
+    color: {{ section.settings.color_scheme | color_modify: 'alpha', 0.9 }};
+  }
+{%- endstyle -%}
+
+<div
+  id='extended-collection-banner-{{ section.id }}'
+  class='collection-hero{% if section.settings.collection_banner_background_image %} collection-hero--with-bg-image{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding'
+>
+  {%- if section.settings.collection_banner_background_image -%}
+    <div class='collection-hero__image-wrapper'>
+      {{ section.settings.collection_banner_background_image | image_url: width: 1920 | image_tag }}
+    </div>
+  {%- endif -%}
+  <div class='collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'>
+    <div class='collection-hero__text-wrapper'>
+      <h1 class='collection-hero__title'>
+        <span class='visually-hidden'>{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}
+      </h1>
+
+      {% render 'breadcrumbs' %}
+
+      {%- if section.settings.show_collection_description -%}
+        <div class='collection-hero__description collection-hero__description--full-width rte'>
+          {{ collection.description }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.extended-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.extended-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.extended-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.extended-collection-banner.settings.color_scheme.label",
+      "info": "t:sections.extended-collection-banner.settings.color_scheme.info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "collection_banner_background_image",
+      "label": "t:sections.extended-collection-banner.settings.collection_banner_background_image.label",
+      "info": "t:sections.extended-collection-banner.settings.collection_banner_background_image.info"
+    },
+    {
+      "type": "range",
+      "id": "collection_banner_background_image_opactity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "t:sections.extended-collection-banner.settings.collection_banner_background_image_opactity.label",
+      "default": 10
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:settings_schema.global.settings.text_alignment.label",
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

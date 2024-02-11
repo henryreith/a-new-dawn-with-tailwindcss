@@ -1,0 +1,354 @@
+{{ 'hero_home_page_style.min.css' | asset_url | stylesheet_tag }}
+{{ 'swiperStyles.min.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 1 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 1 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+  }
+{%- endstyle -%}
+<div
+  id='section-{{ section.id }}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
+  {% if section.settings.animations_reveal_on_scroll %}
+    data-cascade
+  {% endif %}
+>
+  <div id='home_hero' class='hero page-width tw-overflow-hidden'>
+    {% # Hero Grid %}
+    <div class='hero__container tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-content-start tw-gap-12'>
+      <div class='tw-gap-12 tw-flex tw-flex-col'>
+        <div class='hero__title'>{{ section.settings.title }}</div>
+        <div class='hero__subtext'>{{ section.settings.subtext }}</div>
+        <div
+          class='hero__slider--container lg:tw-invisible lg:tw-hidden color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
+        >
+          {% # Mobile Swiper %}
+          <div class='swiper hero__swiper--sm'>
+            <div class='swiper-wrapper tw-pb-16'>
+              {% for block in section.blocks %}
+                {%- liquid
+                  assign swiper_slide_class = 'swiper-slide'
+                  if forloop.second
+                    assign swiper_slide_class = 'swiper-slide hero_first_slide_sm'
+                  endif
+                -%}
+                <div class='{{ swiper_slide_class }}' {{ block.shopify_attributes }}>
+                  {%- liquid
+                    assign sizes = '100vw'
+                    assign widths = '375, 550, 750, 1100'
+                    assign image_classes = 'hero__slider--image'
+                    assign height = block.settings.slide_image.height
+                    assign fetch_priority = 'auto'
+                    assign lazy_loading = 'lazy'
+                    assign preload = ''
+                    if section.index == 1 and forloop.index == 2
+                      assign fetch_priority = 'high'
+                      assign preload = 'true'
+                      assign lazy_loading = ''
+                    endif
+                  -%}
+                  {{
+                    block.settings.slide_image
+                    | image_url: width: 1100
+                    | image_tag:
+                      height: height,
+                      class: image_classes,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority,
+                      preload: preload,
+                      loading: lazy_loading
+                  }}
+                  <div class='tw-center'>{{ block.settings.slide_title }}</div>
+                </div>
+              {% endfor %}
+            </div>
+            {% # Add Navigation %}
+            <div class='swiper-pagination'></div>
+          </div>
+          {% # END Swiper %}
+        </div>
+
+        <div class='hero__cta'>
+          <a
+            href='#bags'
+            style='color:#fff;background:#6dab3c;text-align: center; min-width: 30%;padding: 1em 3em;font-size: 1.65em;display:inline-table;border-radius: 0.4em;font-weight:600'
+            >Shop Now</a
+          >
+        </div>
+        <div class='hero__reviewsio tw-mb-16'>{{ section.settings.reviewsio }}</div>
+      </div>
+      {% # START Second column %}
+      <div class='tw-invisible tw-hidden lg:tw-visible lg:tw-flex'>
+        <div
+          class='hero__slider--container tw-m-auto tw-max-w-[38rem] color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
+        >
+          {% # Swiper %}
+          <div class='swiper hero__swiper--lg hero__swiper--onload-o-hidden'>
+            <div class='swiper-wrapper tw-pb-20'>
+              {% for block in section.blocks %}
+                <div class='swiper-slide' {{ block.shopify_attributes }}>
+                  {%- liquid
+                    assign sizes = '100vw'
+                    assign widths = '375, 550, 750, 1100'
+                    assign image_classes = 'hero__slider--image'
+                    assign height = block.settings.slide_image.height
+                    assign fetch_priority = 'auto'
+                    assign lazy_loading = 'lazy'
+                    assign preload = ''
+                    if section.index == 1 and forloop.index == 2
+                      assign fetch_priority = 'high'
+                      assign preload = 'true'
+                      assign lazy_loading = ''
+                    endif
+                  -%}
+                  {{
+                    block.settings.slide_image
+                    | image_url: width: 1100
+                    | image_tag:
+                      height: height,
+                      class: image_classes,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority,
+                      preload: preload,
+                      loading: lazy_loading
+                  }}
+                  <div class='tw-center'>{{ block.settings.slide_title }}</div>
+                </div>
+              {% endfor %}
+            </div>
+            {% # Add Navigation %}
+            <div class='swiper-pagination'></div>
+          </div>
+          {% # END Swiper %}
+        </div>
+      </div>
+    </div>
+    {% # END Hero__Container %}
+  </div>
+  {% # END Home_hero %}
+</div>
+{% # END #section-ID %}
+{% # Preload script as this will always be at the top of the page, so loading it as fast as possible is key %}
+{{ 'hero_home_page.min.js' | asset_url | preload_tag: as: 'script', type: 'text/javascript' }}
+<script src='{{ 'hero_home_page.min.js' | asset_url }}' defer='defer'></script>
+
+{% comment %}
+  {{ 'hero_home_page.min.js' | asset_url | preload_tag: as: 'script', type: 'text/javascript' }}
+  It may be worth the 'cost' of loading another domain for the file size savings it offers in the long run need to test more.
+  <script type='module'>
+    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
+
+    // const swiper = new Swiper(...)
+    const swiper = new Swiper('.hero__swiper', {
+      lazy: true,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+      },
+    });
+
+    // Define base configuration for Hero Swiper
+    const baseSwiperConfig = {
+      spaceBetween: 10,
+      speed: 1200,
+      // initialSlide: 1,
+      autoplay: { delay: 3000 },
+      loop: true,
+      lazyPreloaderClass: 'swiper-lazy-preloader',
+      lazyPreloadPrevNext: 1,
+      loopedSlides: 2,
+      updateOnWindowResize: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        type: 'bullets',
+      },
+      effect: 'cards',
+      cardsEffect: {
+        perSlideOffset: 8,
+        perSlideRotate: 2,
+        rotate: true,
+        slideShadows: true,
+      },
+      a11y: {
+        enabled: true,
+        prevSlideMessage: 'Previous slide',
+        nextSlideMessage: 'Next slide',
+      },
+      on: {
+        init: function () {
+          // console.log('swiper initialized');
+          const elements = document.querySelectorAll('.hero .swiper-slide');
+          elements.forEach((element) => {
+            element.classList.add('hero_slider_loaded');
+          });
+        },
+      },
+    };
+
+    // Define Swiper initialization functions
+    const initHero2DesktopSwiper = () => new Swiper('.hero__swiper--lg', baseSwiperConfig);
+
+    // Initialize hero Swipers immediately
+    let hero2DesktopSwiper = initHero2DesktopSwiper();
+
+    // Wait for DOM content to load before initializing Swipers again
+    document.addEventListener('DOMContentLoaded', (event) => {
+      hero2DesktopSwiper = initHero2DesktopSwiper();
+    });
+  </script>
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Home Page Hero",
+  "tag": "section",
+  "class": "hero-home-page-section",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "animations_reveal_on_scroll",
+      "label": "t:sections.benefits-inline.settings.animations_reveal_on_scroll.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_top",
+      "label": "t:sections.benefits-inline.settings.border_on_top.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_bottom",
+      "label": "t:sections.benefits-inline.settings.border_on_bottom.label",
+      "default": false
+    },
+    {
+      "type": "liquid",
+      "id": "title",
+      "label": "Title (Liquid)",
+      "default": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags</span>.</h1>"
+    },
+    {
+      "type": "liquid",
+      "id": "subtext",
+      "label": "Add an elevator pictch about your highlighted products here.",
+      "default": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic</span> Dog Poop Bag.</h2>"
+    },
+    {
+      "type": "liquid",
+      "id": "reviewsio",
+      "label": "Reviews.io Script (liquid)",
+      "default": "4.9/5"
+    },
+    {
+      "type": "header",
+      "content": "Card Settings"
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Slide Settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "Select the color scheme for the slides below."
+    },
+    {
+      "type": "color_scheme",
+      "id": "slide_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "slide_background_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider",
+      "name": "Slider Image",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Slider Settings"
+        },
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Slide Title",
+          "info": "Enter name of the dog or Insta username here to give them credit for the photo."
+        },
+        {
+          "type": "image_picker",
+          "id": "slide_image",
+          "label": "Slide Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Page Hero",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "slider"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

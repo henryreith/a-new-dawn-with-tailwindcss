@@ -1,11 +1,56 @@
 {
   "sections": {
     "banner": {
-      "type": "main-collection-banner",
+      "type": "extended-collection-banner",
       "settings": {
         "show_collection_description": true,
-        "show_collection_image": false,
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-2",
+        "collection_banner_background_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
+        "collection_banner_background_image_opactity": 0,
+        "text_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
+    },
+    "benefit_inline_PYfgDX": {
+      "type": "benefit-inline",
+      "blocks": {
+        "benefit_7knY7P": {
+          "type": "benefit",
+          "settings": {
+            "title": "NOT PLASTIC",
+            "icon_html": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\"><path d=\"M174.7 45.1C192.2 17 223 0 256 0s63.8 17 81.3 45.1l38.6 61.7 27-15.6c8.4-4.9 18.9-4.2 26.6 1.7s11.1 15.9 8.6 25.3l-23.4 87.4c-3.4 12.8-16.6 20.4-29.4 17l-87.4-23.4c-9.4-2.5-16.3-10.4-17.6-20s3.4-19.1 11.8-23.9l28.4-16.4L283 79c-5.8-9.3-16-15-27-15s-21.2 5.7-27 15l-17.5 28c-9.2 14.8-28.6 19.5-43.6 10.5c-15.3-9.2-20.2-29.2-10.7-44.4l17.5-28zM429.5 251.9c15-9 34.4-4.3 43.6 10.5l24.4 39.1c9.4 15.1 14.4 32.4 14.6 50.2c.3 53.1-42.7 96.4-95.8 96.4L320 448v32c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-64-64c-9.4-9.4-9.4-24.6 0-33.9l64-64c6.9-6.9 17.2-8.9 26.2-5.2s14.8 12.5 14.8 22.2v32l96.2 0c17.6 0 31.9-14.4 31.8-32c0-5.9-1.7-11.7-4.8-16.7l-24.4-39.1c-9.5-15.2-4.7-35.2 10.7-44.4zm-364.6-31L36 204.2c-8.4-4.9-13.1-14.3-11.8-23.9s8.2-17.5 17.6-20l87.4-23.4c12.8-3.4 26 4.2 29.4 17L182 241.2c2.5 9.4-.9 19.3-8.6 25.3s-18.2 6.6-26.6 1.7l-26.5-15.3L68.8 335.3c-3.1 5-4.8 10.8-4.8 16.7c-.1 17.6 14.2 32 31.8 32l32.2 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-32.2 0C42.7 448-.3 404.8 0 351.6c.1-17.8 5.1-35.1 14.6-50.2l50.3-80.5z\"><\/path><\/svg>"
+          }
+        },
+        "benefit_VmTqMz": {
+          "type": "benefit",
+          "settings": {
+            "title": "100% COMPOSTABLE",
+            "icon_html": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\"><path d=\"M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0h32c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64H64c123.7 0 224 100.3 224 224v32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V320C100.3 320 0 219.7 0 96z\"><\/path><\/svg>"
+          }
+        },
+        "benefit_FVwywQ": {
+          "type": "benefit",
+          "settings": {
+            "title": "100% ECO FRIENDLY",
+            "icon_html": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\"><path d=\"M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM208.6 357.3l-39-13.5c-6.5-2.2-13.6-2.3-20.1-.3l-15.3 4.9c-18.5 5.9-38.5-2.4-47.5-19.5l-3.3-6.2c-10.6-20.1-2.3-45 18.2-54.7l35.3-16.8c2.3-1.1 4.4-2.8 5.9-4.8l5.3-7c7.2-9.6 18.6-15.3 30.6-15.3s23.4 5.7 30.6 15.3l4.6 6.1c2 2.6 4.9 4.5 8.1 5.1c7.8 1.6 15.7-1.5 20.4-7.9l10.4-14.2c2-2.8 5.3-4.4 8.7-4.4c4.4 0 8.4 2.7 10 6.8l10.1 25.9c2.8 7.2 6.7 14 11.5 20.2L311 299.8c5.8 7.4 9 16.6 9 26s-3.2 18.6-9 26L299 367.2c-8.3 10.6-21 16.8-34.4 16.8c-8.4 0-16.6-2.4-23.7-7l-25.4-16.4c-2.2-1.4-4.5-2.5-6.9-3.4zm65.2-214.8L296 164.7c10.1 10.1 2.9 27.3-11.3 27.3H254.8c-5.6 0-11.1-1.2-16.2-3.4l-42.8-19c-14.3-6.3-11.9-27.3 3.4-30.3l38.5-7.7c13.1-2.6 26.7 1.5 36.1 10.9zM248 432c0-8.8 7.2-16 16-16h16c8.8 0 16 7.2 16 16s-7.2 16-16 16H264c-8.8 0-16-7.2-16-16zM431.2 298.9l8 24c2.8 8.4-1.7 17.4-10.1 20.2s-17.4-1.7-20.2-10.1l-8-24c-2.8-8.4 1.7-17.4 10.1-20.2s17.4 1.7 20.2 10.1zm-19.9 80.4l-32 32c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l32-32c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z\"><\/path><\/svg>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_7knY7P",
+        "benefit_VmTqMz",
+        "benefit_FVwywQ"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "font_size": 26,
+        "animations_reveal_on_scroll": true,
+        "show_eyecatcher_above_section": true,
+        "border_on_top": false,
+        "border_on_bottom": true,
+        "padding_top": 26,
+        "padding_bottom": 26
       }
     },
     "product-grid": {
@@ -13,13 +58,73 @@
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "color_scheme": "",
         "image_ratio": "adapt",
-        "show_secondary_image": false,
+        "image_shape": "default",
+        "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "enable_quick_add": false,
         "enable_filtering": true,
+        "filter_type": "horizontal",
         "enable_sorting": true,
         "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "simple_text34_and_image14_6DE8DQ": {
+      "type": "simple-text34-and-image14",
+      "settings": {
+        "title": "",
+        "title_tag": "h3",
+        "custom_liquid": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. <\/p>\n\n<p>Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. <\/p>\n\n<p>Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. <\/p>",
+        "image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Tie_To_Lead_e47dcc81-c679-4e30-b2e1-3bcee050702b.jpg",
+        "color_scheme": "",
+        "mobile_image_order": "image_first",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "faq_VeGhxA": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_x3WCFt": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the best dog poop bags for the environment?",
+            "answer_richtext": "<p>The best dog poop bags for the environment are <strong>compostable dog poop bags<\/strong>. Compostable means the dog poop bags break down into organic material within 6 months. Biodegradable or any other type of dog poop bag that isn’t certified compostable is marketing speak for it’s a plastic dog poop bag.<\/p>",
+            "answer_liquid": ""
+          }
+        },
+        "faq_item_grMmfy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why Does Oh Crap Only Offer Compostable Dog Poop Bags?",
+            "answer_richtext": "<p>Unlike some other Aussie & foreign brands that offer degradable, biodegradable, oxo-degradable, and photodegradable dog poop bags and sometimes even try to fool you with eco-friendly sounding names, we only offer compostable dog poop bags. So if you see Oh Crap Dog Poop Bags, you know they are compostable.<\/p><p><strong>Why? Simply, if it’s not compostable, it’s got plastic in it.<\/strong> That plastic might break down quickly, but it’s just breaking down into the microplastics that end up inside every fish, animal and us.<\/p><p>Check out the section below on the differences between biodegradable dog poop bags and compostable dog poop bags.<\/p>",
+            "answer_liquid": ""
+          }
+        },
+        "faq_item_3prk9A": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What’s the difference between biodegradable and compostable dog poop bags?",
+            "answer_richtext": "<p>This is something we get asked every day, and for a good reason - it’s been made complicated by marketers. All compostable products are biodegradable, but not all biodegradable products are compostable. Biodegradable is a word that was taken over by marketers in an effort to greenwash our brains. Biodegradable can be translated as ‘will break down at some point’, so that could be a year from now or, more likely, hundreds of years from now. And it’s likely to leave millions of microplastics that we all know by this point is why we all have plastic inside of us.<\/p><p><strong>Compostable, on the other hand, has government tests around it, so you know what you are getting - and the Aussie government tests are some of the most stringent in the world.<\/strong> In Australia, our standards are AS 5810 for Home Composting and AS 4736 for Commercial Composting. The AS 4736 standard requires that <strong>90% of the original material is gone after 12 weeks, and it’s completely biodegraded after 6 months.<\/strong><\/p><p>In the dog poop bag world, if you see biodegradable and no compostable logos, that is code for the dog poop bag has got plastic in it. If you see the Aussie composting logos, you know it’s passed the government tests here for compostability.<\/p>",
+            "answer_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_x3WCFt",
+        "faq_item_grMmfy",
+        "faq_item_3prk9A"
+      ],
+      "settings": {
+        "faq_title": "FAQ:",
+        "faq_title_tag": "h3",
+        "toc_show": true,
+        "question_tag": "h4",
+        "enable_faq_schema": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -27,6 +132,9 @@
   },
   "order": [
     "banner",
-    "product-grid"
+    "benefit_inline_PYfgDX",
+    "product-grid",
+    "simple_text34_and_image14_6DE8DQ",
+    "faq_VeGhxA"
   ]
 }

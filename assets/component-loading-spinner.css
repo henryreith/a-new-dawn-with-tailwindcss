@@ -38,14 +38,14 @@
 
 @keyframes dash {
   0% {
-    stroke-dashoffset: 280;
+    stroke-dashoffset: 285;
   }
   50% {
-    stroke-dashoffset: 75;
+    stroke-dashoffset: 80;
     transform: rotate(135deg);
   }
   100% {
-    stroke-dashoffset: 280;
+    stroke-dashoffset: 285;
     transform: rotate(450deg);
   }
 }

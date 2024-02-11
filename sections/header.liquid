@@ -83,6 +83,8 @@
       padding-top: 0.5rem;
     }
   }
+
+
 </style>
 
 {%- style -%}
@@ -95,6 +97,25 @@
     margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  {% # SVG Logo Snippit %}
+  header svg.logo{
+      height: 4rem
+    }
+
+    {% # Custom Logo Padding %}
+    .header--middle-center .header__heading-logo{
+    height: 4rem;
+    width: 100%;
+    }
+    @media only screen and (min-width: 990px) {
+        .header--middle-center .header__heading-link{
+            padding: 1.75rem 1.5rem;
+        }
+        .header--middle-center .header__heading-logo{
+            height: 6rem;
+        }
+    }
+
   @media screen and (min-width: 750px) {
     .section-header {
       margin-bottom: {{ section.settings.margin_bottom }}px;
@@ -106,7 +127,14 @@
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
+
+    {% # SVG Logo Snippit %}
+    header svg.logo{
+      height: 6rem
+    }
+
   }
+
 {%- endstyle -%}
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
@@ -189,6 +217,11 @@
             {%- else -%}
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
+            {% comment %}
+            <div class="header__heading-logo-wrapper">
+              {%- render 'logo-svg' -%} 
+            </div>
+            {% endcomment %}
           </a>
       {%- if request.page_type == 'index' -%}
         </h1>
@@ -229,6 +262,11 @@
             {%- else -%}
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
+            {% comment %}
+            <div class="header__heading-logo-wrapper">
+              {%- render 'logo-svg' -%} 
+            </div>
+            {% endcomment %}
           </a>
       {%- if request.page_type == 'index' -%}
         </h1>
@@ -293,11 +331,12 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
+      
 
       {%- if shop.customer_accounts_enabled -%}
+        {% # <span class='header__icon__my-account header__menu-item list-menu__item link link--text focus-inset'>My account</span> %}
         <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
-          {% render 'icon-account' %}
+          {% render 'icon-account' %} 
           <span class="visually-hidden">
             {%- liquid
               if customer
@@ -307,8 +346,11 @@
               endif
             -%}
           </span>
+          
         </a>
       {%- endif -%}
+
+      {% render 'header-search', input_id: 'Search-In-Modal' %}
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}

@@ -1,0 +1,32 @@
+<div class='drawer__recommendations-grid'>
+  {% comment %}
+    {{ cart | json }}
+    {{ recommendations.products | json }}
+  {% endcomment %}
+
+  {% for recommendation in recommendations.products %}
+    {% liquid
+      assign image_class = 'tw-border-l tw-border-t'
+      assign info_class = 'tw-border-l tw-border-t'
+      if forloop.index != 1
+        assign image_class = 'tw-border-t'
+        assign info_class = 'tw-border-t'
+      endif
+    %}
+    <div class='drawer__recommendations-item tw-flex-none tw-w-1/2 lg:tw-w-full'>
+      <div class='drawer__recommendations-item-inner'>
+        {% render 'card-product-drawer-upsell',
+          card_product: recommendation,
+          media_aspect_ratio: 'square',
+          image_shape: 'default',
+          show_secondary_image: true,
+          show_vendor: false,
+          show_rating: false,
+          show_quick_add: true,
+          image_class: image_class,
+          info_class: info_class
+        %}
+      </div>
+    </div>
+  {% endfor %}
+</div>

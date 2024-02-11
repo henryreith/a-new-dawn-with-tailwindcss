@@ -1,0 +1,214 @@
+{%- if section.settings.animations_reveal_on_scroll -%}
+  <script src='{{ 'animations.js' | asset_url }}' defer='defer'></script>
+{%- endif -%}
+
+{%- style -%}
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+    }
+
+  {% if section.settings.border_on_top or section.settings.border_on_bottom %}
+    #section-{{ section.id }} {
+        border-color: rgba(var(--color-foreground), 0.25);
+    }
+  {% endif %}
+
+  {% if section.settings.show_eyecatcher_above_section %}
+    .benefits-inline-section__inner-wrap{
+        position: relative;
+    }
+    .benefits-inline-section__inner-wrap::before{
+        content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMzAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MCwwQzI2LjQ2LDAsMjUsMzAsMCwzMGgxMDBDNzUsMzAsNzMuNTQsMCw1MCwwWiIvPjwvc3ZnPg==');
+        width: 14.7rem;
+        height: 4.4rem;
+        top: calc(-4.4rem + -{{ section.settings.padding_top | times: 0.75 | round: 0 }}px);
+        position: absolute;
+        left: 0;
+        z-index: 1;
+    }
+    @media screen and (min-width: 750px) {
+      .benefits-inline-section__inner-wrap::before{
+        left: 5rem
+      }
+    }
+    @media screen and (min-width: 750px) {
+        .benefits-inline-section__inner-wrap::before {
+            top: calc(-4.4rem + -{{ section.settings.padding_top }}px);
+        }
+    }
+    {% endif %}
+
+  .benefits-inline-section__inner-wrap {
+    font-size: {{ section.settings.font_size | times: 0.1 }}rem;
+    font-weight: 700;
+    color: rgba(var(--color-foreground), 0.6);
+  }
+
+  .color-{{ section.settings.color_scheme }} .benefits-inline-section__item svg {
+    fill: rgba(var(--color-foreground), 0.6);
+  }
+  .benefits-inline-section__icon svg, .benefits-inline-section__icon img {
+    height: {{ section.settings.font_size | times: 0.1 }}rem;
+    width: auto;
+    }
+{%- endstyle -%}
+
+<div
+  id='section-{{ section.id }}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
+  {% if section.settings.animations_reveal_on_scroll %}
+    data-cascade
+  {% endif %}
+>
+  <div
+    class='benefits-inline-section__inner-wrap page-width tw-flex tw-flex-col lg:tw-flex-row tw-justify-center tw-items-center tw-gap-y-8 tw-gap-x-9 lg:tw-gap-y-5 lg:tw-gap-x-20'
+  >
+    {%- for block in section.blocks -%}
+      <div
+        class='benefits-inline-section__item tw-flex tw-items-center tw-text-center tw-flex-row tw-gap-x-3 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+        {{ block.shopify_attributes }}
+        {% if section.settings.animations_reveal_on_scroll %}
+          data-cascade
+          style='--animation-order: {{ forloop.index }};'
+        {% endif %}
+      >
+        <div class='benefits-inline-section__icon'>
+          {% if block.settings.icon_html != blank %}
+            {{ block.settings.icon_html }}
+          {% else %}
+            {% if block.settings.icon_image != blank %}
+              {{ block.settings.icon_image | image_url | image_tag }}
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class='benefits-inline-section__title'>
+          {{ block.settings.title | escape }}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.benefits-inline.name",
+  "tag": "section",
+  "class": "benefits-inline-section",
+  "max_blocks": 6,
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.benefits-inline.settings.font_size.label",
+      "default": 26
+    },
+    {
+      "type": "checkbox",
+      "id": "animations_reveal_on_scroll",
+      "label": "t:sections.benefits-inline.settings.animations_reveal_on_scroll.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_eyecatcher_above_section",
+      "label": "t:sections.benefits-inline.settings.show_eyecatcher_above_section.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_top",
+      "label": "t:sections.benefits-inline.settings.border_on_top.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_bottom",
+      "label": "t:sections.benefits-inline.settings.border_on_bottom.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 26
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "t:sections.benefits-inline.blocks.benefit.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.benefits-inline.blocks.benefit.settings.title.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.benefits-inline.blocks.benefit.settings.header.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.benefits-inline.blocks.benefit.settings.paragraph.content"
+        },
+        {
+          "type": "html",
+          "id": "icon_html",
+          "label": "t:sections.benefits-inline.blocks.benefit.settings.icon_html.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "t:sections.benefits-inline.blocks.benefit.settings.icon_image.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.benefits-inline.presets.name",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "benefit"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

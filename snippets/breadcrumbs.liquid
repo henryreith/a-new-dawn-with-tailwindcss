@@ -1,0 +1,87 @@
+{% comment %}
+  Optimized breadcrumb code combining Shopify's example and Schema.org markup.
+  Reference: https://shopify.github.io/liquid-code-examples/example/breadcrumb-navigation
+  and https://developers.google.com/search/docs/appearance/structured-data/breadcrumb#microdata
+{% endcomment %}
+
+{%- style -%}
+  .breadcrumbs {
+    margin: 0 0 2em;
+  }
+
+  .breadcrumbs__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumbs__item {
+    display: inline-block;
+  }
+
+  .breadcrumbs__item:not(:last-child)::after {
+    content: '/';
+    padding: 0 0.25em 0 0;
+  }
+
+  .breadcrumbs__link {
+    text-decoration: none;
+  }
+
+  .breadcrumbs__link[aria-current='page'] {
+    color: inherit;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .breadcrumbs__link[aria-current='page']:hover,
+  .breadcrumbs__link[aria-current='page']:focus {
+    text-decoration: none;
+  }
+{%- endstyle -%}
+
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+  <nav class='breadcrumbs' role='navigation' aria-label='breadcrumbs'>
+    <ol class='breadcrumbs__list' itemscope itemtype='https://schema.org/BreadcrumbList'>
+      <li class='breadcrumbs__item' itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'>
+        <a class='breadcrumbs__link' href='/' itemprop='item'><span itemprop='name'>Home</span></a>
+      </li>
+
+      {%- assign page_type = template | split: '.' | first -%}
+      {%- assign page_url = page.url | default: collection.url | default: blog.url | default: request.path -%}
+      {%- assign page_title = page.title
+        | default: collection.title
+        | default: blog.title
+        | default: article.title
+        | default: page_title
+      -%}
+
+      {%- if page_type == 'product' and collection.url -%}
+        <li class='breadcrumbs__item' itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'>
+          <a class='breadcrumbs__link' href='{{ collection.url }}' itemprop='item'
+            ><span itemprop='name'>{{ collection.title }}</span></a
+          >
+        </li>
+      {%- endif -%}
+
+      {%- if current_tags -%}
+        <li class='breadcrumbs__item' itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'>
+          <a
+            class='breadcrumbs__link'
+            href='{{ page_url }}/{{ current_tags | join: "+" }}'
+            aria-current='page'
+            itemprop='item'
+          >
+            <span itemprop='name'>{{ current_tags | join: ' + ' }}</span>
+          </a>
+        </li>
+      {%- else -%}
+        <li class='breadcrumbs__item' itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'>
+          <a class='breadcrumbs__link' href='{{ page_url }}' aria-current='page' itemprop='item'>
+            <span itemprop='name'>{{ page_title }}</span>
+          </a>
+        </li>
+      {%- endif -%}
+    </ol>
+  </nav>
+{%- endunless -%}
