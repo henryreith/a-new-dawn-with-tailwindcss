@@ -44,6 +44,34 @@
             "slide_title": "Product 2",
             "slide_image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_6e7df95a-f56d-4aa5-8d79-0255eec9df05.jpg"
           }
+        },
+        "slider_kT7Lyi": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "More Dogs1",
+            "slide_image": "shopify:\/\/shop_images\/oh-crap-dog-bag-holder-front-on_679a687a-65f9-4c83-8f71-7c1e1010076b.jpg"
+          }
+        },
+        "slider_rPt44T": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "More Dogs 2",
+            "slide_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg"
+          }
+        },
+        "slider_697Dya": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "More Dogs 3",
+            "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+          }
+        },
+        "slider_Y6iPfe": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "Dogs 10",
+            "slide_image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Green_4510d896-f65a-44d9-a71d-7c6085a0c465.jpg"
+          }
         }
       },
       "block_order": [
@@ -52,7 +80,11 @@
         "slider_wF7MJn",
         "slider_qGnXNA",
         "slider_MEwknh",
-        "slider_Lr9eRq"
+        "slider_Lr9eRq",
+        "slider_kT7Lyi",
+        "slider_rPt44T",
+        "slider_697Dya",
+        "slider_Y6iPfe"
       ],
       "settings": {
         "color_scheme": "scheme-2",
