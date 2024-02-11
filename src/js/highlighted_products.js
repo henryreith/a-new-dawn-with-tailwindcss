@@ -23,16 +23,3 @@ const initHighlightedProductsSwiper = () => {
 document.addEventListener('DOMContentLoaded', () => {
   const highlightedProductsSwiper = initHighlightedProductsSwiper();
 });
-/* Only being used in the DOM so no need to export it
-// Initializes the Swiper slider for highlighted products
-const initHighlightedProductsSwiper = () => {
-  new Swiper(".highlighted-products__swiper", HighlightedProductsSwiperConfig);
-};
-
-// let highlightedProductsSwiper;
-
-// Wait for the DOM to fully load before initializing the Swiper slider
-document.addEventListener('DOMContentLoaded', () => {
-  highlightedProductsSwiper = initHighlightedProductsSwiper();
-});
-*/
