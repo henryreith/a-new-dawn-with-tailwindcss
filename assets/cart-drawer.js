@@ -45,6 +45,10 @@ class CartDrawer extends HTMLElement {
     );
 
     document.body.classList.add('overflow-hidden');
+    
+    // Custom event so other scripts know when the drawer is open
+    // Dispatch a custom event when the cart drawer is opened
+    document.dispatchEvent(new CustomEvent('cartDrawerOpened'));
   }
 
   close() {

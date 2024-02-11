@@ -11,14 +11,59 @@
 <script src='{{ 'cart.js' | asset_url }}' defer='defer'></script>
 <script src='{{ 'quantity-popover.js' | asset_url }}' defer='defer'></script>
 
+{% # Add Cart Reccomendations Section JS %}
+<script src='{{ 'cart_reccomendtions.min.js' | asset_url }}' defer='defer'></script>
+
 <style>
-  .drawer {
-    visibility: hidden;
-  }
-  {% # Overwrite width so it doesn't look like every other dawn site %}
-  .drawer__inner {
-    width: 48rem !important;
-  }
+    .drawer {
+      visibility: hidden;
+    }
+    {% # Overwrite overflow so the reccomendations can be seen %}
+    .drawer.active .drawer__inner {
+      overflow: visible;
+    }
+    {% # Overwrite width so it doesn't look like every other dawn site %}
+    .drawer__inner {
+      width: 48rem !important;
+    }
+    .drawer__footer{
+      box-shadow: 0 1px rgb(255,255,255) inset;
+    }
+    {% comment %}
+    .drawer__footer:before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      width: 100%;
+      height: 24px;
+      background: -webkit-gradient(linear,left top,left bottom,from(rgba(255, 255, 255,0)),to(rgb(255, 255, 255)));
+      background: linear-gradient(rgba(255, 255, 255,0),rgb(255, 255, 255));
+      z-index: 1;
+      pointer-events: none;
+    }
+  {% endcomment %}
+    {% # Create slide out annimation for upsell area for large screens %}
+    @media screen and (min-width: 990px) {
+      .drawer .drawer__recommendations--inner {
+        transition: all var(--duration-medium) ease-out;
+        opacity: 0;
+        box-shadow: none;
+        transform: translateX(100%);
+      }
+      .drawer.active .drawer__recommendations--inner {
+        transform: translateX(0%);
+        opacity: 1;
+        box-shadow: -10px 0 24px 4px rgb(0,0,0,.05) inset;
+      }
+    }
+    .drawer__footer--inner{
+      margin: 0 1rem;
+    }
+    @media screen and (min-width: 990px) {
+      .drawer__footer--inner{
+        margin: 0 2rem;
+      }
+    }
 </style>
 
 <cart-drawer class='drawer{% if cart == empty %} is-empty{% endif %}'>
@@ -450,88 +495,116 @@
           </div>
           <div id='CartDrawer-CartErrors' role='alert'></div>
         </form>
-      </cart-drawer-items>
-      <div class='drawer__footer'>
-        {%- if settings.show_cart_note -%}
-          <details id='Details-CartDrawer'>
-            <summary>
-              <span class='summary__title'>
-                {{ 'sections.cart.note' | t }}
-                {% render 'icon-caret' %}
-              </span>
-            </summary>
-            <cart-note class='cart__note field'>
-              <label class='visually-hidden' for='CartDrawer-Note'>{{ 'sections.cart.note' | t }}</label>
-              <textarea
-                id='CartDrawer-Note'
-                class='text-area text-area--resize-vertical field__input'
-                name='note'
-                placeholder='{{ 'sections.cart.note' | t }}'
-              >{{ cart.note }}</textarea>
-            </cart-note>
-          </details>
-        {%- endif -%}
-
-        <!-- Start blocks -->
-        <!-- Subtotals -->
-
-        <div class='cart-drawer__footer' {{ block.shopify_attributes }}>
-          <div>
-            {%- if cart.cart_level_discount_applications.size > 0 -%}
-              <ul class='discounts list-unstyled' role='list' aria-label='{{ 'customer.order.discount' | t }}'>
-                {%- for discount in cart.cart_level_discount_applications -%}
-                  <li class='discounts__discount discounts__discount--end'>
-                    {%- render 'icon-discount' -%}
-                    {{ discount.title }}
-                    (-{{ discount.total_allocated_amount | money }})
-                  </li>
-                {%- endfor -%}
-              </ul>
-            {%- endif -%}
-          </div>
-
-          <div class='totals' role='status'>
-            <h2 class='totals__total'>{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class='totals__total-value'>{{ cart.total_price | money_with_currency }}</p>
-          </div>
-
-          <small class='tax-note caption-large rte'>
-            {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
-              {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
-            {%- elsif cart.taxes_included -%}
-              {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
-            {%- elsif shop.shipping_policy.body != blank -%}
-              {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
-            {%- else -%}
-              {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
-            {%- endif -%}
-          </small>
-        </div>
-
-        <!-- CTAs -->
-
-        <div class='cart__ctas' {{ block.shopify_attributes }}>
-          <noscript>
-            <button type='submit' class='cart__update-button button button--secondary' form='CartDrawer-Form'>
-              {{ 'sections.cart.update' | t }}
-            </button>
-          </noscript>
-
-          <button
-            type='submit'
-            id='CartDrawer-Checkout'
-            class='cart__checkout-button button'
-            name='checkout'
-            form='CartDrawer-Form'
-            {% if cart == empty %}
-              disabled
-            {% endif %}
+        {% comment %}
+          <cart-drawer-recommendations
+            class='lg:tw-w-96 xlg:tw-w-[32rem] lg:tw-h-full tw-block lg:tw-absolute lg:tw-right-full lg:tw-top-0 lg:tw-text-center tw-overflow-hidden'
           >
-            {{ 'sections.cart.checkout' | t }}
-          </button>
+            <div
+              id='recommendations'
+              class='drawer__recommendations--inner tw-p-8 lg:tw-h-full lg:tw-overflow-y-auto lg:tw-overflow-x-hidden tw-bg-slate-100'
+            >
+              <div id='product-recommendations' class='product-recommendations'></div>
+              <p class='drawer__recommendations--heading tw-font-semibold tw-mt-0 tw-mb-8'>You May Also Like</p>
+              <div class='drawer__recommendations--scroller tw-snap-x lg:tw-snap-none tw-snap-mandatory'>
+                <div class='drawer__recommendations--scroller-inner'>
+                  <div
+                    class='drawer__recommendations-grid tw-flex lg:tw-grid lg:tw-grid-cols-1 tw-overflow-x-auto lg:tw-overflow-x-none tw-gap-y-8 tw-gap-x-6 tw-text-left'
+                  >
+                    {% # cart_reccomendation.js adds the items in here %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </cart-drawer-recommendations>
+        {% endcomment %}
+      </cart-drawer-items>
+
+      <div class='drawer__footer'>
+        <div class='drawer__footer--inner'>
+          {%- if settings.show_cart_note -%}
+            <details id='Details-CartDrawer'>
+              <summary>
+                <span class='summary__title'>
+                  {{ 'sections.cart.note' | t }}
+                  {% render 'icon-caret' %}
+                </span>
+              </summary>
+              <cart-note class='cart__note field'>
+                <label class='visually-hidden' for='CartDrawer-Note'>{{ 'sections.cart.note' | t }}</label>
+                <textarea
+                  id='CartDrawer-Note'
+                  class='text-area text-area--resize-vertical field__input'
+                  name='note'
+                  placeholder='{{ 'sections.cart.note' | t }}'
+                >{{ cart.note }}</textarea>
+              </cart-note>
+            </details>
+          {%- endif -%}
+
+          <!-- Start blocks -->
+          <!-- Subtotals -->
+
+          <div class='cart-drawer__footer' {{ block.shopify_attributes }}>
+            <div>
+              {%- if cart.cart_level_discount_applications.size > 0 -%}
+                <ul class='discounts list-unstyled' role='list' aria-label='{{ 'customer.order.discount' | t }}'>
+                  {%- for discount in cart.cart_level_discount_applications -%}
+                    <li class='discounts__discount discounts__discount--end'>
+                      {%- render 'icon-discount' -%}
+                      {{ discount.title }}
+                      (-{{ discount.total_allocated_amount | money }})
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+
+            <div class='totals' role='status'>
+              <h2 class='totals__total'>{{ 'sections.cart.estimated_total' | t }}</h2>
+              <p class='totals__total-value'>{{ cart.total_price | money_with_currency }}</p>
+            </div>
+
+            <small class='tax-note caption-large rte'>
+              {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- elsif cart.taxes_included -%}
+                {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+              {%- elsif shop.shipping_policy.body != blank -%}
+                {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+              {%- else -%}
+                {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+              {%- endif -%}
+            </small>
+          </div>
+
+          <!-- CTAs -->
+
+          <div class='cart__ctas' {{ block.shopify_attributes }}>
+            <noscript>
+              <button type='submit' class='cart__update-button button button--secondary' form='CartDrawer-Form'>
+                {{ 'sections.cart.update' | t }}
+              </button>
+            </noscript>
+
+            <button
+              type='submit'
+              id='CartDrawer-Checkout'
+              class='cart__checkout-button button'
+              name='checkout'
+              form='CartDrawer-Form'
+              {% if cart == empty %}
+                disabled
+              {% endif %}
+            >
+              {{ 'sections.cart.checkout' | t }}
+            </button>
+          </div>
         </div>
+        {% # END .drawer__footer--inner %}
       </div>
+      {% # END .drawer__footer %}
     </div>
+    {% # END .drawer__inner %}
   </div>
 </cart-drawer>
 

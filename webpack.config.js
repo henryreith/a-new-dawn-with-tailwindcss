@@ -25,6 +25,8 @@ module.exports = (env) => {
       // JS
       hero_home_page: './src/js/hero_home_page.js',
       highlighted_products: './src/js/highlighted_products.js',
+      cart_reccomendtions: './src/js/cart-reccomendations.js',
+      pre_orders: './src/js/pre-orders.js'
     },
     output: {
       path: path.resolve(__dirname, 'assets'),
