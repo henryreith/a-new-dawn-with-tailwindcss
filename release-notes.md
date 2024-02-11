@@ -1,14 +1,17 @@
 ### Customisation
 ## Added Sections
-- **announcement-bar-simple.liquid** - simple. So HTML can be added stright to the template and not via blocks
+- **announcement-bar-simple.liquid** - simple. So HTML can be added stright to the template and not via blocks.
+- **home-page-hero.liquid** - A modern looking hero area for the home page. Including a title, subtitle, button and image sliders.
 - **FAQ.liquid** - create FAQ section with table of content that deep links to questions e.g. for collection and product pages
 - **extended-collection-banner.liquid** - Image with rich text overlay (CSS of background image needs updating to be more like the image with rich text overlay section)
 - **benefit-inline.liquid** - icon + headline text
-- **image-with-rich-text-overlay.liquid** - Image with rich text overlay which could be used for mission statement, or key product features
+- **image-with-rich-text-overlay.liquid** - Image with rich text overlay which could be used for mission statement, or key product features.
+- **liquid-with-text.liquid** - Liquid with text section. This takes the Dawn image with text and gives the option for including liquid instead. This is useful for including a video or a map.
 - **sub-menu.liquid** - Sub menu for the main menu. Can be used to link to key products, if you use the main menu as more of an informational link section e.g. about us, contact us, blog etc.
 - **highlighted-products.liquid** - Section to show off specific variants. Can be used on any page. Can be used to show off specific variants of a product.
 - **footer-modern.liquid** - Modern look to the footer. Including logo, tagline, social icons. Block based so can be customised in the theme editor & footer aside for currency selector, payment icons, but country selector has been left off for now.
 - **drawer-cart-rec-product.liquid** - Product recommendations section rendered in the cart drawer with js.
+- **simple-text34-and-image14.liquid** - Simple text and image section. This is a simple section with a 3/4 width text block and a 1/4 width image block. Useful for adding as a content section at the bottom of collection pages.
 
 **Note:** Most of these new sections have settings and block instructions in the en.default.schema.json file, but one or two don't yet. I'll add these in later updates.
 
