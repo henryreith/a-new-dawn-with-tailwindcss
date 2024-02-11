@@ -718,6 +718,33 @@
         "name": "Contact form"
       }
     },
+    "contact-info-grid": {
+      "name": "Contact infomation grid",
+      "settings": {
+        "paragraph": {
+          "content": "Add contact infomation blocks. e.g. email, phone number or address. It will display in 1 column, then 3 column on desktop."
+        }
+      },
+      "blocks": {
+        "contact_info_grid_item": {
+          "name": "Infomation item",
+          "settings": {
+            "icon": {
+              "label": "Icon"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "content": {
+              "label": "Add the contact information here. e.g. email, phone number or address."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Contact info grid"
+      }
+    },
     "custom-liquid": {
       "name": "Custom Liquid",
       "settings": {
