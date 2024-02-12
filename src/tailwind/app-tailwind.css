@@ -146,7 +146,14 @@
         height: 0.1rem;
     }
 
-    /* Overwrite tailwind's default lists styling */
+    /* Overwrite the narrow page width set by Dawn's css just so it looked that tiny bit different than standard Dawn. Standard is 72.6rem */
+    @media only screen and (min-width: 990px) {
+        .page-width--narrow {
+            max-width: 73rem;
+        }
+    }
+
+    /* Overwrite tailwind's default lists styling back to Dawn's */
     ul, ol{
         list-style: revert;
         margin: revert;
