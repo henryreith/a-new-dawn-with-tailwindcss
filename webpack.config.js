@@ -21,7 +21,7 @@ module.exports = (env) => {
       
       // SCSS
       hero_home_page_style: './src/scss/sections/hero_home_page.scss',
-      annimations: './src/scss/utils/annimations.scss',
+      hr_animations: './src/scss/utils/annimations.scss',
       // JS
       hero_home_page: './src/js/hero_home_page.js',
       highlighted_products: './src/js/highlighted_products.js',
