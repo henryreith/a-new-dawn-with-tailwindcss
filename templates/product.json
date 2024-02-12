@@ -189,7 +189,7 @@
     "custom_liquid_aN3qeb": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<h3 id=\"#extended_diescription\" class=\"center\">Description<\/h3>\n<div id=\"extened_description\">{{ product.description }}<\/div>",
+        "custom_liquid": "<h3 id=\"extended_diescription\" class=\"center\">Description<\/h3>\n<div id=\"extened_description\">{{ product.description }}<\/div>",
         "color_scheme": "scheme-5",
         "section_content_width": "page_width",
         "padding_top": 36,
