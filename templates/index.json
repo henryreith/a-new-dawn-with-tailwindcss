@@ -242,12 +242,23 @@
         "card_color_scheme": "scheme-27244cb7-c5e8-44f4-8d36-07b36a3affa4",
         "card_background_color": "#ffffff"
       }
+    },
+    "page_ipCyhp": {
+      "type": "page",
+      "settings": {
+        "page": "the-dog-poop-bags-story",
+        "heading_size": "h2",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "hero_home_page_xiRKQB",
     "benefit_inline_r8EHBj",
     "multicolumn",
-    "highlighted_products_jwhF6k"
+    "highlighted_products_jwhF6k",
+    "page_ipCyhp"
   ]
 }
