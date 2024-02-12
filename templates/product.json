@@ -149,7 +149,8 @@
           "type": "benefit",
           "settings": {
             "title": "100% COMPOSTABLE",
-            "icon_html": ""
+            "icon_html": "",
+            "icon_image": "shopify:\/\/shop_images\/Oh_Crap_Logo-R.svg"
           }
         },
         "benefit_rtjg43": {
