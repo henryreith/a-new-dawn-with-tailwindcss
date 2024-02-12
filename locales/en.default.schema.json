@@ -546,7 +546,7 @@
           "label": "Title font size"
         },
         "font_size_benefit": {
-          "label": "Benefit's font size"
+          "label": "Benefit's font size" 
         },
         "animations_reveal_on_scroll": {
           "label": "Reveal sections on scroll"
