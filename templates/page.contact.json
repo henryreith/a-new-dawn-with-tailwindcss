@@ -3,6 +3,8 @@
     "main": {
       "type": "main-page",
       "settings": {
+        "section_content_width": "narrow",
+        "text_alignment": "center",
         "padding_top": 36,
         "padding_bottom": 36
       }
