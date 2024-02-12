@@ -539,8 +539,14 @@
     "benefits-inline": {
       "name": "Benefits inline",
       "settings": {
-        "font_size": {
-          "label": "Font size"
+        "title": {
+          "label": "Benefit's Heading"
+        },
+        "font_size_title": {
+          "label": "Title font size"
+        },
+        "font_size_benefit": {
+          "label": "Benefit's font size"
         },
         "animations_reveal_on_scroll": {
           "label": "Reveal sections on scroll"

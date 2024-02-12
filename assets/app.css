@@ -830,6 +830,10 @@ ul, ol{
   margin-top: 4rem;
 }
 
+.tw-mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .\!tw-block {
   display: block !important;
 }
@@ -1220,6 +1224,10 @@ ul, ol{
 
 .tw-text-xs {
   font-size: 1rem;
+}
+
+.tw-text-2xl {
+  font-size: calc(2rem * var(--font-heading-scale));
 }
 
 .tw-font-bold {

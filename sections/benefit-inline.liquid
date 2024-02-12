@@ -47,7 +47,7 @@
     {% endif %}
 
   .benefits-inline-section__inner-wrap {
-    font-size: {{ section.settings.font_size | times: 0.1 }}rem;
+    font-size: {{ section.settings.font_size_benefit | times: 0.1 }}rem;
     font-weight: 700;
     color: rgba(var(--color-foreground), 0.6);
   }
@@ -71,6 +71,14 @@
   <div
     class='benefits-inline-section__inner-wrap page-width tw-flex tw-flex-col lg:tw-flex-row tw-justify-center tw-items-center tw-gap-y-8 tw-gap-x-9 lg:tw-gap-y-5 lg:tw-gap-x-20'
   >
+    {% if section.settings.title != blank %}
+      <div
+        class='benefits-inline-section__title tw-text-center tw-font-bold tw-mb-6'
+        style='font-size: {{ section.settings.font_size_title | append: 'px' }};'
+      >
+        {{ section.settings.title }}
+      </div>
+    {% endif %}
     {%- for block in section.blocks -%}
       <div
         class='benefits-inline-section__item tw-flex tw-items-center tw-text-center tw-flex-row tw-gap-x-3 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
@@ -85,7 +93,7 @@
             {{ block.settings.icon_html }}
           {% else %}
             {% if block.settings.icon_image != blank %}
-              {{ block.settings.icon_image | image_url | image_tag }}
+              {{ block.settings.icon_image | image_url | image_tag: width: block.settings.icon_image.width }}
             {% endif %}
           {% endif %}
         </div>
@@ -114,8 +122,23 @@
       "default": "scheme-1"
     },
     {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.benefits-inline.settings.title.label"
+    },
+    {
       "type": "range",
-      "id": "font_size",
+      "id": "font_size_title",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.benefits-inline.settings.font_size.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "font_size_benefit",
       "min": 0,
       "max": 60,
       "step": 1,
