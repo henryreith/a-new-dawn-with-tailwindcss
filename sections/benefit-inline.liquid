@@ -68,17 +68,17 @@
     data-cascade
   {% endif %}
 >
+  {% if section.settings.title != blank %}
+    <div
+      class='benefits-inline-section__title tw-text-center tw-font-bold tw-mb-6'
+      style='font-size: {{ section.settings.font_size_title | append: 'px' }};'
+    >
+      {{ section.settings.title }}
+    </div>
+  {% endif %}
   <div
     class='benefits-inline-section__inner-wrap page-width tw-flex tw-flex-col lg:tw-flex-row tw-justify-center tw-items-center tw-gap-y-8 tw-gap-x-9 lg:tw-gap-y-5 lg:tw-gap-x-20'
   >
-    {% if section.settings.title != blank %}
-      <div
-        class='benefits-inline-section__title tw-text-center tw-font-bold tw-mb-6'
-        style='font-size: {{ section.settings.font_size_title | append: 'px' }};'
-      >
-        {{ section.settings.title }}
-      </div>
-    {% endif %}
     {%- for block in section.blocks -%}
       <div
         class='benefits-inline-section__item tw-flex tw-items-center tw-text-center tw-flex-row tw-gap-x-3 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
@@ -133,7 +133,7 @@
       "max": 60,
       "step": 1,
       "unit": "px",
-      "label": "t:sections.benefits-inline.settings.font_size.label",
+      "label": "t:sections.benefits-inline.settings.font_size_title.label",
       "default": 10
     },
     {
@@ -143,7 +143,7 @@
       "max": 60,
       "step": 1,
       "unit": "px",
-      "label": "t:sections.benefits-inline.settings.font_size.label",
+      "label": "t:sections.benefits-inline.settings.font_size_benefit.label",
       "default": 26
     },
     {
