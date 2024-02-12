@@ -444,7 +444,7 @@
         "info": "Standard-styled cards have no borders when an image shape is active."
       }, 
       "section_content_width": {
-        "label": "Section width",
+        "label": "Section content width",
         "options__1": {
           "label": "Full width"
         },
