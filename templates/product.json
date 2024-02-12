@@ -59,6 +59,12 @@
             "custom_liquid": "{{product.description | truncatewords: 23, \".\" }}\n{% if template.name == 'product' %}\n<a href='#extended_diescription' style='text-decoration:underline'>Continue reading...<\/a>\n{% else %}\n...\n{% endif %}"
           }
         },
+        "custom_liquid_BcWANg": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{ product.metafields.custom.product_features | metafield_tag }}"
+          }
+        },
         "collapsible-row-0": {
           "type": "collapsible_tab",
           "settings": {
@@ -113,6 +119,7 @@
         "buy_buttons",
         "description",
         "custom_liquid_cLkbqt",
+        "custom_liquid_BcWANg",
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
@@ -181,7 +188,7 @@
       "settings": {
         "custom_liquid": "<h3 id=\"#extended_diescription\" class=\"center\">Description<\/h3>\n<div id=\"extened_description\">{{ product.description }}<\/div>",
         "color_scheme": "scheme-5",
-        "section_page_width": "narrow",
+        "section_content_width": "page_width",
         "padding_top": 36,
         "padding_bottom": 36
       }
