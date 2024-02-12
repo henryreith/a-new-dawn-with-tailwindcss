@@ -540,7 +540,7 @@
       "name": "Benefits inline",
       "settings": {
         "title": {
-          "label": "Benefit's Heading"
+          "label": "Benefit's Title"
         },
         "font_size_title": {
           "label": "Title font size"
