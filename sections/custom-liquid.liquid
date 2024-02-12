@@ -20,11 +20,9 @@
     {%- assign page_width_class = '' -%}
 {%- endcase -%}
 
-<div class='color-{{ section.settings.color_scheme }} gradient'>
-  <div class='section-{{ section.id }}-padding'>
-    <div class='{{ page_width_class }}'>
-      {{ section.settings.custom_liquid }}
-    </div>
+<div class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'>
+  <div class='{{ page_width_class }}'>
+    {{ section.settings.custom_liquid }}
   </div>
 </div>
 
@@ -49,18 +47,18 @@
     {
       "type": "select",
       "id": "section_page_width",
-      "label": "t:sections.custom-liquid.settings.section_page_width.label",
+      "label": "t:sections.all.section_page_width.label",
       "options": [
         {
-          "label": "t:sections.custom-liquid.settings.section_page_width.options__1.label",
+          "label": "t:sections.all.section_page_width.options__1.label",
           "value": "full_width"
         },
         {
-          "label": "t:sections.custom-liquid.settings.section_page_width.options__2.label",
+          "label": "t:sections.all.section_page_width.options__2.label",
           "value": "page_width"
         },
         {
-          "label": "t:sections.custom-liquid.settings.section_page_width.options__3.label",
+          "label": "t:sections.all.section_page_width.options__3.label",
           "value": "narrow"
         }
       ],
