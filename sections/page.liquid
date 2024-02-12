@@ -14,20 +14,29 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width page-width--narrow section-{{ section.id }}-padding">
-    <h2 class="page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+{%- assign content_width_class = 'page-width page-width--narrow' -%}
+{%- case section.settings.section_content_width -%}
+  {%- when 'page_width' -%}
+    {%- assign content_width_class = 'page-width' -%}
+{%- endcase -%}
+
+<div class='color-{{ section.settings.color_scheme }} gradient'>
+  <div
+    class='{{ content_width_class }} section-{{ section.id }}-padding'
+    style='text-align: {{ section.settings.text_alignment }}'
+  >
+    <h2 class='page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
       {%- if section.settings.page.title != blank -%}
         {{ section.settings.page.title | escape }}
       {%- else -%}
         {{ 'sections.page.title' | t }}
       {%- endif -%}
     </h2>
-    <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <div class='rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
       {%- if section.settings.page.content != blank -%}
         {{ section.settings.page.content }}
       {%- else -%}
-        <div class="page-placeholder-wrapper placeholder">
+        <div class='page-placeholder-wrapper placeholder'>
           {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
         </div>
       {%- endif -%}
@@ -74,6 +83,42 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "t:sections.all.section_content_width.label",
+      "options": [
+        {
+          "label": "t:sections.all.section_content_width.options__2.label",
+          "value": "page_width"
+        },
+        {
+          "label": "t:sections.all.section_content_width.options__3.label",
+          "value": "narrow"
+        }
+      ],
+      "default": "narrow"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:settings_schema.global.settings.text_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:settings_schema.global.settings.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:settings_schema.global.settings.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:settings_schema.global.settings.text_alignment.options__3.label"
+        }
+      ],
+      "default": "left"
     },
     {
       "type": "header",
