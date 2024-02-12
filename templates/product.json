@@ -175,7 +175,9 @@
       ],
       "settings": {
         "color_scheme": "",
-        "font_size": 26,
+        "title": "Oh Crap Dog Poop Bags Are:",
+        "font_size_title": 10,
+        "font_size_benefit": 26,
         "animations_reveal_on_scroll": true,
         "show_eyecatcher_above_section": false,
         "border_on_top": true,
