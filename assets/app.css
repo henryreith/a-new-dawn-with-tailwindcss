@@ -594,9 +594,9 @@ hr {
 /* Overwrite tailwind's default lists styling */
 
 ul, ol{
-  list-style: inherit;
-  margin: inherit;
-  padding: inherit;
+  list-style: revert;
+  margin: revert;
+  padding: revert;
 }
 
 /* When synamic buttons are showing add a margin to top of dynamic so they don't sit on top of each other */
@@ -790,6 +790,10 @@ ul, ol{
   margin-bottom: 4rem;
 }
 
+.tw-mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .tw-mb-3 {
   margin-bottom: 0.75rem;
 }
@@ -826,14 +830,6 @@ ul, ol{
   margin-top: 4rem;
 }
 
-.tw-mb-6 {
-  margin-bottom: 1.5rem;
-}
-
-.tw-mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .\!tw-block {
   display: block !important;
 }
@@ -862,20 +858,16 @@ ul, ol{
   height: 2.5rem;
 }
 
+.tw-h-12 {
+  height: 3rem;
+}
+
 .tw-h-auto {
   height: auto;
 }
 
 .tw-h-full {
   height: 100%;
-}
-
-.tw-h-12 {
-  height: 3rem;
-}
-
-.tw-h-16 {
-  height: 4rem;
 }
 
 .tw-w-1\/2 {
@@ -890,16 +882,12 @@ ul, ol{
   width: 60%;
 }
 
-.tw-w-full {
-  width: 100%;
-}
-
 .tw-w-auto {
   width: auto;
 }
 
-.tw-w-12 {
-  width: 3rem;
+.tw-w-full {
+  width: 100%;
 }
 
 .tw-max-w-60 {
@@ -992,10 +980,6 @@ ul, ol{
 
 .tw-gap-8 {
   gap: 2rem;
-}
-
-.tw-gap-6 {
-  gap: 1.5rem;
 }
 
 .tw-gap-x-10 {
@@ -1142,6 +1126,11 @@ ul, ol{
   padding-bottom: 0px !important;
 }
 
+.tw-px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
 .tw-px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1162,6 +1151,11 @@ ul, ol{
   padding-bottom: 2.5rem;
 }
 
+.tw-py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 .tw-py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1170,21 +1164,6 @@ ul, ol{
 .tw-py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.tw-py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.tw-px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-.tw-py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
 }
 
 .\!tw-pb-4 {

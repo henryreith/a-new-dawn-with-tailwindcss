@@ -148,9 +148,9 @@
 
     /* Overwrite tailwind's default lists styling */
     ul, ol{
-        list-style: inherit;
-        margin: inherit;
-        padding: inherit;
+        list-style: revert;
+        margin: revert;
+        padding: revert;
     }
 
     /* When synamic buttons are showing add a margin to top of dynamic so they don't sit on top of each other */
