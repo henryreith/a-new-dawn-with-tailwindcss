@@ -46,6 +46,10 @@
     }
     {% endif %}
 
+  .benefits-inline-section__title {
+    color: rgba(var(--color-foreground), 0.6);
+  }
+
   .benefits-inline-section__inner-wrap {
     font-size: {{ section.settings.font_size_benefit | times: 0.1 }}rem;
     font-weight: 700;
@@ -56,7 +60,7 @@
     fill: rgba(var(--color-foreground), 0.6);
   }
   .benefits-inline-section__icon svg, .benefits-inline-section__icon img {
-    height: {{ section.settings.font_size | times: 0.1 }}rem;
+    height: {{ section.settings.font_size_benefit | times: 0.1 }}rem;
     width: auto;
     }
 {%- endstyle -%}
@@ -70,8 +74,8 @@
 >
   {% if section.settings.title != blank %}
     <div
-      class='benefits-inline-section__title tw-text-center tw-font-bold tw-mb-6'
-      style='font-size: {{ section.settings.font_size_title | append: 'px' }};'
+      class='benefits-inline-section__title tw-text-center tw-font-bold tw-mb-4'
+      style='font-size: {{ section.settings.font_size_title | times: 0.1 | append: 'rem' }};'
     >
       {{ section.settings.title }}
     </div>
@@ -93,7 +97,11 @@
             {{ block.settings.icon_html }}
           {% else %}
             {% if block.settings.icon_image != blank %}
-              {{ block.settings.icon_image | image_url | image_tag: width: block.settings.icon_image.width }}
+              {{
+                block.settings.icon_image
+                | image_url: width: 30
+                | image_tag: width: block.settings.icon_image.width, height: block.settings.icon_image.height
+              }}
             {% endif %}
           {% endif %}
         </div>
