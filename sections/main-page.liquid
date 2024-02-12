@@ -21,7 +21,7 @@
 {%- endcase -%}
 
 <div
-  class='{{ content_width_class }} section-{{ section.id }}-padding'
+  class='{{ content_width_class }} section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
   style='text-align: {{ section.settings.text_alignment }}'
 >
   <h1 class='main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'>
@@ -38,6 +38,12 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
     {
       "type": "select",
       "id": "section_content_width",
