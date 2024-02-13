@@ -139,7 +139,7 @@
           "background_gradient": "",
           "text": "#797575",
           "button": "#6dab3c",
-          "button_label": "#ffffff",
+          "button_label": "#6dab3c",
           "secondary_button_label": "#6dab3c",
           "shadow": "#121212"
         }
@@ -214,8 +214,8 @@
         "settings": {
           "background": "#6dab3c",
           "background_gradient": "",
-          "text": "#fff",
-          "button": "#fff",
+          "text": "#ffffff",
+          "button": "#ffffff",
           "button_label": "#6dab3c",
           "secondary_button_label": "#797575",
           "shadow": "#121212"
