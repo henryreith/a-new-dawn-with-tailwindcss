@@ -543,8 +543,8 @@
             </details>
           {%- endif -%}
 
-          <!-- Start blocks -->
-          <!-- Subtotals -->
+          {% # Start blocks %}
+          {% # Subtotals %}
 
           <div class='cart-drawer__footer' {{ block.shopify_attributes }}>
             <div>
@@ -579,11 +579,11 @@
             </small>
           </div>
 
-          <!-- CTAs -->
+          {% # CTAs %}
 
           <div class='cart__ctas' {{ block.shopify_attributes }}>
             <noscript>
-              <button type='submit' class='cart__update-button button button--secondary' form='CartDrawer-Form'>
+              <button type='submit' class='cart__update-button button' form='CartDrawer-Form'>
                 {{ 'sections.cart.update' | t }}
               </button>
             </noscript>
