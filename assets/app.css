@@ -564,6 +564,8 @@ h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
 
 /* Overwrite tailwind's default paragraph styling that removes all p tag margins, adding margin after p tags */
 
+/* clamp may be overkill vs using media queries for desktops but it's a nice touch */
+
 * > p {
   margin-top: 1rem;
   margin-top: clamp(1.2rem, 0.9500rem + 0.5000vw, 1.6rem);
@@ -581,7 +583,7 @@ a {
 }
 
 a:hover {
-  color: rgb(var(--color-link));
+  /* color: rgb(var(--color-link)); */
   text-decoration: underline;
   text-decoration-thickness: 0.1rem;
   text-underline-offset: 0.3rem;
@@ -603,8 +605,19 @@ hr {
 
 ul, ol{
   list-style: revert;
-  margin: revert;
+  margin: 0;
   padding: revert;
+}
+
+/* Give the same margin-top as a p tag if found in content */
+
+* > ul, * > ol{
+  margin-top: 1rem;
+  margin-top: clamp(1.2rem, 0.9500rem + 0.5000vw, 1.6rem);
+}
+
+* > ul:first-child, * > ul:only-child, * > ol:first-child, * > ol:only-child{
+  margin-top: 0;
 }
 
 /* When synamic buttons are showing add a margin to top of dynamic so they don't sit on top of each other */
