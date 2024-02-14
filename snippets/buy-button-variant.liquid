@@ -10,6 +10,7 @@
   Usage:
   {% render 'buy-buttons-variant', block: block, product: product, variant: variant, product_form_id: product_form_id, section_id: section.id, show_dynamic_checkout, class: classes %}
 {% endcomment %}
+<script src='{{ 'product-form.js' | asset_url }}' defer='defer'></script>
 {%- liquid
   assign product_form_id = 'quick-add-' | append: section_id | append: product_form_id
 -%}
