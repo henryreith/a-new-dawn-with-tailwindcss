@@ -48,7 +48,9 @@
                     class='highlighted-products__slider--price tw-p-4 tw-py-8 tw-text-[3.8rem] tw-font-semibold'
                     style='background-color:{{ section.settings.card_background_color }}'
                   >
-                    <p>{{ variant.price | money }}</p>
+                    <p>
+                      {{ variant.price | money -}}
+                    </p>
                   </div>
 
                   {% # Swiper %}
