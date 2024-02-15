@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 module.exports = (env) => {
   // Determine if we're doing a production build or not
@@ -94,6 +95,7 @@ module.exports = (env) => {
       new MiniCssExtractPlugin({
         filename: '[name].min.css',
       }),
+      new RemoveEmptyScriptsPlugin(),
       /* new CopyWebpackPlugin({
         patterns: [
           { from: 'node_modules/swiper/swiper-bundle.min.js', to: 'swiper-bundle.min.js' },
