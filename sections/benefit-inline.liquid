@@ -60,8 +60,13 @@
     fill: rgba(var(--color-foreground), 0.6);
   }
   .benefits-inline-section__icon svg, .benefits-inline-section__icon img {
+    {% comment %}
     height: {{ section.settings.font_size_benefit | times: 0.1 }}rem;
     width: auto;
+    {% endcomment %}
+    width: 1em;
+    height: 1em;
+    vertical-align: -.125em;
   }
 {%- endstyle -%}
 
