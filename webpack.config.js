@@ -15,8 +15,8 @@ module.exports = (env) => {
     // Enable source maps conditionally
     devtool: isProduction ? false : 'cheap-module-source-map',
     entry: {
-      // base: './assets/base.css',
-      // app: './assets/app.css',
+      base: './assets/base.css',
+      app: './assets/app.css',
       // Add other entry points for JS or CSS here
       
       // -- SCSS --
@@ -88,7 +88,16 @@ module.exports = (env) => {
             },
             extractComments: false,
         }),
-        new CssMinimizerPlugin(),
+        new CssMinimizerPlugin({
+          minimizerOptions: {
+            preset: [
+              'default',
+              {
+                discardComments: { removeAll: true },
+              },
+            ],
+          },
+        }),
       ],
     },
     plugins: [
