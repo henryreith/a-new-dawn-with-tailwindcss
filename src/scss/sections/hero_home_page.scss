@@ -42,11 +42,13 @@
 		// padding-bottom: 1em;
 		.swiper-slide{
 			width: 70%;
+			padding: 2.5rem 1.25rem 1.25rem 1.25rem;
 			@media screen and (max-width: 480px) {
 				font-size: 0.9em;
 			}
 			@media screen and (min-width: 600px) {
 				width: 56%;
+				padding: 3rem 2rem 2rem 2rem;
 			}
 		}
 	   	/* .hero_first_slide_sm{
