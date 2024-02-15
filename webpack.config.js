@@ -14,19 +14,25 @@ module.exports = (env) => {
     // Enable source maps conditionally
     devtool: isProduction ? false : 'cheap-module-source-map',
     entry: {
-      swiperStyles: './src/scss/swiper.scss',
       // base: './assets/base.css',
       // app: './assets/app.css',
       // Add other entry points for JS or CSS here
       
-      // SCSS
-      hero_home_page_style: './src/scss/sections/hero_home_page.scss',
-      hr_animations: './src/scss/utils/annimations.scss',
-      // JS
-      hero_home_page: './src/js/hero_home_page.js',
-      highlighted_products: './src/js/highlighted_products.js',
-      cart_reccomendtions: './src/js/cart-reccomendations.js',
-      pre_orders: './src/js/pre-orders.js'
+      // -- SCSS --
+      // Sections
+      'section-hero-home-page': './src/scss/sections/section-hero-home-page.scss',
+
+      // Other
+      swiperStyles: './src/scss/swiper.scss',
+      'hrm-animations': './src/scss/utils/hrm-animations.scss',
+      
+      // -- JS -- 
+      // Sections
+      'hero__home-page': './src/js/hero__home-page.js',
+      'highlighted-products': './src/js/highlighted-products.js',
+
+      // Other
+      'cart-recommendations': './src/js/cart-recommendations.js',
     },
     output: {
       path: path.resolve(__dirname, 'assets'),

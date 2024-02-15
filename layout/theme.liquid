@@ -357,9 +357,6 @@
     {%- endif -%}
 
     {% # Custom stylesheets or other code added to Dawn %}
-    {{ 'hr_animations.min.css' | asset_url | stylesheet_tag }}
-
-    {% # Add Pre Order Script %}
-    <script src='{{ 'pre_orders.min.js' | asset_url }}' defer='defer'></script>
+    {{ 'hrm-animations.min.css' | asset_url | stylesheet_tag }}
   </body>
 </html>

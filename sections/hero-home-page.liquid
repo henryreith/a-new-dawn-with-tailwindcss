@@ -1,4 +1,4 @@
-{{ 'hero_home_page_style.min.css' | asset_url | stylesheet_tag }}
+{{ 'section-hero-home-page.min.css' | asset_url | stylesheet_tag }}
 {{ 'swiperStyles.min.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -139,8 +139,8 @@
 </div>
 {% # END #section-ID %}
 {% # Preload script as this will always be at the top of the page, so loading it as fast as possible is key %}
-{{ 'hero_home_page.min.js' | asset_url | preload_tag: as: 'script', type: 'text/javascript' }}
-<script src='{{ 'hero_home_page.min.js' | asset_url }}' defer='defer'></script>
+{{ 'hero__home-page.min.js' | asset_url | preload_tag: as: 'script', type: 'text/javascript' }}
+<script src='{{ 'hero__home-page.min.js' | asset_url }}' defer='defer'></script>
 
 {% schema %}
 {

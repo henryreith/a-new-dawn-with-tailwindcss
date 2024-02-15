@@ -1,4 +1,5 @@
 /* Swipers */
+/* some swiper content commented out as it is from the original theme where it fixed the initial load styling using swiper v9, but seems to break swiper using v11. Will come back to as the styling is still odd on load so needs fixing */
 #home_hero{
     // Hide slides until swiper is loaded apart from the first slide. The hero_slider_loaded class is added in the js file for this section
 	/* .swiper {
