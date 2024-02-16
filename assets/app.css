@@ -626,6 +626,11 @@ ul, ol{
   margin-top: 1rem !important;
 }
 
+.product-form__submit.button--primary{
+  background-color: rgba(var(--color-button),var(--alpha-button-background));
+  color: rgb(var(--color-button-text));
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -1209,10 +1214,6 @@ ul, ol{
 
 .tw-pb-20 {
   padding-bottom: 5rem;
-}
-
-.tw-pb-6 {
-  padding-bottom: 1.5rem;
 }
 
 .tw-pr-4 {

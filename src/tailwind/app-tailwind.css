@@ -173,5 +173,9 @@
     [data-type="add-to-cart-form"] > [data-shopify="payment-button"]{
         margin-top: 1rem !important;
     }
+    .product-form__submit.button--primary{
+        background-color: rgba(var(--color-button),var(--alpha-button-background));
+        color: rgb(var(--color-button-text));
+    }
 } /* end @layer base */
 
