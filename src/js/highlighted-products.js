@@ -12,6 +12,8 @@ const HighlightedProductsSwiperConfig = {
     lazy: true,
     loop: true,
     cssMode: true,
+    lazyPreloaderClass: "swiper-lazy-preloader",
+    lazyPreloadPrevNext: 1
 };
 
 // Initializes the Swiper slider for highlighted products
