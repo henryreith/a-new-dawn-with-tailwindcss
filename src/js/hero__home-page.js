@@ -24,7 +24,7 @@ const mobileSwiperConfig = {
   speed: 1200,
   autoplay: { delay: 3000 },
   // lazyPreloaderClass: "swiper-lazy-preloader",
-  // lazyPreloadPrevNext: 1,
+  lazyPreloadPrevNext: 1,
   pagination: {
     el: ".swiper-pagination", 
     clickable: true,
