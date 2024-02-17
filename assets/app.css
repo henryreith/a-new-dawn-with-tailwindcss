@@ -556,6 +556,13 @@ h6,
   margin-block-end: 1.67em;
 }
 
+.h0, .h1, .h2, .h3, .h4, .h5, h1, h2, h3, h4, h5{
+  letter-spacing: 0.01rem;
+  @media only screen and (min-width: 990px) {
+    letter-spacing: 0.02rem;
+  }
+}
+
 /* Overwrite tailwind's default heading styling that removes all heading margins, adding margin after headings tags if they are followed by a p tag */
 
 h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
