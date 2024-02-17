@@ -11,7 +11,7 @@
 {% style %}
   @media screen and (min-width: 750px) {
     .announcement-bar__message {
-      padding: 1rem 0;
+      padding: 0.8rem 0;
     }
   }
 {% endstyle %}
@@ -22,7 +22,6 @@
 
 <div
   class='utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} utility-bar--bottom-border{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}'
-  {{ block.shopify_attributes }}
 >
   <div class='page-width utility-bar__grid{% if language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}'>
     {%- if section.settings.show_social and social_icons -%}
