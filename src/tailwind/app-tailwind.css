@@ -18,7 +18,6 @@
     body{
         letter-spacing: 0.01rem;
         line-height: calc(1 + 0.6 / var(--font-body-scale));
-        line-height: clamp(2.6rem, calc(1.5rem + 0.0375 * (100vw - 50rem)), 2.8rem); 
         line-height: clamp(2.4rem, 2.1500rem + 0.5000vw, 2.8rem);
     }
     
