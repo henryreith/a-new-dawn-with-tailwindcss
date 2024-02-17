@@ -637,6 +637,9 @@ ul, ol{
   color: rgb(var(--color-button-text));
 }
 
+/* Video Styling - https://css-tricks.com/fluid-width-video/
+    Yes Tailwind has built in classes but this is more universal when writing code into the Shopify backend */
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
