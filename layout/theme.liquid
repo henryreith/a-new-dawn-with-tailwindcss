@@ -256,8 +256,8 @@
       }
     {% endstyle %}
 
-    {{ 'base.min.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'app.min.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'app.css' | asset_url | stylesheet_tag: preload: true }}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel='preload' as='font' href='{{ settings.type_body_font | font_url }}' type='font/woff2' crossorigin>
