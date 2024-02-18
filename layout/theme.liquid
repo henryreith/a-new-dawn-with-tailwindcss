@@ -7,11 +7,6 @@
     <meta name='theme-color' content=''>
     <link rel='canonical' href='{{ canonical_url }}'>
 
-    {% comment %}
-      <link rel='preload' href='{{ 'base.css' | asset_url }}' as='style' onload="this.onload=null;this.rel='stylesheet'">
-      <link rel='preload' href='{{ 'app.css' | asset_url }}' as='style' onload="this.onload=null;this.rel='stylesheet'">
-    {% endcomment %}
-
     {%- if settings.favicon != blank -%}
       <link rel='icon' type='image/png' href='{{ settings.favicon | image_url: width: 32, height: 32 }}'>
     {%- endif -%}
@@ -19,6 +14,8 @@
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel='preconnect' href='https://fonts.shopifycdn.com' crossorigin>
     {%- endunless -%}
+
+    {% render 'header-pre-connect' %}
 
     <title>
       {{ page_title }}
