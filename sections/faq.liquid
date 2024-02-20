@@ -19,11 +19,19 @@
   }
 {%- endstyle -%}
 
+{%- assign content_width_class = 'page-width' -%}
+{%- case section.settings.section_content_width -%}
+  {%- when 'narrow' -%}
+    {%- assign content_width_class = 'page-width page-width--narrow' -%}
+  {%- when 'full_width' -%}
+    {%- assign content_width_class = '' -%}
+{%- endcase -%}
+
 <div
   id='faq-section-{{ section.id }}'
   class='section-{{ section.id }}-padding'
 >
-  <div class='page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+  <div class='{{ content_width_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
     {% # Table of Contents %}
     <div class='faq-toc'>
       {% assign faq_title_tag = section.settings.faq_title_tag %}
@@ -97,6 +105,26 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "t:sections.all.section_content_width.label",
+      "options": [
+        {
+          "label": "t:sections.all.section_content_width.options__1.label",
+          "value": "full_width"
+        },
+        {
+          "label": "t:sections.all.section_content_width.options__2.label",
+          "value": "page_width"
+        },
+        {
+          "label": "t:sections.all.section_content_width.options__3.label",
+          "value": "narrow"
+        }
+      ],
+      "default": "page_width"
+    },
     {
       "type": "text",
       "id": "faq_title",
