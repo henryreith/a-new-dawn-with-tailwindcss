@@ -11,7 +11,6 @@ const HighlightedProductsSwiperConfig = {
       },
     lazy: true,
     loop: true,
-    cssMode: true,
 };
 
 // Initializes the Swiper slider for highlighted products
