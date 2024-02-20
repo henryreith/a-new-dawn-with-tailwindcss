@@ -74,7 +74,7 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg",
         "image_overlay_opacity": 47,
-        "image_behavior": "none",
+        "image_behavior": "zoom-in",
         "show_text_shadow": false,
         "text_shadow_opacity": 30,
         "desktop_content_position": "center",
@@ -84,60 +84,11 @@
         "padding_top": 15,
         "padding_bottom": 15
       }
-    },
-    "image_banner_P37GtD": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_yj43kN": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image banner",
-            "heading_size": "h1"
-          }
-        },
-        "text_wAbMm4": {
-          "type": "text",
-          "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "buttons_KijUcq": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_yj43kN",
-        "text_wAbMm4",
-        "buttons_KijUcq"
-      ],
-      "settings": {
-        "image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
     }
   },
   "order": [
     "main",
     "faq_nPxPRk",
-    "image_with_rich_text_overlay_waRdjq",
-    "image_banner_P37GtD"
+    "image_with_rich_text_overlay_waRdjq"
   ]
 }
