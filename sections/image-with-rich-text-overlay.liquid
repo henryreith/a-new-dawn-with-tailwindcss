@@ -78,14 +78,14 @@
   class='tw-overflow-hidden banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'
 >
   <div class='isolate{% unless section.settings.full_width %} page-width{% endunless %}'>
-    <div class='rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding tw-overflow-hidden'>
+    <div class='rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} tw-overflow-hidden'>
       {% if section.settings.image %}
         <div
           class='image-with-text-overlay__overlay banner__media {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %} tw-h-full tw-w-full tw-absolute tw-left-0 tw-right-0 tw--z-2'
         >
           {% # Image setup borrowed from the image banner, will come back and clean up unused settings %}
           {%- liquid
-            assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+            assign image_height = section.settings.image.height
             assign image_class = 'tw-absolute tw-top-0 tw-overflow-hidden tw-w-full tw-h-full tw-object-cover tw-object-center'
             assign sizes = full_width
           -%}
@@ -103,79 +103,81 @@
         </div>
       {% endif -%}
       {%- # End if section.settings.image %}
-      <div class='rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}'>
-        <div class='rich-text__blocks {{ section.settings.content_alignment }} tw-z-10'>
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
-              {%- when 'heading' -%}
-                <h2
-                  class='rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
-                  {{ block.shopify_attributes }}
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style='--animation-order: {{ forloop.index }};'
-                  {% endif %}
-                >
-                  {{ block.settings.heading }}
-                </h2>
-              {%- when 'caption' -%}
-                <p
-                  class='rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
-                  {{ block.shopify_attributes }}
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style='--animation-order: {{ forloop.index }};'
-                  {% endif %}
-                >
-                  {{ block.settings.caption | escape }}
-                </p>
-              {%- when 'text' -%}
-                <div
-                  class='rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
-                  {{ block.shopify_attributes }}
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style='--animation-order: {{ forloop.index }};'
-                  {% endif %}
-                >
-                  {{ block.settings.text }}
-                </div>
-              {%- when 'button' -%}
-                <div
-                  class='rich-text__buttons{% if block.settings.button_label != blank and block.settings.button_label_2 != blank %} rich-text__buttons--multiple{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
-                  {{ block.shopify_attributes }}
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style='--animation-order: {{ forloop.index }};'
-                  {% endif %}
-                >
-                  {%- if block.settings.button_label != blank -%}
-                    <a
-                      {% if block.settings.button_link == blank %}
-                        role='link' aria-disabled='true'
-                      {% else %}
-                        href='{{ block.settings.button_link }}'
-                      {% endif %}
-                      class='button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}'
-                    >
-                      {{- block.settings.button_label | escape -}}
-                    </a>
-                  {%- endif -%}
-                  {%- if block.settings.button_label_2 != blank -%}
-                    <a
-                      {% if block.settings.button_link_2 == blank %}
-                        role='link' aria-disabled='true'
-                      {% else %}
-                        href='{{ block.settings.button_link_2 }}'
-                      {% endif %}
-                      class='button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}'
-                    >
-                      {{- block.settings.button_label_2 | escape -}}
-                    </a>
-                  {%- endif -%}
-                </div>
-            {%- endcase -%}
-          {%- endfor -%}
+      <div class='section-{{ section.id }}-padding'>
+        <div class='rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}'>
+          <div class='rich-text__blocks {{ section.settings.content_alignment }} tw-z-10'>
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'heading' -%}
+                  <h2
+                    class='rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+                    {{ block.shopify_attributes }}
+                    {% if settings.animations_reveal_on_scroll %}
+                      data-cascade
+                      style='--animation-order: {{ forloop.index }};'
+                    {% endif %}
+                  >
+                    {{ block.settings.heading }}
+                  </h2>
+                {%- when 'caption' -%}
+                  <p
+                    class='rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+                    {{ block.shopify_attributes }}
+                    {% if settings.animations_reveal_on_scroll %}
+                      data-cascade
+                      style='--animation-order: {{ forloop.index }};'
+                    {% endif %}
+                  >
+                    {{ block.settings.caption | escape }}
+                  </p>
+                {%- when 'text' -%}
+                  <div
+                    class='rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+                    {{ block.shopify_attributes }}
+                    {% if settings.animations_reveal_on_scroll %}
+                      data-cascade
+                      style='--animation-order: {{ forloop.index }};'
+                    {% endif %}
+                  >
+                    {{ block.settings.text }}
+                  </div>
+                {%- when 'button' -%}
+                  <div
+                    class='rich-text__buttons{% if block.settings.button_label != blank and block.settings.button_label_2 != blank %} rich-text__buttons--multiple{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+                    {{ block.shopify_attributes }}
+                    {% if settings.animations_reveal_on_scroll %}
+                      data-cascade
+                      style='--animation-order: {{ forloop.index }};'
+                    {% endif %}
+                  >
+                    {%- if block.settings.button_label != blank -%}
+                      <a
+                        {% if block.settings.button_link == blank %}
+                          role='link' aria-disabled='true'
+                        {% else %}
+                          href='{{ block.settings.button_link }}'
+                        {% endif %}
+                        class='button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}'
+                      >
+                        {{- block.settings.button_label | escape -}}
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.button_label_2 != blank -%}
+                      <a
+                        {% if block.settings.button_link_2 == blank %}
+                          role='link' aria-disabled='true'
+                        {% else %}
+                          href='{{ block.settings.button_link_2 }}'
+                        {% endif %}
+                        class='button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}'
+                      >
+                        {{- block.settings.button_label_2 | escape -}}
+                      </a>
+                    {%- endif -%}
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
         </div>
       </div>
     </div>
