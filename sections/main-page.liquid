@@ -22,11 +22,17 @@
 
 <div
   class='{{ content_width_class }} section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
-  style='text-align: {{ section.settings.text_alignment }}'
+  style='text-align: {{ section.settings.text_alignment_content }}'
 >
-  <h1 class='main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'>
+  <h1
+    class='main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'
+    style='text-align: {{ section.settings.text_alignment_content }}'
+  >
     {{ page.title | escape }}
   </h1>
+  {% if section.settings.show_breadcrumbs %}
+    {% render 'breadcrumbs' %}
+  {% endif %}
   <div class='rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
     {{ page.content }}
   </div>
@@ -62,8 +68,8 @@
     },
     {
       "type": "select",
-      "id": "text_alignment",
-      "label": "t:settings_schema.global.settings.text_alignment.label",
+      "id": "text_alignment_content",
+      "label": "t:sections.page.settings.text_alignment_content.label",
       "options": [
         {
           "value": "left",
@@ -79,6 +85,32 @@
         }
       ],
       "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_header",
+      "label": "t:sections.page.settings.text_alignment_content.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:settings_schema.global.settings.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:settings_schema.global.settings.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:settings_schema.global.settings.text_alignment.options__3.label"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "t:sections.page.settings.show_breadcrumbs.label",
+      "default": true
     },
     {
       "type": "header",

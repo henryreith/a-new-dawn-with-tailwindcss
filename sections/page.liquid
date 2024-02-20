@@ -23,9 +23,12 @@
 <div class='color-{{ section.settings.color_scheme }} gradient'>
   <div
     class='{{ content_width_class }} section-{{ section.id }}-padding'
-    style='text-align: {{ section.settings.text_alignment }}'
+    style='text-align: {{ section.settings.text_alignment_content }}'
   >
-    <h2 class='page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+    <h2
+      class='page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+      style='text-align: {{ section.settings.text_alignment_content }}'
+    >
       {%- if section.settings.page.title != blank -%}
         {{ section.settings.page.title | escape }}
       {%- else -%}
@@ -102,8 +105,28 @@
     },
     {
       "type": "select",
-      "id": "text_alignment",
-      "label": "t:settings_schema.global.settings.text_alignment.label",
+      "id": "text_alignment_content",
+      "label": "t:sections.page.settings.text_alignment_content.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:settings_schema.global.settings.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:settings_schema.global.settings.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:settings_schema.global.settings.text_alignment.options__3.label"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_header",
+      "label": "t:sections.page.settings.text_alignment_content.label",
       "options": [
         {
           "value": "left",

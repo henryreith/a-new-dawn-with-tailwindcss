@@ -2078,7 +2078,16 @@
       "name": "Order"
     },
     "main-page": {
-      "name": "Page"
+      "name": "Page",
+      "text_alignment_content": {
+        "label": "Align text"
+      },
+      "text_alignment_header": {
+        "label": "Align header (overwrites content alignment)"
+      },
+      "show_breadcrumbs": {
+        "label": "Show breadcrumbs"
+      }
     },
     "main-password-footer": {
       "name": "Password footer"
@@ -2916,6 +2925,12 @@
       "settings": {
         "page": {
           "label": "Page"
+        },
+        "text_alignment_content": {
+          "label": "Align text"
+        },
+        "text_alignment_header": {
+          "label": "Align header (overwrites content alignment)"
         }
       },
       "presets": {
