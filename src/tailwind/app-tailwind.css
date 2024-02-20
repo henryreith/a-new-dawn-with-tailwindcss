@@ -198,5 +198,8 @@
         width: 100%;
         height: 100%;
     }
+    img{
+        image-rendering: high-quality; 
+    }
 } /* end @layer base */
 
