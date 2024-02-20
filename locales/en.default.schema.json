@@ -2079,14 +2079,16 @@
     },
     "main-page": {
       "name": "Page",
-      "text_alignment_content": {
-        "label": "Align text"
-      },
-      "text_alignment_header": {
-        "label": "Align header (overwrites content alignment)"
-      },
-      "show_breadcrumbs": {
-        "label": "Show breadcrumbs"
+      "settings": {
+        "text_alignment_content": {
+          "label": "Align text"
+        },
+        "text_alignment_header": {
+          "label": "Align header (overwrites content alignment)"
+        },
+        "show_breadcrumbs": {
+          "label": "Show breadcrumbs"
+        }
       }
     },
     "main-password-footer": {
