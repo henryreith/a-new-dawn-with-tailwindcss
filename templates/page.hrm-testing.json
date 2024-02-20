@@ -3,12 +3,41 @@
     "main": {
       "type": "main-page",
       "settings": {
+        "color_scheme": "",
+        "section_content_width": "narrow",
+        "text_alignment": "left",
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "faq_nPxPRk": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_6Te9Pw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Your Question Here",
+            "answer_richtext": "",
+            "answer_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_6Te9Pw"
+      ],
+      "settings": {
+        "faq_title": "FAQ:",
+        "faq_title_tag": "h3",
+        "toc_show": true,
+        "question_tag": "h4",
+        "enable_faq_schema": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "faq_nPxPRk"
   ]
 }
