@@ -200,10 +200,18 @@
     }
     /* --- Snippets --- */
     /* Price */
-    .price .price-item::first-letter{
+    /* Set cart price as block element so first letter works */
+    cart-drawer .product-option .price {
+        display: block;
+    }
+    /* Can't figure out how to cart-drawer .cart-item__discounted-prices .price::first-letter to work as a div so removed it */
+    .price .price-item:not(.price-item--sale)::first-letter,
+    cart-drawer .cart-items .price::first-letter,
+    cart-drawer .totals__total-value::first-letter,
+    cart-drawer .product-option .price::first-letter {
         font-size: 0.5em;
         margin-right: 0.1rem;
-        vertical-align: text-top;
+        vertical-align: super;
     }
     .highlighted-products__slider--price p::first-letter{
         font-size: 0.3em;
