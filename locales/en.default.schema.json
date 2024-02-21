@@ -2080,11 +2080,11 @@
     "main-page": {
       "name": "Page",
       "settings": {
+        "text_alignment_header": {
+          "label": "Align header"
+        },
         "text_alignment_content": {
           "label": "Align text"
-        },
-        "text_alignment_header": {
-          "label": "Align header (overwrites content alignment)"
         },
         "show_breadcrumbs": {
           "label": "Show breadcrumbs"
@@ -2928,12 +2928,12 @@
         "page": {
           "label": "Page"
         },
+        "text_alignment_header": {
+          "label": "Align header"
+        },
         "text_alignment_content": {
           "label": "Align text"
         },
-        "text_alignment_header": {
-          "label": "Align header (overwrites content alignment)"
-        }
       },
       "presets": {
         "name": "Page"
