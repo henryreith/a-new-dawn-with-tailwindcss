@@ -224,5 +224,15 @@
         vertical-align: initial;
         margin: 0;
     }
+    /* Firefox disn't like the cart drawer settings as it was displaying the content off screen so overwriting it back to normal */
+    @supports (-moz-appearance:none) {
+        cart-drawer .cart-items .price::first-letter,
+        cart-drawer .totals__total-value::first-letter,
+        cart-drawer .product-option .price::first-letter {
+            font-size: 1em;
+            margin-right: 0rem;
+            vertical-align: inherit;
+        }
+    }
 } /* end @layer base */
 
