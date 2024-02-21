@@ -2081,7 +2081,7 @@
       "name": "Page",
       "settings": {
         "text_alignment_header": {
-          "label": "Align header "
+          "label": "Align header"
         },
         "text_alignment_content": {
           "label": "Align text"
