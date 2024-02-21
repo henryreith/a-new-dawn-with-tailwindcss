@@ -644,6 +644,23 @@ img{
   image-rendering: high-quality;
 }
 
+/* --- Snippets --- */
+
+/* Price */
+
+.price .price-item::first-letter{
+  font-size: 0.5em;
+  margin-right: 0.1rem;
+  vertical-align: text-top;
+}
+
+.highlighted-products__slider--price p::first-letter{
+  font-size: 0.3em;
+  margin-right: 0.2rem;
+  vertical-align: top;
+  line-height: 1;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
