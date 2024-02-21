@@ -21,12 +21,10 @@
 {%- endcase -%}
 
 <div
-  class='{{ content_width_class }} section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient'
-  style='text-align: {{ section.settings.text_alignment_content }}'
+  class='{{ content_width_class }} section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {{ section.settings.text_alignment_content }}'
 >
   <h1
-    class='main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'
-    style='text-align: {{ section.settings.text_alignment_content }}'
+    class='main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} {{ section.settings.text_alignment_header }}'
   >
     {{ page.title | escape }}
   </h1>

@@ -22,12 +22,10 @@
 
 <div class='color-{{ section.settings.color_scheme }} gradient'>
   <div
-    class='{{ content_width_class }} section-{{ section.id }}-padding'
-    style='text-align: {{ section.settings.text_alignment_content }}'
+    class='{{ content_width_class }} section-{{ section.id }}-padding {{ section.settings.text_alignment_content }}'
   >
     <h2
-      class='page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
-      style='text-align: {{ section.settings.text_alignment_content }}'
+      class='page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} {{ section.settings.text_alignment_header }}'
     >
       {%- if section.settings.page.title != blank -%}
         {{ section.settings.page.title | escape }}
