@@ -219,5 +219,10 @@
         vertical-align: top;
         line-height: 1;
     }
+    .product-grid-container .price .price-item::first-letter{
+        font-size: initial;
+        vertical-align: initial;
+        margin: 0;
+    }
 } /* end @layer base */
 
