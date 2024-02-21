@@ -2933,7 +2933,7 @@
         },
         "text_alignment_content": {
           "label": "Align text"
-        },
+        }
       },
       "presets": {
         "name": "Page"
