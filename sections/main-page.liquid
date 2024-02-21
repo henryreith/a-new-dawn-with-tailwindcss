@@ -29,7 +29,9 @@
     {{ page.title | escape }}
   </h1>
   {% if section.settings.show_breadcrumbs %}
-    {% render 'breadcrumbs' %}
+    <span class='{{ section.settings.text_alignment_header }}'>
+      {% render 'breadcrumbs' %}
+    </span>
   {% endif %}
   <div class='rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
     {{ page.content }}
