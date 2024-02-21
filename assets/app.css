@@ -640,10 +640,6 @@ ul, ol{
 /* Video Styling - https://css-tricks.com/fluid-width-video/
     Yes Tailwind has built in classes but this is more universal when writing code into the Shopify backend */
 
-img{
-  image-rendering: high-quality;
-}
-
 /* --- Snippets --- */
 
 /* Price */
