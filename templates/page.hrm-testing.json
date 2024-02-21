@@ -64,19 +64,28 @@
             "button_link_2": "",
             "button_style_secondary_2": false
           }
+        },
+        "caption_CeWEWq": {
+          "type": "caption",
+          "settings": {
+            "caption": "Add a tagline",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
         }
       },
       "block_order": [
         "heading_jbEUVT",
         "text_RY843p",
-        "button_8dfrnB"
+        "button_8dfrnB",
+        "caption_CeWEWq"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg",
-        "image_overlay_opacity": 47,
+        "image_overlay_opacity": 82,
         "image_behavior": "zoom-in",
-        "show_text_shadow": false,
-        "text_shadow_opacity": 30,
+        "show_text_shadow": true,
+        "text_shadow_opacity": 100,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-00c1a33f-94a1-495e-a9e3-307522f8fcf5",
@@ -121,11 +130,12 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
-        "image_overlay_opacity": 0,
+        "image_2": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
+        "image_overlay_opacity": 50,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
         "show_text_box": true,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "color_scheme": "",
         "image_behavior": "zoom-in",
         "mobile_content_alignment": "center",
