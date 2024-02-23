@@ -43,11 +43,19 @@
         <div class='faq-section__toc-inner tw-p-6 tw-mb-8 tw-border tw-border-solid tw-rounded-[4px]'>
           <ul class='faq-section__toc-list tw-mb-0 tw-list-circle'>
             {% for block in section.blocks %}
-              <li class='faq-section__toc-item'>
-                <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
-                  {{- block.settings.question -}}
-                </a>
-              </li>
+              {% if block.type == 'faq_item' %}
+                <li class='faq-section__toc-item'>
+                  <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
+                    {{- block.settings.question -}}
+                  </a>
+                </li>
+              {% elsif block.type == 'subsection_title' %}
+                <li class='faq-section__toc-item'>
+                  <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
+                    {{ block.settings.title }}
+                  </a>
+                </li>
+              {% endif %}
             {% endfor %}
           </ul>
         </div>
@@ -57,19 +65,27 @@
 
     {% # FAQ Questions %}
     {% for block in section.blocks %}
-      <div id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10' {{ block.shopify_attributes }}>
-        {% assign question_tag = section.settings.question_tag %}
-        <{{ question_tag }} class='faq-section__question'>
-          {{- block.settings.question | escape -}}
-        </{{ question_tag }}>
+      {%- case block.type -%}
+        {%- when 'faq_item' -%}
+          <div id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10' {{ block.shopify_attributes }}>
+            {% assign question_tag = section.settings.question_tag %}
+            <{{ question_tag }} class='faq-section__question'>
+              {{- block.settings.question | escape -}}
+            </{{ question_tag }}>
 
-        {% if block.settings.answer_richtext %}
-          {{- block.settings.answer_richtext -}}
-        {% endif %}
-        {% if block.settings.answer_liquid %}
-          {{- block.settings.answer_liquid -}}
-        {% endif %}
-      </div>
+            {% if block.settings.answer_richtext %}
+              {{- block.settings.answer_richtext -}}
+            {% endif %}
+            {% if block.settings.answer_liquid %}
+              {{- block.settings.answer_liquid -}}
+            {% endif %}
+          </div>
+        {%- when 'subsection_title' -%}
+          {% assign faq_subtitle_tag = section.settings.faq_subtitle_tag %}
+          <{{ faq_subtitle_tag }} id='{{ block.id }}' class='faq-section__subsection-title'>
+            {{- block.settings.subsection_title -}}
+          </{{ faq_subtitle_tag }}>
+      {%- endcase -%}
     {% endfor %}
   </div>
   {% # END .page-width %}
@@ -175,6 +191,38 @@
     },
     {
       "type": "select",
+      "id": "faq_subtitle_tag",
+      "label": "t:sections.faq.settings.faq_subtitle_tag.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
       "id": "question_tag",
       "label": "t:sections.faq.settings.question_tag.label",
       "options": [
@@ -260,6 +308,18 @@
           "type": "liquid",
           "id": "answer_liquid",
           "label": "t:sections.faq.blocks.faq_item.settings.answer_liquid.label"
+        }
+      ]
+    },
+    {
+      "type": "subsection_title",
+      "name": "Subsection Title",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subsection_title",
+          "label": "Sub Title",
+          "default": "Subsection Title Here"
         }
       ]
     }

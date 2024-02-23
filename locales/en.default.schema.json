@@ -809,6 +809,9 @@
         "toc_show": {
           "label": "Show table of contents"
         },
+        "faq_subtitle_tag": {
+          "label": "Sub Title HTML heading tag. This is used if you include Sub Title Blocks"
+        },
         "question_tag": {
           "label": "Question HTML heading tag"
         },
@@ -831,6 +834,14 @@
             },
             "answer_liquid": {
               "label": "Answer (Liquid)"
+            }
+          }
+        },
+        "subsection_title": {
+          "name": "Subsection Title",
+          "settings": {
+            "title": {
+              "label": "Title"
             }
           }
         }
