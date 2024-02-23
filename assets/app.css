@@ -668,6 +668,26 @@ cart-drawer .product-option .price {
   line-height: 1;
 }
 
+/* Reset the collection pages as .price item starts with the word From instead of the dollar sign */
+
+.product-grid-container .price .price-item::first-letter{
+  font-size: initial;
+  vertical-align: initial;
+  margin: 0;
+}
+
+/* Firefox disn't like the cart drawer settings as it was displaying the content off screen so overwriting it back to normal */
+
+@supports (-moz-appearance:none) {
+  cart-drawer .cart-items .price::first-letter,
+        cart-drawer .totals__total-value::first-letter,
+        cart-drawer .product-option .price::first-letter {
+    font-size: 1em;
+    margin-right: 0rem;
+    vertical-align: inherit;
+  }
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;

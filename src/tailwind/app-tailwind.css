@@ -219,6 +219,7 @@
         vertical-align: top;
         line-height: 1;
     }
+    /* Reset the collection pages as .price item starts with the word From instead of the dollar sign */
     .product-grid-container .price .price-item::first-letter{
         font-size: initial;
         vertical-align: initial;
