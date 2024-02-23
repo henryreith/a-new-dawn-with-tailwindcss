@@ -15,18 +15,18 @@
     "faq_nPxPRk": {
       "type": "faq",
       "blocks": {
+        "subsection_title_Gt969Q": {
+          "type": "subsection_title",
+          "settings": {
+            "subsection_title": "Shipping"
+          }
+        },
         "faq_item_6Te9Pw": {
           "type": "faq_item",
           "settings": {
             "question": "Your Question Here",
             "answer_richtext": "<p>video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in Ric<\/p>",
             "answer_liquid": ""
-          }
-        },
-        "subsection_title_Gt969Q": {
-          "type": "subsection_title",
-          "settings": {
-            "subsection_title": "Subsection Title Here"
           }
         },
         "faq_item_dmWTrB": {
@@ -36,12 +36,37 @@
             "answer_richtext": "<p>video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in Ric<\/p>",
             "answer_liquid": ""
           }
+        },
+        "subsection_title_j69fpL": {
+          "type": "subsection_title",
+          "settings": {
+            "subsection_title": "Returns"
+          }
+        },
+        "faq_item_chyQcG": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Return 1",
+            "answer_richtext": "<p>eo or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can co<\/p>",
+            "answer_liquid": ""
+          }
+        },
+        "faq_item_BMFpqA": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Return 2",
+            "answer_richtext": "<p>eo or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can co<\/p>",
+            "answer_liquid": ""
+          }
         }
       },
       "block_order": [
-        "faq_item_6Te9Pw",
         "subsection_title_Gt969Q",
-        "faq_item_dmWTrB"
+        "faq_item_6Te9Pw",
+        "faq_item_dmWTrB",
+        "subsection_title_j69fpL",
+        "faq_item_chyQcG",
+        "faq_item_BMFpqA"
       ],
       "settings": {
         "section_content_width": "page_width",
