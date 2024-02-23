@@ -5,8 +5,8 @@
       "settings": {
         "color_scheme": "",
         "section_content_width": "narrow",
-        "text_alignment_content": "left",
         "text_alignment_header": "left",
+        "text_alignment_content": "left",
         "show_breadcrumbs": true,
         "padding_top": 28,
         "padding_bottom": 28
@@ -19,19 +19,36 @@
           "type": "faq_item",
           "settings": {
             "question": "Your Question Here",
-            "answer_richtext": "",
+            "answer_richtext": "<p>video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in Ric<\/p>",
+            "answer_liquid": ""
+          }
+        },
+        "subsection_title_Gt969Q": {
+          "type": "subsection_title",
+          "settings": {
+            "subsection_title": "Subsection Title Here"
+          }
+        },
+        "faq_item_dmWTrB": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Your Question Here",
+            "answer_richtext": "<p>video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in Ric<\/p>",
             "answer_liquid": ""
           }
         }
       },
       "block_order": [
-        "faq_item_6Te9Pw"
+        "faq_item_6Te9Pw",
+        "subsection_title_Gt969Q",
+        "faq_item_dmWTrB"
       ],
       "settings": {
         "section_content_width": "page_width",
         "faq_title": "Testing FAQ:",
         "faq_title_tag": "h3",
         "toc_show": true,
+        "faq_subtitle_tag": "h2",
         "question_tag": "h4",
         "enable_faq_schema": false,
         "padding_top": 36,
@@ -80,6 +97,7 @@
         "button_8dfrnB",
         "caption_CeWEWq"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg",
         "image_overlay_opacity": 82,
@@ -128,6 +146,7 @@
         "text_ghcdx4",
         "buttons_zQKXe3"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
         "image_2": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
