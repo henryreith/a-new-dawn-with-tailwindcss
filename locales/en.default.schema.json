@@ -806,6 +806,9 @@
         "faq_title_tag": {
           "label": "FAQ HTML heading tag"
         },
+        "faq_usage_prompt": {
+          "label": "Include prompt under title e.g. Click to quickly jump to an answer"
+        },
         "toc_show": {
           "label": "Show table of contents"
         },

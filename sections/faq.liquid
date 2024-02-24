@@ -38,6 +38,11 @@
       <{{ faq_title_tag }} class='faq-section__title tw-mb-4'>
         {{- section.settings.faq_title | escape -}}
       </{{ faq_title_tag }}>
+      {% if section.settings.faq_usage_prompt != blank %}
+        <p class='faq-section__usage-prompt tw-mb-4'>
+          <small>{{- section.settings.faq_usage_prompt | escape -}}</small>
+        </p>
+      {% endif %}
       {% if section.settings.toc_show %}
         <div class='faq-section__toc-inner tw-p-6 tw-mb-8 tw-border tw-border-solid tw-rounded-[4px]'>
           {% assign in_subsection = false %}
@@ -209,6 +214,11 @@
         }
       ],
       "default": "h3"
+    },
+    {
+      "type": "text",
+      "id": "faq_usage_prompt",
+      "label": "t:sections.faq.settings.faq_usage_prompt.label"
     },
     {
       "type": "checkbox",
