@@ -31,6 +31,12 @@
             "answer_liquid": ""
           }
         },
+        "subsection_title_pCwRM6": {
+          "type": "subsection_title",
+          "settings": {
+            "title": "Section Sub Title"
+          }
+        },
         "faq_item_6Te9Pw": {
           "type": "faq_item",
           "settings": {
@@ -45,6 +51,12 @@
             "question": "Your Question Here",
             "answer_richtext": "<p>video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in Ric<\/p>",
             "answer_liquid": ""
+          }
+        },
+        "subsection_title_DDDrbh": {
+          "type": "subsection_title",
+          "settings": {
+            "title": "Section Sub Title"
           }
         },
         "faq_item_chyQcG": {
@@ -62,15 +74,42 @@
             "answer_richtext": "<p>eo or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can co<\/p>",
             "answer_liquid": ""
           }
+        },
+        "subsection_break_WAEHPj": {
+          "type": "subsection_break",
+          "settings": {
+            "subsection_break_hr": true
+          }
+        },
+        "faq_item_x43XPR": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Item On Top Level",
+            "answer_richtext": "<p>text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in R<\/p>",
+            "answer_liquid": ""
+          }
+        },
+        "faq_item_qcTbKN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "2nd Top Level",
+            "answer_richtext": "<p>n. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer i<\/p>",
+            "answer_liquid": ""
+          }
         }
       },
       "block_order": [
         "faq_item_7JU3Mc",
         "faq_item_tq4xEy",
+        "subsection_title_pCwRM6",
         "faq_item_6Te9Pw",
         "faq_item_dmWTrB",
+        "subsection_title_DDDrbh",
         "faq_item_chyQcG",
-        "faq_item_BMFpqA"
+        "faq_item_BMFpqA",
+        "subsection_break_WAEHPj",
+        "faq_item_x43XPR",
+        "faq_item_qcTbKN"
       ],
       "settings": {
         "section_content_width": "page_width",
