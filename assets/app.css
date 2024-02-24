@@ -462,7 +462,9 @@ body{
   line-height: clamp(2.4rem, 2.1500rem + 0.5000vw, 2.8rem);
 }
 
-/* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's css too */
+/* --- START Overwrite tailwind's inherit resets --- */
+
+/* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's base.css too */
 
 h1,
     h2,
@@ -564,7 +566,12 @@ h6,
 
 /* Overwrite tailwind's default heading styling that removes all heading margins, adding margin after headings tags if they are followed by a p tag */
 
-h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p,
+    .h0 + p, .h1 + p, .h2 + p, .h3 + p, .h4 + p, .h5 + p, .h6 + p {
+  margin-top: 1rem;
+}
+
+h1 + div, h2 + div, h3 + div, h4 + div, h5 + div, h6 + div {
   margin-top: 1rem;
 }
 
@@ -578,6 +585,10 @@ h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
 }
 
 * > p:first-child, * > p:only-child {
+  margin-top: 0;
+}
+
+li > ul{
   margin-top: 0;
 }
 
@@ -597,7 +608,16 @@ a:hover {
 
 hr {
   height: 0.1rem;
+  margin: 3rem 0;
 }
+
+@media only screen and (min-width: 990px) {
+  hr {
+    margin: 4rem 0;
+  }
+}
+
+/* --- END Overwrite tailwind's inherit resets --- */
 
 /* Overwrite the narrow page width set by Dawn's css just so it looked that tiny bit different than standard Dawn. Standard is 72.6rem */
 
