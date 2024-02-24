@@ -103,6 +103,10 @@
           <{{ faq_subtitle_tag }} id='{{ block.id }}' class='faq-section__subsection-title'>
             {{- block.settings.title -}}
           </{{ faq_subtitle_tag }}>
+        {%- when 'subsection_break' -%}
+          {% if block.settings.subsection_break_hr %}
+            <hr class='faq-section__subsection-break'>
+          {% endif %}
       {%- endcase -%}
     {% endfor %}
   </div>
@@ -338,6 +342,18 @@
           "id": "title",
           "label": "t:sections.faq.blocks.subsection_title.settings.title.label",
           "default": "Section Sub Title"
+        }
+      ]
+    },
+    {
+      "type": "subsection_break",
+      "name": "Subsection Break",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "subsection_break_hr",
+          "label": "Show HR",
+          "default": true
         }
       ]
     }
