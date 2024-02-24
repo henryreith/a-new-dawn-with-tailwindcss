@@ -46,10 +46,10 @@
               {% if block.type == 'subsection_title' %}
                 {% if in_subsection %}
                   </ul>
-                  <!-- Close the current subsection list -->
+                  {% # Close the current subsection list %}
                 {% endif %}
                 {% assign in_subsection = true %}
-                <!-- Add subsection title and start a new nested UL -->
+                {% # Add subsection title and start a new nested UL %}
                 <li class='faq-section__toc-item'>
                   <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
                     {{ block.settings.title }}
@@ -57,18 +57,18 @@
                   <ul class='faq-section__toc-sublist'>
               {% elsif block.type == 'subsection_break' and in_subsection %}
                 </ul>
-                <!-- Close the subsection list -->
+                {% # Close the subsection list %}
                 {% assign in_subsection = false %}
               {% elsif block.type == 'faq_item' %}
                 {% if in_subsection %}
-                  <!-- Add item inside the subsection -->
+                  {% # Add item inside the subsection %}
                   <li class='faq-section__toc-subitem'>
                     <a href='#{{ block.id }}' class='faq-section__toc-sublink tw-no-underline'>
                       {{ block.settings.question }}
                     </a>
                   </li>
                 {% else %}
-                  <!-- Add item at the top level -->
+                  {% # Add item at the top level %}
                   <li class='faq-section__toc-item'>
                     <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
                       {{ block.settings.question }}
@@ -79,7 +79,7 @@
             {% endfor %}
             {% if in_subsection %}
               </ul>
-              <!-- Close the last subsection if open -->
+              {% # Close the last subsection if open %}
             {% endif %}
           </ul>
         </div>
@@ -352,12 +352,16 @@
     },
     {
       "type": "subsection_break",
-      "name": "Subsection Break",
+      "name": "t:sections.faq.blocks.subsection_break.name",
       "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.faq.blocks.subsection_break.settings.paragraph.content"
+        },
         {
           "type": "checkbox",
           "id": "subsection_break_hr",
-          "label": "Show HR",
+          "label": "t:sections.faq.blocks.subsection_break.settings.subsection_break_hr.label",
           "default": true
         }
       ]

@@ -844,6 +844,17 @@
               "label": "Title"
             }
           }
+        },
+        "subsection_break": {
+          "name": "Subsection Break",
+          "settings": {
+            "paragraph": {
+              "content": "This block is used to break the faq items back to the top level ul"
+            },
+            "checkbox": {
+              "label": "Show <hr> line in the body of the FAQ's"
+            }
+          }
         }
       },
       "presets": {
