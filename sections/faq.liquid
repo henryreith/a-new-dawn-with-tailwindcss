@@ -38,61 +38,43 @@
       <{{ faq_title_tag }} class='faq-section__title tw-mb-4'>
         {{- section.settings.faq_title | escape -}}
       </{{ faq_title_tag }}>
-      {% comment %}
-        {% if section.settings.toc_show %}
-          <div class='faq-section__toc-inner tw-p-6 tw-mb-8 tw-border tw-border-solid tw-rounded-[4px]'>
-            <ul class='faq-section__toc-list tw-mb-0 tw-list-circle'>
-              {% for block in section.blocks %}
-                {% if block.type == 'faq_item' %}
-                  <li class='faq-section__toc-item'>
-                    <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
-                      {{- block.settings.question -}}
-                    </a>
-                  </li>
-                {% elsif block.type == 'subsection_title' %}
-                  <li class='faq-section__toc-subtitle'>
-                    <a
-                      href='#{{ block.id }}'
-                      class='faq-section__toc-link faq-section__toc-subsection-title-link tw-no-underline'
-                    >
-                      {{ block.settings.title }}
-                    </a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </div>
-          {% # END #faq-toc-inner %}
-        {%- endif -%}
-      {% endcomment %}
       {% if section.settings.toc_show %}
         <div class='faq-section__toc-inner tw-p-6 tw-mb-8 tw-border tw-border-solid tw-rounded-[4px]'>
           <ul class='faq-section__toc-list tw-mb-0 tw-list-circle'>
-            {% assign current_subsection = null %}
+            {% assign current_subsection = false %}
             {% for block in section.blocks %}
               {% if block.type == 'subsection_title' %}
-                {% if current_subsection != null %}
+                {% if current_subsection %}
                   </ul>
-                  <!-- Close the previous sub-UL if we're starting a new subsection -->
+                  {% # Close the current subsection list %}
                 {% endif %}
                 <li class='faq-section__toc-item'>
                   <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
                     {{ block.settings.title }}
                   </a>
-                  {% assign current_subsection = block.id %}
-                  <ul class='faq-section__toc-sublist'>
-                    <!-- Start a new nested UL for subsection items -->
-              {% elsif block.type == 'faq_item' and current_subsection != null %}
-                <li class='faq-section__toc-subitem'>
-                  <a href='#{{ block.id }}' class='faq-section__toc-sublink tw-no-underline'>
-                    {{ block.settings.question }}
-                  </a>
                 </li>
+                <ul class='faq-section__toc-sublist'>
+                  {% #  Start a new subsection list %}
+                  {% assign current_subsection = true %}
+              {% elsif block.type == 'faq_item' %}
+                {% if current_subsection %}
+                  <li class='faq-section__toc-subitem'>
+                    <a href='#{{ block.id }}' class='faq-section__toc-sublink tw-no-underline'>
+                      {{ block.settings.question }}
+                    </a>
+                  </li>
+                {% else %}
+                  <li class='faq-section__toc-item'>
+                    <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
+                      {{ block.settings.question }}
+                    </a>
+                  </li>
+                {% endif %}
               {% endif %}
             {% endfor %}
-            {% if current_subsection != null %}
+            {% if current_subsection %}
               </ul>
-              <!-- Close the last sub-UL at the end of the loop -->
+              {% #  Close the last subsection if open %}
             {% endif %}
           </ul>
         </div>
