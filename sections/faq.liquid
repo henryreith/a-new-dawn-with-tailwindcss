@@ -38,29 +38,65 @@
       <{{ faq_title_tag }} class='faq-section__title tw-mb-4'>
         {{- section.settings.faq_title | escape -}}
       </{{ faq_title_tag }}>
-
+      {% comment %}
+        {% if section.settings.toc_show %}
+          <div class='faq-section__toc-inner tw-p-6 tw-mb-8 tw-border tw-border-solid tw-rounded-[4px]'>
+            <ul class='faq-section__toc-list tw-mb-0 tw-list-circle'>
+              {% for block in section.blocks %}
+                {% if block.type == 'faq_item' %}
+                  <li class='faq-section__toc-item'>
+                    <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
+                      {{- block.settings.question -}}
+                    </a>
+                  </li>
+                {% elsif block.type == 'subsection_title' %}
+                  <li class='faq-section__toc-subtitle'>
+                    <a
+                      href='#{{ block.id }}'
+                      class='faq-section__toc-link faq-section__toc-subsection-title-link tw-no-underline'
+                    >
+                      {{ block.settings.title }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+          {% # END #faq-toc-inner %}
+        {%- endif -%}
+      {% endcomment %}
       {% if section.settings.toc_show %}
         <div class='faq-section__toc-inner tw-p-6 tw-mb-8 tw-border tw-border-solid tw-rounded-[4px]'>
           <ul class='faq-section__toc-list tw-mb-0 tw-list-circle'>
+            {% assign current_subsection = null %}
             {% for block in section.blocks %}
-              {% if block.type == 'faq_item' %}
-                <li class='faq-section__toc-item'>
-                  <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
-                    {{- block.settings.question -}}
-                  </a>
-                </li>
-              {% elsif block.type == 'subsection_title' %}
+              {% if block.type == 'subsection_title' %}
+                {% if current_subsection != null %}
+                  </ul>
+                  <!-- Close the previous sub-UL if we're starting a new subsection -->
+                {% endif %}
                 <li class='faq-section__toc-item'>
                   <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
                     {{ block.settings.title }}
                   </a>
+                  {% assign current_subsection = block.id %}
+                  <ul class='faq-section__toc-sublist'>
+                    <!-- Start a new nested UL for subsection items -->
+              {% elsif block.type == 'faq_item' and current_subsection != null %}
+                <li class='faq-section__toc-subitem'>
+                  <a href='#{{ block.id }}' class='faq-section__toc-sublink tw-no-underline'>
+                    {{ block.settings.question }}
+                  </a>
                 </li>
               {% endif %}
             {% endfor %}
+            {% if current_subsection != null %}
+              </ul>
+              <!-- Close the last sub-UL at the end of the loop -->
+            {% endif %}
           </ul>
         </div>
-        {% # END #faq-toc-inner %}
-      {%- endif -%}
+      {% endif %}
     </div>
 
     {% # FAQ Questions %}
@@ -83,7 +119,7 @@
         {%- when 'subsection_title' -%}
           {% assign faq_subtitle_tag = section.settings.faq_subtitle_tag %}
           <{{ faq_subtitle_tag }} id='{{ block.id }}' class='faq-section__subsection-title'>
-            {{- block.settings.subsection_title -}}
+            {{- block.settings.title -}}
           </{{ faq_subtitle_tag }}>
       {%- endcase -%}
     {% endfor %}
@@ -313,13 +349,13 @@
     },
     {
       "type": "subsection_title",
-      "name": "Subsection Title",
+      "name": "t:sections.faq.blocks.subsection_title.name",
       "settings": [
         {
           "type": "text",
-          "id": "subsection_title",
-          "label": "Sub Title",
-          "default": "Subsection Title Here"
+          "id": "title",
+          "label": "t:sections.faq.blocks.subsection_title.settings.title.label",
+          "default": "Section Sub Title"
         }
       ]
     }
