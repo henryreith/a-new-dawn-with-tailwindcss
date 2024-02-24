@@ -852,7 +852,7 @@
               "content": "This block is used to break the faq items back to the top level ul"
             },
             "subsection_break_hr": {
-              "label": "Show <hr> line in the body of the FAQ's"
+              "label": "Show <hr> in the body of the FAQ's"
             }
           }
         }
