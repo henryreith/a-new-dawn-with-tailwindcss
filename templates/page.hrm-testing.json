@@ -115,6 +115,7 @@
         "section_content_width": "page_width",
         "faq_title": "Testing FAQ:",
         "faq_title_tag": "h3",
+        "faq_usage_prompt": "Click to quickly jump to an answer",
         "toc_show": true,
         "faq_subtitle_tag": "h2",
         "question_tag": "h4",
