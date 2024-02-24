@@ -31,12 +31,6 @@
             "answer_liquid": ""
           }
         },
-        "subsection_title_Gt969Q": {
-          "type": "subsection_title",
-          "settings": {
-            "title": "Section Sub Title"
-          }
-        },
         "faq_item_6Te9Pw": {
           "type": "faq_item",
           "settings": {
@@ -51,12 +45,6 @@
             "question": "Your Question Here",
             "answer_richtext": "<p>video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in Ric<\/p>",
             "answer_liquid": ""
-          }
-        },
-        "subsection_title_j69fpL": {
-          "type": "subsection_title",
-          "settings": {
-            "title": "Section Sub Title"
           }
         },
         "faq_item_chyQcG": {
@@ -79,10 +67,8 @@
       "block_order": [
         "faq_item_7JU3Mc",
         "faq_item_tq4xEy",
-        "subsection_title_Gt969Q",
         "faq_item_6Te9Pw",
         "faq_item_dmWTrB",
-        "subsection_title_j69fpL",
         "faq_item_chyQcG",
         "faq_item_BMFpqA"
       ],
