@@ -18,8 +18,16 @@
         "faq_item_7JU3Mc": {
           "type": "faq_item",
           "settings": {
-            "question": "Your Question Here",
+            "question": "Question By Itself",
             "answer_richtext": "<p>However, if you want to insert a video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich tex<\/p>",
+            "answer_liquid": ""
+          }
+        },
+        "faq_item_tq4xEy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Question By Itself 2",
+            "answer_richtext": "<p>ther html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combin<\/p>",
             "answer_liquid": ""
           }
         },
@@ -70,6 +78,7 @@
       },
       "block_order": [
         "faq_item_7JU3Mc",
+        "faq_item_tq4xEy",
         "subsection_title_Gt969Q",
         "faq_item_6Te9Pw",
         "faq_item_dmWTrB",
