@@ -40,30 +40,35 @@
       </{{ faq_title_tag }}>
       {% if section.settings.toc_show %}
         <div class='faq-section__toc-inner tw-p-6 tw-mb-8 tw-border tw-border-solid tw-rounded-[4px]'>
+          {% assign in_subsection = false %}
           <ul class='faq-section__toc-list tw-mb-0 tw-list-circle'>
-            {% assign current_subsection = false %}
             {% for block in section.blocks %}
               {% if block.type == 'subsection_title' %}
-                {% if current_subsection %}
+                {% if in_subsection %}
                   </ul>
-                  {% # Close the current subsection list %}
+                  <!-- Close the current subsection list -->
                 {% endif %}
+                {% assign in_subsection = true %}
+                <!-- Add subsection title and start a new nested UL -->
                 <li class='faq-section__toc-item'>
                   <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
                     {{ block.settings.title }}
                   </a>
-                </li>
-                <ul class='faq-section__toc-sublist'>
-                  {% #  Start a new subsection list %}
-                  {% assign current_subsection = true %}
+                  <ul class='faq-section__toc-sublist'>
+              {% elsif block.type == 'subsection_break' and in_subsection %}
+                </ul>
+                <!-- Close the subsection list -->
+                {% assign in_subsection = false %}
               {% elsif block.type == 'faq_item' %}
-                {% if current_subsection %}
+                {% if in_subsection %}
+                  <!-- Add item inside the subsection -->
                   <li class='faq-section__toc-subitem'>
                     <a href='#{{ block.id }}' class='faq-section__toc-sublink tw-no-underline'>
                       {{ block.settings.question }}
                     </a>
                   </li>
                 {% else %}
+                  <!-- Add item at the top level -->
                   <li class='faq-section__toc-item'>
                     <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
                       {{ block.settings.question }}
@@ -72,9 +77,9 @@
                 {% endif %}
               {% endif %}
             {% endfor %}
-            {% if current_subsection %}
+            {% if in_subsection %}
               </ul>
-              {% #  Close the last subsection if open %}
+              <!-- Close the last subsection if open -->
             {% endif %}
           </ul>
         </div>
