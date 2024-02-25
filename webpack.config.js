@@ -1,9 +1,55 @@
 const path = require('path');
+const fs = require('fs');
+const postcss = require('postcss');
+const cssnano = require('cssnano');
+const discardDuplicates = require('postcss-discard-duplicates');
+const mergeRules = require('postcss-merge-rules');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+
+class InlineAndMinifyCriticalCssPlugin {
+  constructor() {
+    this.cssFiles = ['./assets/base.css', './assets/app.css'];
+    this.outputFile = path.join(__dirname, 'assets', 'combine.css');
+    this.liquidOutputPath = path.join(__dirname, 'snippets', 'critical-css.liquid');
+  }
+
+  apply(compiler) {
+    compiler.hooks.afterEmit.tapPromise('InlineAndMinifyCriticalCssPlugin', async (compilation, callback) => {
+      return new Promise(async (resolve, reject) => {
+      // Combine CSS content
+      let combinedCss = this.cssFiles.map(file => {
+        let filePath = path.join(__dirname, file);
+        return fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf-8') : '';
+      }).join('\n');
+
+      // Apply cssnano with additional plugins
+      try {
+        const result = await postcss([
+          discardDuplicates(),
+          mergeRules(),
+          cssnano({preset: 'lite'})
+        ]).process(combinedCss, { from: undefined });
+
+        // Remove all line breaks
+        const finalCss = result.css.replace(/[\r\n]+/gm, ' ');
+
+        // Generate or update the critical-css.liquid file with the combined and minified CSS
+        const liquidContent = `{% style %}\n${finalCss}\n{% endstyle %}`;
+        fs.writeFileSync(this.liquidOutputPath, liquidContent, 'utf-8');
+        console.log('CSS combined, minified, and inlined successfully.');
+      } catch (error) {
+        console.error('Error processing CSS:', error);
+      }
+      resolve(); // Resolve the promise when your plugin logic completes successfully
+    });
+    });
+  }
+}
+
 
 module.exports = (env) => {
   // Determine if we're doing a production build or not
@@ -18,6 +64,7 @@ module.exports = (env) => {
       // base: './assets/base.css',
       // app: './assets/app.css',
       // Add other entry points for JS or CSS here
+      'combine': ['./assets/base.css', './assets/app.css'],
       
       // -- SCSS --
       // Sections
@@ -105,13 +152,7 @@ module.exports = (env) => {
         filename: '[name].min.css',
       }),
       new RemoveEmptyScriptsPlugin(),
-      /* new CopyWebpackPlugin({
-        patterns: [
-          { from: 'node_modules/swiper/swiper-bundle.min.js', to: 'swiper-bundle.min.js' },
-          // Add other files or directories here
-          // { from: 'src/js/highlighted_products.js', to: 'highlighted_products.js' }
-        ],
-      }), */
+      new InlineAndMinifyCriticalCssPlugin(), // Add the custom plugin here
     ],
   };
 };

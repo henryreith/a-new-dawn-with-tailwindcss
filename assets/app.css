@@ -660,6 +660,20 @@ ul, ol{
 /* Video Styling - https://css-tricks.com/fluid-width-video/
     Yes Tailwind has built in classes but this is more universal when writing code into the Shopify backend */
 
+.videoWrapper {
+  position: relative;
+  padding-bottom: calc(var(--aspect-ratio, .5625) * 100%);
+  height: 0;
+}
+
+.videoWrapper iframe, .videoWrapper embed, .videoWrapper object, .videoWrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* --- Snippets --- */
 
 /* Price */
@@ -991,6 +1005,18 @@ cart-drawer .product-option .price {
 
 .tw-w-full {
   width: 100%;
+}
+
+.tw-w-1 {
+  width: 0.25rem;
+}
+
+.tw-w-3 {
+  width: 0.75rem;
+}
+
+.tw-w-5 {
+  width: 1.25rem;
 }
 
 .tw-max-w-60 {
@@ -1334,6 +1360,11 @@ cart-drawer .product-option .price {
 
 .tw-uppercase {
   text-transform: uppercase;
+}
+
+.tw-ordinal {
+  --tw-ordinal: ordinal;
+  font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
 }
 
 .tw-tracking-normal {
