@@ -31,7 +31,6 @@
     "css-minimizer-webpack-plugin": "^6.0.0",
     "cssnano": "^6.0.5",
     "cssnano-preset-lite": "^3.0.2",
-    "dotenv-cli": "^7.3.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
     "mini-css-extract-plugin": "^2.8.0",
