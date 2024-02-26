@@ -11,7 +11,6 @@ function updateFreeShippingComponents(cartTotal) {
 
     let newProgress = (cartTotal / freeShippingThreshold * 100).toFixed(2); // Convert to percentage
 
-    console.log(newProgress);
     // Check if the progress has changed to avoid unnecessary updates
     const currentProgress = freeShippingBarProgress.style.getPropertyValue("--progress");
     if (currentProgress !== newProgress) {
