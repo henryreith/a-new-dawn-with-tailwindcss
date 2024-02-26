@@ -1,0 +1,21 @@
+{%- assign free_shipping_threshold = 7000 -%}
+{% # Set your free shipping threshold here in cents %}
+{%- assign cart_total = cart.total_price -%}
+{%- assign amount_left_for_free_shipping = free_shipping_threshold | minus: cart_total -%}
+{%- if amount_left_for_free_shipping > 0 -%}
+  {%- assign progress = cart_total | times: 100 | divided_by: free_shipping_threshold -%}
+  {% # Minusing 5 from the progress is a hack to then allow the free-shipping-bar.js to get the totoal value and annimate the difference making ti feel like there is some movement %}
+  <free-shipping-bar class='free-shipping-bar'>
+    <div class='free-shipping-bar__progress' style='--progress: {{ progress | minus: 5 }}%;'></div>
+    <span class='free-shipping-bar__text'
+      >You are {{ amount_left_for_free_shipping | money_without_currency }} away from receiving free shipping!</span
+    >
+  </free-shipping-bar>
+{%- else -%}
+  <free-shipping-bar class='free-shipping-bar'>
+    <div class='free-shipping-bar__progress' style='--progress: 100%;'></div>
+    <span class='free-shipping-bar__text'>Congratulations! You've got free shipping!</span>
+  </free-shipping-bar>
+{%- endif -%}
+
+<script src='{{ 'free-shipping-bar.min.js' | asset_url }}' defer='defer'></script>

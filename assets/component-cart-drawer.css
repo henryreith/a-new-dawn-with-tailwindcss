@@ -27,6 +27,7 @@
   flex-direction: column;
   transform: translateX(100%);
   transition: transform var(--duration-default) ease;
+  transition: transform var(--duration-medium) ease; /* Overwrite default so cart draw doesn't pop out so quickly and is a smoother experience */
 }
 
 .drawer__inner-empty {
@@ -71,6 +72,7 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 .drawer__header {
   position: relative;
   padding: 1.5rem 0;
+  padding-bottom: 0.5rem; /* Added so there isn't a massive gap to the new free shipping bar */
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -70,6 +70,9 @@ module.exports = (env) => {
       // Sections
       'section-hero-home-page': './src/scss/sections/section-hero-home-page.scss',
 
+      // Sections
+      'component-free-shipping-bar': './src/scss/snippets/free-shipping-bar.scss',
+
       // Other
       swiperStyles: './src/scss/swiper.scss',
       'hrm-animations': './src/scss/utils/hrm-animations.scss',
@@ -78,6 +81,9 @@ module.exports = (env) => {
       // Sections
       'hero__home-page': './src/js/hero__home-page.js',
       'highlighted-products': './src/js/highlighted-products.js',
+
+      // Snippets
+      'free-shipping-bar': './src/js/snippets/free-shipping-bar.js',
 
       // Other
       'cart-recommendations': './src/js/cart-recommendations.js',
