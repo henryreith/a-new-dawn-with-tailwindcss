@@ -58,6 +58,10 @@ const mobileSwiperConfig = {
       firstSlideElement.forEach((element) => {
         element.classList.remove('hero_first_slide_sm');
       });
+      const notFirstSlideElement = document.querySelectorAll('.hero_not_first_slide_sm');
+      notFirstSlideElement.forEach((element) => {
+        element.classList.remove('hero_not_first_slide_sm');
+      });
     },
   },
 };
@@ -91,7 +95,7 @@ const largeSwiperConfig = {
   },
   effect: 'cards',
   cardsEffect: {
-    perSlideOffset: 8,
+    perSlideOffset: 6,
     perSlideRotate: 2,
     rotate: true,
     slideShadows: true,
@@ -103,6 +107,21 @@ const largeSwiperConfig = {
       const elements = document.querySelectorAll('.hero__swiper--lg .swiper-slide');
       elements.forEach((element) => {
         element.classList.add('hero_slider_loaded');
+      });
+      const firstSlideElement = document.querySelectorAll('.hero_first_slide_lg');
+      firstSlideElement.forEach((element) => {
+        element.classList.remove('hero_first_slide_lg');
+      });
+      const notFirstSlideElement = document.querySelectorAll('.hero_not_first_slide_lg');
+      notFirstSlideElement.forEach((element) => {
+        element.classList.remove('hero_not_first_slide_lg');
+      });
+      // Remove this last as it's overflow hidden so we know all the other styles have been applied at this point
+      const lgSliderElement = document.querySelectorAll('.hero__swiper--onload-o-hidden');
+      lgSliderElement.forEach((element) => {
+        setTimeout(() => {
+          element.classList.remove('hero__swiper--onload-o-hidden');
+        }, 100);
       });
     },
   },

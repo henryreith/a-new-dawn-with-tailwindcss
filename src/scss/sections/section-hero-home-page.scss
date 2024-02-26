@@ -1,29 +1,13 @@
 /* Swipers */
 /* some swiper content commented out as it is from the original theme where it fixed the initial load styling using swiper v9, but seems to break swiper using v11. Will come back to as the styling is still odd on load so needs fixing */
 #home_hero{
-    // Hide slides until swiper is loaded apart from the first slide. The hero_slider_loaded class is added in the js file for this section
-	/* .swiper {
-		.swiper-slide{
-		 	display: none;
-		}
-		.swiper-slide:second-child{
-			display: block;
-		}
-		.hero_slider_loaded{
-			display: block !important;
-		}
-	} */
 
 	.swiper-slide{
 		text-align: center;
-		// font-size: 16px;
-		// color: #d4d4d4;
 		background: #fff;
-		// display: block;
-		// justify-content: center;
 		align-items: center;
 		width: 90%;
-		padding: 3rem 2rem 2rem 2rem;
+		padding: 2.5rem 2rem 2rem 2rem;
 		img {
 			display: block;
 			width: 100%;
@@ -36,36 +20,54 @@
 		}
 	}
 	
-	// Custom Swiper Styles
+	// Custom Swiper Styles for mobile swiper
 	.hero__swiper--sm {
 		width: 100%;
 		margin: auto;
-		// padding-bottom: 1em;
 		.swiper-slide{
 			width: 70%;
-			padding: 2.5rem 1.25rem 1.25rem 1.25rem;
+			padding: 2.5rem 2rem 1.25rem 2rem;
 			@media screen and (max-width: 480px) {
 				font-size: 0.9em;
 			}
 			@media screen and (min-width: 600px) {
 				width: 56%;
-				padding: 3rem 2rem 2rem 2rem;
+				padding: 2rem 2rem 2rem 2rem;
 			}
 		}
-	   	/* .hero_first_slide_sm{
-			margin-left: 15%;
-			margin-right: 15%;
-	   	}
-		.swiper-slide:first-child.hero_slider_loaded{
-			margin-left: 15%;
-		} */
 		.swiper-3d .swiper-slide-shadow-left, {
 			background-image: linear-gradient(to left,rgba(0,0,0,.15),transparent);
 		}
 		.swiper-3d .swiper-slide-shadow-right {
 			background-image: linear-gradient(to right,rgba(0,0,0,.15),transparent);
 		}
-	} 
+		/* Onload styling so it doesn't flash the unstyled slider before it's loaded */
+		.swiper-slide.hero_not_first_slide_sm{
+			visibility: hidden;
+		}
+		.swiper-slide.hero_first_slide_sm{
+			left: -55%;
+			animation: fadeIn 0.2s ease-in-out;
+			@media screen and (min-width: 600px) {
+				left: -35%;
+			}
+		}
+	}
+
+	// Custom Swiper Styles for mobile swiper
+	.hero__swiper--lg {
+		// Hide slides on load so there isn't a flash of unstyled content
+		&.hero__swiper--onload-o-hidden{
+			overflow: hidden;
+			.swiper-slide::not(:nth-child(2)){
+				visibility: hidden;
+			}
+		}
+		.swiper-slide.hero_first_slide_lg{
+			margin-left:-90%;
+		}
+	}
+	
 
 }
 

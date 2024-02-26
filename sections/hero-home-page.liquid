@@ -35,8 +35,8 @@
             <div class='swiper-wrapper tw-pb-16'>
               {% for block in section.blocks %}
                 {%- liquid
-                  assign swiper_slide_class = 'swiper-slide'
-                  if forloop.second
+                  assign swiper_slide_class = 'swiper-slide hero_not_first_slide_sm'
+                  if forloop.index == 2
                     assign swiper_slide_class = 'swiper-slide hero_first_slide_sm'
                   endif
                 -%}
@@ -93,7 +93,13 @@
           <div class='swiper hero__swiper--lg hero__swiper--onload-o-hidden'>
             <div class='swiper-wrapper tw-pb-20'>
               {% for block in section.blocks %}
-                <div class='swiper-slide' {{ block.shopify_attributes }}>
+                {%- liquid
+                  assign swiper_slide_class = 'swiper-slide hero_not_first_slide_lg'
+                  if forloop.index == 2
+                    assign swiper_slide_class = 'swiper-slide hero_first_slide_lg'
+                  endif
+                -%}
+                <div class='{{  swiper_slide_class }}' {{ block.shopify_attributes }}>
                   {%- liquid
                     assign sizes = '100vw'
                     assign widths = '375, 550, 750, 1100'
