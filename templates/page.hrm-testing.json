@@ -248,12 +248,74 @@
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
+    },
+    "collapsible_content_HtVikn": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_tQYPBz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row 1",
+            "icon": "check_mark",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros ante, hendrerit vitae mauris non, interdum tempus lorem. Nulla at commodo sem. Curabitur sit amet lectus commodo, maximus ligula quis, venenatis est. Nunc consectetur leo sed elit ultricies, a pretium diam hendrerit. Etiam a aliquam lectus. Etiam vitae consequat ante. Proin a gravida neque, ac lacinia orci.<\/p><p>Mauris mi nulla, porta vel neque ut, semper feugiat nisi. Nullam a leo nisi. Aenean vel mollis nunc, ut scelerisque mi. Morbi faucibus orci id lacus tristique cursus. Sed eget finibus sem. Suspendisse maximus libero et augue finibus, vitae ornare metus fermentum. Quisque lacinia risus felis, et aliquam mi fermentum eget.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6katww": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row 2",
+            "icon": "check_mark",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros ante, hendrerit vitae mauris non, interdum tempus lorem. Nulla at commodo sem. Curabitur sit amet lectus commodo, maximus ligula quis, venenatis est. Nunc consectetur leo sed elit ultricies, a pretium diam hendrerit. Etiam a aliquam le<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_FbphTG": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row 3",
+            "icon": "check_mark",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros ante, hendrerit vitae mauris non, interdum tempus lorem. Nulla at commodo sem. Curabitur sit amet lectus commodo, maximus ligula quis, venenatis est. Nunc consectetur leo sed elit ultricies, a pretium diam hendrerit. Etiam a aliquam lectus. Etiam vitae consequat ante. Proi<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_VaPwwr": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row 4",
+            "icon": "check_mark",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros ante, hendrerit vitae mauris non, interdum tempus lorem. Nulla at commodo sem. Curabitur sit amet lectus commodo, maximus ligula quis, venenatis est. Nunc consectetur leo sed elit ultricies, a pretium diam hendrerit. Etiam a aliquam lectus. Etiam vitae consequat ante. Proin a gravida neque, ac lacinia orci.<\/p><p>Mauris mi nulla, porta vel neque ut, semper feugiat nisi. Nullam a leo nisi. Aenean vel mollis nunc, ut scelerisque mi. Morbi faucibus orci id lacus tristique cursus. Sed eget finibus sem. Suspendisse maximus libero et augue finib<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_tQYPBz",
+        "collapsible_row_6katww",
+        "collapsible_row_FbphTG",
+        "collapsible_row_VaPwwr"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Collapsible content",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "faq_nPxPRk",
     "image_with_rich_text_overlay_waRdjq",
-    "image_banner_LPcAfR"
+    "image_banner_LPcAfR",
+    "collapsible_content_HtVikn"
   ]
 }
