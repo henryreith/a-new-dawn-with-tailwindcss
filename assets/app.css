@@ -674,6 +674,12 @@ ul, ol{
   height: 100%;
 }
 
+/* --- Sections --- */
+
+.header__inline-menu .header__menu-item {
+  font-size: 1.6rem;
+}
+
 /* --- Snippets --- */
 
 /* Price */
