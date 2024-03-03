@@ -96,6 +96,14 @@
             "answer_richtext": "<p>n. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer i<\/p>",
             "answer_liquid": ""
           }
+        },
+        "faq_item_9Medtz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Just schema",
+            "answer_richtext": "<p>option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnw<\/p>",
+            "answer_liquid": ""
+          }
         }
       },
       "block_order": [
@@ -109,7 +117,8 @@
         "faq_item_BMFpqA",
         "subsection_break_WAEHPj",
         "faq_item_x43XPR",
-        "faq_item_qcTbKN"
+        "faq_item_qcTbKN",
+        "faq_item_9Medtz"
       ],
       "settings": {
         "section_content_width": "page_width",
