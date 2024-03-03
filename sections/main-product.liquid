@@ -209,7 +209,7 @@
                       <div class='summary__title'>
                         {% render 'icon-accordion', icon: block.settings.icon %}
                         <h2 class='h4 accordion__title inline-richtext'>
-                          {{ block.settings.heading | default: block.settings.page.title }}
+                          {{ block.settings.heading | default: block.settings.page.title | escape }}
                         </h2>
                       </div>
                       {% render 'icon-caret' %}
@@ -442,15 +442,17 @@
                     type='button'
                     aria-haspopup='dialog'
                   >
-                    {{ block.settings.text | default: block.settings.page.title }}
+                    {{ block.settings.text | default: block.settings.page.title | escape }}
                   </button>
                 </modal-opener>
                 <a href='{{ block.settings.page.url }}' class='product-popup-modal__button link no-js'>
                   {{- block.settings.text -}}
                 </a>
               {%- when 'share' -%}
-                {% assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin %}
-                {% render 'share-button', block: block, share_link: share_url %}
+                {% liquid
+                  assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
+                  render 'share-button', block: block, share_link: share_url
+                %}
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
@@ -464,39 +466,41 @@
                 -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
-                  {% liquid
-                    assign rating_decimal = 0
-                    assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                    if decimal >= 0.3 and decimal <= 0.7
-                      assign rating_decimal = 0.5
-                    elsif decimal > 0.7
-                      assign rating_decimal = 1
-                    endif
-                  %}
-                  <div
-                    class='rating'
-                    role='img'
-                    aria-label='{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}'
-                  >
-                    <span
-                      aria-hidden='true'
-                      class='rating-star'
-                      style='--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};'
-                    ></span>
+                  <div class='rating-wrapper'>
+                    {% liquid
+                      assign rating_decimal = 0
+                      assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                      if decimal >= 0.3 and decimal <= 0.7
+                        assign rating_decimal = 0.5
+                      elsif decimal > 0.7
+                        assign rating_decimal = 1
+                      endif
+                    %}
+                    <div
+                      class='rating'
+                      role='img'
+                      aria-label='{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}'
+                    >
+                      <span
+                        aria-hidden='true'
+                        class='rating-star'
+                        style='--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};'
+                      ></span>
+                    </div>
+                    <p class='rating-text caption'>
+                      <span aria-hidden='true'>
+                        {{- product.metafields.reviews.rating.value }} /
+                        {{ product.metafields.reviews.rating.value.scale_max -}}
+                      </span>
+                    </p>
+                    <p class='rating-count caption'>
+                      <span aria-hidden='true'>({{ product.metafields.reviews.rating_count }})</span>
+                      <span class='visually-hidden'>
+                        {{- product.metafields.reviews.rating_count }}
+                        {{ 'accessibility.total_reviews' | t -}}
+                      </span>
+                    </p>
                   </div>
-                  <p class='rating-text caption'>
-                    <span aria-hidden='true'>
-                      {{- product.metafields.reviews.rating.value }} /
-                      {{ product.metafields.reviews.rating.value.scale_max -}}
-                    </span>
-                  </p>
-                  <p class='rating-count caption'>
-                    <span aria-hidden='true'>({{ product.metafields.reviews.rating_count }})</span>
-                    <span class='visually-hidden'>
-                      {{- product.metafields.reviews.rating_count }}
-                      {{ 'accessibility.total_reviews' | t -}}
-                    </span>
-                  </p>
                 {%- endif -%}
               {%- when 'complementary' -%}
                 <product-recommendations
@@ -672,7 +676,7 @@
             {% render 'icon-close' %}
           </button>
           <div class='product-popup-modal__content-info'>
-            <h1 class='h2'>{{ block.settings.page.title }}</h1>
+            <h1 class='h2'>{{ block.settings.page.title | escape }}</h1>
             {{ block.settings.page.content }}
           </div>
         </div>
