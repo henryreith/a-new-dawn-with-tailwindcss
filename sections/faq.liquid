@@ -102,19 +102,21 @@
     {% for block in section.blocks %}
       {%- case block.type -%}
         {%- when 'faq_item' -%}
-          <div id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10' {{ block.shopify_attributes }}>
-            {% assign question_tag = section.settings.question_tag %}
-            <{{ question_tag }} class='faq-section__question'>
-              {{- block.settings.question | escape -}}
-            </{{ question_tag }}>
+          {%- unless block.settings.hide_faq_item_just_schema -%}
+            <div id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10' {{ block.shopify_attributes }}>
+              {% assign question_tag = section.settings.question_tag %}
+              <{{ question_tag }} class='faq-section__question'>
+                {{- block.settings.question | escape -}}
+              </{{ question_tag }}>
 
-            {% if block.settings.answer_richtext %}
-              {{- block.settings.answer_richtext -}}
-            {% endif %}
-            {% if block.settings.answer_liquid %}
-              {{- block.settings.answer_liquid -}}
-            {% endif %}
-          </div>
+              {% if block.settings.answer_richtext %}
+                {{- block.settings.answer_richtext -}}
+              {% endif %}
+              {% if block.settings.answer_liquid %}
+                {{- block.settings.answer_liquid -}}
+              {% endif %}
+            </div>
+          {%- endunless -%}
           {% if block.settings.hide_faq_item_just_schema %}
             {% assign includes_hidden_faq = true %}
           {% endif %}
@@ -158,7 +160,7 @@
       "@type": "FAQPage",
       "mainEntity": [
         {%- for block in section.blocks -%}
-          {%- unless block.settings.hide_faq_item_just_schema -%}
+          {%- if block.settings.hide_faq_item_just_schema -%}
           {
             "@type": "Question",
             "name": {{ block.settings.question | json }},
@@ -167,7 +169,7 @@
               "text": "{{ block.settings.answer_richtext | strip_html }} {{ block.settings.answer_liquid | strip_html }}"
             }
           }{%- unless forloop.last -%},{%- endunless -%}
-          {%- endunless -%}
+        {%- endif -%}
         {%- endfor -%}
       ]
     }
