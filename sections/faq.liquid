@@ -98,6 +98,7 @@
     </div>
 
     {% # FAQ Questions %}
+    {% assign includes_hidden_faq = false %}
     {% for block in section.blocks %}
       {%- case block.type -%}
         {%- when 'faq_item' -%}
@@ -114,6 +115,9 @@
               {{- block.settings.answer_liquid -}}
             {% endif %}
           </div>
+          {% if block.settings.hide_faq_item_just_schema %}
+            {% assign includes_hidden_faq = true %}
+          {% endif %}
         {%- when 'subsection_title' -%}
           {% assign faq_subtitle_tag = section.settings.faq_subtitle_tag %}
           <{{ faq_subtitle_tag }} id='{{ block.id }}' class='faq-section__subsection-title'>
@@ -143,6 +147,27 @@
             "text": "{{ block.settings.answer_richtext | strip_html }} {{ block.settings.answer_liquid | strip_html }}"
           }
         }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+  </script>
+{%- elsif includes_hidden_faq == true -%}
+  <script type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for block in section.blocks %}
+          {% unless block.settings.hide_faq_item_just_schema %}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ block.settings.answer_richtext | strip_html }} {{ block.settings.answer_liquid | strip_html }}"
+            }
+          }{% unless forloop.last %},{% endunless %}
+          {% endunless %}
         {% endfor %}
       ]
     }
@@ -351,6 +376,12 @@
           "type": "liquid",
           "id": "answer_liquid",
           "label": "t:sections.faq.blocks.faq_item.settings.answer_liquid.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_faq_item_just_schema",
+          "label": "t:sections.faq.blocks.faq_item.settings.hide_faq_item_just_schema.label",
+          "default": false
         }
       ]
     },

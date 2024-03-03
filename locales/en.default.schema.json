@@ -837,7 +837,10 @@
             },
             "answer_liquid": {
               "label": "Answer (Custom liquid)"
-            }
+            },
+            "hide_faq_item_just_schema": {
+              "label": "Check this if you want to hide the FAQ item from the FAQ page but still want to include it in the FAQ schema if turned in the FAQ section settings or if not this will be included in it's own schema section, This can be useful for SEO where you can include up to 2 FAQs in the schema on a none dedicated FAQ page."
+            },
           }
         },
         "subsection_title": {
