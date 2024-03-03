@@ -818,6 +818,9 @@
         "question_tag": {
           "label": "Question HTML heading tag"
         },
+        "show_items_in_collapsiable_content": {
+          "label": "Show items in collapsible content"
+        },
         "enable_faq_schema": {
           "label": "Enable FAQ schema"
         }
