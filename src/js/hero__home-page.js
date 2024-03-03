@@ -22,7 +22,7 @@ const mobileSwiperConfig = {
   spaceBetween: 40,
   loop: true,
   speed: 1200,
-  autoplay: { delay: 3000 },
+  autoplay: { delay: 4000 },
   // lazyPreloaderClass: "swiper-lazy-preloader",
   // lazyPreloadPrevNext: 1,
   pagination: {
@@ -32,7 +32,7 @@ const mobileSwiperConfig = {
   },
   breakpoints: {
     0: {
-      autoplay: { delay: 3000 },
+      autoplay: { delay: 4000 },
       spaceBetween: 25
     },
     481: {
@@ -72,7 +72,7 @@ const largeSwiperConfig = {
   spaceBetween: 10,
   speed: 1200,
   initialSlide: 1,
-  autoplay: { delay: 3000 },
+  autoplay: { delay: 4000 },
   // No autoplay set be default so no extra resources are being used on smaller screens where this swiper is not visable
   // Starts auto play on large screens to create effect
   breakpoints: {
@@ -80,7 +80,7 @@ const largeSwiperConfig = {
       autoplay: false
     },
     990: {
-      autoplay: { delay: 3000 }
+      autoplay: { delay: 4000 }
     }
   },
   loop: true,
