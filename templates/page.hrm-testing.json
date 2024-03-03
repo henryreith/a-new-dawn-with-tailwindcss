@@ -20,7 +20,8 @@
           "settings": {
             "question": "Question By Itself",
             "answer_richtext": "<p>However, if you want to insert a video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich tex<\/p>",
-            "answer_liquid": ""
+            "answer_liquid": "",
+            "hide_faq_item_just_schema": false
           }
         },
         "faq_item_tq4xEy": {
@@ -28,7 +29,8 @@
           "settings": {
             "question": "Question By Itself 2",
             "answer_richtext": "<p>ther html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combin<\/p>",
-            "answer_liquid": ""
+            "answer_liquid": "",
+            "hide_faq_item_just_schema": false
           }
         },
         "subsection_title_pCwRM6": {
@@ -42,7 +44,8 @@
           "settings": {
             "question": "Your Question Here",
             "answer_richtext": "<p>video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in Ric<\/p>",
-            "answer_liquid": ""
+            "answer_liquid": "",
+            "hide_faq_item_just_schema": false
           }
         },
         "faq_item_dmWTrB": {
@@ -50,7 +53,8 @@
           "settings": {
             "question": "Your Question Here",
             "answer_richtext": "<p>video or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in Ric<\/p>",
-            "answer_liquid": ""
+            "answer_liquid": "",
+            "hide_faq_item_just_schema": false
           }
         },
         "subsection_title_DDDrbh": {
@@ -64,7 +68,8 @@
           "settings": {
             "question": "Return 1",
             "answer_richtext": "<p>eo or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can co<\/p>",
-            "answer_liquid": ""
+            "answer_liquid": "",
+            "hide_faq_item_just_schema": false
           }
         },
         "faq_item_BMFpqA": {
@@ -72,7 +77,8 @@
           "settings": {
             "question": "Return 2",
             "answer_richtext": "<p>eo or other html that you can't in the rich text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can co<\/p>",
-            "answer_liquid": ""
+            "answer_liquid": "",
+            "hide_faq_item_just_schema": false
           }
         },
         "subsection_break_WAEHPj": {
@@ -86,7 +92,8 @@
           "settings": {
             "question": "Item On Top Level",
             "answer_richtext": "<p>text editor, you can use the Liquid HTML option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer in R<\/p>",
-            "answer_liquid": ""
+            "answer_liquid": "",
+            "hide_faq_item_just_schema": false
           }
         },
         "faq_item_qcTbKN": {
@@ -94,7 +101,8 @@
           "settings": {
             "question": "2nd Top Level",
             "answer_richtext": "<p>n. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnwer i<\/p>",
-            "answer_liquid": ""
+            "answer_liquid": "",
+            "hide_faq_item_just_schema": false
           }
         },
         "faq_item_9Medtz": {
@@ -102,7 +110,8 @@
           "settings": {
             "question": "Just schema",
             "answer_richtext": "<p>option. In the theme it will be presented with the rich text first, then liquid HTML. So you can combine them with the first part of the asnw<\/p>",
-            "answer_liquid": ""
+            "answer_liquid": "",
+            "hide_faq_item_just_schema": true
           }
         }
       },
