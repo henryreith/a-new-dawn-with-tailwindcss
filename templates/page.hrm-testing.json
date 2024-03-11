@@ -130,7 +130,7 @@
         "faq_item_9Medtz"
       ],
       "settings": {
-        "section_content_width": "page_width",
+        "section_content_width": "narrow",
         "faq_title": "Testing FAQ:",
         "faq_title_tag": "h3",
         "faq_usage_prompt": "Click to quickly jump to an answer",
