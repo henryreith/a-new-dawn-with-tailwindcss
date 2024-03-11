@@ -17,6 +17,14 @@
   .faq-section__item:last-child {
       margin-bottom: 0 !important;
   }
+  {%- if section.settings.show_items_in_collapsiable_content == true %}
+    .faq-collapsible-content .accordian{
+      margin-top: 0;
+    }
+    .faq-collapsible-content .accordian + faq-section__subsection-title{
+      margin-top: 2rem;
+    }
+  {% endif %}
 {%- endstyle -%}
 
 {%- assign content_width_class = 'page-width' -%}
@@ -31,7 +39,7 @@
   id='faq-section-{{ section.id }}'
   class='section-{{ section.id }}-padding'
 >
-  <div class='{{ content_width_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+  <div class='{{ content_width_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}{%- if section.settings.show_items_in_collapsiable_content == true %} faq-collapsible-content{% endif %}'>
     {% # Table of Contents %}
     <div class='faq-toc'>
       {% liquid
@@ -103,7 +111,7 @@
       {%- case block.type -%}
         {%- when 'faq_item' -%}
           {%- unless block.settings.hide_faq_item_just_schema -%}
-            {%- if show_items_in_collapsiable_content == false -%}
+            {%- if section.settings.show_items_in_collapsiable_content == false -%}
               <div id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10' {{ block.shopify_attributes }}>
                 {% assign question_tag = section.settings.question_tag %}
                 <{{ question_tag }} class='faq-section__question'>
@@ -118,19 +126,34 @@
                 {% endif %}
               </div>
             {%- else -%}
-              <details id='{{ block.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10' {{ block.shopify_attributes }}>
-                <summary class='faq-section__question'>
-                  {{- block.settings.question | escape -}}
-                </summary>
-                <div class='faq-section__answer'>
-                  {% if block.settings.answer_richtext %}
-                    {{- block.settings.answer_richtext -}}
-                  {% endif %}
-                  {% if block.settings.answer_liquid %}
-                    {{- block.settings.answer_liquid -}}
-                  {% endif %}
-                </div>
-              </details>
+              <div class='accordion'>
+                <details
+                  id='{{ block.id }}'
+                  class='faq-section__item tw-mb-8 md:tw-mb-10'
+                  {{ block.shopify_attributes }}
+                >
+                  <summary id='Summary-{{ block.id }}-{{ section.id }}' class='faq-section__question'>
+                    {% assign question_tag = section.settings.question_tag %}
+                    <{{ question_tag }}>
+                      {{- block.settings.question | escape -}}
+                    </{{ question_tag }}>
+                    {% render 'icon-caret' %}
+                  </summary>
+                  <div
+                    class='faq-section__answer'
+                    id='CollapsibleAccordion-{{ block.id }}-{{ section.id }}'
+                    role='region'
+                    aria-labelledby='Summary-{{ block.id }}-{{ section.id }}'
+                  >
+                    {% if block.settings.answer_richtext %}
+                      {{- block.settings.answer_richtext -}}
+                    {% endif %}
+                    {% if block.settings.answer_liquid %}
+                      {{- block.settings.answer_liquid -}}
+                    {% endif %}
+                  </div>
+                </details>
+              </div>
             {%- endif -%}
           {%- endunless -%}
           {% if block.settings.hide_faq_item_just_schema %}
