@@ -1,5 +1,5 @@
-{{ 'section-hero-home-page.min.css' | asset_url | stylesheet_tag }}
-{{ 'swiperStyles.min.css' | asset_url | stylesheet_tag }}
+{{ 'section-hero-home-page.min.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'swiperStyles.min.css' | asset_url | stylesheet_tag: preload: true }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
