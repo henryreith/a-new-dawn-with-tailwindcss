@@ -7,7 +7,9 @@
 
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-free-shipping-bar.min.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  {{ 'component-free-shipping-bar.min.css' | asset_url | stylesheet_tag }}
+{% endcomment %}
 
 <script src='{{ 'cart.js' | asset_url }}' defer='defer'></script>
 <script src='{{ 'quantity-popover.js' | asset_url }}' defer='defer'></script>
