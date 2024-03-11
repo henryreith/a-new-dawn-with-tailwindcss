@@ -1,3 +1,6 @@
+{%- if section.settings.show_items_in_collapsiable_content == true -%}
+  {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 {%- style -%}
   .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -17,12 +20,12 @@
   .faq-section__item:last-child {
       margin-bottom: 0 !important;
   }
-  {%- if section.settings.show_items_in_collapsiable_content == true %}
-    .faq-collapsible-content .accordian{
+  {% if section.settings.show_items_in_collapsiable_content == true %}
+    .faq-collapsible-content .accordion{
       margin-top: 0;
     }
-    .faq-collapsible-content .accordian + faq-section__subsection-title{
-      margin-top: 2rem;
+    .faq-collapsible-content .accordion + .faq-section__subsection-title{
+      margin: 3rem 0 1rem;
     }
   {% endif %}
 {%- endstyle -%}
@@ -79,21 +82,23 @@
                 {% # Close the subsection list %}
                 {% assign in_subsection = false %}
               {% elsif block.type == 'faq_item' %}
-                {% if in_subsection %}
-                  {% # Add item inside the subsection %}
-                  <li class='faq-section__toc-subitem'>
-                    <a href='#{{ block.id }}' class='faq-section__toc-sublink tw-no-underline'>
-                      {{ block.settings.question }}
-                    </a>
-                  </li>
-                {% else %}
-                  {% # Add item at the top level %}
-                  <li class='faq-section__toc-item'>
-                    <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
-                      {{ block.settings.question }}
-                    </a>
-                  </li>
-                {% endif %}
+                {% unless block.settings.hide_faq_item_just_schema %}
+                  {% if in_subsection %}
+                    {% # Add item inside the subsection %}
+                    <li class='faq-section__toc-subitem'>
+                      <a href='#{{ block.id }}' class='faq-section__toc-sublink tw-no-underline'>
+                        {{ block.settings.question }}
+                      </a>
+                    </li>
+                  {% else %}
+                    {% # Add item at the top level %}
+                    <li class='faq-section__toc-item'>
+                      <a href='#{{ block.id }}' class='faq-section__toc-link tw-no-underline'>
+                        {{ block.settings.question }}
+                      </a>
+                    </li>
+                  {% endif %}
+                {% endunless %}
               {% endif %}
             {% endfor %}
             {% if in_subsection %}
@@ -140,7 +145,7 @@
                     {% render 'icon-caret' %}
                   </summary>
                   <div
-                    class='faq-section__answer'
+                    class='faq-section__answer tw-pb-6'
                     id='CollapsibleAccordion-{{ block.id }}-{{ section.id }}'
                     role='region'
                     aria-labelledby='Summary-{{ block.id }}-{{ section.id }}'
@@ -215,6 +220,9 @@
   </script>
 {%- endif -%}
 {% # END #faq-section-{{ section.id }} %}
+{%- if section.settings.show_items_in_collapsiable_content == true %}
+  <script src='{{ 'faq.min.js' | asset_url }}' defer='defer'></script>
+{% endif %}
 
 {% schema %}
 {

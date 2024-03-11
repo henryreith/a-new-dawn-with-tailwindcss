@@ -82,6 +82,9 @@ module.exports = (env) => {
       'hero__home-page': './src/js/hero__home-page.js',
       'highlighted-products': './src/js/highlighted-products.js',
 
+      // Sections
+      'faq': './src/js/sections/faq.js',
+
       // Snippets
       'free-shipping-bar': './src/js/snippets/free-shipping-bar.js',
 

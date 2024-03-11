@@ -1336,6 +1336,10 @@ cart-drawer .product-option .price {
   padding-top: 1rem;
 }
 
+.tw-pb-6 {
+  padding-bottom: 1.5rem;
+}
+
 .tw-text-left {
   text-align: left;
 }
