@@ -46,10 +46,10 @@
 			visibility: hidden;
 		}
 		.swiper-slide.hero_first_slide_sm{
-			left: -55%;
-			animation: fadeIn 0.2s ease-in-out;
+			left: 15%;
+			// animation: fadeIn 0.2s ease-in-out;
 			@media screen and (min-width: 600px) {
-				left: -35%;
+				left: 22%;
 			}
 		}
 	}
@@ -59,16 +59,12 @@
 		// Hide slides on load so there isn't a flash of unstyled content
 		&.hero__swiper--onload-o-hidden{
 			overflow: hidden;
-			.swiper-slide::not(:nth-child(2)){
+			.swiper-slide::not(:nth-child(1)){
 				visibility: hidden;
 			}
 		}
-		.swiper-slide.hero_first_slide_lg{
-			margin-left:-90%;
-		}
 	}
 	
-
 }
 
 /* Reviews.io */

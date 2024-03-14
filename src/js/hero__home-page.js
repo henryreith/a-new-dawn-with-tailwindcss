@@ -18,7 +18,6 @@ const mobileSwiperConfig = {
     depth: 100,
     modifier: 1,
   },
-  initialSlide: 1,
   spaceBetween: 40,
   loop: true,
   speed: 1200,
@@ -71,7 +70,6 @@ const largeSwiperConfig = {
   module: [ Pagination, EffectCards, A11y ],
   spaceBetween: 10,
   speed: 1200,
-  initialSlide: 1,
   autoplay: { delay: 4000 },
   // No autoplay set be default so no extra resources are being used on smaller screens where this swiper is not visable
   // Starts auto play on large screens to create effect
