@@ -36,7 +36,7 @@
               {% for block in section.blocks %}
                 {%- liquid
                   assign swiper_slide_class = 'swiper-slide hero_not_first_slide_sm'
-                  if forloop.index == 1
+                  if forloop.index == 2
                     assign swiper_slide_class = 'swiper-slide hero_first_slide_sm'
                   endif
                 -%}
@@ -49,7 +49,7 @@
                     assign fetch_priority = 'auto'
                     assign lazy_loading = 'lazy'
                     assign preload = false
-                    if forloop.index == 1
+                    if forloop.index == 2
                       assign fetch_priority = 'high'
                       assign preload = true
                     endif
@@ -94,7 +94,7 @@
               {% for block in section.blocks %}
                 {%- liquid
                   assign swiper_slide_class = 'swiper-slide hero_not_first_slide_lg'
-                  if forloop.index == 1
+                  if forloop.index == 2
                     assign swiper_slide_class = 'swiper-slide hero_first_slide_lg'
                   endif
                 -%}
@@ -107,7 +107,7 @@
                     assign fetch_priority = 'auto'
                     assign lazy_loading = 'lazy'
                     assign preload = false
-                    if forloop.index == 1
+                    if forloop.index == 2
                       assign fetch_priority = 'high'
                       assign preload = true
                     endif
