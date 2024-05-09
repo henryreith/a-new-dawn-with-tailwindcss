@@ -361,6 +361,9 @@
       <script src='{{ 'predictive-search.js' | asset_url }}' defer='defer'></script>
     {%- endif -%}
 
+    {% # Pre Order Script %}
+    <script src='{{ 'pre-order.min.js' | asset_url }}' defer='defer'></script>
+
     {% # Custom stylesheets or other code added to Dawn %}
     {{ 'hrm-animations.min.css' | asset_url | stylesheet_tag }}
   </body>
