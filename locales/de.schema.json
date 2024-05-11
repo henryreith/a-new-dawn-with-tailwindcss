@@ -56,8 +56,8 @@
       "name": "Social Media",
       "settings": {
         "social_twitter_link": {
-          "label": "Twitter",
-          "info": "https:\/\/twitter.com\/shopify"
+          "label": "X / Twitter",
+          "info": "https://x.com/shopify"
         },
         "social_facebook_link": {
           "label": "Facebook",
@@ -610,7 +610,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           },
           "info": "Bearbeite deine Kollektionen, um Bilder hinzuzufügen. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/products\/collections)"
         },
@@ -728,7 +728,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           }
         },
         "show_secondary_image": {
@@ -1473,7 +1473,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           }
         },
         "show_secondary_image": {
@@ -1495,10 +1495,6 @@
         "show_rating": {
           "label": "Produktbewertung anzeigen",
           "info": "Um eine Bewertung anzuzeigen, musst du eine Produktbewertungs-App hinzufügen. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types#product-grid-section-settings)"
-        },
-        "enable_quick_buy": {
-          "label": "Schaltfläche zum schnellen Hinzufügen aktivieren",
-          "info": "Optimal bei Warenkörben des Typs Pop-up oder Einschub."
         },
         "columns_desktop": {
           "label": "Anzahl der Spalten auf dem Desktop"
@@ -1527,6 +1523,15 @@
             "label": "Einschub"
           },
           "info": "Das Standardlayout für Mobilgeräte ist \"Einschub\"."
+        },
+        "quick_add": {
+          "label": "Schnelles Hinzufügen",
+          "info": "Die Sammelaktion ist für den Kauf von Artikeln in größeren Mengen optimiert.",
+          "options": {
+            "option_1": "Keine",
+            "option_2": "Standard",
+            "option_3": "Sammelaktion"
+          }
         }
       }
     },
@@ -1566,7 +1571,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           },
           "info": "Bearbeite deine Kollektionen, um Bilder hinzuzufügen. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/products\/collections)"
         },
@@ -1900,7 +1905,7 @@
               "label": "Bildverhältnis",
               "options": {
                 "option_1": "Hochformat",
-                "option_2": "Quadratisch"
+                "option_2": "Quadrat"
               }
             },
             "enable_quick_add": {
@@ -2102,7 +2107,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           }
         },
         "show_secondary_image": {
@@ -2172,7 +2177,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           },
           "options__4": {
             "label": "Kreis"
@@ -3118,7 +3123,10 @@
       "name": "Adressen"
     },
     "main-login": {
-      "name": "Login"
+      "name": "Login",
+      "shop_login_button": {
+        "enable": "\"Mit Shop anmelden\" aktivieren"
+      }
     },
     "main-order": {
       "name": "Bestellung"
@@ -3156,7 +3164,7 @@
             "label": "Hochformat"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           }
         },
         "show_secondary_image": {

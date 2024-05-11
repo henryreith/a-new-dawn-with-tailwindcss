@@ -7,7 +7,9 @@
     "editor.formatOnSave": true
   },
   "[liquid]": {
+    "editor.defaultFormatter": "Shopify.theme-check-vscode",
     "editor.formatOnSave": true
   },
+  "themeCheck.checkOnSave": true,
   "tailwindCSS.rootFontSize": 10 // <- your root font size here
 }
