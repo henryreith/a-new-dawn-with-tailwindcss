@@ -8,7 +8,7 @@
         "color_scheme": "scheme-5",
         "show_line_separator": true,
         "show_social": false,
-        "enable_country_selector": true,
+        "enable_country_selector": false,
         "enable_language_selector": false
       }
     },
