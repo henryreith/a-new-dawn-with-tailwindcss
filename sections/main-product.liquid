@@ -67,9 +67,9 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
-  <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-      <div class="grid__item product__media-wrapper">
+  <div class='page-width'>
+    <div class='product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}'>
+      <div class='grid__item product__media-wrapper'>
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
       <div class='product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
@@ -102,7 +102,7 @@
                   </a>
                 </div>
               {%- when 'price' -%}
-                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                <div id='price-{{ section.id }}' role='status' {{ block.shopify_attributes }}>
                   {%- render 'price',
                     product: product,
                     use_variant: true,
@@ -132,7 +132,7 @@
                 </div>
               {%- when 'inventory' -%}
                 <p
-                  class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
+                  class='product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}'
                   {{ block.shopify_attributes }}
                   id='Inventory-{{ section.id }}'
                   role='status'
@@ -193,9 +193,9 @@
                 {%- endif -%}
               {%- when 'sku' -%}
                 <p
-                  class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
-                  id="Sku-{{ section.id }}"
-                  role="status"
+                  class='product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}'
+                  id='Sku-{{ section.id }}'
+                  role='status'
                   {{ block.shopify_attributes }}
                 >
                   <span class='visually-hidden'>{{ 'products.product.sku' | t }}:</span>
@@ -235,7 +235,7 @@
                   {% # theme-check-enable %}
                   <label class='quantity__label form__label' for='Quantity-{{ section.id }}'>
                     {{ 'products.product.quantity.label' | t }}
-                    <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}">
+                    <span class='quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}'>
                       {%- render 'loading-spinner' -%}
                       <span
                         >(
@@ -244,10 +244,10 @@
                       >
                     </span>
                   </label>
-                  <div class="price-per-item__container">
-                    <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
-                      <button class="quantity__button" name="minus" type="button">
-                        <span class="visually-hidden">
+                  <div class='price-per-item__container'>
+                    <quantity-input class='quantity' data-url='{{ product.url }}' data-section='{{ section.id }}'>
+                      <button class='quantity__button' name='minus' type='button'>
+                        <span class='visually-hidden'>
                           {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                         </span>
                         {% render 'icon-minus' %}
@@ -268,8 +268,8 @@
                         value='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
                         form='{{ product_form_id }}'
                       >
-                      <button class="quantity__button" name="plus" type="button">
-                        <span class="visually-hidden">
+                      <button class='quantity__button' name='plus' type='button'>
+                        <span class='visually-hidden'>
                           {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                         </span>
                         {% render 'icon-plus' %}
@@ -284,9 +284,9 @@
                     -%}
                     {%- if product.quantity_price_breaks_configured? -%}
                       <price-per-item
-                        id="Price-Per-Item-{{ section.id }}"
-                        data-section-id="{{ section.id }}"
-                        data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                        id='Price-Per-Item-{{ section.id }}'
+                        data-section-id='{{ section.id }}'
+                        data-variant-id='{{ product.selected_or_first_available_variant.id }}'
                       >
                         {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
                           {%- assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price -%}
@@ -360,7 +360,7 @@
                       </price-per-item>
                     {%- endif -%}
                   </div>
-                  <div class="quantity__rules caption" id="Quantity-Rules-{{ section.id }}">
+                  <div class='quantity__rules caption' id='Quantity-Rules-{{ section.id }}'>
                     {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
                       <span class='divider'>
                         {{-
@@ -387,10 +387,10 @@
                     {%- endif -%}
                   </div>
                   {%- if product.quantity_price_breaks_configured? -%}
-                    <volume-pricing class="parent-display" id="Volume-{{ section.id }}">
+                    <volume-pricing class='parent-display' id='Volume-{{ section.id }}'>
                       {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
-                        <span class="caption-large">{{ 'products.product.volume_pricing.title' | t }}</span>
-                        <ul class="list-unstyled">
+                        <span class='caption-large'>{{ 'products.product.volume_pricing.title' | t }}</span>
+                        <ul class='list-unstyled'>
                           <li>
                             <span>{{ product.selected_or_first_available_variant.quantity_rule.min }}+</span>
                             {%- assign price = product.selected_or_first_available_variant.price
@@ -432,8 +432,8 @@
                 </div>
               {%- when 'popup' -%}
                 <modal-opener
-                  class="product-popup-modal__opener quick-add-hidden"
-                  data-modal="#PopupModal-{{ block.id }}"
+                  class='product-popup-modal__opener quick-add-hidden'
+                  data-modal='#PopupModal-{{ block.id }}'
                   {{ block.shopify_attributes }}
                 >
                   <button
@@ -446,7 +446,6 @@
                   </button>
                 </modal-opener>
               {%- when 'share' -%}
-                {% liquid
                 {% liquid
                   assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
                   render 'share-button', block: block, share_link: share_url
@@ -502,8 +501,8 @@
                 {%- endif -%}
               {%- when 'complementary' -%}
                 <product-recommendations
-                  class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
-                  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary"
+                  class='complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}'
+                  data-url='{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary'
                 >
                   {%- if recommendations.performed and recommendations.products_count > 0 -%}
                     <aside
@@ -583,7 +582,7 @@
                             {%- endfor -%}
                           </div>
                           {%- if number_of_slides > 1 -%}
-                            <div class="slider-buttons">
+                            <div class='slider-buttons'>
                               <button
                                 type='button'
                                 class='slider-button slider-button--prev'
