@@ -266,7 +266,7 @@
       {%- endif -%}
     {%- endif -%}
 
-    <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
+    <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %} tw-mt-0">{% # Added margin-top: 0 to remove margin added by h1+div styling for text %}
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <localization-form class="small-hide medium-hide" data-prevent-hide>
@@ -315,7 +315,9 @@
         </a>
       {%- endif -%}
 
+      <div class="tw-hidden tw-invisible md:tw-block md:tw-visible">
       {% render 'header-search', input_id: 'Search-In-Modal' %}
+      </div>
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}
