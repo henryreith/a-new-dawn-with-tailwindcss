@@ -1359,6 +1359,62 @@
         }
       }
     },
+    "hero-home-page": {
+      "name": "Home Page Hero",
+      "settings": {
+        "heading": {
+          "label": "Heading (Liquid)"
+        },
+        "subtext": {
+          "label": "Sub Heading. Add an elevator pictch about your highlighted products here. (Liquid)"
+        },
+        "button_text": {
+          "label": "The text displayed on the hero section cta button. Generally this is 'Shop Now'"
+        },
+        "button_url": {
+          "label": "The link for this CTA button in the hero section"
+        },
+        "reviewsio": {
+          "label": "Reviews.io Script (liquid)",
+          "info": "Add your Reviews.io widget code here. This will display towards the bottom of the home page hero section."
+        },
+        "header-card-settings":{
+          "content": "Card Settings"
+        },
+        "header-padding-settings":{
+          "content": "Padding Settings"
+        },
+        "header-slide-settings":{
+          "content": "Slide Settings"
+        },
+        "paragraph-slide-settings":{
+          "content": "Select the color scheme for the slides below."
+        },
+        "slide_background_color":{
+          "label": "Card Background Color"
+        }
+      },
+      "blocks":{
+        "slider":{
+          "name": "Slider Image",
+          "settings":{
+            "header-slider-settings": {
+              "content": "Slider Settings"
+            },
+            "slide_title": {
+              "label": "Slide Title",
+              "info": "Enter name of the dog or Insta username here to give them credit for the photo."
+            },
+            "slide_image":{
+              "label": "Slide Image"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Home Page Hero"
+      }
+    },
     "image-banner": {
       "name": "Image banner",
       "settings": {

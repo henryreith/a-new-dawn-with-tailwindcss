@@ -25,7 +25,7 @@
     {% # Hero Grid %}
     <div class='hero__container tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-content-start tw-gap-12'>
       <div class='tw-gap-12 tw-flex tw-flex-col'>
-        <div class='hero__title'>{{ section.settings.title }}</div>
+        <div class='hero__heading'>{{ section.settings.heading }}</div>
         <div class='hero__subtext'>{{ section.settings.subtext }}</div>
         <div
           class='hero__slider--container lg:tw-invisible lg:tw-hidden color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
@@ -77,9 +77,12 @@
         </div>
 
         <div class='hero__cta'>
-          <button style='color:#fff;background:#6dab3c;text-align: center; min-width: 30%;padding: 1em 3em;font-size: 1.65em;display:inline-table;border-radius: 0.4em;font-weight:600'>
-            Shop Now
-          </button>
+          <a
+            href='{{ section.settings.url }}'
+            style='color:#fff;background:#6dab3c;text-align: center; min-width: 30%;padding: 1em 3em;font-size: 1.65em;display:inline-table;border-radius: 0.4em;font-weight:600'
+          >
+            {{ section.settings.button_text }}
+          </a>
         </div>
         <div class='hero__reviewsio tw-mb-16'>{{ section.settings.reviewsio }}</div>
       </div>
@@ -146,7 +149,7 @@
 
 {% schema %}
 {
-  "name": "Home Page Hero",
+  "name": "t:sections.hero-home-page.name",
   "tag": "section",
   "class": "hero-home-page-section",
   "max_blocks": 10,
@@ -180,25 +183,37 @@
     },
     {
       "type": "liquid",
-      "id": "title",
-      "label": "Title (Liquid)",
+      "id": "heading",
+      "label": "t:sections.hero-home-page.settings.heading.label",
       "default": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags</span>.</h1>"
     },
     {
       "type": "liquid",
       "id": "subtext",
-      "label": "Add an elevator pictch about your highlighted products here.",
+      "label": "t:sections.hero-home-page.settings.subtext.label",
       "default": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic</span> Dog Poop Bag.</h2>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.hero-home-page.settings.button_text.label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:sections.hero-home-page.settings.button_url.label"
     },
     {
       "type": "liquid",
       "id": "reviewsio",
-      "label": "Reviews.io Script (liquid)",
+      "label": "t:sections.hero-home-page.settings.reviewsio.label",
+      "info": "t:sections.hero-home-page.settings.reviewsio.info",
       "default": "4.9/5"
     },
     {
       "type": "header",
-      "content": "Card Settings"
+      "content": "t:sections.hero-home-page.settings.header-card-settings.content"
     },
     {
       "type": "color_scheme",
@@ -208,7 +223,7 @@
     },
     {
       "type": "header",
-      "content": "Padding Settings"
+      "content": "t:sections.hero-home-page.settings.header-padding-settings.content"
     },
     {
       "type": "range",
@@ -232,11 +247,11 @@
     },
     {
       "type": "header",
-      "content": "Slide Settings"
+      "content": "t:sections.hero-home-page.settings.header-slide-settings.content"
     },
     {
       "type": "paragraph",
-      "content": "Select the color scheme for the slides below."
+      "content": "t:sections.hero-home-page.settings.paragraph-slide-settings.content"
     },
     {
       "type": "color_scheme",
@@ -247,36 +262,36 @@
     {
       "type": "color",
       "id": "slide_background_color",
-      "label": "Card Background Color",
+      "label": "t:sections.hero-home-page.settings.slide_background_color.label",
       "default": "#ffffff"
     }
   ],
   "blocks": [
     {
       "type": "slider",
-      "name": "Slider Image",
+      "name": "t:sections.hero-home-page.blocks.slider.name",
       "settings": [
         {
           "type": "header",
-          "content": "Slider Settings"
+          "content": "t:sections.hero-home-page.blocks.slider.settings.header-slide-settings.content"
         },
         {
           "type": "text",
           "id": "slide_title",
-          "label": "Slide Title",
-          "info": "Enter name of the dog or Insta username here to give them credit for the photo."
+          "label": "t:sections.hero-home-page.blocks.slider.settings.slide_title.label",
+          "info": "t:sections.hero-home-page.blocks.slider.settings.slide_title.info"
         },
         {
           "type": "image_picker",
           "id": "slide_image",
-          "label": "Slide Image"
+          "label": "t:sections.hero-home-page.blocks.slider.settings.slide_image.label"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Home Page Hero",
+      "name": "t:sections.hero-home-page.presets.name",
       "category": "Custom",
       "blocks": [
         {
