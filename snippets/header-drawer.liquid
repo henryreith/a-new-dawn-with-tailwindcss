@@ -125,7 +125,7 @@
           </nav>
           <div class='menu-drawer__utility-links'>
             {% # START search box in footer of header drawer %}
-            <div class='tw-my-4'>
+            <div class='tw-my-4 medium-hide large-up-hide'>
               {%- if settings.predictive_search_enabled -%}
                 <predictive-search class='search-modal__form' data-loading-text='{{ 'accessibility.loading' | t }}'>
               {%- else -%}
