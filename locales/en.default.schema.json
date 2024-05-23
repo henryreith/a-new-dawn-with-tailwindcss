@@ -250,8 +250,8 @@
           "content": "Social accounts"
         },
         "social_twitter_link": {
-          "label": "X / Twitter",
-          "info": "https://x.com/shopify"
+          "label": "X \/ Twitter",
+          "info": "https:\/\/x.com\/shopify"
         },
         "social_facebook_link": {
           "label": "Facebook",
@@ -1378,26 +1378,26 @@
           "label": "Reviews.io Script (liquid)",
           "info": "Add your Reviews.io widget code here. This will display towards the bottom of the home page hero section."
         },
-        "header-card-settings":{
+        "header-card-settings": {
           "content": "Card Settings"
         },
-        "header-padding-settings":{
+        "header-padding-settings": {
           "content": "Padding Settings"
         },
-        "header-slide-settings":{
+        "header-slide-settings": {
           "content": "Slide Settings"
         },
-        "paragraph-slide-settings":{
+        "paragraph-slide-settings": {
           "content": "Select the color scheme for the slides below."
         },
-        "slide_background_color":{
+        "slide_background_color": {
           "label": "Card Background Color"
         }
       },
-      "blocks":{
-        "slider":{
+      "blocks": {
+        "slider": {
           "name": "Slider Image",
-          "settings":{
+          "settings": {
             "header-slider-settings": {
               "content": "Slider Settings"
             },
@@ -1405,7 +1405,7 @@
               "label": "Slide Title",
               "info": "Enter name of the dog or Insta username here to give them credit for the photo."
             },
-            "slide_image":{
+            "slide_image": {
               "label": "Slide Image"
             }
           }
