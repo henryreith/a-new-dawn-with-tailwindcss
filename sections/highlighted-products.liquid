@@ -42,7 +42,9 @@
                   {% assign variant_found = true %}
 
                   <div class='highlighted-products__slider--product-title tw-font-bold tw-p-4 tw-border-b'>
-                    <span>{{ block.settings.custom_varient_title }}</span>
+                    <a href='{{ variant.url }}' style='color: rgba(var(--color-foreground), 0.85);'
+                      ><span>{{ block.settings.custom_varient_title }}</span></a
+                    >
                   </div>
                   <div
                     class='highlighted-products__slider--price tw-p-4 tw-py-8 tw-text-[3.8rem] tw-font-semibold'
