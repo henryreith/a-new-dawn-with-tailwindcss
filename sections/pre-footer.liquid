@@ -1,64 +1,72 @@
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
+{% if show_pre_footer == true %}
+  {%- style -%}
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
-  }
-{%- endstyle -%}
 
-{%- assign content_width_class = 'page-width' -%}
-{%- case section.settings.section_content_width -%}
-  {%- when 'narrow' -%}
-    {%- assign content_width_class = 'page-width page-width--narrow' -%}
-  {%- when 'full_width' -%}
-    {%- assign content_width_class = '' -%}
-{%- endcase -%}
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
 
-<div
-  class='pre-footer section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }} {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
-  {% if section.settings.animations_reveal_on_scroll %}
-    data-cascade
-  {% endif %}
->
-  <div class='pre-footer__inner {{ content_width_class }}'>
-    {% for block in section.blocks %}
-      {% case block.type %}
-        {%- when 'custom_liquid' -%}
-          {{ block.settings.custom_liquid }}
-      {% endcase %}
-    {% endfor %}
-    {% comment %}
-      {% assign current_time = 'now' | date: '%s' %}
-      {% assign start_of_day = 'now' | date: '%Y-%m-%d 00:00:00' | date: '%s' %}
-      {% assign seconds_today = current_time | minus: start_of_day %}
+  {%- assign content_width_class = 'page-width' -%}
+  {%- case section.settings.section_content_width -%}
+    {%- when 'narrow' -%}
+      {%- assign content_width_class = 'page-width page-width--narrow' -%}
+    {%- when 'full_width' -%}
+      {%- assign content_width_class = '' -%}
+  {%- endcase -%}
 
-      <p>Seconds passed today: {{ seconds_today }}</p>
+  <div
+    class='pre-footer section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
+    {% if section.settings.animations_reveal_on_scroll %}
+      data-cascade
+    {% endif %}
+  >
+    <div class='pre-footer__inner {{ content_width_class }}'>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {%- when 'custom_liquid' -%}
+            {{ block.settings.custom_liquid }}
+        {% endcase %}
+      {% endfor %}
+      {% comment %}
+        {% assign current_time = 'now' | date: '%s' %}
+        {% assign start_of_day = 'now' | date: '%Y-%m-%d 00:00:00' | date: '%s' %}
+        {% assign seconds_today = current_time | minus: start_of_day %}
 
-      {% assign poop_bags_per_day = 6200000 %}
-      {% assign days_in_month = 'now' | date: '%d' %}
-      {% assign poop_bags_used_so_far = poop_bags_per_day | times: days_in_month %}
-      {{ poop_bags_per_day }}
-      {{ poop_bags_used_so_far }}
-      {% if section.settings.content %}
-        <div class='tw-text-base tw-leading-relaxed'>
-          {{ section.settings.content }}
-        </div>
-      {% endif %}
-    {% endcomment %}
+        <p>Seconds passed today: {{ seconds_today }}</p>
+
+        {% assign poop_bags_per_day = 6200000 %}
+        {% assign days_in_month = 'now' | date: '%d' %}
+        {% assign poop_bags_used_so_far = poop_bags_per_day | times: days_in_month %}
+        {{ poop_bags_per_day }}
+        {{ poop_bags_used_so_far }}
+        {% if section.settings.content %}
+          <div class='tw-text-base tw-leading-relaxed'>
+            {{ section.settings.content }}
+          </div>
+        {% endif %}
+      {% endcomment %}
+    </div>
   </div>
-</div>
+{% endif %}
 
 {% schema %}
 {
-  "name": "Pre Footer",
+  "name": "t:sections.pre-footer.name",
   "max_blocks": 9,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_pre_footer",
+      "label": "t:sections.pre-footer.settings.show_pre_footer.label",
+      "default": false
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
@@ -69,7 +77,7 @@
       "type": "checkbox",
       "id": "animations_reveal_on_scroll",
       "label": "t:sections.benefits-inline.settings.animations_reveal_on_scroll.label",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
