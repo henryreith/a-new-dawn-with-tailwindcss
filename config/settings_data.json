@@ -142,13 +142,14 @@
           "custom_liquid_T3x7rc"
         ],
         "settings": {
+          "show_pre_footer": true,
           "color_scheme": "scheme-2",
           "animations_reveal_on_scroll": false,
           "border_on_top": false,
           "border_on_bottom": false,
           "section_content_width": "page_width",
           "padding_top": 16,
-          "padding_bottom": 12
+          "padding_bottom": 16
         }
       }
     },
