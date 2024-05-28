@@ -142,7 +142,7 @@
           "custom_liquid_T3x7rc"
         ],
         "settings": {
-          "show_pre_footer": true,
+          "show_pre_footer": false,
           "color_scheme": "scheme-2",
           "animations_reveal_on_scroll": false,
           "border_on_top": false,
