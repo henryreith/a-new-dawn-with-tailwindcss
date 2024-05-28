@@ -3037,6 +3037,14 @@
         "name": "Page"
       }
     },
+    "pre-footer": {
+      "name": "Pre Footer",
+      "settings": {
+        "show_pre_footer": {
+          "label": "Show the pre-footer section?"
+        }
+      }
+    },
     "quick-order-list": {
       "name": "Quick order list",
       "settings": {
