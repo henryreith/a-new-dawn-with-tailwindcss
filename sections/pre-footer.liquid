@@ -1,4 +1,4 @@
-{% if show_pre_footer == true %}
+{% if section.settings.show_pre_footer == true %}
   {%- style -%}
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
