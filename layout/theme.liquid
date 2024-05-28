@@ -307,6 +307,9 @@
       {{ content_for_layout }}
     </main>
 
+    {% # Pre Footer to include any local market information we want %}
+
+    {% section 'pre-footer' %}
     {% sections 'footer-modern-group' %}
 
     <ul hidden>

@@ -1,0 +1,13 @@
+{
+  "type": "aside",
+  "name": "Pre Footer Group",
+  "sections": {
+    "pre-footer": {
+      "type": "pre-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "pre-footer"
+  ]
+}

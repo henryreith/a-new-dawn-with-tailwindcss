@@ -838,6 +838,40 @@ cart-drawer .product-option .price {
   --tw-contain-style:  ;
 }
 
+.tw-container {
+  width: 100%;
+}
+
+@media (min-width: 320px) {
+  .tw-container {
+    max-width: 320px;
+  }
+}
+
+@media (min-width: 750px) {
+  .tw-container {
+    max-width: 750px;
+  }
+}
+
+@media (min-width: 990px) {
+  .tw-container {
+    max-width: 990px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .tw-container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .tw-container {
+    max-width: 1300px;
+  }
+}
+
 .tw-invisible {
   visibility: hidden;
 }
@@ -897,6 +931,11 @@ cart-drawer .product-option .price {
 .tw-mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.tw-my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .\!tw-mb-0 {
@@ -1226,6 +1265,11 @@ cart-drawer .product-option .price {
   border-style: none !important;
 }
 
+.tw-bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .tw-bg-slate-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
@@ -1346,6 +1390,10 @@ cart-drawer .product-option .price {
   padding-right: 1rem;
 }
 
+.tw-pt-0 {
+  padding-top: 0px;
+}
+
 .tw-pt-4 {
   padding-top: 1rem;
 }
@@ -1358,8 +1406,16 @@ cart-drawer .product-option .price {
   text-align: center;
 }
 
+.tw-text-2xl {
+  font-size: calc(2rem * var(--font-heading-scale));
+}
+
 .tw-text-\[3\.8rem\] {
   font-size: 3.8rem;
+}
+
+.tw-text-base {
+  font-size: 1.5rem;
 }
 
 .tw-text-smd {
@@ -1387,6 +1443,10 @@ cart-drawer .product-option .price {
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
 }
 
+.tw-leading-relaxed {
+  line-height: 1.625;
+}
+
 .tw-tracking-normal {
   letter-spacing: 0em;
 }
@@ -1398,6 +1458,10 @@ cart-drawer .product-option .price {
 /* end @layer base */
 
 @media (min-width: 750px) {
+  .md\:tw-visible {
+    visibility: visible;
+  }
+
   .md\:tw-order-1 {
     order: 1;
   }
@@ -1424,6 +1488,10 @@ cart-drawer .product-option .price {
 
   .md\:tw-mb-10 {
     margin-bottom: 2.5rem;
+  }
+
+  .md\:tw-block {
+    display: block;
   }
 
   .md\:tw-flex {
