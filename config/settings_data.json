@@ -127,6 +127,29 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "pre-footer": {
+        "type": "pre-footer",
+        "blocks": {
+          "custom_liquid_T3x7rc": {
+            "type": "custom_liquid",
+            "settings": {
+              "custom_liquid": "Test Me"
+            }
+          }
+        },
+        "block_order": [
+          "custom_liquid_T3x7rc"
+        ],
+        "settings": {
+          "color_scheme": "scheme-5",
+          "animations_reveal_on_scroll": false,
+          "border_on_top": false,
+          "border_on_bottom": false,
+          "section_content_width": "page_width",
+          "padding_top": 16,
+          "padding_bottom": 12
+        }
       }
     },
     "content_for_index": [
