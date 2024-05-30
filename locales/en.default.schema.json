@@ -1734,6 +1734,30 @@
         "name": "Image with text"
       }
     },
+    "infinite-scrolling-text": {
+      "name": "Infinite scrolling text",
+      "settings": {
+        "font_size":{
+          "label": "Font Size"
+        },
+        "text_padding_x":{
+          "label": "Horizontal padding either size of the text"
+        }
+      },
+      "blocks": {
+        "text": {
+          "name": "Text Item",
+          "settings": {
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Infinite scrolling text"
+      }
+    },
     "multirow": {
       "name": "Multirow",
       "settings": {

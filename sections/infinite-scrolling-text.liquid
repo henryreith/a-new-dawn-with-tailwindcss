@@ -1,0 +1,142 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- assign content_width_class = 'page-width' -%}
+{%- case section.settings.section_content_width -%}
+  {%- when 'narrow' -%}
+    {%- assign content_width_class = 'page-width page-width--narrow' -%}
+  {%- when 'full_width' -%}
+    {%- assign content_width_class = '' -%}
+{%- endcase -%}
+
+<div
+  id='infinite-scrolling-text-section-{{ section.id }}'
+  class='section-{{ section.id }}-padding'
+>
+  <div class='infinite-scrolling-text {{ content_width_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+    <div class='infinite-scrolling-text__inner'>
+      <div class='infinite-scrolling-text__content'>
+        <div class='infinite-scrolling-text__text'>
+          <div class='infinite-scrolling-text__text-inner'>
+            {{ section.settings.text }}
+          </div>
+          {% # END .infinite-scrolling-text__text-inner %}
+        </div>
+        {% # END .infinite-scrolling-text__text %}
+      </div>
+      {% # END .infinite-scrolling-text__content %}
+    </div>
+    {% # END .infinite-scrolling-text__inner %}
+  </div>
+  {% # END .infinite-scrolling-text %}
+</div>
+{% # END #infinite-scrolling-text-section-{{ section.id }} %}
+
+{% schema %}
+{
+  "name": "t:sections.infinite-scrolling-text.name",
+  "max_blocks": 25,
+  "class": "infinite-scrolling-text-section",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "t:sections.all.section_content_width.label",
+      "options": [
+        {
+          "label": "t:sections.all.section_content_width.options__1.label",
+          "value": "full_width"
+        },
+        {
+          "label": "t:sections.all.section_content_width.options__2.label",
+          "value": "page_width"
+        },
+        {
+          "label": "t:sections.all.section_content_width.options__3.label",
+          "value": "narrow"
+        }
+      ],
+      "default": "page_width"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "t:sections.infinite-scrolling-text.settings.font_size.label",
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "unit": "rem",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "text_padding_x",
+      "label": "t:sections.infinite-scrolling-text.settings.text_padding_x.label",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_item",
+      "name": "t:sections.faq.blocks.text_item.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_item",
+          "label": "t:sections.faq.blocks.text_item.settings.text_item.label",
+          "default": "Your Question Here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.infinite-scrolling-text.presets.name",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "text_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
