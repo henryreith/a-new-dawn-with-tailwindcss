@@ -247,6 +247,69 @@
         "card_background_color": "#ffffff"
       }
     },
+    "infinite_scrolling_text_kV488r": {
+      "type": "infinite-scrolling-text",
+      "blocks": {
+        "text_item_AmWV9n": {
+          "type": "text_item",
+          "settings": {
+            "text_item": "100% Compostable"
+          }
+        },
+        "text_item_kHcLR3": {
+          "type": "text_item",
+          "settings": {
+            "text_item": "Eco-Friendly"
+          }
+        },
+        "text_item_7Jq83U": {
+          "type": "text_item",
+          "settings": {
+            "text_item": "3x Thicker Than Average Poop Bags"
+          }
+        },
+        "text_item_CW6ykg": {
+          "type": "text_item",
+          "settings": {
+            "text_item": "Easy Tear Sticker"
+          }
+        },
+        "text_item_maxFec": {
+          "type": "text_item",
+          "settings": {
+            "text_item": "Easy Divide Rolls"
+          }
+        },
+        "text_item_UPUR8W": {
+          "type": "text_item",
+          "settings": {
+            "text_item": "PFAS Free"
+          }
+        },
+        "text_item_PPbNRF": {
+          "type": "text_item",
+          "settings": {
+            "text_item": "Vegan Friendly"
+          }
+        }
+      },
+      "block_order": [
+        "text_item_AmWV9n",
+        "text_item_kHcLR3",
+        "text_item_7Jq83U",
+        "text_item_CW6ykg",
+        "text_item_maxFec",
+        "text_item_UPUR8W",
+        "text_item_PPbNRF"
+      ],
+      "settings": {
+        "section_content_width": "page_width",
+        "font_size": 3,
+        "text_padding_x": 25,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "page_ipCyhp": {
       "type": "page",
       "settings": {
@@ -266,6 +329,7 @@
     "benefit_inline_r8EHBj",
     "multicolumn",
     "highlighted_products_jwhF6k",
+    "infinite_scrolling_text_kV488r",
     "page_ipCyhp"
   ]
 }

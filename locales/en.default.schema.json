@@ -1737,10 +1737,10 @@
     "infinite-scrolling-text": {
       "name": "Infinite scrolling text",
       "settings": {
-        "font_size":{
+        "font_size": {
           "label": "Font Size"
         },
-        "text_padding_x":{
+        "text_padding_x": {
           "label": "Horizontal padding either size of the text"
         }
       },
