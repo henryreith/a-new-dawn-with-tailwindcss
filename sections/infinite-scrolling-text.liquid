@@ -11,6 +11,10 @@
     }
   }
 
+  {{ '#infinite-scrolling-text-section-' | append: section.id }} {
+    text-transform: {{ section.settings.text_transform }};
+  }
+
   .infinite-scrolling-text__text-item {
         font-size: {{ section.settings.font_size }}rem;
         font-weight: {{ section.settings.font_weight }};
@@ -49,30 +53,39 @@
 <div
   id='infinite-scrolling-text-section-{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
-  {% if section.settings.animations_reveal_on_scroll %}
-    data-cascade
-  {% endif %}
 >
-  <div class='infinite-scrolling-text {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+  <div class='infinite-scrolling-text'>
     <div
       class='infinite-scrolling-text__inner tw-flex tw-flex-row tw-items-center'
-      style='--marquee-speed: 20s; --direction:scroll-{{ section.settings.scroll_direction }}'
+      style='--marquee-speed: {{ section.settings.marquee_speed }}s; --direction:scroll-{{ section.settings.scroll_direction }}'
       role='marquee'
     >
       {% for i in (1..3) %}
         <div class='infinite-scrolling-text__content tw-flex tw-flex-row tw-items-center tw-whitespace-nowrap'>
           {% for block in section.blocks %}
-            <div class='infinite-scrolling-text__text-item'>
+            <div
+              class='infinite-scrolling-text__text-item {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+              {% if section.settings.animations_reveal_on_scroll %}
+                data-cascade
+                style='--animation-order: {{ forloop.index }};'
+              {% endif %}
+            >
               {{ block.settings.text_item }}
             </div>
-            <svg
-              viewBox='0 0 6 6'
-              fill='none'
-              class='tw-icon tw-w-1.5 tw-h-1.5'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path d="M3.008 0c.483.01.503.22.864.328.36.108.653.03.903.202.249.172.326.517.58.827.252.311.474.362.599.666.125.303-.054.695-.047 1.02.006.323.165.556.054.9-.112.345-.398.375-.607.68-.209.303-.215.543-.458.759-.243.216-.738.169-1.038.28-.3.112-.491.335-.85.338-.359.003-.618-.277-.878-.344-.26-.068-.774-.068-1.007-.277-.232-.21-.29-.55-.445-.743-.155-.192-.58-.449-.657-.783-.077-.334.081-.486.091-.925.01-.44-.165-.419-.084-.794.08-.374.502-.533.67-.827.169-.293.256-.577.482-.736.226-.159.73-.152 1.007-.256.276-.105.492-.322.82-.315Z" fill="currentColor"></path>
-            </svg>
+            {% if section.settings.show_divider_icon == true %}
+              <svg
+                viewBox='0 0 6 6'
+                fill='none'
+                class='tw-icon tw-w-1.5 tw-h-1.5 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+                xmlns='http://www.w3.org/2000/svg'
+                {% if section.settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style='--animation-order: {{ forloop.index }};'
+                {% endif %}
+              >
+                <path d="M3.008 0c.483.01.503.22.864.328.36.108.653.03.903.202.249.172.326.517.58.827.252.311.474.362.599.666.125.303-.054.695-.047 1.02.006.323.165.556.054.9-.112.345-.398.375-.607.68-.209.303-.215.543-.458.759-.243.216-.738.169-1.038.28-.3.112-.491.335-.85.338-.359.003-.618-.277-.878-.344-.26-.068-.774-.068-1.007-.277-.232-.21-.29-.55-.445-.743-.155-.192-.58-.449-.657-.783-.077-.334.081-.486.091-.925.01-.44-.165-.419-.084-.794.08-.374.502-.533.67-.827.169-.293.256-.577.482-.736.226-.159.73-.152 1.007-.256.276-.105.492-.322.82-.315Z" fill="currentColor"></path>
+              </svg>
+            {% endif %}
           {% endfor %}
         </div>
       {% endfor %}
@@ -117,6 +130,12 @@
       "default": false
     },
     {
+      "type": "checkbox",
+      "id": "show_divider_icon",
+      "label": "t:sections.benefits-inline.settings.show_divider_icon.label",
+      "default": true
+    },
+    {
       "type": "range",
       "id": "font_size",
       "label": "t:sections.infinite-scrolling-text.settings.font_size.label",
@@ -134,6 +153,22 @@
       "max": 800,
       "step": 100,
       "default": 700
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "t:sections.infinite-scrolling-text.settings.text_transform.label",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:sections.infinite-scrolling-text.settings.text_transform.options__1.label"
+        },
+        {
+          "value": "uppercase",
+          "label": "t:sections.infinite-scrolling-text.settings.text_transform.options__2.label"
+        }
+      ],
+      "default": "inherit"
     },
     {
       "type": "range",

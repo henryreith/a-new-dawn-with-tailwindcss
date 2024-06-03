@@ -1737,11 +1737,23 @@
     "infinite-scrolling-text": {
       "name": "Infinite scrolling text",
       "settings": {
+        "show_divider_icon": {
+          "label": "Show divider icon between text. This is a small circle that will appear between each text item."
+        },
         "font_size": {
           "label": "Font Size"
         },
         "text_padding_x": {
           "label": "Horizontal padding either size of the text"
+        },
+        "text_transform": {
+          "options__1": {
+            "label": "Inherit"
+          },
+          "options__2": {
+            "label": "Uppercase"
+          },
+          "label": "Text transform"
         },
         "marquee_speed": {
           "label": "Scroll speed. The higher the value the slower the scroll."
