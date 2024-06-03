@@ -303,11 +303,17 @@
         "text_item_PPbNRF"
       ],
       "settings": {
-        "section_content_width": "page_width",
-        "font_size": 3,
+        "color_scheme": "scheme-8c222fc8-3dc4-43dd-8e29-3185e5c1935e",
+        "animations_reveal_on_scroll": true,
+        "border_on_top": true,
+        "border_on_bottom": true,
+        "font_size": 2.5,
+        "font_weight": 600,
         "text_padding_x": 25,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "marquee_speed": 40,
+        "scroll_direction": "left",
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     },
     "page_ipCyhp": {
