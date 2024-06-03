@@ -11,7 +11,7 @@
     }
   }
 
-  {{ '#infinite-scrolling-text-section-' | append: section.id }} {
+  #infinite-scrolling-text-section-{{ section.id }} {
     text-transform: {{ section.settings.text_transform }};
   }
 
@@ -19,35 +19,41 @@
         font-size: {{ section.settings.font_size }}rem;
         font-weight: {{ section.settings.font_weight }};
         padding: 0 {{  section.settings.text_padding_x }}px;
-    }
-    /* Apply the animation to the text items */
+  }
+  /* Apply the animation to the text items */
+  .infinite-scrolling-text__inner > div {
+      animation: var(--direction) var(--marquee-speed) linear infinite;
+  }
+
+  @media (prefers-reduced-motion) {
     .infinite-scrolling-text__inner > div {
-        animation: var(--direction) var(--marquee-speed) linear infinite;
+      animation: none;
     }
+  }
 
-    /* Pause the animation when a user hovers over it */
-    .infinite-scrolling-text:hover .infinite-scrolling-text__inner > div {
-        animation-play-state: paused;
-    }
+  /* Pause the animation when a user hovers over it */
+  .infinite-scrolling-text:hover .infinite-scrolling-text__inner > div {
+      animation-play-state: paused;
+  }
 
-    /* Setting the Animation using Keyframes */
-    @keyframes scroll-left {
-        0% {
-            transform: translateX(0%);
-        }
-        100% {
-            transform: translateX(-100%);
-        }
+  /* Setting the Animation using Keyframes */
+  @keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
     }
+    100% {
+        transform: translateX(-100%);
+    }
+  }
 
-    @keyframes scroll-right {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(0%);
-        }
+  @keyframes scroll-right {
+    0% {
+        transform: translateX(-100%);
     }
+    100% {
+        transform: translateX(0%);
+    }
+  }
 {%- endstyle -%}
 
 <div
