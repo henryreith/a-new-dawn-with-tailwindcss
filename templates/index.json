@@ -312,7 +312,7 @@
         "font_weight": 600,
         "text_transform": "inherit",
         "text_padding_x": 25,
-        "marquee_speed": 50,
+        "marquee_speed": 60,
         "scroll_direction": "left",
         "padding_top": 24,
         "padding_bottom": 24
