@@ -1742,6 +1742,18 @@
         },
         "text_padding_x": {
           "label": "Horizontal padding either size of the text"
+        },
+        "marquee_speed": {
+          "label": "Scroll speed. The higher the value the slower the scroll."
+        },
+        "scroll_direction": {
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Right"
+          },
+          "label": "Scroll direction"
         }
       },
       "blocks": {
