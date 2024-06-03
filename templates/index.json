@@ -307,13 +307,13 @@
         "animations_reveal_on_scroll": true,
         "border_on_top": true,
         "border_on_bottom": true,
-        "font_size": 2.5,
+        "font_size": 2,
         "font_weight": 600,
         "text_padding_x": 25,
         "marquee_speed": 50,
         "scroll_direction": "left",
-        "padding_top": 28,
-        "padding_bottom": 28
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "page_ipCyhp": {
