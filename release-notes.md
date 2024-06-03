@@ -12,6 +12,7 @@
 - **footer-modern.liquid** - Modern look to the footer. Including logo, tagline, social icons. Block based so can be customised in the theme editor & footer aside for currency selector, payment icons, but country selector has been left off for now.
 - **drawer-cart-rec-product.liquid** - Product recommendations section rendered in the cart drawer with js.
 - **simple-text34-and-image14.liquid** - Simple text and image section. This is a simple section with a 3/4 width text block and a 1/4 width image block. Useful for adding as a content section at the bottom of collection pages.
+- **infinite-scrolling-text.liquid** - Infinite scrolling text section. This is a simple section with a text block that scrolls infinitely. Useful for adding as a content section at the bottom of collection pages, or on the home or product pages.
 
 **Note:** Most of these new sections have settings and block instructions in the en.default.schema.json file, but one or two don't yet. I'll add these in later updates.
 
