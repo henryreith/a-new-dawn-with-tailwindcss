@@ -310,7 +310,7 @@
         "font_size": 2.5,
         "font_weight": 600,
         "text_padding_x": 25,
-        "marquee_speed": 40,
+        "marquee_speed": 55,
         "scroll_direction": "left",
         "padding_top": 28,
         "padding_bottom": 28
