@@ -39,13 +39,13 @@
             "text": "Dog Poop Bags",
             "link": "shopify:\/\/products\/dog-poop-bags",
             "image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
-            "badge_text": "New"
+            "badge_text": ""
           }
         },
         "submenu_item_cXxCjd": {
           "type": "submenu_item",
           "settings": {
-            "text": "Treats",
+            "text": "Dog Treats",
             "link": "shopify:\/\/pages\/about",
             "image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Green_4510d896-f65a-44d9-a71d-7c6085a0c465.jpg",
             "badge_text": ""
@@ -54,17 +54,37 @@
         "submenu_item_WbYwFL": {
           "type": "submenu_item",
           "settings": {
-            "text": "Test Item",
+            "text": "Urine & Stain Remover",
             "link": "shopify:\/\/products\/test-single-product-no-sale",
             "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
-            "badge_text": ""
+            "badge_text": "New"
+          }
+        },
+        "submenu_item_A9eW4k": {
+          "type": "submenu_item",
+          "settings": {
+            "text": "Don't Chew This",
+            "link": "shopify:\/\/pages\/hrm-testing",
+            "image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
+            "badge_text": "New"
+          }
+        },
+        "submenu_item_8M3jPt": {
+          "type": "submenu_item",
+          "settings": {
+            "text": "Don't Pee Here",
+            "link": "shopify:\/\/pages\/test-page2",
+            "image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg",
+            "badge_text": "New"
           }
         }
       },
       "block_order": [
         "submenu_item_WVHtTJ",
         "submenu_item_cXxCjd",
-        "submenu_item_WbYwFL"
+        "submenu_item_WbYwFL",
+        "submenu_item_A9eW4k",
+        "submenu_item_8M3jPt"
       ],
       "settings": {
         "color_scheme": "scheme-4",
