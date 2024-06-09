@@ -1,7 +1,3 @@
-{%- if section.settings.animations_reveal_on_scroll -%}
-  <script src='{{ 'animations.js' | asset_url }}' defer='defer'></script>
-{%- endif -%}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -20,10 +16,20 @@
         border-color: rgba(var(--color-foreground), 0.06);
     }
   {% endif %}
-
+  .submenu__wrapper {
+    --gap-spacing: 1rem;
+    gap: var(--gap-spacing);
+  }
   .submenu__item {
+      --item-width: calc((100% - (var(--gap-spacing) * 4)) / 5); /* 5 items, 4 gaps */
       color: rgba(var(--color-foreground), 0.75);
       transition: all var(--duration-short) ease;
+      width: var(--item-width);
+      flex-basis: var(--item-width);
+  }
+
+  .submenu__item:last-child {
+      margin-right: 0; /* Remove the gap for the last item */
   }
 
   .submenu__item:hover {
@@ -31,31 +37,52 @@
   }
 
   .submenu__item:hover .submenu__badge {
-    background-color: rgba(var(--color-button), 0.95);
-    background-color: color-mix(in srgb, rgb(var(--color-button)), black 5%);
+      background-color: rgba(var(--color-button), 0.95);
+      background-color: color-mix(in srgb, rgb(var(--color-button)), black 5%);
+  }
+
+  .submenu__item-image {
+      border: 0.25rem solid rgba(var(--color-foreground), 0.75);
+      transition: all var(--duration-short) ease;
+  }
+
+  .submenu__item-image:hover {
+      border: 0.1rem solid rgba(var(--color-foreground), 0.75);
   }
 
   .submenu__badge {
-    background-color: rgb(var(--color-button));
-    color: rgb(var(--color-button-text));
-    padding: 0.1rem 0.45rem;
-    text-shadow: 2px 0px 2px rgba(0,0,0,0.11);
+      background-color: rgb(var(--color-button));
+      color: rgb(var(--color-button-text));
+      padding: 0.1rem 0.45rem;
+      text-shadow: 2px 0px 2px rgba(0,0,0,0.11);
   }
 
-    .submenu__item-text {
-        line-height: calc(1 + 0.3 / var(--font-body-scale));
+  .submenu__item-text {
+      line-height: calc(1 + 0.3 / var(--font-body-scale));
+  }
+  @media screen and (min-width: 990px) {
+    .submenu__wrapper {
+      --gap-spacing: 3rem;
     }
+    .submenu__item {
+      width: auto;
+      flex-basis: content;
+    }
+    .submenu__item-image {
+      border: 1rem;
+    }
+  }
 {%- endstyle -%}
 
 <div
   id='section-{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
 >
-  <div class='page-width tw-mx-auto tw-flex tw-flex-wrap tw-justify-center tw-items-start tw-gap-x-8 md:tw-gap-x-10 tw-gap-y-4'>
+  <div class='page-width submenu__wrapper tw-mx-auto tw-flex tw-flex-wrap tw-shrink-0 tw-grow tw-justify-center tw-items-start'>
     {%- for block in section.blocks -%}
       <a
         href='{{ block.settings.link }}'
-        class='submenu__item tw-flex tw-flex-row tw-items-center tw-justify-center{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+        class='submenu__item tw-relative tw-text-center lg:tw-text-left tw-flex tw-flex-col lg:tw-flex-row tw-gap-3 tw-items-center tw-justify-center{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
         {{ block.shopify_attributes }}
         {% if section.settings.animations_reveal_on_scroll %}
           data-cascade
@@ -63,7 +90,7 @@
         {% endif %}
       >
         {%- if block.settings.image != blank -%}
-          <div class='tw-mr-3 lg:tw-hidden'>
+          <div class='lg:tw-hidden lg:tw-h-8 tw-flex tw-items-center tw-justify-center'>
             <img
               srcset='
                 {% if block.settings.image.width >= 350 %}{{ block.settings.image | image_url: width: 350 }} 350w,{% endif %}
@@ -77,13 +104,13 @@
               width='{{ block.settings.image.width }}'
               height='{{ block.settings.image.height }}'
               alt='{{ block.settings.image.alt | escape }}'
-              class='submenu__item-image tw-w-10 tw-h-10 tw-rounded-full tw-object-cover'
+              class='submenu__item-image tw-w-full tw-h-full tw-rounded-full tw-object-cover tw-aspect-square'
             >
           </div>
         {%- endif -%}
-        <span class='submenu__item-text tw-font-semibold tw-text-smd tw-text-center'>
+        <span class='submenu__item-text tw-font-semibold tw-text-xs md:tw-text-smd'>
           {%- if block.settings.badge_text != blank -%}
-            <span class='submenu__badge tw-mr-3 tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'>
+            <span class='submenu__badge tw-absolute lg:tw-relative tw-m-0 lg:tw-mr-3 tw-top-1 lg:tw-top-[-1px] tw-right-0  tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'>
               {{- block.settings.badge_text -}}
             </span>
           {%- endif -%}
@@ -101,7 +128,7 @@
   "enabled_on": {
     "groups": ["header"]
   },
-  "max_blocks": 6,
+  "max_blocks": 5,
   "settings": [
     {
       "type": "color_scheme",
