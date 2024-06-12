@@ -74,6 +74,18 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign animate_scroll = false
+  if section.settings.animations_reveal_on_scroll
+    if section.settings.animations_reveal_on_scroll_hp_only and template.name == 'index'
+      assign animate_scroll = true
+      unless section.settings.animations_reveal_on_scroll_hp_only
+        assign animate_scroll = true
+      endunless
+    endif
+  endif
+-%}
+
 <div
   id='section-{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
@@ -82,32 +94,37 @@
     {%- for block in section.blocks -%}
       <a
         href='{{ block.settings.link }}'
-        class='submenu__item tw-relative tw-text-center lg:tw-text-left tw-flex tw-flex-col lg:tw-flex-row tw-gap-3 tw-items-center tw-justify-center{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+        class='submenu__item tw-relative tw-text-center lg:tw-text-left tw-flex tw-flex-col lg:tw-flex-row tw-gap-3 tw-items-center tw-justify-center{% if animate_scroll %} scroll-trigger animate--slide-in{% endif %}'
         {{ block.shopify_attributes }}
-        {% if section.settings.animations_reveal_on_scroll %}
+        {% if animate_scroll %}
           data-cascade
           style='--animation-order: {{ forloop.index }};'
         {% endif %}
       >
-        {%- if block.settings.image != blank -%}
+        {%- assign image = block.settings.image -%}
+        {%- assign image_widths = '350,750' | split: ',' -%}
+
+        {%- if image != blank -%}
           <div class='lg:tw-hidden lg:tw-h-8 tw-flex tw-items-center tw-justify-center'>
             <img
               srcset='
-                {% if block.settings.image.width >= 350 %}{{ block.settings.image | image_url: width: 350 }} 350w,{% endif %}
-                {% if block.settings.image.width >= 750 %}{{ block.settings.image | image_url: width: 750 }} 750w,{% endif %}
-                {{ block.settings.image | image_url }} {{ block.settings.image }}w
+                {% for width in image_widths %}
+                  {{ image | image_url: width }} {{ width }}w
+                  {% unless forloop.last %},{% endunless %}
+                {% endfor %}, {{ image | image_url }} {{ image.width }}w
               '
               sizes='(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw'
-              src='{{ block.settings.image | image_url: width: 750 }}'
+              src='{{ image | image_url: width: 750 }}'
               loading='lazy'
               fetchpriority='high'
-              width='{{ block.settings.image.width }}'
-              height='{{ block.settings.image.height }}'
-              alt='{{ block.settings.image.alt | escape }}'
+              width='{{ image.width }}'
+              height='{{ image.height }}'
+              alt='{{ image.alt | escape }}'
               class='submenu__item-image tw-w-full tw-h-full tw-rounded-full tw-object-cover tw-aspect-square'
             >
           </div>
         {%- endif -%}
+
         <span class='submenu__item-text tw-font-semibold tw-text-xs md:tw-text-smd'>
           {%- if block.settings.badge_text != blank -%}
             <span class='submenu__badge tw-absolute lg:tw-relative tw-m-0 lg:tw-mr-3 tw-top-1 lg:tw-top-[-1px] tw-right-0  tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'>
@@ -140,6 +157,12 @@
       "type": "checkbox",
       "id": "animations_reveal_on_scroll",
       "label": "Animate reveal on scroll",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "animations_reveal_on_scroll_hp_only",
+      "label": "Only animate reveal on scroll on the homepage?",
       "default": false
     },
     {

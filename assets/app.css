@@ -1054,12 +1054,8 @@ cart-drawer .product-option .price {
   height: 3rem;
 }
 
-.tw-h-auto {
-  height: auto;
-}
-
-.tw-h-full {
-  height: 100%;
+.tw-h-2 {
+  height: 0.5rem;
 }
 
 .tw-h-24 {
@@ -1068,6 +1064,31 @@ cart-drawer .product-option .price {
 
 .tw-h-48 {
   height: 12rem;
+}
+
+.tw-h-80 {
+  height: 20rem;
+}
+
+.tw-h-96 {
+  height: 24rem;
+}
+
+.tw-h-\[48rem\] {
+  height: 48rem;
+}
+
+.tw-h-auto {
+  height: auto;
+}
+
+.tw-h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.tw-h-full {
+  height: 100%;
 }
 
 .tw-w-1 {
@@ -1086,12 +1107,20 @@ cart-drawer .product-option .price {
   width: 2.5rem;
 }
 
+.tw-w-24 {
+  width: 6rem;
+}
+
 .tw-w-3 {
   width: 0.75rem;
 }
 
 .tw-w-3\/5 {
   width: 60%;
+}
+
+.tw-w-48 {
+  width: 12rem;
 }
 
 .tw-w-5 {
@@ -1106,20 +1135,8 @@ cart-drawer .product-option .price {
   width: 100%;
 }
 
-.tw-w-24 {
-  width: 6rem;
-}
-
-.tw-w-48 {
-  width: 12rem;
-}
-
 .tw-max-w-60 {
   max-width: 15rem;
-}
-
-.tw-max-w-\[38rem\] {
-  max-width: 38rem;
 }
 
 .tw-flex-none {
@@ -1210,16 +1227,8 @@ cart-drawer .product-option .price {
   gap: 3rem;
 }
 
-.tw-gap-4 {
-  gap: 1rem;
-}
-
-.tw-gap-8 {
-  gap: 2rem;
-}
-
-.tw-gap-6 {
-  gap: 1.5rem;
+.tw-gap-16 {
+  gap: 4rem;
 }
 
 .tw-gap-2 {
@@ -1228,6 +1237,18 @@ cart-drawer .product-option .price {
 
 .tw-gap-3 {
   gap: 0.75rem;
+}
+
+.tw-gap-4 {
+  gap: 1rem;
+}
+
+.tw-gap-6 {
+  gap: 1.5rem;
+}
+
+.tw-gap-8 {
+  gap: 2rem;
 }
 
 .tw-gap-x-10 {
@@ -1498,16 +1519,16 @@ cart-drawer .product-option .price {
   font-size: 1.5rem;
 }
 
+.tw-text-sm {
+  font-size: 1.2rem;
+}
+
 .tw-text-smd {
   font-size: 1.4rem;
 }
 
 .tw-text-xs {
   font-size: 1rem;
-}
-
-.tw-text-sm {
-  font-size: 1.2rem;
 }
 
 .tw-font-bold {
@@ -1598,11 +1619,6 @@ cart-drawer .product-option .price {
     justify-content: space-between;
   }
 
-  .md\:tw-gap-x-10 {
-    -moz-column-gap: 2.5rem;
-         column-gap: 2.5rem;
-  }
-
   .md\:tw-justify-self-start {
     justify-self: start;
   }
@@ -1645,10 +1661,6 @@ cart-drawer .product-option .price {
     top: 0px;
   }
 
-  .lg\:tw-top-px {
-    top: 1px;
-  }
-
   .lg\:tw-top-\[-1px\] {
     top: -1px;
   }
@@ -1665,10 +1677,6 @@ cart-drawer .product-option .price {
     margin-right: 0.75rem;
   }
 
-  .lg\:tw-block {
-    display: block;
-  }
-
   .lg\:tw-flex {
     display: flex;
   }
@@ -1681,12 +1689,12 @@ cart-drawer .product-option .price {
     display: none;
   }
 
-  .lg\:tw-h-full {
-    height: 100%;
-  }
-
   .lg\:tw-h-8 {
     height: 2rem;
+  }
+
+  .lg\:tw-h-full {
+    height: 100%;
   }
 
   .lg\:tw-w-96 {
@@ -1774,23 +1782,23 @@ cart-drawer .product-option .price {
   .lg\:tw-text-center {
     text-align: center;
   }
-
-  .lg\:hover\:tw-block:hover {
-    display: block;
-  }
-
-  .hover\:lg\:tw-block:hover {
-    display: block;
-  }
 }
 
 @media (min-width: 1200px) {
+  .xlg\:tw-h-\[46rem\] {
+    height: 46rem;
+  }
+
   .xlg\:tw-w-5\/6 {
     width: 83.333333%;
   }
 
   .xlg\:tw-w-\[32rem\] {
     width: 32rem;
+  }
+
+  .xlg\:tw-gap-14 {
+    gap: 3.5rem;
   }
 }
 
