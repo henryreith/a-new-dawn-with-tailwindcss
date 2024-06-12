@@ -390,6 +390,18 @@
           "label": "Image behavior"
         }
       },
+      "animations_reveal_on_scroll": {
+        "label": "Reveal sections on scroll"
+      },
+      "animations_reveal_on_scroll_hp_only":{
+        "label": "Reveal sections on scroll (Homepage only)"
+      },
+      "border_on_top": {
+        "label": "Show border on top"
+      },
+      "border_on_bottom": {
+        "label": "Show border on bottom"
+      },
       "padding": {
         "section_padding_heading": "Section padding",
         "padding_top": "Top padding",
@@ -3493,6 +3505,31 @@
         "name": "Slideshow"
       }
     },
+    "submenu": {
+      "name": "Sub-menu",
+      "blocks": {
+        "submenu_item": {
+          "name": "Menu item",
+          "settings": {
+            "text": {
+              "label": "Menu item text"
+            },
+            "link": {
+              "label": "Menu item link"
+            },
+            "image": {
+              "label": "Menu item image (mobile only)"
+            },
+            "badge_text": {
+              "label": "Badge text e.g. 'New'"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Sub-menu"
+      }
+    },   
     "collapsible_content": {
       "name": "Collapsible content",
       "settings": {
