@@ -1,5 +1,4 @@
 {{ 'section-hero-home-page.min.css' | asset_url | stylesheet_tag: preload: true }}
-{{ 'swiperStyles.min.css' | asset_url | stylesheet_tag: preload: true }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -28,62 +27,40 @@
         <div class='hero__heading'>{{ section.settings.heading }}</div>
         <div class='hero__subtext'>{{ section.settings.subtext }}</div>
         <div
-          class='hero__slider--container lg:tw-invisible lg:tw-hidden color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
+          class='hero__slider hero__slider--sm lg:tw-invisible lg:tw-hidden color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent tw-overflow-hidden'
         >
-          {% # Mobile Swiper %}
-          <div class='swiper hero__swiper--sm'>
-            <div class='swiper-wrapper tw-pb-16'>
-              {% for block in section.blocks %}
-                {%- liquid
-                  assign swiper_slide_class = 'swiper-slide hero_not_first_slide_sm'
-                  if forloop.index == 2
-                    assign swiper_slide_class = 'swiper-slide hero_first_slide_sm'
-                  endif
-                -%}
-                <div class='{{ swiper_slide_class }}' {{ block.shopify_attributes }}>
-                  {%- liquid
-                    assign sizes = '100vw'
-                    assign widths = '375, 550, 750, 1100'
-                    assign image_classes = 'hero__slider--image'
-                    assign height = block.settings.slide_image.height
-                    assign fetch_priority = 'auto'
-                    assign lazy_loading = 'lazy'
-                    assign preload = false
-                    if forloop.index == 2
-                      assign fetch_priority = 'high'
-                      assign preload = true
-                    endif
-                  -%}
-                  {{
-                    block.settings.slide_image
-                    | image_url: width: 1100
-                    | image_tag:
-                      height: height,
-                      class: image_classes,
-                      sizes: sizes,
-                      widths: widths,
-                      fetchpriority: fetch_priority,
-                      preload: preload,
-                      loading: lazy_loading
-                  }}
-                  <div class='center'>{{ block.settings.slide_title }}</div>
-                </div>
-              {% endfor %}
-            </div>
-            {% # Add Navigation %}
-            <div class='swiper-pagination'></div>
+          {% assign block_count = 0 %}
+          {% for block in section.blocks %}
+            {% assign block_count = block_count | plus: 1 %}
+          {% endfor %}
+          <div
+            class='hero-scroll-inner tw-w-full tw-flex '
+            style='--scroll-direction:scroll-left; --scroll-speed: {{ section.settings.sm_slide_scroll_speed }}s; --number-of-slides: {{ block_count }};'
+          >
+            {% for i in (1..2) %}
+              <div class='hero-slider__wrap tw-flex'>
+                {% for block in section.blocks %}
+                  {% render 'home-hero-slide',
+                    forloop_index: forloop.index,
+                    image: block.settings.slide_image,
+                    title: block.settings.slide_title
+                  %}
+                {% endfor %}
+              </div>
+              {% # END .hero-slider__wrap %}
+            {% endfor %}
           </div>
-          {% # END Swiper %}
         </div>
 
         <div class='hero__cta'>
           {% comment %}
-            <a
-              href='{{ section.settings.button_url }}'
-              style='color:#fff;background:#6dab3c;text-align: center; min-width: 30%;padding: 1em 3em;font-size: 1.65em;display:inline-table;border-radius: 0.4em;font-weight:600'
-            >
-              {{ section.settings.button_text }}
-            </a>
+            Has an idea of making the link clickable, but changed to to
+             <a
+               href='{{ section.settings.button_url }}'
+               style='color:#fff;background:#6dab3c;text-align: center; min-width: 30%;padding: 1em 3em;font-size: 1.65em;display:inline-table;border-radius: 0.4em;font-weight:600'
+             >
+               {{ section.settings.button_text }}
+             </a>
           {% endcomment %}
           <button style='color:#fff;background:#6dab3c;text-align: center; min-width: 30%;padding: 1em 3em;font-size: 1.65em;display:inline-table;border-radius: 0.4em;font-weight:600'>
             {{ section.settings.button_text }}
@@ -92,54 +69,50 @@
         <div class='hero__reviewsio tw-mb-16'>{{ section.settings.reviewsio }}</div>
       </div>
       {% # START Second column %}
-      <div class='tw-invisible tw-hidden lg:tw-visible lg:tw-flex'>
+
+      <div
+        class='hero__slider hero__slider--lg tw-invisible tw-hidden lg:tw-visible lg:tw-flex tw-gap-12 xlg:tw-gap-14 tw-overflow-hidden tw-h-[48rem] xlg:tw-h-[46rem]'
+      >
         <div
-          class='hero__slider--container tw-m-auto tw-max-w-[38rem] color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
+          class='hero-scroll-inner tw-w-full tw-flex tw-flex-col'
+          style='--scroll-direction:scroll-up; --scroll-speed: {{ section.settings.lg_slide_scroll_speed_left_column }}s; --number-of-slides: {{ section.settings.slide_divide_number }}'
         >
-          {% # Swiper %}
-          <div class='swiper hero__swiper--lg hero__swiper--onload-o-hidden'>
-            <div class='swiper-wrapper tw-pb-20'>
+          {% for i in (1..2) %}
+            <div class='hero-slider__wrap tw-flex tw-flex-col'>
               {% for block in section.blocks %}
-                {%- liquid
-                  assign swiper_slide_class = 'swiper-slide hero_not_first_slide_lg'
-                  if forloop.index == 2
-                    assign swiper_slide_class = 'swiper-slide hero_first_slide_lg'
-                  endif
-                -%}
-                <div class='{{  swiper_slide_class }}' {{ block.shopify_attributes }}>
-                  {%- liquid
-                    assign sizes = '100vw'
-                    assign widths = '375, 550, 750, 1100'
-                    assign image_classes = 'hero__slider--image'
-                    assign height = block.settings.slide_image.height
-                    assign fetch_priority = 'auto'
-                    assign lazy_loading = 'lazy'
-                    assign preload = false
-                    if forloop.index == 2
-                      assign fetch_priority = 'high'
-                      assign preload = true
-                    endif
-                  -%}
-                  {{
-                    block.settings.slide_image
-                    | image_url: width: 1100
-                    | image_tag:
-                      height: height,
-                      class: image_classes,
-                      sizes: sizes,
-                      widths: widths,
-                      fetchpriority: fetch_priority,
-                      preload: preload,
-                      loading: lazy_loading
-                  }}
-                  <div class='center'>{{ block.settings.slide_title }}</div>
-                </div>
+                {% if forloop.index <= section.settings.slide_divide_number %}
+                  {% render 'home-hero-slide',
+                    forloop_index: forloop.index,
+                    image: block.settings.slide_image,
+                    title: block.settings.slide_title
+                  %}
+                {% endif %}
               {% endfor %}
             </div>
-            {% # Add Navigation %}
-            <div class='swiper-pagination'></div>
-          </div>
-          {% # END Swiper %}
+            {% # END .hero-slider__wrap %}
+          {% endfor %}
+        </div>
+        {%- liquid
+          assign right_column_block_count = block_count | minus: section.settings.slide_divide_number
+        -%}
+        <div
+          class='hero-scroll-inner tw-w-full tw-flex tw-flex-col'
+          style='--scroll-direction:scroll-down; --scroll-speed: {{ section.settings.lg_slide_scroll_speed_right_column }}s; --number-of-slides: {{ right_column_block_count }};'
+        >
+          {% for i in (1..2) %}
+            <div class='hero-slider__wrap tw-flex tw-flex-col'>
+              {% for block in section.blocks %}
+                {% if forloop.index > section.settings.slide_divide_number %}
+                  {% render 'home-hero-slide',
+                    forloop_index: forloop.index,
+                    image: block.settings.slide_image,
+                    title: block.settings.slide_title
+                  %}
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% # END .hero-slider__wrap %}
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -148,16 +121,17 @@
   {% # END Home_hero %}
 </div>
 {% # END #section-ID %}
-{% # Preload script as this will always be at the top of the page, so loading it as fast as possible is key %}
-{{ 'hero__home-page.min.js' | asset_url | preload_tag: as: 'script', type: 'text/javascript' }}
-<script src='{{ 'hero__home-page.min.js' | asset_url }}' defer='defer'></script>
+{% comment %}
+  Couldn't get the css overwrite to slide the translateX & Y function to work so leaving out for now */
+   <script src='{{ 'hero__home-page.min.js' | asset_url }}' defer='defer'></script>
+{% endcomment %}
 
 {% schema %}
 {
   "name": "t:sections.hero-home-page.name",
   "tag": "section",
   "class": "hero-home-page-section",
-  "max_blocks": 10,
+  "max_blocks": 20,
   "disabled_on": {
     "groups": ["header", "footer"]
   },
@@ -215,6 +189,43 @@
       "label": "t:sections.hero-home-page.settings.reviewsio.label",
       "info": "t:sections.hero-home-page.settings.reviewsio.info",
       "default": "4.9/5"
+    },
+    {
+      "type": "range",
+      "id": "sm_slide_scroll_speed",
+      "min": 1,
+      "max": 25,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.hero-home-page.settings.sm_slide_scroll_speed.label",
+      "default": 7
+    },
+    {
+      "type": "number",
+      "id": "slide_divide_number",
+      "label": "t:sections.hero-home-page.settings.slide_divide_number.label",
+      "info": "t:sections.hero-home-page.settings.slide_divide_number.info",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "lg_slide_scroll_speed_left_column",
+      "min": 1,
+      "max": 25,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.hero-home-page.settings.lg_slide_scroll_speed_left_column.label",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "lg_slide_scroll_speed_right_column",
+      "min": 1,
+      "max": 25,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.hero-home-page.settings.lg_slide_scroll_speed_right_column.label",
+      "default": 12
     },
     {
       "type": "header",

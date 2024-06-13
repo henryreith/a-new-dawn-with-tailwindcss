@@ -1,0 +1,28 @@
+<div class='hero__slide tw-flex tw-flex-col' data-index='{{ forloop_index }}'>
+  {%- liquid
+    assign sizes = '100vw'
+    assign widths = '375, 550, 750, 1100'
+    assign image_classes = 'hero__slide--image tw-block'
+    assign height = image.height
+    assign fetch_priority = 'auto'
+    assign lazy_loading = 'lazy'
+    assign preload = false
+    if forloop_index == 1
+      assign fetch_priority = 'high'
+      assign preload = true
+    endif
+  -%}
+  {{
+    image
+    | image_url: width: 1100
+    | image_tag:
+      height: height,
+      class: image_classes,
+      sizes: sizes,
+      widths: widths,
+      fetchpriority: fetch_priority,
+      preload: preload,
+      loading: lazy_loading
+  }}
+  <span>{{ title }}</span>
+</div>

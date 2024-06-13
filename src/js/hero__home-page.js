@@ -1,4 +1,84 @@
-import Swiper from '../../node_modules/swiper/swiper-bundle.min.mjs';
+// * Manual Swiper Css Scroller
+// Idea came from here to make a manual scroller: https://chatgpt.com/c/2a0c3de0-9ecc-4ba9-bdf9-28159585ea65
+document.addEventListener('DOMContentLoaded', function () {
+  const scrollInnerElements = document.querySelectorAll('.hero-scroll-inner');
+
+  scrollInnerElements.forEach((scrollInner) => {
+    let isMouseDown = false;
+    let startX, scrollLeft, startY, scrollTop;
+
+    const startDragging = function (e) {
+      isMouseDown = true;
+      startX = e.pageX - scrollInner.offsetLeft;
+      scrollLeft = scrollInner.scrollLeft;
+      startY = e.pageY - scrollInner.offsetTop;
+      scrollTop = scrollInner.scrollTop;
+      scrollInner.classList.add('dragging');
+      e.preventDefault(); // Prevent default dragging behavior
+    };
+
+    const stopDragging = function () {
+      isMouseDown = false;
+      scrollInner.classList.remove('dragging');
+    };
+
+    const mouseMoveHandler = function (e) {
+      if (!isMouseDown) return;
+      e.preventDefault();
+      const x = e.pageX - scrollInner.offsetLeft;
+      const walkX = (x - startX) * 2; // Multiply by 2 for faster scrolling
+      scrollInner.scrollLeft = scrollLeft - walkX;
+
+      const y = e.pageY - scrollInner.offsetTop;
+      const walkY = (y - startY) * 2; // Multiply by 2 for faster scrolling
+      scrollInner.scrollTop = scrollTop - walkY;
+    };
+
+    // Mouse events
+    scrollInner.addEventListener('mousedown', startDragging);
+    scrollInner.addEventListener('mouseleave', stopDragging);
+    scrollInner.addEventListener('mouseup', stopDragging);
+    scrollInner.addEventListener('mousemove', mouseMoveHandler);
+
+    // Touch events
+    scrollInner.addEventListener('touchstart', (e) => {
+      const touch = e.targetTouches[0];
+      startX = touch.pageX - scrollInner.offsetLeft;
+      scrollLeft = scrollInner.scrollLeft;
+      startY = touch.pageY - scrollInner.offsetTop;
+      scrollTop = scrollInner.scrollTop;
+      isMouseDown = true;
+      scrollInner.classList.add('dragging');
+    });
+
+    scrollInner.addEventListener('touchend', () => {
+      isMouseDown = false;
+      scrollInner.classList.remove('dragging');
+    });
+
+    scrollInner.addEventListener('touchmove', (e) => {
+      if (!isMouseDown) return;
+      const touch = e.targetTouches[0];
+      const x = touch.pageX - scrollInner.offsetLeft;
+      const walkX = (x - startX) * 2; // Multiply by 2 for faster scrolling
+      scrollInner.scrollLeft = scrollLeft - walkX;
+
+      const y = touch.pageY - scrollInner.offsetTop;
+      const walkY = (y - startY) * 2; // Multiply by 2 for faster scrolling
+      scrollInner.scrollTop = scrollTop - walkY;
+    });
+
+    // Prevent default behavior on images
+    const images = scrollInner.querySelectorAll('img');
+    images.forEach((img) => {
+      img.addEventListener('dragstart', function (e) {
+        e.preventDefault();
+      });
+    });
+  });
+});
+
+/* import Swiper from '../../node_modules/swiper/swiper-bundle.min.mjs';
 
 // import Swiper from '../../node_modules/swiper/swiper-bundle.min.mjs'
 import { Pagination, EffectCards, A11y, EffectCoverflow } from 'swiper/modules';
@@ -136,4 +216,4 @@ const initSwipers = () => {
 // Wait for the DOM to fully load before initializing the Swiper sliders
 document.addEventListener('DOMContentLoaded', () => {
   initSwipers();
-});
+}); */

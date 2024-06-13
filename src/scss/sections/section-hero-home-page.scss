@@ -1,74 +1,123 @@
 /* Swipers */
-/* some swiper content commented out as it is from the original theme where it fixed the initial load styling using swiper v9, but seems to break swiper using v11. Will come back to as the styling is still odd on load so needs fixing */
 #home_hero{
-
-	.swiper-slide{
-		text-align: center;
-		background: #fff;
-		align-items: center;
-		width: 90%;
-		padding: 2.5rem 2rem 2rem 2rem;
-		img {
-			display: block;
+	.hero__slider{
+		/* Not needed for now as can't work out how to do the js needed to create a manual scroll, but keep it for future reference
+		.hero-scroll-inner.dragging .hero-slider__wrap {
+			animation-play-state: paused !important;
+			cursor: grabbing;
+			cursor: -webkit-grabbing;
+		  }
+			*/
+		.hero-slider__wrap{
+			animation-delay: 1s;
+			--calculated-scroll-speed:calc(var(--scroll-speed) * var(--number-of-slides));
+			animation: var(--scroll-direction) var(--calculated-scroll-speed) linear infinite;
+		}
+		.hero__slide{
+			text-align: center;
+			background: #fff;
+			padding: 2.5rem 2rem 1.6rem 2rem;
+			width: 26rem;
+			margin-right: 1.6rem;
+			transition: box-shadow 0.2s ease;
+			box-shadow: 0px 10px 30px -20px rgba(0,0,0,0.2);
+			/* We'll save this until i make the slides links */
+			&:hover{
+				// transform: scale(1.01);
+				box-shadow: 0px 10px 30px -20px rgba(0,0,0,0.3);
+			} 
+			@media screen and (min-width: 600px) {
+				width: 34rem;
+				margin-right: 1.8rem;
+			}
+			@media screen and (min-width: 780px) {
+				width: 38rem;
+				margin-right: 2rem;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				margin-bottom: 1em;
+				aspect-ratio: 1 / 1;
+				background: #fafafa;
+				pointer-events: none;
+				/* Not needed for now
+				user-drag: none;
+				-webkit-user-drag: none;
+				-moz-user-drag: none;
+				-ms-user-drag: none;
+				*/
+			}
+		}
+	}
+	// Overwrite some styles for the desktop (over 990px) version of the sliders
+	.hero__slider--lg{
+		@media screen and (min-width: 990px) and (max-width: 1054px) {
+			height: 54rem;
+		}
+		.hero__slide{
+			margin-right: 0;
 			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			margin-bottom: 1em;
-			aspect-ratio: 1 / 1;
-			background: #fafafa;
-            position: relative;
+			margin-bottom: 2rem;
+			display: flex;
+			flex-direction: column;
 		}
 	}
-	
-	// Custom Swiper Styles for mobile swiper
-	.hero__swiper--sm {
-		width: 100%;
-		margin: auto;
-		.swiper-slide{
-			width: 70%;
-			padding: 2rem 1.5rem 1.25rem 1.5rem;
-			@media screen and (max-width: 480px) {
-				font-size: 0.85em;
-			}
-			@media screen and (min-width: 600px) {
-				width: 56%;
-				padding: 2rem 2rem 2rem 2rem;
-			}
-		}
-		.swiper-3d .swiper-slide-shadow-left, {
-			background-image: linear-gradient(to left,rgba(0,0,0,.15),transparent);
-		}
-		.swiper-3d .swiper-slide-shadow-right {
-			background-image: linear-gradient(to right,rgba(0,0,0,.15),transparent);
-		}
-		/* Onload styling so it doesn't flash the unstyled slider before it's loaded */
-		.swiper-slide.hero_not_first_slide_sm{
-			visibility: hidden;
-		}
-		.swiper-slide.hero_first_slide_sm{
-			left: -55%;
-			// animation: fadeIn 0.2s ease-in-out;
-			@media screen and (min-width: 600px) {
-				left: -35%;
-			}
-		}
+	/* Pause the animation when a user hovers over it */
+	/* We'll save this for when i make the slides links */
+	.hero-scroll-inner:hover .hero-slider__wrap{
+		animation-play-state: paused;
 	}
-
-	// Custom Swiper Styles for mobile swiper
-	.hero__swiper--lg {
-		// Hide slides on load so there isn't a flash of unstyled content
-		&.hero__swiper--onload-o-hidden{
-			overflow: hidden;
-			.swiper-slide::not(:nth-child(2)){
-				visibility: hidden;
-			}
-		}
-		.swiper-slide.hero_first_slide_lg{
-			margin-left:-90%;
-		}
-	}
-	
 }
+
+@media (prefers-reduced-motion: reduce) {
+	#home_hero{
+		.hero-slider__wrap{
+	  		animation-play-state: paused;
+		}
+	}
+}
+
+
+
+
+/* Keyframe animation for infinite scroll */
+@keyframes scroll-up {
+	0% {
+	  transform: translateY(0);
+	}
+	100% {
+	  transform: translateY(-100%); /* Move up by 100% to seamlessly loop the slides */
+	}
+  }
+  
+  @keyframes scroll-down {
+	0% {
+	  transform: translateY(-100%); /* Start at the middle of the duplicated slides */
+	}
+	100% {
+	  transform: translateY(0); /* End at the beginning of the original slides */
+	}
+  }
+
+  @keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scroll-right {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+  }
 
 /* Reviews.io */
 .RatingBarWidget-prefix .R-flex-center-xxs{

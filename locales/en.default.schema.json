@@ -1404,6 +1404,22 @@
         },
         "slide_background_color": {
           "label": "Card Background Color"
+        },
+        "sm_slide_scroll_speed":{
+          "label": "Scroll Speed For The Small Screen Slider",
+          "info": "The speed at which the slides scroll accross the screen."
+        },
+        "slide_divide_number": {
+          "label": "What number of slides should be shown in the desktop slider on the left hand row?",
+          "info": "The order of slides is based on the order of the blocks. The number you include here will show on the left side column - so if you write 8, 8 slides will be in the left column, And on the right the remaining number of slides will slow."
+        },
+        "lg_slide_scroll_speed_left_column":{
+          "label": "Scroll Speed For The Large Screen Slider Left Hand Column",
+          "info": "The speed at which the slides scroll accross the screen on the left hand column of the large screen slider."
+        },
+        "lg_slide_scroll_speed_right_column":{
+          "label": "Scroll Speed For The Large Screen Slider Right Hand Column",
+          "info": "The speed at which the slides scroll accross the screen on the right hand column of the large screen slider."
         }
       },
       "blocks": {
