@@ -102,7 +102,7 @@
         {% endif %}
       >
         {%- if block.settings.image != blank -%}
-          <div class='lg:tw-hidden lg:tw-h-8 tw-flex tw-items-center tw-justify-center'>
+          <div class='lg:tw-hidden lg:tw-h-8 tw-flex tw-items-center tw-justify-center tw-aspect-square tw-w-full tw-h-full'>
             <img
               srcset='
                 {% if block.settings.image.width >= 350 %}{{ block.settings.image | image_url: width: 350 }} 350w,{% endif %}
