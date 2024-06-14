@@ -21,6 +21,7 @@
 			margin-right: 1.6rem;
 			transition: box-shadow 0.2s ease;
 			box-shadow: 0px 10px 30px -20px rgba(0,0,0,0.2);
+			word-wrap: break-word;
 			/* We'll save this until i make the slides links */
 			&:hover{
 				// transform: scale(1.01);
