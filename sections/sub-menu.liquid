@@ -1,3 +1,15 @@
+{%- liquid
+  assign show_images_on_mobile = section.settings.show_images_on_mobile
+  assign animate_scroll = false
+  if section.settings.animations_reveal_on_scroll
+    if section.settings.animations_reveal_on_scroll_hp_only and template.name == 'index'
+      assign animate_scroll = true
+      unless section.settings.animations_reveal_on_scroll_hp_only
+        assign animate_scroll = true
+      endunless
+    endif
+  endif
+-%}
 {%- style -%}
   .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -17,15 +29,24 @@
     }
   {% endif %}
   .submenu__wrapper {
-    --gap-spacing: 1rem;
+    {% if show_images_on_mobile %}
+      --gap-spacing: 1rem;
+    {% else %}
+      --gap-spacing: 2rem;
+    {% endif %}
     gap: var(--gap-spacing);
   }
   .submenu__item {
+    {% if show_images_on_mobile %}
       --item-width: calc((100% - (var(--gap-spacing) * 4)) / 5); /* 5 items, 4 gaps */
-      color: rgba(var(--color-foreground), 0.75);
-      transition: all var(--duration-short) ease;
       width: var(--item-width);
       flex-basis: var(--item-width);
+    {% else %}
+      width: auto;
+      flex-basis: content;
+    {% endif %}
+      color: rgba(var(--color-foreground), 0.75);
+      transition: all var(--duration-short) ease;
   }
 
   .submenu__item:last-child {
@@ -40,7 +61,7 @@
       background-color: rgba(var(--color-button), 0.95);
       background-color: color-mix(in srgb, rgb(var(--color-button)), black 5%);
   }
-
+  {% if show_images_on_mobile %}
   .submenu__item-image {
       border: 0.25rem solid rgba(var(--color-foreground), 0.75);
       transition: all var(--duration-short) ease;
@@ -49,6 +70,7 @@
   .submenu__item-image:hover {
       border: 0.1rem solid rgba(var(--color-foreground), 0.75);
   }
+  {% endif %}
 
   .submenu__badge {
       background-color: rgb(var(--color-button));
@@ -73,19 +95,6 @@
     }
   }
 {%- endstyle -%}
-
-{%- liquid
-  assign animate_scroll = false
-  if section.settings.animations_reveal_on_scroll
-    if section.settings.animations_reveal_on_scroll_hp_only and template.name == 'index'
-      assign animate_scroll = true
-      unless section.settings.animations_reveal_on_scroll_hp_only
-        assign animate_scroll = true
-      endunless
-    endif
-  endif
--%}
-
 <div
   id='section-{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
@@ -101,7 +110,7 @@
           style='--animation-order: {{ forloop.index }};'
         {% endif %}
       >
-        {%- if block.settings.image != blank -%}
+        {%- if show_images_on_mobile and block.settings.image != blank -%}
           <div class='lg:tw-hidden lg:tw-h-8 tw-flex tw-items-center tw-justify-center tw-aspect-square tw-w-full tw-h-full'>
             <img
               srcset='
@@ -120,10 +129,20 @@
             >
           </div>
         {%- endif -%}
-
-        <span class='submenu__item-text tw-font-semibold tw-text-sm md:tw-text-smd'>
+        {%- liquid
+          assign text_classes = 'submenu__item-text tw-font-semibold tw-text-smd tw-text-center'
+          assign badge_classes = 'submenu__badge tw-mr-3 tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'
+          if show_images_on_mobile
+            assign text_classes = 'submenu__item-text tw-font-semibold tw-text-sm md:tw-text-smd'
+            assign badge_classes = 'submenu__badge tw-absolute lg:tw-relative tw-m-0 lg:tw-mr-3 tw-top-1 lg:tw-top-[-1px] tw-right-0  tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'
+          endif
+        -%}
+        <span class='{{ text_classes }}'>
+          {% comment %}
+            If we are showing images on mobile we need to add the below classes to the badge
+          {% endcomment %}
           {%- if block.settings.badge_text != blank -%}
-            <span class='submenu__badge tw-absolute lg:tw-relative tw-m-0 lg:tw-mr-3 tw-top-1 lg:tw-top-[-1px] tw-right-0  tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'>
+            <span class='{{ badge_classes }}'>
               {{- block.settings.badge_text -}}
             </span>
           {%- endif -%}
@@ -159,6 +178,12 @@
       "type": "checkbox",
       "id": "animations_reveal_on_scroll_hp_only",
       "label": "t:sections.all.animations_reveal_on_scroll_hp_only.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_images_on_mobile",
+      "label": "t:sections.submenu.settings.show_images_on_mobile.label",
       "default": false
     },
     {

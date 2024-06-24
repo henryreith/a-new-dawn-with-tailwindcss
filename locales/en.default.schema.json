@@ -3580,6 +3580,11 @@
     },
     "submenu": {
       "name": "Sub-menu",
+      "settings":{
+        "show_images_on_mobile":{ 
+          "label": "Show images on mobile. If enabled, please ensure all menu items have images."
+        }
+      },
       "blocks": {
         "submenu_item": {
           "name": "Menu item",

@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -1619,6 +1619,10 @@ cart-drawer .product-option .price {
     justify-content: space-between;
   }
 
+  .md\:tw-gap-8 {
+    gap: 2rem;
+  }
+
   .md\:tw-justify-self-start {
     justify-self: start;
   }
@@ -1739,6 +1743,10 @@ cart-drawer .product-option .price {
 
   .lg\:tw-items-center {
     align-items: center;
+  }
+
+  .lg\:tw-gap-12 {
+    gap: 3rem;
   }
 
   .lg\:tw-gap-16 {
