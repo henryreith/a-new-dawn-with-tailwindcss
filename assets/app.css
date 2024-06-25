@@ -1627,6 +1627,10 @@ cart-drawer .product-option .price {
     gap: 2rem;
   }
 
+  .md\:tw-gap-12 {
+    gap: 3rem;
+  }
+
   .md\:tw-justify-self-start {
     justify-self: start;
   }
