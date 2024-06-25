@@ -1139,6 +1139,10 @@ cart-drawer .product-option .price {
   max-width: 15rem;
 }
 
+.tw-max-w-\[38rem\] {
+  max-width: 38rem;
+}
+
 .tw-flex-none {
   flex: none;
 }

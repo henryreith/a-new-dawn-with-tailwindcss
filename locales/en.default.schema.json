@@ -1472,6 +1472,9 @@
         "name": "Home Page Hero"
       }
     },
+    "hero-home-page-1": {
+      "name": "Home Page Hero 1"
+    },
     "image-banner": {
       "name": "Image banner",
       "settings": {

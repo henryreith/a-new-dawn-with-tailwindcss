@@ -80,6 +80,8 @@ module.exports = (env) => {
       // Sections
       'section-hero-home-page':
         './src/scss/sections/section-hero-home-page.scss',
+      'section-hero-home-page-1':
+        './src/scss/sections/section-hero-home-page-1.scss',
 
       // Sections
       'component-free-shipping-bar':
@@ -92,6 +94,7 @@ module.exports = (env) => {
       // -- JS --
       // Sections
       'hero__home-page': './src/js/hero__home-page.js',
+      'hero__home-page-1': './src/js/hero__home-page-1.js',
       'highlighted-products': './src/js/highlighted-products.js',
 
       // Sections

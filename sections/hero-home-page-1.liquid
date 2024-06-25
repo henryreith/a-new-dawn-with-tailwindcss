@@ -1,0 +1,309 @@
+{{ 'section-hero-home-page-1.min.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'swiperStyles.min.css' | asset_url | stylesheet_tag: preload: true }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 1 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 1 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+  }
+{%- endstyle -%}
+<div
+  id='section-{{ section.id }}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
+  {% if section.settings.animations_reveal_on_scroll %}
+    data-cascade
+  {% endif %}
+>
+  <div id='home_hero' class='hero page-width tw-overflow-hidden'>
+    {% # Hero Grid %}
+    <div class='hero__container tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-content-start tw-gap-12'>
+      <div class='tw-gap-12 tw-flex tw-flex-col'>
+        <div class='hero__heading'>{{ section.settings.heading }}</div>
+        <div class='hero__subtext'>{{ section.settings.subtext }}</div>
+        <div
+          class='hero__slider--container lg:tw-invisible lg:tw-hidden color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
+        >
+          {% # Mobile Swiper %}
+          <div class='swiper hero__swiper--sm'>
+            <div class='swiper-wrapper tw-pb-16'>
+              {% for block in section.blocks %}
+                {%- liquid
+                  assign swiper_slide_class = 'swiper-slide hero_not_first_slide_sm'
+                  if forloop.index == 2
+                    assign swiper_slide_class = 'swiper-slide hero_first_slide_sm'
+                  endif
+                -%}
+                <div class='{{ swiper_slide_class }}' {{ block.shopify_attributes }}>
+                  {%- liquid
+                    assign sizes = '100vw'
+                    assign widths = '375, 550, 750, 1100'
+                    assign image_classes = 'hero__slider--image'
+                    assign height = block.settings.slide_image.height
+                    assign fetch_priority = 'auto'
+                    assign lazy_loading = 'lazy'
+                    assign preload = false
+                    if forloop.index == 2
+                      assign fetch_priority = 'high'
+                      assign preload = true
+                    endif
+                  -%}
+                  {{
+                    block.settings.slide_image
+                    | image_url: width: 1100
+                    | image_tag:
+                      height: height,
+                      class: image_classes,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority,
+                      preload: preload,
+                      loading: lazy_loading
+                  }}
+                  <div class='center'>{{ block.settings.slide_title }}</div>
+                </div>
+              {% endfor %}
+            </div>
+            {% # Add Navigation %}
+            <div class='swiper-pagination'></div>
+          </div>
+          {% # END Swiper %}
+        </div>
+
+        <div class='hero__cta'>
+          {% comment %}
+            <a
+              href='{{ section.settings.button_url }}'
+              style='color:#fff;background:#6dab3c;text-align: center; min-width: 30%;padding: 1em 3em;font-size: 1.65em;display:inline-table;border-radius: 0.4em;font-weight:600'
+            >
+              {{ section.settings.button_text }}
+            </a>
+          {% endcomment %}
+          <button style='color:#fff;background:#6dab3c;text-align: center; min-width: 30%;padding: 1em 3em;font-size: 1.65em;display:inline-table;border-radius: 0.4em;font-weight:600'>
+            {{ section.settings.button_text }}
+          </button>
+        </div>
+        <div class='hero__reviewsio tw-mb-16'>{{ section.settings.reviewsio }}</div>
+      </div>
+      {% # START Second column %}
+      <div class='tw-invisible tw-hidden lg:tw-visible lg:tw-flex'>
+        <div
+          class='hero__slider--container tw-m-auto tw-max-w-[38rem] color-{{ section.settings.card_color_scheme }} gradient tw-bg-transparent'
+        >
+          {% # Swiper %}
+          <div class='swiper hero__swiper--lg hero__swiper--onload-o-hidden'>
+            <div class='swiper-wrapper tw-pb-20'>
+              {% for block in section.blocks %}
+                {%- liquid
+                  assign swiper_slide_class = 'swiper-slide hero_not_first_slide_lg'
+                  if forloop.index == 2
+                    assign swiper_slide_class = 'swiper-slide hero_first_slide_lg'
+                  endif
+                -%}
+                <div class='{{  swiper_slide_class }}' {{ block.shopify_attributes }}>
+                  {%- liquid
+                    assign sizes = '100vw'
+                    assign widths = '375, 550, 750, 1100'
+                    assign image_classes = 'hero__slider--image'
+                    assign height = block.settings.slide_image.height
+                    assign fetch_priority = 'auto'
+                    assign lazy_loading = 'lazy'
+                    assign preload = false
+                    if forloop.index == 2
+                      assign fetch_priority = 'high'
+                      assign preload = true
+                    endif
+                  -%}
+                  {{
+                    block.settings.slide_image
+                    | image_url: width: 1100
+                    | image_tag:
+                      height: height,
+                      class: image_classes,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority,
+                      preload: preload,
+                      loading: lazy_loading
+                  }}
+                  <div class='center'>{{ block.settings.slide_title }}</div>
+                </div>
+              {% endfor %}
+            </div>
+            {% # Add Navigation %}
+            <div class='swiper-pagination'></div>
+          </div>
+          {% # END Swiper %}
+        </div>
+      </div>
+    </div>
+    {% # END Hero__Container %}
+  </div>
+  {% # END Home_hero %}
+</div>
+{% # END #section-ID %}
+{% # Preload script as this will always be at the top of the page, so loading it as fast as possible is key %}
+{{ 'hero__home-page-1.min.js' | asset_url | preload_tag: as: 'script', type: 'text/javascript' }}
+<script src='{{ 'hero__home-page-1.min.js' | asset_url }}' defer='defer'></script>
+
+{% schema %}
+{
+  "name": "t:sections.hero-home-page-1.name",
+  "tag": "section",
+  "class": "hero-home-page-section-1",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "animations_reveal_on_scroll",
+      "label": "t:sections.benefits-inline.settings.animations_reveal_on_scroll.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_top",
+      "label": "t:sections.benefits-inline.settings.border_on_top.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_bottom",
+      "label": "t:sections.benefits-inline.settings.border_on_bottom.label",
+      "default": false
+    },
+    {
+      "type": "liquid",
+      "id": "heading",
+      "label": "t:sections.hero-home-page.settings.heading.label",
+      "default": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags</span>.</h1>"
+    },
+    {
+      "type": "liquid",
+      "id": "subtext",
+      "label": "t:sections.hero-home-page.settings.subtext.label",
+      "default": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic</span> Dog Poop Bag.</h2>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.hero-home-page.settings.button_text.label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:sections.hero-home-page.settings.button_url.label"
+    },
+    {
+      "type": "liquid",
+      "id": "reviewsio",
+      "label": "t:sections.hero-home-page.settings.reviewsio.label",
+      "info": "t:sections.hero-home-page.settings.reviewsio.info",
+      "default": "4.9/5"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero-home-page.settings.header-card-settings.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero-home-page.settings.header-padding-settings.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero-home-page.settings.header-slide-settings.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.hero-home-page.settings.paragraph-slide-settings.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "slide_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "slide_background_color",
+      "label": "t:sections.hero-home-page.settings.slide_background_color.label",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider",
+      "name": "t:sections.hero-home-page.blocks.slider.name",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:sections.hero-home-page.blocks.slider.settings.header-slider-settings.content"
+        },
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "t:sections.hero-home-page.blocks.slider.settings.slide_title.label",
+          "info": "t:sections.hero-home-page.blocks.slider.settings.slide_title.info"
+        },
+        {
+          "type": "image_picker",
+          "id": "slide_image",
+          "label": "t:sections.hero-home-page.blocks.slider.settings.slide_image.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.hero-home-page.presets.name",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "slider"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
