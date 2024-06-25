@@ -1846,7 +1846,7 @@
         }
       },
       "blocks": {
-        "text": {
+        "text_item": {
           "name": "Text Item",
           "settings": {
             "text": {
