@@ -1,5 +1,77 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
+    "hero_home_page_1_zfHPFY": {
+      "type": "hero-home-page-1",
+      "blocks": {
+        "slider_Rn7fDH": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "@ziggyonthebeaches",
+            "slide_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg"
+          }
+        },
+        "slider_WU9xPd": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "@bear_brindlefrenchie",
+            "slide_image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg"
+          }
+        },
+        "slider_cU7mzh": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "@Wet Dog",
+            "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+          }
+        },
+        "slider_Xrfihi": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "Holder",
+            "slide_image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_d4a58994-44ec-4129-b70a-a3420b17405d.jpg"
+          }
+        },
+        "slider_BzcHrC": {
+          "type": "slider",
+          "settings": {
+            "slide_title": "Box",
+            "slide_image": "shopify:\/\/shop_images\/oh-crap-non-plastic-compostable-biodegradable-dog-poop-bags-380-bag-pack-side-angle-with-rolls-20200129.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "slider_Rn7fDH",
+        "slider_WU9xPd",
+        "slider_cU7mzh",
+        "slider_Xrfihi",
+        "slider_BzcHrC"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "animations_reveal_on_scroll": true,
+        "border_on_top": false,
+        "border_on_bottom": false,
+        "heading": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags<\/span>.<\/h1>",
+        "subtext": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic<\/span> Dog Poop Bag.<\/h2>",
+        "button_text": "Shop Now",
+        "button_url": "",
+        "reviewsio": "4.9\/5",
+        "card_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "slide_color_scheme": "",
+        "slide_background_color": "#ffffff"
+      }
+    },
     "hero_home_page_xiRKQB": {
       "type": "hero-home-page",
       "blocks": {
@@ -86,6 +158,7 @@
         "slider_697Dya",
         "slider_Y6iPfe"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-2",
         "animations_reveal_on_scroll": true,
@@ -96,6 +169,10 @@
         "button_text": "Shop Now",
         "button_url": "#bags",
         "reviewsio": "<div id=\"reviewsio_hero_summary\" style='max-width: 35rem;\n    margin: 0.5em 0;\n    min-height: 6.1rem'>\n                <div class=\"reviews-io-rating-bar-widget\" data-widget-id=\"jXLfhonmWcpzUR87\" data-store-name=\"oh-crap\" lang=\"en\"><\/div>\n                <script src=\"\/\/widget.reviews.io\/modern-widgets\/rating-bar.js\" async><\/script>\n            <\/div>",
+        "sm_slide_scroll_speed": 7,
+        "slide_divide_number": 8,
+        "lg_slide_scroll_speed_left_column": 12,
+        "lg_slide_scroll_speed_right_column": 12,
         "card_color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 15,
@@ -333,6 +410,7 @@
     }
   },
   "order": [
+    "hero_home_page_1_zfHPFY",
     "hero_home_page_xiRKQB",
     "benefit_inline_r8EHBj",
     "multicolumn",

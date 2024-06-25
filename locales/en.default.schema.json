@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin language editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "settings_schema": {
     "global": {
@@ -393,7 +402,7 @@
       "animations_reveal_on_scroll": {
         "label": "Reveal sections on scroll"
       },
-      "animations_reveal_on_scroll_hp_only":{
+      "animations_reveal_on_scroll_hp_only": {
         "label": "Reveal sections on scroll (Homepage only)"
       },
       "border_on_top": {
@@ -1221,7 +1230,7 @@
             },
             "subtext": {
               "label": "Subtext",
-              "default": "<p>Share contact information, store details, and brand content with your customers.</p>"
+              "default": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
             }
           }
         }
@@ -1392,7 +1401,7 @@
         },
         "header__7": {
           "content": "Customer accounts log in",
-          "info": "To manage customer accounts, go to your [customer accounts settings](/admin/settings/customer_accounts)."
+          "info": "To manage customer accounts, go to your [customer accounts settings](\/admin\/settings\/customer_accounts)."
         },
         "enable_customer_avatar": {
           "label": "Show avatar",
@@ -1434,7 +1443,7 @@
         "slide_background_color": {
           "label": "Card Background Color"
         },
-        "sm_slide_scroll_speed":{
+        "sm_slide_scroll_speed": {
           "label": "Scroll Speed For The Small Screen Slider",
           "info": "The speed at which the slides scroll accross the screen."
         },
@@ -1442,11 +1451,11 @@
           "label": "What number of slides should be shown in the desktop slider on the left hand row?",
           "info": "The order of slides is based on the order of the blocks. The number you include here will show on the left side column - so if you write 8, 8 slides will be in the left column, And on the right the remaining number of slides will slow."
         },
-        "lg_slide_scroll_speed_left_column":{
+        "lg_slide_scroll_speed_left_column": {
           "label": "Scroll Speed For The Large Screen Slider Left Hand Column",
           "info": "The speed at which the slides scroll accross the screen on the left hand column of the large screen slider."
         },
-        "lg_slide_scroll_speed_right_column":{
+        "lg_slide_scroll_speed_right_column": {
           "label": "Scroll Speed For The Large Screen Slider Right Hand Column",
           "info": "The speed at which the slides scroll accross the screen on the right hand column of the large screen slider."
         }
@@ -1768,7 +1777,7 @@
           "settings": {
             "text": {
               "label": "Content",
-              "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+              "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>"
             },
             "text_style": {
               "label": "Text style",
@@ -1979,7 +1988,7 @@
             },
             "text": {
               "label": "Text",
-              "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+              "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>"
             },
             "button_label": {
               "label": "Button label",
@@ -2959,7 +2968,7 @@
             },
             "text": {
               "label": "Description",
-              "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+              "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>"
             },
             "link_label": {
               "label": "Link label"
@@ -2999,7 +3008,7 @@
           "settings": {
             "paragraph": {
               "label": "Description",
-              "default": "<p>Be the first to know about new collections and exclusive offers.</p>"
+              "default": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
             }
           }
         },
@@ -3125,7 +3134,7 @@
           "settings": {
             "paragraph": {
               "label": "Description",
-              "default": "<p>Be the first to know when we launch.</p>"
+              "default": "<p>Be the first to know when we launch.<\/p>"
             },
             "text_style": {
               "options__1": {
@@ -3198,7 +3207,7 @@
           "label": "Number of columns on desktop"
         },
         "paragraph__1": {
-          "content": "Dynamic recommendations use order and product information to change and improve over time. [Learn more](https://help.shopify.com/themes/development/recommended-products)",
+          "content": "Dynamic recommendations use order and product information to change and improve over time. [Learn more](https:\/\/help.shopify.com\/themes\/development\/recommended-products)",
           "default": "You may also like"
         },
         "header__2": {
@@ -3317,7 +3326,7 @@
           "settings": {
             "text": {
               "label": "Description",
-              "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+              "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
             }
           }
         },
@@ -3583,8 +3592,8 @@
     },
     "submenu": {
       "name": "Sub-menu",
-      "settings":{
-        "show_images_on_mobile":{ 
+      "settings": {
+        "show_images_on_mobile": {
           "label": "Show images on mobile. If enabled, please ensure all menu items have images."
         }
       },
@@ -3610,7 +3619,7 @@
       "presets": {
         "name": "Sub-menu"
       }
-    },   
+    },
     "collapsible_content": {
       "name": "Collapsible content",
       "settings": {
