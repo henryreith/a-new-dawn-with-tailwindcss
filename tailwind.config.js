@@ -14,7 +14,7 @@ module.exports = {
       md: '750px',
       lg: '990px',
       xlg: '1200px',
-      pageMaxWidth: '1300px',
+      pageMaxWidth: '1400px',
     },
     fontSize: {
       xs: '1rem', // 10px
@@ -40,7 +40,7 @@ module.exports = {
         h3: 'calc(1.7rem * var(--font-heading-scale))', // h3 size
         h4: 'calc(1.5rem * var(--font-heading-scale))', // h4 size
         h5: 'calc(1.2rem * var(--font-heading-scale))', // h5 size
-        h6: 'calc(1rem * var(--font-heading-scale))',  // h6 size
+        h6: 'calc(1rem * var(--font-heading-scale))', // h6 size
       },
       zIndex: {
         '-1': '-1',
@@ -56,7 +56,5 @@ module.exports = {
       black: '#000000',
     },
   },
-  plugins: [
-    
-  ],
+  plugins: [],
 };

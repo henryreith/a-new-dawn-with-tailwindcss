@@ -866,9 +866,9 @@ cart-drawer .product-option .price {
   }
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 1400px) {
   .tw-container {
-    max-width: 1300px;
+    max-width: 1400px;
   }
 }
 
