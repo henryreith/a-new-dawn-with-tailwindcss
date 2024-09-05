@@ -599,7 +599,7 @@
             "paragraph": {
               "content": "If the icons appear at the top of the page, add inline svg code as this will load the icon directly in the code meaning it will be seen on page load. If the icon is lower down the page add the icon as a SVG or PNG image."
             },
-            "icon_html": {
+            "iconhtml": {
               "label": "Add inline SVG icon (HTML Code)"
             },
             "icon_image": {
