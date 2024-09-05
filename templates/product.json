@@ -56,6 +56,11 @@
             "show_gift_card_recipient": true
           }
         },
+        "product_benefits_summary_JPWnCT": {
+          "type": "product_benefits_summary",
+          "settings": {
+          }
+        },
         "description": {
           "type": "description",
           "disabled": true,
@@ -116,11 +121,6 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "product_benefits_summary_JPWnCT": {
-          "type": "product_benefits_summary",
-          "settings": {
-          }
         }
       },
       "block_order": [
@@ -131,6 +131,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "product_benefits_summary_JPWnCT",
         "description",
         "custom_liquid_cLkbqt",
         "custom_liquid_BcWANg",
@@ -138,8 +139,7 @@
         "collapsible-row-1",
         "collapsible-row-2",
         "collapsible-row-3",
-        "share",
-        "product_benefits_summary_JPWnCT"
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
