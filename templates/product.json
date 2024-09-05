@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "main": {
@@ -107,6 +116,11 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "product_benefits_summary_JPWnCT": {
+          "type": "product_benefits_summary",
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -124,7 +138,8 @@
         "collapsible-row-1",
         "collapsible-row-2",
         "collapsible-row-3",
-        "share"
+        "share",
+        "product_benefits_summary_JPWnCT"
       ],
       "settings": {
         "enable_sticky_info": true,
