@@ -1183,6 +1183,10 @@ cart-drawer .product-option .price {
   height: 100%;
 }
 
+.tw-max-h-4 {
+  max-height: 1rem;
+}
+
 .tw-w-1 {
   width: 0.25rem;
 }
@@ -1333,6 +1337,10 @@ cart-drawer .product-option .price {
 
 .tw-justify-evenly {
   justify-content: space-evenly;
+}
+
+.tw-justify-items-center {
+  justify-items: center;
 }
 
 .tw-gap-12 {
@@ -1671,6 +1679,14 @@ cart-drawer .product-option .price {
 
 .tw-text-xs {
   font-size: 1rem;
+}
+
+.tw-text-\[1\.4rem\] {
+  font-size: 1.4rem;
+}
+
+.tw-text-\[1\.3rem\] {
+  font-size: 1.3rem;
 }
 
 .tw-font-bold {

@@ -442,14 +442,27 @@
                 </div>
               {%- when 'product_benefits_summary' -%}
                 {% if product.metafields.custom.product_benefits %}
+                  <style>
+                    .product-benefits-summary__benefit-icon svg {
+                      fill: rgba(var(--color-foreground), 0.85);
+                    }
+                    .product-benefits-summary__benefit-icon > * {
+                      display: block;
+                      width: 2rem;
+                      height: 100%;
+                    }
+                  </style>
+                  <hr class='product-benefits-summary__hr'>
                   <div class='product-benefits-summary__wrapper tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8 tw-gap-y-4'>
                     {% for benefit in product.metafields.custom.product_benefits.value %}
-                      <div class='benefit-item'>
-                        {{ benefit.svg_icon_html_code }}
-                        {% if benefit.icon %}
-                          <img src='{{ benefit.icon | file_url }}' alt='{{ benefit.title }}'>
-                        {% endif %}
-                        <h3>{{ benefit.title }}</h3>
+                      <div class='product-benefits-summary__benefit-item tw-flex tw-items-center tw-content-center tw-gap-4'>
+                        <div class='product-benefits-summary__benefit-icon'>
+                          {{ benefit.svg_icon_html_code }}
+                          {% if benefit.icon %}
+                            <img src='{{ benefit.icon | file_url }}' alt='{{ benefit.title }}'>
+                          {% endif %}
+                        </div>
+                        <span class='tw-text-[1.3rem]'>{{ benefit.title }}</span>
                       </div>
                     {% endfor %}
                   </div>
@@ -2093,7 +2106,14 @@
     {
       "type": "product_benefits_summary",
       "name": "t:sections.main-product.blocks.product_benefits_summary.name",
-      "settings": []
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_product_benefits_divider",
+          "default": true,
+          "label": "t:sections.main-product.settings.show_product_benefits_divider.label"
+        }
+      ]
     }
   ],
   "settings": [
