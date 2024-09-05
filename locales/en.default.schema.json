@@ -2727,7 +2727,7 @@
             }
           }
         },
-        "product_benefits_summary":{
+        "ProductBenefitsSummary":{
           "name": "Product benefits summary",
           "settings":{
             "show_product_benefits_divider":{ 
