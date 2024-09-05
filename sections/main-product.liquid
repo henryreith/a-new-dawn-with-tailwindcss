@@ -440,6 +440,21 @@
                     </volume-pricing>
                   {%- endif -%}
                 </div>
+              {%- when 'product_benefits_summary' -%}
+                {% if product.metafields.custom.product_benefits %}
+                  <div class='product-benefits-summary__wrapper tw-grid tw-grid-cols-2 tw-gap-8'>
+                    {% for benefit in product.metafields.custom.product_benefits.value %}
+                      <div class='benefit-item'>
+                        {{ benefit.svg_icon_html_code }}
+                        {% if benefit.icon %}
+                          <img src='{{ benefit.icon | file_url }}' alt='{{ benefit.title }}'>
+                        {% endif %}
+                        <h3>{{ benefit.title }}</h3>
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
               {%- when 'popup' -%}
                 <modal-opener
                   class='product-popup-modal__opener quick-add-hidden'

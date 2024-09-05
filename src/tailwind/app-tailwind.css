@@ -3,255 +3,308 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-        scroll-behavior: smooth;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-    html,
-    :host {
-        line-height: 1.5;
-        font-family: var(--font-body-family);
-    }
+  html,
+  :host {
+    line-height: 1.5;
+    font-family: var(--font-body-family);
+  }
 
-    body{
-        letter-spacing: 0.01rem;
-        line-height: calc(1 + 0.6 / var(--font-body-scale));
-        line-height: clamp(2.4rem, 2.1500rem + 0.5000vw, 2.8rem);
-    }
-    /* --- START Overwrite tailwind's inherit resets --- */
-    /* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's base.css too */    
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+  body {
+    letter-spacing: 0.01rem;
+    line-height: calc(1 + 0.6 / var(--font-body-scale));
+    line-height: clamp(2.4rem, 2.15rem + 0.5vw, 2.8rem);
+  }
+  /* --- START Overwrite tailwind's inherit resets --- */
+  /* Overwrite tailwind's inherit heading font options and reconfigure font scaling from Dawn's base.css too */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: var(--font-heading-weight);
-    }
-    .hxl {
+  }
+  .hxl {
     font-size: calc(var(--font-heading-scale) * 5rem);
-    }
-    
-    @media only screen and (min-width: 750px) {
+  }
+
+  @media only screen and (min-width: 750px) {
     .hxl {
-        font-size: calc(var(--font-heading-scale) * 6.2rem);
+      font-size: calc(var(--font-heading-scale) * 6.2rem);
     }
-    }
-    
-    .h0 {
+  }
+
+  .h0 {
     font-size: calc(var(--font-heading-scale) * 4rem);
-    }
-    
-    @media only screen and (min-width: 750px) {
+  }
+
+  @media only screen and (min-width: 750px) {
     .h0 {
-        font-size: calc(var(--font-heading-scale) * 5.2rem);
+      font-size: calc(var(--font-heading-scale) * 5.2rem);
     }
-    }
-    
-    h1,
-    .h1 {
+  }
+
+  h1,
+  .h1 {
     font-size: calc(var(--font-heading-scale) * 3rem);
-    }
-    
-    @media only screen and (min-width: 750px) {
+  }
+
+  @media only screen and (min-width: 750px) {
     h1,
     .h1 {
-        font-size: calc(var(--font-heading-scale) * 4rem);
+      font-size: calc(var(--font-heading-scale) * 4rem);
     }
-    }
-    
-    h2,
-    .h2 {
+  }
+
+  h2,
+  .h2 {
     font-size: calc(var(--font-heading-scale) * 2.4rem);
-    }
-    
-    @media only screen and (min-width: 750px) {
+  }
+
+  @media only screen and (min-width: 750px) {
     h2,
     .h2 {
-        font-size: calc(var(--font-heading-scale) * 3rem);
+      font-size: calc(var(--font-heading-scale) * 3rem);
     }
-    }
-    
-    h3,
-    .h3 {
+  }
+
+  h3,
+  .h3 {
     font-size: calc(var(--font-heading-scale) * 1.9rem);
-    }
-    
-    @media only screen and (min-width: 750px) {
+  }
+
+  @media only screen and (min-width: 750px) {
     h3,
     .h3 {
-        font-size: calc(var(--font-heading-scale) * 2rem);
+      font-size: calc(var(--font-heading-scale) * 2rem);
     }
-    }
-    
-    h4,
-    .h4 {
+  }
+
+  h4,
+  .h4 {
     font-family: var(--font-heading-family);
     font-style: var(--font-heading-style);
     font-size: calc(var(--font-heading-scale) * 1.8rem);
-    }
-    
-    h5,
-    .h5 {
+  }
+
+  h5,
+  .h5 {
     font-size: calc(var(--font-heading-scale) * 1.2rem);
-    }
-    
-    @media only screen and (min-width: 750px) {
+  }
+
+  @media only screen and (min-width: 750px) {
     h5,
     .h5 {
-        font-size: calc(var(--font-heading-scale) * 1.3rem);
+      font-size: calc(var(--font-heading-scale) * 1.3rem);
     }
-    }
-    
-    h6,
-    .h6 {
+  }
+
+  h6,
+  .h6 {
     color: rgba(var(--color-foreground), 0.75);
     margin-block-start: 1.67em;
     margin-block-end: 1.67em;
-    }
+  }
 
-    .h0, .h1, .h2, .h3, .h4, .h5, h1, h2, h3, h4, h5{
-        letter-spacing: 0.01rem;
-        @media only screen and (min-width: 990px) {
-            letter-spacing: 0.02rem;
-        }
+  .h0,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    letter-spacing: 0.01rem;
+    @media only screen and (min-width: 990px) {
+      letter-spacing: 0.02rem;
     }
+  }
 
-    /* Overwrite tailwind's default heading styling that removes all heading margins, adding margin after headings tags if they are followed by a p tag */
-    h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p,
-    .h0 + p, .h1 + p, .h2 + p, .h3 + p, .h4 + p, .h5 + p, .h6 + p {
-        margin-top: 1rem;
-    }
-    h1 + div, h2 + div, h3 + div, h4 + div, h5 + div, h6 + div {
-        margin-top: 1rem;
-    }
+  /* Overwrite tailwind's default heading styling that removes all heading margins, adding margin after headings tags if they are followed by a p tag */
+  h1 + p,
+  h2 + p,
+  h3 + p,
+  h4 + p,
+  h5 + p,
+  h6 + p,
+  .h0 + p,
+  .h1 + p,
+  .h2 + p,
+  .h3 + p,
+  .h4 + p,
+  .h5 + p,
+  .h6 + p {
+    margin-top: 1rem;
+  }
+  h1 + div,
+  h2 + div,
+  h3 + div,
+  h4 + div,
+  h5 + div,
+  h6 + div {
+    margin-top: 1rem;
+  }
 
-    /* Overwrite tailwind's default paragraph styling that removes all p tag margins, adding margin after p tags */
-    /* clamp may be overkill vs using media queries for desktops but it's a nice touch */
-    * > p, p + .videoWrapper {
-        margin-top: 1rem;
-        margin-top: clamp(1.2rem, 0.9500rem + 0.5000vw, 1.6rem);
-    }
-    * > p:first-child, * > p:only-child {
-        margin-top: 0;
-    }
-    li > ul{
-        margin-top: 0;
-    }
+  /* Overwrite tailwind's default paragraph styling that removes all p tag margins, adding margin after p tags */
+  /* clamp may be overkill vs using media queries for desktops but it's a nice touch */
+  * > p,
+  p + .videoWrapper {
+    margin-top: 1rem;
+    margin-top: clamp(1.2rem, 0.95rem + 0.5vw, 1.6rem);
+  }
+  * > p:first-child,
+  * > p:only-child {
+    margin-top: 0;
+  }
+  li > ul {
+    margin-top: 0;
+  }
 
-    a {
-        color: rgba(var(--color-link), var(--alpha-link));
-        transition: all var(--duration-medium) ease;
-        text-underline-offset: 0.38rem;
-        text-decoration-thickness: 0;
-    }
+  a {
+    color: rgba(var(--color-link), var(--alpha-link));
+    transition: all var(--duration-medium) ease;
+    text-underline-offset: 0.38rem;
+    text-decoration-thickness: 0;
+  }
 
-    a:hover {
-        /* color: rgb(var(--color-link)); */
-        text-decoration: underline;
-        text-decoration-thickness: 0.1rem;
-        text-underline-offset: 0.3rem;
-    }
+  a:hover {
+    /* color: rgb(var(--color-link)); */
+    text-decoration: underline;
+    text-decoration-thickness: 0.1rem;
+    text-underline-offset: 0.3rem;
+  }
 
+  hr {
+    height: 0.1rem;
+    margin: 3rem 0;
+  }
+  @media only screen and (min-width: 990px) {
     hr {
-        height: 0.1rem;
-        margin: 3rem 0;
+      margin: 4rem 0;
     }
-    @media only screen and (min-width: 990px) {
-        hr {
-            margin: 4rem 0;
-        }
+  }
+
+  /* --- END Overwrite tailwind's inherit resets --- */
+
+  /* --- START Sections Overwrites --- */
+
+  /* -- section-main-product.css -- */
+  /* Make the product page 50/50 between images and add to cart buttons in hero section of product page */
+  @media only screen and (min-width: 990px) {
+    .product--medium:not(.product--no-media) .product__media-wrapper,
+    .product--small:not(.product--no-media) .product__info-wrapper {
+      max-width: 50% !important;
+      width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
     }
 
-    /* --- END Overwrite tailwind's inherit resets --- */
+    .product--medium:not(.product--no-media) .product__info-wrapper,
+    .product--small:not(.product--no-media) .product__media-wrapper {
+      max-width: 50% !important;
+      width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+    }
+  }
 
-    /* Overwrite the narrow page width set by Dawn's css just so it looked that tiny bit different than standard Dawn. Standard is 72.6rem */
-    @media only screen and (min-width: 990px) {
-        .page-width--narrow {
-            max-width: 73rem;
-        }
+  /* Overwrite the narrow page width set by Dawn's css just so it looked that tiny bit different than standard Dawn. Standard is 72.6rem */
+  @media only screen and (min-width: 990px) {
+    .page-width--narrow {
+      max-width: 73rem;
     }
+  }
 
-    /* Overwrite tailwind's default lists styling back to Dawn's */
-    ul, ol{
-        list-style: revert;
-        margin: 0;
-        padding: revert;
-    }
-    /* Give the same margin-top as a p tag if found in content */
-    * > ul, * > ol{
-        margin-top: 1rem;
-        margin-top: clamp(1.2rem, 0.9500rem + 0.5000vw, 1.6rem);
-    }
-    * > ul:first-child, * > ul:only-child, * > ol:first-child, * > ol:only-child{
-        margin-top: 0;
-    }
+  /* Overwrite tailwind's default lists styling back to Dawn's */
+  ul,
+  ol {
+    list-style: revert;
+    margin: 0;
+    padding: revert;
+  }
+  /* Give the same margin-top as a p tag if found in content */
+  * > ul,
+  * > ol {
+    margin-top: 1rem;
+    margin-top: clamp(1.2rem, 0.95rem + 0.5vw, 1.6rem);
+  }
+  * > ul:first-child,
+  * > ul:only-child,
+  * > ol:first-child,
+  * > ol:only-child {
+    margin-top: 0;
+  }
 
-    /* When synamic buttons are showing add a margin to top of dynamic so they don't sit on top of each other */
-    [data-type="add-to-cart-form"] > [data-shopify="payment-button"]{
-        margin-top: 1rem !important;
-    }
-    .product-form__submit.button--primary{
-        background-color: rgba(var(--color-button),var(--alpha-button-background));
-        color: rgb(var(--color-button-text));
-    }
+  /* When synamic buttons are showing add a margin to top of dynamic so they don't sit on top of each other */
+  [data-type='add-to-cart-form'] > [data-shopify='payment-button'] {
+    margin-top: 1rem !important;
+  }
+  .product-form__submit.button--primary {
+    background-color: rgba(var(--color-button), var(--alpha-button-background));
+    color: rgb(var(--color-button-text));
+  }
 
-    /* Video Styling - https://css-tricks.com/fluid-width-video/
+  /* Video Styling - https://css-tricks.com/fluid-width-video/
     Yes Tailwind has built in classes but this is more universal when writing code into the Shopify backend */
-    .videoWrapper {
-        position: relative;
-        padding-bottom: calc(var(--aspect-ratio, .5625) * 100%); 
-        height: 0;
-    }
-    .videoWrapper iframe, .videoWrapper embed, .videoWrapper object, .videoWrapper video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    /* --- Sections --- */
-    .header__inline-menu .header__menu-item {
-        font-size: 1.6rem;
-    }
-    /* --- Snippets --- */
-    /* Price */
-    /* Set cart price as block element so first letter works */
-    cart-drawer .product-option .price {
-        display: block;
-    }
-    /* Can't figure out how to cart-drawer .cart-item__discounted-prices .price::first-letter to work as a div so removed it */
-    .price .price-item:not(.price-item--sale)::first-letter,
+  .videoWrapper {
+    position: relative;
+    padding-bottom: calc(var(--aspect-ratio, 0.5625) * 100%);
+    height: 0;
+  }
+  .videoWrapper iframe,
+  .videoWrapper embed,
+  .videoWrapper object,
+  .videoWrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  /* --- Sections --- */
+  .header__inline-menu .header__menu-item {
+    font-size: 1.6rem;
+  }
+  /* --- Snippets --- */
+  /* Price */
+  /* Set cart price as block element so first letter works */
+  cart-drawer .product-option .price {
+    display: block;
+  }
+  /* Can't figure out how to cart-drawer .cart-item__discounted-prices .price::first-letter to work as a div so removed it */
+  .price .price-item:not(.price-item--sale)::first-letter,
+  cart-drawer .cart-items .price::first-letter,
+  cart-drawer .totals__total-value::first-letter,
+  cart-drawer .product-option .price::first-letter {
+    font-size: 0.5em;
+    margin-right: 0.1rem;
+    vertical-align: super;
+  }
+  .highlighted-products__slider--price p::first-letter {
+    font-size: 0.3em;
+    margin-right: 0.2rem;
+    vertical-align: top;
+    line-height: 1;
+  }
+  /* Reset the collection pages as .price item starts with the word From instead of the dollar sign */
+  .product-grid-container .price .price-item::first-letter {
+    font-size: initial;
+    vertical-align: initial;
+    margin: 0;
+  }
+  /* Firefox disn't like the cart drawer settings as it was displaying the content off screen so overwriting it back to normal */
+  @supports (-moz-appearance: none) {
     cart-drawer .cart-items .price::first-letter,
     cart-drawer .totals__total-value::first-letter,
     cart-drawer .product-option .price::first-letter {
-        font-size: 0.5em;
-        margin-right: 0.1rem;
-        vertical-align: super;
+      font-size: 1em;
+      margin-right: 0rem;
+      vertical-align: inherit;
     }
-    .highlighted-products__slider--price p::first-letter{
-        font-size: 0.3em;
-        margin-right: 0.2rem;
-        vertical-align: top;
-        line-height: 1;
-    }
-    /* Reset the collection pages as .price item starts with the word From instead of the dollar sign */
-    .product-grid-container .price .price-item::first-letter{
-        font-size: initial;
-        vertical-align: initial;
-        margin: 0;
-    }
-    /* Firefox disn't like the cart drawer settings as it was displaying the content off screen so overwriting it back to normal */
-    @supports (-moz-appearance:none) {
-        cart-drawer .cart-items .price::first-letter,
-        cart-drawer .totals__total-value::first-letter,
-        cart-drawer .product-option .price::first-letter {
-            font-size: 1em;
-            margin-right: 0rem;
-            vertical-align: inherit;
-        }
-    }
+  }
 } /* end @layer base */
-
