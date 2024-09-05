@@ -2726,6 +2726,9 @@
               "default": "Heading"
             }
           }
+        },
+        "product_benefits_summary":{
+          "name": "Product benefits summary",
         }
       },
       "settings": {

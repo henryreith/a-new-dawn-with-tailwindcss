@@ -442,7 +442,7 @@
                 </div>
               {%- when 'product_benefits_summary' -%}
                 {% if product.metafields.custom.product_benefits %}
-                  <div class='product-benefits-summary__wrapper tw-grid tw-grid-cols-2 tw-gap-8'>
+                  <div class='product-benefits-summary__wrapper tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8 tw-gap-y-4'>
                     {% for benefit in product.metafields.custom.product_benefits.value %}
                       <div class='benefit-item'>
                         {{ benefit.svg_icon_html_code }}
@@ -2089,6 +2089,11 @@
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
         }
       ]
+    },
+    {
+      "type": "product_benefits_summary",
+      "name": "t:sections.main-product.blocks.product_benefits_summary.name",
+      "settings": []
     }
   ],
   "settings": [
