@@ -442,30 +442,75 @@
                 </div>
               {%- when 'ph_selling_points' -%}
                 <style>
-                  .product_hero_selling_points__benefit-icon > * {
+                  .product_hero_selling_points__icon > * {
                     display: block;
                     width: 2rem;
                     height: 100%;
                   }
                 </style>
+
                 <div
                   class='product_hero_selling_points__wrapper tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8 tw-gap-y-4'
                   {{ block.shopify_attributes -}}
                 >
+                  <!-- Selling Point 1 -->
                   <div class='product_hero_selling_points__item tw-flex tw-items-center tw-content-center tw-gap-4'>
                     <div class='product_hero_selling_points__icon'>
-                      {%- if block.product_hero_selling_points.svg_icon_html_code1 -%}
-                        {{ block.product_hero_selling_points.svg_icon_html_code1 }}
-                      {% elsif block.product_hero_selling_points.icon1 %}
-                        <img
-                          src='{{ block.product_hero_selling_points.icon1 | file_url }}'
-                          alt='{{ block.product_hero_selling_points.title1 }}'
-                        >
+                      {% if block.settings.svg_icon_1 %}
+                        {{ block.settings.svg_icon_1 }}
+                      {% elsif block.settings.image_icon_1 %}
+                        {%- liquid
+                          assign sizes = '100vw'
+                          assign widths = '256, 512'
+                          assign image_classes = 'product_hero_selling_points__icon-image'
+                          assign fetch_priority = 'auto'
+                          assign lazy_loading = 'lazy'
+                        -%}
+                        {{
+                          block.settings.image_icon_1
+                          | image_url: width: 512
+                          | image_tag:
+                            class: image_classes,
+                            sizes: sizes,
+                            widths: widths,
+                            fetchpriority: fetch_priority,
+                            loading: lazy_loading
+                        }}
                       {% endif %}
                     </div>
-                    <span class='tw-text-[1.3rem] tw-font-semibold'>
-                      {{- block.product_hero_selling_points.title1 -}}
-                    </span>
+                    <div>
+                      <span class='tw-text-[1.3rem] tw-font-semibold'>{{ block.settings.title_1 }}</span>
+                    </div>
+                  </div>
+
+                  <!-- Selling Point 2 -->
+                  <div class='product_hero_selling_points__item tw-flex tw-items-center tw-content-center tw-gap-4'>
+                    <div class='product_hero_selling_points__icon'>
+                      {% if block.settings.svg_icon_2 %}
+                        {{ block.settings.svg_icon_2 }}
+                      {% elsif block.settings.image_icon_2 %}
+                        {%- liquid
+                          assign sizes = '100vw'
+                          assign widths = '256, 512'
+                          assign image_classes = 'product_hero_selling_points__icon-image'
+                          assign fetch_priority = 'auto'
+                          assign lazy_loading = 'lazy'
+                        -%}
+                        {{
+                          block.settings.image_icon_2
+                          | image_url: width: 512
+                          | image_tag:
+                            class: image_classes,
+                            sizes: sizes,
+                            widths: widths,
+                            fetchpriority: fetch_priority,
+                            loading: lazy_loading
+                        }}
+                      {% endif %}
+                    </div>
+                    <div>
+                      <span class='tw-text-[1.3rem] tw-font-semibold'>{{ block.settings.title_2 }}</span>
+                    </div>
                   </div>
                 </div>
               {%- when 'product_hero_benefits' -%}
@@ -2140,9 +2185,52 @@
       "name": "t:sections.main-product.blocks.ph_selling_points.name",
       "settings": [
         {
+          "type": "paragraph",
+          "content": "t:sections.main-product.blocks.ph_selling_points.settings.paragraph.content"
+        },
+        {
           "type": "liquid",
           "id": "svg_icon_1",
           "label": "t:sections.main-product.blocks.ph_selling_points.settings.svg_icon_1.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_icon_1",
+          "label": "t:sections.main-product.blocks.ph_selling_points.settings.image_icon_1.label"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "t:sections.main-product.blocks.ph_selling_points.settings.title_1.label",
+          "default": "30-day money back guarantee"
+        },
+        {
+          "type": "textarea",
+          "id": "description_1",
+          "label": "t:sections.main-product.blocks.ph_selling_points.settings.description_1.label",
+          "default": "You can return the product within 30 days if you are not satisfied."
+        },
+        {
+          "type": "liquid",
+          "id": "svg_icon_2",
+          "label": "t:sections.main-product.blocks.ph_selling_points.settings.svg_icon_2.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_icon_2",
+          "label": "t:sections.main-product.blocks.ph_selling_points.settings.image_icon_2.label"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "t:sections.main-product.blocks.ph_selling_points.settings.title_2.label",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "textarea",
+          "id": "description_2",
+          "label": "t:sections.main-product.blocks.ph_selling_points.settings.description_2.label",
+          "default": "Enjoy free shipping on all orders over $90."
         }
       ]
     },

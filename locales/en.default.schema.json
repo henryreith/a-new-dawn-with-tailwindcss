@@ -2730,8 +2730,32 @@
         "ph_selling_points": {
           "name": "Product hero selling points",
           "settings": {
+            "paragraph": {
+              "content": "This block allows you to add two selling points with an SVG or image icon, title, and description. SVG's will take precedence over image icons."
+            },
             "svg_icon_1": {
               "label": "SVG icon for selling point 1"
+            },
+            "image_icon_1": {
+              "label": "Image icon for selling point 1"
+            },
+            "title_1": {
+              "label": "Title for selling point 1"
+            },
+            "description_1": {
+              "label": "Description for selling point 1"
+            },
+            "svg_icon_2": {
+              "label": "SVG icon for selling point 2"
+            },
+            "image_icon_2": {
+              "label": "Image icon for selling point 2"
+            },
+            "title_2": {
+              "label": "Title for selling point 2"
+            },
+            "description_2": {
+              "label": "Description for selling point 2"
             }
           }
         },
