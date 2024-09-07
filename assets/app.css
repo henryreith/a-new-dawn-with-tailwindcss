@@ -1098,6 +1098,10 @@ cart-drawer .product-option .price {
   margin-top: 4rem;
 }
 
+.tw-mt-4 {
+  margin-top: 1rem;
+}
+
 .\!tw-block {
   display: block !important;
 }

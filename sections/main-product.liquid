@@ -37,6 +37,11 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
+    .product-form__buttons button{
+      min-height: calc(6rem + var(--buttons-border-width)* 2);
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
   {%- endstyle -%}
 
   <script src='{{ 'product-info.js' | asset_url }}' defer='defer'></script>
@@ -450,7 +455,7 @@
                 </style>
 
                 <div
-                  class='product_hero_selling_points__wrapper tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8 tw-gap-y-4'
+                  class='product_hero_selling_points__wrapper tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-8 tw-gap-y-4 tw-pt-4'
                   {{ block.shopify_attributes -}}
                 >
                   <!-- Selling Point 1 -->
@@ -529,7 +534,7 @@
                     <hr class='product-hero-benefits__hr'>
                   {% endif %}
                   <div
-                    class='product-hero-benefits__wrapper tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8 tw-gap-y-4'
+                    class='product-hero-benefits__wrapper tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-8 tw-gap-y-4'
                     {{ block.shopify_attributes -}}
                   >
                     {% for benefit in product.metafields.custom.product_hero_benefits.value %}
@@ -2224,7 +2229,7 @@
           "type": "text",
           "id": "title_2",
           "label": "t:sections.main-product.blocks.ph_selling_points.settings.title_2.label",
-          "default": "Free Shipping"
+          "default": "Free shipping for orders over $90"
         },
         {
           "type": "textarea",
