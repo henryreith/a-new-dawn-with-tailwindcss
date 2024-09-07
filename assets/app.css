@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -1661,6 +1661,10 @@ cart-drawer .product-option .price {
   font-size: calc(2rem * var(--font-heading-scale));
 }
 
+.tw-text-\[1\.3rem\] {
+  font-size: 1.3rem;
+}
+
 .tw-text-\[3\.8rem\] {
   font-size: 3.8rem;
 }
@@ -1679,14 +1683,6 @@ cart-drawer .product-option .price {
 
 .tw-text-xs {
   font-size: 1rem;
-}
-
-.tw-text-\[1\.4rem\] {
-  font-size: 1.4rem;
-}
-
-.tw-text-\[1\.3rem\] {
-  font-size: 1.3rem;
 }
 
 .tw-font-bold {

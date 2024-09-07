@@ -2727,10 +2727,10 @@
             }
           }
         },
-        "product_benefits_summary":{
-          "name": "Product benefits summary",
+        "product_hero_benefits":{
+          "name": "Product hero benefits",
           "settings":{
-            "show_product_benefits_divider":{ 
+            "show_product_hero_benefits_divider":{ 
               "label": "Show divider above product benefits"
             }
           }

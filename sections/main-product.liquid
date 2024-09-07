@@ -440,26 +440,29 @@
                     </volume-pricing>
                   {%- endif -%}
                 </div>
-              {%- when 'product_benefits_summary' -%}
-                {% if product.metafields.custom.product_benefits %}
+              {%- when 'company_benefits_summary' -%}
+              {%- when 'product_hero_benefits' -%}
+                {% if product.metafields.custom.product_hero_benefits %}
                   <style>
-                    .product-benefits-summary__benefit-icon svg {
+                    .product-hero-benefits__benefit-icon svg {
                       fill: rgba(var(--color-foreground), 0.85);
                     }
-                    .product-benefits-summary__benefit-icon > * {
+                    .product-hero-benefits__benefit-icon > * {
                       display: block;
                       width: 2rem;
                       height: 100%;
                     }
                   </style>
-                  <hr class='product-benefits-summary__hr'>
+                  {% if block.settings.show_product_hero_benefits_divider %}
+                    <hr class='product-hero-benefits__hr'>
+                  {% endif %}
                   <div
-                    class='product-benefits-summary__wrapper tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8 tw-gap-y-4'
+                    class='product-hero-benefits__wrapper tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8 tw-gap-y-4'
                     {{ block.shopify_attributes -}}
                   >
-                    {% for benefit in product.metafields.custom.product_benefits.value %}
-                      <div class='product-benefits-summary__benefit-item tw-flex tw-items-center tw-content-center tw-gap-4'>
-                        <div class='product-benefits-summary__benefit-icon'>
+                    {% for benefit in product.metafields.custom.product_hero_benefits.value %}
+                      <div class='product-hero-benefits__benefit-item tw-flex tw-items-center tw-content-center tw-gap-4'>
+                        <div class='product-hero-benefits__benefit-icon'>
                           {{ benefit.svg_icon_html_code }}
                           {% if benefit.icon %}
                             <img src='{{ benefit.icon | file_url }}' alt='{{ benefit.title }}'>
@@ -2107,14 +2110,14 @@
       ]
     },
     {
-      "type": "product_benefits_summary",
-      "name": "t:sections.main-product.blocks.product_benefits_summary.name",
+      "type": "product_hero_benefits",
+      "name": "t:sections.main-product.blocks.product_hero_benefits.name",
       "settings": [
         {
           "type": "checkbox",
-          "id": "show_product_benefits_divider",
+          "id": "show_product_hero_benefits_divider",
           "default": true,
-          "label": "t:sections.main-product.blocks.product_benefits_summary.settings.show_product_benefits_divider.label"
+          "label": "t:sections.main-product.blocks.product_hero_benefits.settings.show_product_hero_benefits_divider.label"
         }
       ]
     }
