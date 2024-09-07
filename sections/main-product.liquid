@@ -37,6 +37,9 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
+    .product-form__buttons{
+      max-width: 100%;
+    }
     .product-form__buttons button{
       min-height: calc(6rem + var(--buttons-border-width)* 2);
       font-size: 1.6rem;
@@ -542,7 +545,24 @@
                         <div class='product-hero-benefits__icon'>
                           {{ benefit.svg_icon_html_code }}
                           {% if benefit.icon %}
-                            <img src='{{ benefit.icon | file_url }}' alt='{{ benefit.title }}'>
+                            {%- liquid
+                              assign sizes = '100vw'
+                              assign widths = '128, 256, 512'
+                              assign image_classes = 'product-hero-benefits__image'
+                              assign fetch_priority = 'auto'
+                              assign lazy_loading = 'lazy'
+                            -%}
+                            {{
+                              benefit.icon
+                              | image_url: width: 512
+                              | image_tag:
+                                class: image_classes,
+                                sizes: sizes,
+                                widths: widths,
+                                fetchpriority: fetch_priority,
+                                loading: lazy_loading,
+                                alt: benefit.title
+                            }}
                           {% endif %}
                         </div>
                         <span class='tw-text-[1.3rem]'>{{ benefit.title }}</span>
