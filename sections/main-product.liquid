@@ -440,14 +440,41 @@
                     </volume-pricing>
                   {%- endif -%}
                 </div>
-              {%- when 'company_benefits_summary' -%}
+              {%- when 'ph_selling_points' -%}
+                <style>
+                  .product_hero_selling_points__benefit-icon > * {
+                    display: block;
+                    width: 2rem;
+                    height: 100%;
+                  }
+                </style>
+                <div
+                  class='product_hero_selling_points__wrapper tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8 tw-gap-y-4'
+                  {{ block.shopify_attributes -}}
+                >
+                  <div class='product_hero_selling_points__item tw-flex tw-items-center tw-content-center tw-gap-4'>
+                    <div class='product_hero_selling_points__icon'>
+                      {%- if block.product_hero_selling_points.svg_icon_html_code1 -%}
+                        {{ block.product_hero_selling_points.svg_icon_html_code1 }}
+                      {% elsif block.product_hero_selling_points.icon1 %}
+                        <img
+                          src='{{ block.product_hero_selling_points.icon1 | file_url }}'
+                          alt='{{ block.product_hero_selling_points.title1 }}'
+                        >
+                      {% endif %}
+                    </div>
+                    <span class='tw-text-[1.3rem] tw-font-semibold'>
+                      {{- block.product_hero_selling_points.title1 -}}
+                    </span>
+                  </div>
+                </div>
               {%- when 'product_hero_benefits' -%}
                 {% if product.metafields.custom.product_hero_benefits %}
                   <style>
-                    .product-hero-benefits__benefit-icon svg {
+                    .product-hero-benefits__icon svg {
                       fill: rgba(var(--color-foreground), 0.85);
                     }
-                    .product-hero-benefits__benefit-icon > * {
+                    .product-hero-benefits__icon > * {
                       display: block;
                       width: 2rem;
                       height: 100%;
@@ -461,8 +488,8 @@
                     {{ block.shopify_attributes -}}
                   >
                     {% for benefit in product.metafields.custom.product_hero_benefits.value %}
-                      <div class='product-hero-benefits__benefit-item tw-flex tw-items-center tw-content-center tw-gap-4'>
-                        <div class='product-hero-benefits__benefit-icon'>
+                      <div class='product-hero-benefits__item tw-flex tw-items-center tw-content-center tw-gap-4'>
+                        <div class='product-hero-benefits__icon'>
                           {{ benefit.svg_icon_html_code }}
                           {% if benefit.icon %}
                             <img src='{{ benefit.icon | file_url }}' alt='{{ benefit.title }}'>
@@ -472,8 +499,7 @@
                       </div>
                     {% endfor %}
                   </div>
-                {% endif %}
-
+                {%- endif -%}
               {%- when 'popup' -%}
                 <modal-opener
                   class='product-popup-modal__opener quick-add-hidden'
@@ -2106,6 +2132,17 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "ph_selling_points",
+      "name": "t:sections.main-product.blocks.ph_selling_points.name",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "svg_icon_1",
+          "label": "t:sections.main-product.blocks.ph_selling_points.settings.svg_icon_1.label"
         }
       ]
     },

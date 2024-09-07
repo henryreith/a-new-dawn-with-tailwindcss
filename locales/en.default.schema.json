@@ -2727,6 +2727,14 @@
             }
           }
         },
+        "ph_selling_points": {
+          "name": "Product hero selling points",
+          "settings": {
+            "svg_icon_1": {
+              "label": "SVG icon for selling point 1"
+            }
+          }
+        },
         "product_hero_benefits": {
           "name": "Product hero benefits",
           "settings": {
