@@ -56,11 +56,6 @@
             "show_gift_card_recipient": true
           }
         },
-        "product_benefits_summary_JPWnCT": {
-          "type": "product_benefits_summary",
-          "settings": {
-          }
-        },
         "description": {
           "type": "description",
           "disabled": true,
@@ -131,7 +126,6 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "product_benefits_summary_JPWnCT",
         "description",
         "custom_liquid_cLkbqt",
         "custom_liquid_BcWANg",
