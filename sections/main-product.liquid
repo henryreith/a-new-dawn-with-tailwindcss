@@ -463,9 +463,9 @@
                 >
                   <!-- Selling Point 1 -->
                   <div class='product_hero_selling_points__item tw-flex tw-items-center tw-content-center tw-gap-4'>
-                    <div class='product_hero_selling_points__icon'>
+                    <div class='product_hero_selling_points__icon' aria-label='{{ block.settings.title_1 }}'>
                       {% if block.settings.svg_icon_1 %}
-                        {{ block.settings.svg_icon_1 }}
+                        {{ block.settings.svg_icon_1 | raw }}
                       {% elsif block.settings.image_icon_1 %}
                         {%- liquid
                           assign sizes = '100vw'
@@ -493,9 +493,9 @@
 
                   <!-- Selling Point 2 -->
                   <div class='product_hero_selling_points__item tw-flex tw-items-center tw-content-center tw-gap-4'>
-                    <div class='product_hero_selling_points__icon'>
+                    <div class='product_hero_selling_points__icon' aria-label='{{ block.settings.title_2 }}'>
                       {% if block.settings.svg_icon_2 %}
-                        {{ block.settings.svg_icon_2 }}
+                        {{ block.settings.svg_icon_2 | raw }}
                       {% elsif block.settings.image_icon_2 %}
                         {%- liquid
                           assign sizes = '100vw'
@@ -542,9 +542,10 @@
                   >
                     {% for benefit in product.metafields.custom.product_hero_benefits.value %}
                       <div class='product-hero-benefits__item tw-flex tw-items-center tw-content-center tw-gap-4'>
-                        <div class='product-hero-benefits__icon'>
-                          {{ benefit.svg_icon_html_code }}
-                          {% if benefit.icon %}
+                        <div class='product-hero-benefits__icon' aria-label='{{ benefit.title }}'>
+                          {% if benefit.svg_icon_html_code %}
+                            {{ benefit.svg_icon_html_code | raw }}
+                          {% elsif benefit.icon %}
                             {%- liquid
                               assign sizes = '100vw'
                               assign widths = '128, 256, 512'
