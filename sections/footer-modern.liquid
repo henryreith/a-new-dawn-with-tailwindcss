@@ -121,7 +121,9 @@
             <span class='footer__tagline--text'>{{ section.settings.footer_tagline }}</span>
             {% if section.settings.footer_tagline_link %}
               <div class='footer__tagline--icon tw-ml-4'>
-                {% render 'icon-arrow' %}
+                <span class='svg-wrapper'>
+                  {{- 'icon-arrow.svg' | inline_asset_content -}}
+                </span>
               </div>
             {% endif %}
           </a>
@@ -213,7 +215,9 @@
                   <div class='footer__seo-menu-title summary__title !tw-block'>
                     <div class='h4 accordion__title inline-richtext'>
                       {{ block.settings.seo_menu_title }}
-                      {% render 'icon-caret' %}
+                      <span class='svg-wrapper'>
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </span>
                     </div>
                   </div>
                 </summary>
@@ -300,7 +304,9 @@
                       </option>
                     {%- endfor -%}
                   </select>
-                  {% render 'icon-caret' %}
+                  <span class='svg-wrapper'>
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                  </span>
                 </div>
                 <button class='button button--tertiary'>{{ 'localization.update_country' | t }}</button>
               {%- endform -%}
