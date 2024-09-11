@@ -1,0 +1,89 @@
+{%- if product.metafields.custom.product_faqs and product.metafields.custom.product_faqs.value.size > 0 -%}
+  {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+    }
+
+    #faq-section-{{ section.id }} .faq-section__toc-inner {
+        border-color: rgba(var(--color-foreground), 0.8);
+    }
+    .faq-section__item:last-child {
+        margin-bottom: 0 !important;
+    }
+    {% if section.settings.show_items_in_collapsiable_content == true %}
+      .faq-collapsible-content .accordion{
+        margin-top: 0;
+      }
+      .faq-collapsible-content .accordion + .faq-section__subsection-title{
+        margin: 3rem 0 1rem;
+      }
+      .faq-collapsible-content .faq-section__question:hover{
+        background: rgba(var(--color-foreground), 0.04);
+        text-decoration: underline;
+        text-underline-offset: 0.3rem;
+      }
+    {% endif %}
+  {%- endstyle -%}
+
+  {%- assign content_width_class = 'page-width' -%}
+  {%- case section.settings.section_content_width -%}
+    {%- when 'narrow' -%}
+      {%- assign content_width_class = 'page-width page-width--narrow' -%}
+    {%- when 'full_width' -%}
+      {%- assign content_width_class = '' -%}
+  {%- endcase -%}
+
+  <div id='faq-section-{{ section.id }}' class='section-{{ section.id }}-padding'>
+    <div class='{{ content_width_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}{%- if section.settings.show_items_in_collapsiable_content == true %} faq-collapsible-content{% endif %}'>
+      {% # FAQ Questions %}
+      {% assign includes_hidden_faq = false %}
+      {% for faq in product.metafields.custom.product_faqs.value %}
+        <div class='accordion'>
+          <details id='faq-{{ faq.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10'>
+            <summary id='Summary-faq-{{ faq.id }}' class='faq-section__question'>
+              <h3>{{ faq.question | escape }}</h3>
+              {% render 'icon-caret' %}
+            </summary>
+            <div class='faq-section__answer tw-pb-6' role='region' aria-labelledby='Summary-faq-{{ faq.id }}'>
+              <p>{{ faq.answer | escape }}</p>
+            </div>
+          </details>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% # JSON-LD for FAQ Schema %}
+  <script type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for faq in product.metafields.custom.product_faqs.value -%}
+        {
+          "@type": "Question",
+          "name": {{ faq.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ faq.answer | strip_html | json }}
+          }
+        }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+
+  {% if section.settings.show_items_in_collapsiable_content == true %}
+    <script src='{{ 'faq.min.js' | asset_url }}' defer='defer'></script>
+  {% endif %}
+{%- endif -%}
