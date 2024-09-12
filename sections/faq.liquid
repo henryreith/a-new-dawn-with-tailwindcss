@@ -147,7 +147,7 @@
                     <{{ question_tag }}>
                       {{- block.settings.question | escape -}}
                     </{{ question_tag }}>
-                    {% render 'icon-caret' %}
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
                   </summary>
                   <div
                     class='faq-section__answer tw-pb-6'
