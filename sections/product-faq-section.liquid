@@ -43,7 +43,10 @@
       {%- assign content_width_class = '' -%}
   {%- endcase -%}
 
-  <div id='faq-section-{{ section.id }}' class='section-{{ section.id }}-padding'>
+  <div
+    id='faq-section-{{ section.id }}'
+    class='section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'
+  >
     <div class='{{ content_width_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}{%- if section.settings.show_items_in_collapsiable_content == true %} faq-collapsible-content{% endif %}'>
       {% # FAQ Questions %}
       {% assign includes_hidden_faq = false %}
