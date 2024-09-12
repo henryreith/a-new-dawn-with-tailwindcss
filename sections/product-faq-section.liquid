@@ -1,4 +1,4 @@
-{%- if product.metafields.custom.product_faqs and product.metafields.custom.product_faqs.value.size > 0 -%}
+{%- if product.metafields.custom.product_faqs -%}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 
   {%- style -%}
@@ -52,10 +52,11 @@
           <details id='faq-{{ faq.id }}' class='faq-section__item tw-mb-8 md:tw-mb-10'>
             <summary id='Summary-faq-{{ faq.id }}' class='faq-section__question'>
               <h3>{{ faq.question | escape }}</h3>
-              {% render 'icon-caret' %}
+              {{- 'icon-caret.svg' | inline_asset_content -}}
             </summary>
             <div class='faq-section__answer tw-pb-6' role='region' aria-labelledby='Summary-faq-{{ faq.id }}'>
-              <p>{{ faq.answer | escape }}</p>
+              {{ faq.answer | metafield_tag }}
+              {{ faq.raw_html_answer }}
             </div>
           </details>
         </div>
