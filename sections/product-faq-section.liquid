@@ -48,6 +48,12 @@
     class='section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'
   >
     <div class='{{ content_width_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}{%- if section.settings.show_items_in_collapsiable_content == true %} faq-collapsible-content{% endif %}'>
+      {% # FAQ Title %}
+      {% if section.settings.faq_section_header != blank %}
+        <div class='faq-section__header tw-mb-8 md:tw-mb-10'>
+          <h3 class='faq-section__title'>{{ section.settings.faq_section_header }}</h3>
+        </div>
+      {% endif %}
       {% # FAQ Questions %}
       {% assign includes_hidden_faq = false %}
       {% for faq in product.metafields.custom.product_faqs.value %}
@@ -123,6 +129,12 @@
         }
       ],
       "default": "page_width"
+    },
+    {
+      "type": "text",
+      "id": "faq_section_header",
+      "label": "Please enter the title for this FAQ Section Header here.",
+      "default": "FAQ"
     },
     {
       "type": "header",
