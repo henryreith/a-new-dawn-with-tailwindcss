@@ -227,6 +227,10 @@
     "product_faq_section_qinn47": {
       "type": "product-faq-section",
       "settings": {
+        "color_scheme": "scheme-1",
+        "section_content_width": "page_width",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "related-products": {
