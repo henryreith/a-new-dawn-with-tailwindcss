@@ -94,7 +94,58 @@
   "name": "Product FAQ Section",
   "tag": "section",
   "class": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "t:sections.all.section_content_width.label",
+      "options": [
+        {
+          "label": "t:sections.all.section_content_width.options__1.label",
+          "value": "full_width"
+        },
+        {
+          "label": "t:sections.all.section_content_width.options__2.label",
+          "value": "page_width"
+        },
+        {
+          "label": "t:sections.all.section_content_width.options__3.label",
+          "value": "narrow"
+        }
+      ],
+      "default": "page_width"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
   "blocks": [],
   "presets": [
     {
