@@ -1,0 +1,81 @@
+{% if product.metafields.custom.product_image_and_text_benefits %}
+  <style>
+    .benefit-sections .benefit-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+    .benefit-section.reverse {
+      flex-direction: row-reverse;
+    }
+    .benefit-image img {
+      width: 100%;
+      max-width: 300px;
+    }
+    .benefit-content {
+      max-width: 600px;
+    }
+    @media (max-width: 768px) {
+      .benefit-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <div class='benefit-sections tw-py-10 tw-px-5'>
+    {% for benefit in product.metafields.custom.product_image_and_text_benefits %}
+      <div class='benefit-section{% cycle '', ', reverse' %} tw-flex tw-items-center tw-justify-between tw-mb-8'>
+        <div class='benefit-image tw-w-full tw-max-w-xs'>
+          <img src='{{ benefit.image | file_img_url: '600x' }}' alt='{{ benefit.title }}'>
+        </div>
+        <div class='benefit-content tw-max-w-lg'>
+          <h3 class='tw-text-2xl tw-font-bold'>{{ benefit.title }}</h3>
+          <p class='tw-text-base'>{{ benefit.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Image and Text Benefits",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image and Text Benefits Settings"
+    },
+    {
+      "type": "text",
+      "id": "benefits_header",
+      "label": "Section Header",
+      "default": "Key Benefits"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}
