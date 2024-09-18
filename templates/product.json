@@ -214,6 +214,14 @@
         "padding_bottom": 26
       }
     },
+    "product_benefit_image_text_aNy9aK": {
+      "type": "product-benefit-image-text",
+      "settings": {
+        "benefits_header": "Key Benefits",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "custom_liquid_aN3qeb": {
       "type": "custom-liquid",
       "settings": {
@@ -229,6 +237,7 @@
       "settings": {
         "color_scheme": "scheme-1",
         "section_content_width": "page_width",
+        "faq_section_header": "FAQ",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -255,6 +264,7 @@
   "order": [
     "main",
     "benefit_inline_k6d7aw",
+    "product_benefit_image_text_aNy9aK",
     "custom_liquid_aN3qeb",
     "product_faq_section_qinn47",
     "related-products"
