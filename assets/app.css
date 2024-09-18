@@ -1247,6 +1247,14 @@ cart-drawer .product-option .price {
   max-width: 38rem;
 }
 
+.tw-max-w-lg {
+  max-width: 32rem;
+}
+
+.tw-max-w-xs {
+  max-width: 20rem;
+}
+
 .tw-flex-none {
   flex: none;
 }
@@ -1586,6 +1594,11 @@ cart-drawer .product-option .price {
 .tw-px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.tw-px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .tw-py-1 {
