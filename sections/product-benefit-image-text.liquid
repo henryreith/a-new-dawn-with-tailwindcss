@@ -1,40 +1,83 @@
 {% if product.metafields.custom.product_image_and_text_benefits %}
   <style>
-    .benefit-sections .benefit-section {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 2rem;
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
-    .benefit-section.reverse {
-      flex-direction: row-reverse;
+
+    @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
     }
-    .benefit-image img {
-      width: 100%;
-      max-width: 300px;
-    }
-    .benefit-content {
-      max-width: 600px;
-    }
-    @media (max-width: 768px) {
-      .benefit-section {
-        flex-direction: column;
-      }
+    .product_benefits__page-width-wrapper{
+      max-width: {{ section.settings.custom_page_width }}px;
     }
   </style>
 
-  <div class='benefit-sections tw-py-10 tw-px-5'>
-    {% for benefit in product.metafields.custom.product_image_and_text_benefits %}
-      <div class='benefit-section{% cycle '', ', reverse' %} tw-flex tw-items-center tw-justify-between tw-mb-8'>
-        <div class='benefit-image tw-w-full tw-max-w-xs'>
-          <img src='{{ benefit.image | file_img_url: '600x' }}' alt='{{ benefit.title }}'>
+  <div
+    id='faq-section-{{ section.id }}'
+    class='section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'
+  >
+    <div class='page-width product_benefits__page-width-wrapper'>
+      {% for benefit in product.metafields.custom.product_image_and_text_benefits.value %}
+        <div class='benefit-section tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-mb-8 md:tw-mb-12 lg:tw-mb-16 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+          {%- if benefit.image != blank -%}
+            <div class='benefit-image {% cycle 'md:tw-mr-10 lg:tw-mr-20', 'md:tw-order-2' %} tw-flex-none tw-w-full md:tw-w-[38.5%] tw-mb-8 md:tw-mb-0 tw-grid tw-justify-items-center'>
+              {%- liquid
+                assign sizes = '100vw'
+                assign widths = '512, 1024, 2048'
+                assign image_classes = 'product-benefits__image'
+                assign fetch_priority = 'auto'
+                assign lazy_loading = 'lazy'
+              -%}
+              {{
+                benefit.image
+                | image_url: width: '512, 1024, 2048'
+                | image_tag:
+                  class: image_classes,
+                  sizes: sizes,
+                  widths: widths,
+                  fetchpriority: fetch_priority,
+                  loading: lazy_loading,
+                  alt: benefit.title
+              }}
+            </div>
+          {%- endif -%}
+          <div class='benefit-content tw-w-full tw-grid tw-gap-4 tw-text-center {% cycle 'md:tw-text-left', 'md:tw-text-right md:tw-mr-10 lg:tw-mr-20' %}'>
+            {%- if benefit.icon != blank -%}
+              <div class='product-benefits__icon_wrapper tw-justify-self-center {% cycle 'md:tw-justify-self-start', 'md:tw-justify-self-end' %}'>
+                {%- liquid
+                  assign sizes = '100vw'
+                  assign widths = '128, 256, 512'
+                  assign image_classes = 'tw-m-0 tw-max-w-16 tw-max-h-16 product-benefits__icon tw-w-full'
+                  assign fetch_priority = 'auto'
+                  assign lazy_loading = 'lazy'
+                -%}
+                {{
+                  benefit.icon
+                  | image_url: width: '128, 256, 512'
+                  | image_tag:
+                    class: image_classes,
+                    sizes: sizes,
+                    widths: widths,
+                    fetchpriority: fetch_priority,
+                    loading: lazy_loading,
+                    alt: benefit.title
+                }}
+              </div>
+            {%- endif -%}
+            {%- if benefit.title != blank -%}
+              <h3 class='h2 tw-m-0 tw-mb-2'>{{ benefit.title | escape }}</h3>
+            {%- endif -%}
+            {%- if benefit.description != blank -%}
+              <div class='tw-base md:tw-text-xl tw-m-0'>{{ benefit.description | metafield_tag }}</div>
+            {%- endif -%}
+          </div>
         </div>
-        <div class='benefit-content tw-max-w-lg'>
-          <h3 class='tw-text-2xl tw-font-bold'>{{ benefit.title }}</h3>
-          <p class='tw-text-base'>{{ benefit.description }}</p>
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 {% endif %}
 
@@ -43,14 +86,36 @@
   "name": "Benefit Image & Text 1/2",
   "settings": [
     {
-      "type": "header",
-      "content": "Image and Text Benefits Settings"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "animations_reveal_on_scroll",
+      "label": "t:sections.benefits-inline.settings.animations_reveal_on_scroll.label",
+      "default": true
     },
     {
       "type": "text",
       "id": "benefits_header",
       "label": "Section Header",
       "default": "Key Benefits"
+    },
+    {
+      "type": "header",
+      "content": "Custom Page Width"
+    },
+    {
+      "type": "range",
+      "id": "custom_page_width",
+      "min": 990,
+      "max": 1920,
+      "step": 10,
+      "unit": "px",
+      "label": "Custom Page Width",
+      "default": 1100
     },
     {
       "type": "header",

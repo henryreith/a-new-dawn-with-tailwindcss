@@ -1191,6 +1191,14 @@ cart-drawer .product-option .price {
   max-height: 1rem;
 }
 
+.tw-max-h-12 {
+  max-height: 3rem;
+}
+
+.tw-max-h-16 {
+  max-height: 4rem;
+}
+
 .tw-w-1 {
   width: 0.25rem;
 }
@@ -1253,6 +1261,18 @@ cart-drawer .product-option .price {
 
 .tw-max-w-xs {
   max-width: 20rem;
+}
+
+.tw-max-w-12 {
+  max-width: 3rem;
+}
+
+.tw-max-w-16 {
+  max-width: 4rem;
+}
+
+.tw-flex-1 {
+  flex: 1 1 0%;
 }
 
 .tw-flex-none {
@@ -1349,6 +1369,10 @@ cart-drawer .product-option .price {
 
 .tw-justify-evenly {
   justify-content: space-evenly;
+}
+
+.tw-justify-items-end {
+  justify-items: end;
 }
 
 .tw-justify-items-center {
@@ -1674,8 +1698,16 @@ cart-drawer .product-option .price {
   text-align: center;
 }
 
+.tw-text-right {
+  text-align: right;
+}
+
 .tw-text-2xl {
   font-size: calc(2rem * var(--font-heading-scale));
+}
+
+.tw-text-4xl {
+  font-size: calc(4rem * var(--font-heading-scale));
 }
 
 .tw-text-\[1\.3rem\] {
@@ -1762,8 +1794,20 @@ cart-drawer .product-option .price {
     grid-column: span 2 / span 2;
   }
 
+  .md\:tw-mb-0 {
+    margin-bottom: 0px;
+  }
+
   .md\:tw-mb-10 {
     margin-bottom: 2.5rem;
+  }
+
+  .md\:tw-mr-10 {
+    margin-right: 2.5rem;
+  }
+
+  .md\:tw-mb-12 {
+    margin-bottom: 3rem;
   }
 
   .md\:tw-block {
@@ -1774,12 +1818,20 @@ cart-drawer .product-option .price {
     display: flex;
   }
 
+  .md\:tw-w-\[38\.5\%\] {
+    width: 38.5%;
+  }
+
   .md\:tw-grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:tw-grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:tw-flex-row {
+    flex-direction: row;
   }
 
   .md\:\!tw-justify-end {
@@ -1798,6 +1850,10 @@ cart-drawer .product-option .price {
     justify-self: start;
   }
 
+  .md\:tw-justify-self-end {
+    justify-self: end;
+  }
+
   .md\:\!tw-pt-0 {
     padding-top: 0px !important;
   }
@@ -1806,8 +1862,16 @@ cart-drawer .product-option .price {
     text-align: left;
   }
 
+  .md\:tw-text-right {
+    text-align: right;
+  }
+
   .md\:tw-text-smd {
     font-size: 1.4rem;
+  }
+
+  .md\:tw-text-xl {
+    font-size: calc(1.7rem * var(--font-heading-scale));
   }
 }
 
@@ -1848,8 +1912,16 @@ cart-drawer .product-option .price {
     grid-column: span 9 / span 9;
   }
 
+  .lg\:tw-mr-20 {
+    margin-right: 5rem;
+  }
+
   .lg\:tw-mr-3 {
     margin-right: 0.75rem;
+  }
+
+  .lg\:tw-mb-16 {
+    margin-bottom: 4rem;
   }
 
   .lg\:tw-flex {
@@ -1960,6 +2032,10 @@ cart-drawer .product-option .price {
 
   .lg\:tw-text-center {
     text-align: center;
+  }
+
+  .lg\:tw-text-2xl {
+    font-size: calc(2rem * var(--font-heading-scale));
   }
 }
 
