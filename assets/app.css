@@ -1565,6 +1565,15 @@ cart-drawer .product-option .price {
   background-color: transparent;
 }
 
+.tw-bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.tw-bg-cover {
+  background-size: cover;
+}
+
 .tw-object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1823,6 +1832,14 @@ cart-drawer .product-option .price {
     margin-right: 2.5rem;
   }
 
+  .md\:tw-mb-16 {
+    margin-bottom: 4rem;
+  }
+
+  .md\:tw-mb-20 {
+    margin-bottom: 5rem;
+  }
+
   .md\:tw-block {
     display: block;
   }
@@ -1940,6 +1957,22 @@ cart-drawer .product-option .price {
 
   .lg\:tw-mr-3 {
     margin-right: 0.75rem;
+  }
+
+  .lg\:tw-mr-24 {
+    margin-right: 6rem;
+  }
+
+  .lg\:tw-mb-20 {
+    margin-bottom: 5rem;
+  }
+
+  .lg\:tw-mb-28 {
+    margin-bottom: 7rem;
+  }
+
+  .lg\:tw-mb-32 {
+    margin-bottom: 8rem;
   }
 
   .lg\:tw-flex {

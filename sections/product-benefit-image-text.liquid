@@ -14,6 +14,19 @@
     .product_benefits__page-width-wrapper{
       max-width: {{ section.settings.custom_page_width }}px;
     }
+    .benefit-image{
+      border: solid 1px #fafafa;
+    }
+    .product-benefits__iconography_wrapper .paw{
+      top: -24px;
+      left: -15px;
+      transform: rotate(15deg);
+    }
+    .product-benefits__iconography_wrapper .paw2{
+      bottom: -7px;
+      right: -15px;
+      transform: rotate(15deg);
+    }
   </style>
 
   <div
@@ -22,13 +35,53 @@
   >
     <div class='page-width product_benefits__page-width-wrapper'>
       {% for benefit in product.metafields.custom.product_image_and_text_benefits.value %}
-        <div class='benefit-section tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-mb-8 md:tw-mb-12 lg:tw-mb-16 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+        <div class='benefit-section tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-mb-12 md:tw-mb-20 lg:tw-mb-32 tw-bg-white tw-bg-cover {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
           {%- if benefit.image != blank -%}
-            <div class='benefit-image {% cycle 'md:tw-mr-10 lg:tw-mr-20', 'md:tw-order-2' %} tw-flex-none tw-w-full md:tw-w-[38.5%] tw-mb-8 md:tw-mb-0 tw-grid tw-justify-items-center'>
+            <div class='benefit-image {% cycle 'md:tw-mr-10 lg:tw-mr-24', 'md:tw-order-2' %} tw-flex-none tw-w-full md:tw-w-[38.5%] tw-mb-8 md:tw-mb-0 tw-grid tw-justify-items-center tw-relative'>
+              {%- if section.settings.icon_image != blank -%}
+                <div class='product-benefits__iconography_wrapper'>
+                  {%- liquid
+                    assign sizes = '100vw'
+                    assign widths = '128'
+                    assign image_classes = 'tw-m-0 tw-max-w-16 tw-max-h-16 product-benefits__iconography paw tw-w-full tw-absolute'
+                    assign fetch_priority = 'auto'
+                    assign lazy_loading = 'lazy'
+                  -%}
+                  {{
+                    section.settings.icon_image
+                    | image_url: width: '128'
+                    | image_tag:
+                      class: image_classes,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority,
+                      loading: lazy_loading,
+                      alt: section.settings.icon_image.alt
+                  }}
+                  {%- liquid
+                    assign sizes = '100vw'
+                    assign widths = '128'
+                    assign image_classes = 'tw-m-0 tw-max-w-16 tw-max-h-16 product-benefits__iconography paw2 tw-w-full tw-absolute'
+                    assign fetch_priority = 'auto'
+                    assign lazy_loading = 'lazy'
+                  -%}
+                  {{
+                    section.settings.icon_image
+                    | image_url: width: '128'
+                    | image_tag:
+                      class: image_classes,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority,
+                      loading: lazy_loading,
+                      alt: section.settings.icon_image.alt
+                  }}
+                </div>
+              {%- endif -%}
               {%- liquid
                 assign sizes = '100vw'
                 assign widths = '512, 1024, 2048'
-                assign image_classes = 'product-benefits__image'
+                assign image_classes = 'product-benefits__image tw-w-full'
                 assign fetch_priority = 'auto'
                 assign lazy_loading = 'lazy'
               -%}
@@ -41,11 +94,11 @@
                   widths: widths,
                   fetchpriority: fetch_priority,
                   loading: lazy_loading,
-                  alt: benefit.title
+                  alt: benefit.image.alt
               }}
             </div>
           {%- endif -%}
-          <div class='benefit-content tw-w-full tw-grid tw-gap-4 tw-text-center {% cycle 'md:tw-text-left', 'md:tw-text-right md:tw-mr-10 lg:tw-mr-20' %}'>
+          <div class='benefit-content tw-w-full tw-grid tw-gap-4 tw-text-center {% cycle 'md:tw-text-left', 'md:tw-text-right md:tw-mr-10 lg:tw-mr-24' %}'>
             {%- if benefit.icon != blank -%}
               <div class='product-benefits__icon_wrapper tw-justify-self-center {% cycle 'md:tw-justify-self-start', 'md:tw-justify-self-end' %}'>
                 {%- liquid
