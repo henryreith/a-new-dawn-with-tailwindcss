@@ -217,13 +217,13 @@
     "product_benefit_image_text_aNy9aK": {
       "type": "product-benefit-image-text",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "animations_reveal_on_scroll": true,
         "icon_image": "shopify://shop_images/Oh_Crap_Pawprint_-_Aligned_Straight.svg",
         "benefits_header": "Key Benefits",
         "custom_page_width": 1100,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 68,
+        "padding_bottom": 68
       }
     },
     "custom_liquid_aN3qeb": {
