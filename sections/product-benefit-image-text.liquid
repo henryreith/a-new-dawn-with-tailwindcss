@@ -17,16 +17,53 @@
     .benefit-image{
       border: solid 1px #fafafa;
     }
-    .product-benefits__iconography_wrapper .paw{
+    {%- if section.settings.icon_image != blank -%}
+    @media (max-width: 989px) {
+      .paw, .paw2 {
+        display: none; /* Hides paw prints on smaller devices */
+      }
+    }
+    .product-benefits__iconography_wrapper.paw-position-1 .paw{
       top: -24px;
       left: -15px;
       transform: rotate(15deg);
     }
-    .product-benefits__iconography_wrapper .paw2{
+    .product-benefits__iconography_wrapper.paw-position-1 .paw2{
       bottom: -7px;
       right: -15px;
       transform: rotate(15deg);
     }
+    .product-benefits__iconography_wrapper.paw-position-2 .paw{
+      top: 35%;
+      left: -25px;
+      transform: rotate(-5deg);
+    }
+    .product-benefits__iconography_wrapper.paw-position-2 .paw2{
+      top: 50%;
+      right: -25px;
+      transform: rotate(5deg);
+    }
+    .product-benefits__iconography_wrapper.paw-position-3 .paw{
+      top: 60%;
+      left: -25px;
+      transform: rotate(-5deg);
+    }
+    .product-benefits__iconography_wrapper.paw-position-3 .paw2{
+      top: 35%;
+      right: -25px;
+      transform: rotate(5deg);
+    }
+    .product-benefits__iconography_wrapper.paw-position-4 .paw{
+      bottom: -5px;
+      left: -22px;
+      transform: rotate(-15deg);
+    }
+    .product-benefits__iconography_wrapper.paw-position-4 .paw2{
+      top: -22px;
+      right: -22px;
+      transform: rotate(15deg);
+    }
+    {%- endif -%}
   </style>
 
   <div
@@ -35,11 +72,11 @@
   >
     <div class='page-width product_benefits__page-width-wrapper'>
       {% for benefit in product.metafields.custom.product_image_and_text_benefits.value %}
-        <div class='benefit-section tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-mb-12 md:tw-mb-20 lg:tw-mb-32 tw-bg-white tw-bg-cover {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+        <div class='benefit-section tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-mb-16 md:tw-mb-24 lg:tw-mb-40 {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
           {%- if benefit.image != blank -%}
-            <div class='benefit-image {% cycle 'md:tw-mr-10 lg:tw-mr-24', 'md:tw-order-2' %} tw-flex-none tw-w-full md:tw-w-[38.5%] tw-mb-8 md:tw-mb-0 tw-grid tw-justify-items-center tw-relative'>
+            <div class='benefit-image {% cycle 'md:tw-mr-10 lg:tw-mr-24', 'md:tw-order-2' %} tw-bg-white tw-flex-none tw-w-full md:tw-w-[38.5%] tw-mb-8 md:tw-mb-0 tw-grid tw-justify-items-center tw-relative'>
               {%- if section.settings.icon_image != blank -%}
-                <div class='product-benefits__iconography_wrapper'>
+                <div class='product-benefits__iconography_wrapper {% cycle 'paw-position-1', 'paw-position-2', 'paw-position-3', 'paw-position-4' %}'>
                   {%- liquid
                     assign sizes = '100vw'
                     assign widths = '128'

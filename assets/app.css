@@ -1840,6 +1840,10 @@ cart-drawer .product-option .price {
     margin-bottom: 5rem;
   }
 
+  .md\:tw-mb-24 {
+    margin-bottom: 6rem;
+  }
+
   .md\:tw-block {
     display: block;
   }
@@ -1973,6 +1977,10 @@ cart-drawer .product-option .price {
 
   .lg\:tw-mb-32 {
     margin-bottom: 8rem;
+  }
+
+  .lg\:tw-mb-40 {
+    margin-bottom: 10rem;
   }
 
   .lg\:tw-flex {
