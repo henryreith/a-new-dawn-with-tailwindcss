@@ -59,10 +59,10 @@
         "ph_selling_points_a7jpkc": {
           "type": "ph_selling_points",
           "settings": {
-            "svg_icon_1": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 512 512\"><!--!Font Awesome Free 6.6.0 by @fontawesome - https:\/\/fontawesome.com License - https:\/\/fontawesome.com\/license\/free Copyright 2024 Fonticons, Inc.--><path fill=\"#6dab3c\" d=\"M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z\"\/><\/svg>",
+            "svg_icon_1": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill=\"#6dab3c\" d=\"M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z\"/></svg>",
             "title_1": "30-day money back guarantee",
             "description_1": "You can return the product within 30 days if you are not satisfied.",
-            "svg_icon_2": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 512 512\"><!--!Font Awesome Free 6.6.0 by @fontawesome - https:\/\/fontawesome.com License - https:\/\/fontawesome.com\/license\/free Copyright 2024 Fonticons, Inc.--><path fill=\"#6dab3c\" d=\"M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z\"\/><\/svg>",
+            "svg_icon_2": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill=\"#6dab3c\" d=\"M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z\"/></svg>",
             "title_2": "Free shipping for orders over $90",
             "description_2": "Enjoy free shipping on all orders over $90."
           }
@@ -82,7 +82,7 @@
         "custom_liquid_cLkbqt": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{{product.description | truncatewords: 23, \".\" }}\n{% if template.name == 'product' %}\n<a href='#extended_diescription' style='text-decoration:underline'>Continue reading...<\/a>\n{% else %}\n...\n{% endif %}"
+            "custom_liquid": "{{product.description | truncatewords: 23, \".\" }}\n{% if template.name == 'product' %}\n<a href='#extended_diescription' style='text-decoration:underline'>Continue reading...</a>\n{% else %}\n...\n{% endif %}"
           }
         },
         "custom_liquid_BcWANg": {
@@ -96,7 +96,7 @@
           "settings": {
             "heading": "Materials",
             "icon": "leather",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu non sodales neque sodales ut etiam sit. Ullamcorper malesuada proin libero nunc consequat interdum. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Aliquam eleifend mi in nulla posuere sollicitudin. Ut diam quam nulla porttitor massa id neque aliquam vestibulum. Vestibulum sed arcu non odio euismod lacinia at quis. Nam at lectus urna duis convallis convallis tellus. Cursus mattis molestie a iaculis at erat pellentesque adipiscing. Cursus eget nunc scelerisque viverra mauris in. Mi sit amet mauris commodo. Eu facilisis sed odio morbi. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Mattis pellentesque id nibh tortor id. Elit ut aliquam purus sit amet.<\/p><p>Suspendisse potenti nullam ac tortor vitae purus faucibus. Ornare suspendisse sed nisi lacus sed viverra tellus. Sed viverra tellus in hac. Sit amet massa vitae tortor condimentum lacinia quis. Pellentesque adipiscing commodo elit at imperdiet. Quisque egestas diam in arcu cursus euismod. Est ultricies integer quis auctor elit sed vulputate mi sit. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Ut venenatis tellus in metus vulputate eu. Sed faucibus turpis in eu mi bibendum neque. Accumsan tortor posuere ac ut consequat semper viverra. Tempor orci eu lobortis elementum nibh tellus molestie nunc non. Mus mauris vitae ultricies leo integer. Fermentum et sollicitudin ac orci phasellus egestas tellus. Lorem mollis aliquam ut porttitor leo a diam sollicitudin. Aliquet bibendum enim facilisis gravida neque convallis a cras semper. Ut tortor pretium viverra suspendisse potenti nullam ac.<\/p>",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu non sodales neque sodales ut etiam sit. Ullamcorper malesuada proin libero nunc consequat interdum. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Aliquam eleifend mi in nulla posuere sollicitudin. Ut diam quam nulla porttitor massa id neque aliquam vestibulum. Vestibulum sed arcu non odio euismod lacinia at quis. Nam at lectus urna duis convallis convallis tellus. Cursus mattis molestie a iaculis at erat pellentesque adipiscing. Cursus eget nunc scelerisque viverra mauris in. Mi sit amet mauris commodo. Eu facilisis sed odio morbi. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Mattis pellentesque id nibh tortor id. Elit ut aliquam purus sit amet.</p><p>Suspendisse potenti nullam ac tortor vitae purus faucibus. Ornare suspendisse sed nisi lacus sed viverra tellus. Sed viverra tellus in hac. Sit amet massa vitae tortor condimentum lacinia quis. Pellentesque adipiscing commodo elit at imperdiet. Quisque egestas diam in arcu cursus euismod. Est ultricies integer quis auctor elit sed vulputate mi sit. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Ut venenatis tellus in metus vulputate eu. Sed faucibus turpis in eu mi bibendum neque. Accumsan tortor posuere ac ut consequat semper viverra. Tempor orci eu lobortis elementum nibh tellus molestie nunc non. Mus mauris vitae ultricies leo integer. Fermentum et sollicitudin ac orci phasellus egestas tellus. Lorem mollis aliquam ut porttitor leo a diam sollicitudin. Aliquet bibendum enim facilisis gravida neque convallis a cras semper. Ut tortor pretium viverra suspendisse potenti nullam ac.</p>",
             "page": ""
           }
         },
@@ -105,7 +105,7 @@
           "settings": {
             "heading": "Shipping & Returns",
             "icon": "truck",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu non sodales neque sodales ut etiam sit. Ullamcorper malesuada proin libero nunc consequat interdum. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Aliquam eleifend mi in nulla posuere sollicitudin. Ut diam quam nulla porttitor massa id neque aliquam vestibulum. Vestibulum sed arcu non odio euismod lacinia at quis. Nam at lectus urna duis convallis convallis tellus. Cursus mattis molestie a iaculis at erat pellentesque adipiscing. Cursus eget nunc scelerisque viverra mauris in. Mi sit amet mauris commodo. Eu facilisis sed odio morb<\/p>",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu non sodales neque sodales ut etiam sit. Ullamcorper malesuada proin libero nunc consequat interdum. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Aliquam eleifend mi in nulla posuere sollicitudin. Ut diam quam nulla porttitor massa id neque aliquam vestibulum. Vestibulum sed arcu non odio euismod lacinia at quis. Nam at lectus urna duis convallis convallis tellus. Cursus mattis molestie a iaculis at erat pellentesque adipiscing. Cursus eget nunc scelerisque viverra mauris in. Mi sit amet mauris commodo. Eu facilisis sed odio morb</p>",
             "page": ""
           }
         },
@@ -124,7 +124,7 @@
           "settings": {
             "heading": "Care Instructions",
             "icon": "heart",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu non sodales neque sodales ut etiam sit. Ullamcorper malesuada proin libero nunc consequat interdum. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Aliquam eleifend mi in nulla posuere sollicitudin. Ut diam quam nulla porttitor massa id neque aliquam vestibulum. Vestibulum sed arcu non odio euismod lacinia at quis. Nam at lectus urna duis convallis convallis tellus. Cursus mattis molestie a iaculis at erat pellentesque adipiscing. Cursus eget nunc scelerisque viverra mauris in. Mi sit amet mauris commodo. Eu facilisis sed odio morbi. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Mattis pellentesque id nibh tortor id. Elit ut aliquam purus sit amet.<\/p><p>Suspendisse potenti nullam ac tortor vitae purus faucibus. Ornare suspendisse sed nisi lacus sed viverra tellus. Sed viverra tellus in hac. Sit amet massa vitae tortor condimentum lacinia quis. Pellentesque adipiscing commodo elit at imperdiet. Quisque egestas diam in arcu cursus euismod. Est ultricies integer quis auctor elit sed vulputate mi sit. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Ut venenatis tellus in metus vulputate eu. Sed faucibus turpis in eu mi bibe<\/p>",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu non sodales neque sodales ut etiam sit. Ullamcorper malesuada proin libero nunc consequat interdum. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Aliquam eleifend mi in nulla posuere sollicitudin. Ut diam quam nulla porttitor massa id neque aliquam vestibulum. Vestibulum sed arcu non odio euismod lacinia at quis. Nam at lectus urna duis convallis convallis tellus. Cursus mattis molestie a iaculis at erat pellentesque adipiscing. Cursus eget nunc scelerisque viverra mauris in. Mi sit amet mauris commodo. Eu facilisis sed odio morbi. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Mattis pellentesque id nibh tortor id. Elit ut aliquam purus sit amet.</p><p>Suspendisse potenti nullam ac tortor vitae purus faucibus. Ornare suspendisse sed nisi lacus sed viverra tellus. Sed viverra tellus in hac. Sit amet massa vitae tortor condimentum lacinia quis. Pellentesque adipiscing commodo elit at imperdiet. Quisque egestas diam in arcu cursus euismod. Est ultricies integer quis auctor elit sed vulputate mi sit. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Ut venenatis tellus in metus vulputate eu. Sed faucibus turpis in eu mi bibe</p>",
             "page": ""
           }
         },
@@ -178,7 +178,7 @@
           "settings": {
             "title": "100% COMPOSTABLE",
             "icon_html": "",
-            "icon_image": "shopify:\/\/shop_images\/Oh_Crap_Logo-R.svg"
+            "icon_image": "shopify://shop_images/Oh_Crap_Logo-R.svg"
           }
         },
         "benefit_rtjg43": {
@@ -217,7 +217,11 @@
     "product_benefit_image_text_aNy9aK": {
       "type": "product-benefit-image-text",
       "settings": {
+        "color_scheme": "",
+        "animations_reveal_on_scroll": true,
+        "icon_image": "shopify://shop_images/Oh_Crap_Pawprint_-_Aligned_Straight.svg",
         "benefits_header": "Key Benefits",
+        "custom_page_width": 1100,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -225,7 +229,7 @@
     "custom_liquid_aN3qeb": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div id=\"extened_description\">\n<h3 class=\"center\">Description<\/h3>\n{{ product.description }}\n<\/div>",
+        "custom_liquid": "<div id=\"extened_description\">\n<h3 class=\"center\">Description</h3>\n{{ product.description }}\n</div>",
         "color_scheme": "scheme-5",
         "section_content_width": "page_width",
         "padding_top": 36,
