@@ -1187,16 +1187,16 @@ cart-drawer .product-option .price {
   height: 100%;
 }
 
-.tw-max-h-4 {
-  max-height: 1rem;
-}
-
 .tw-max-h-12 {
   max-height: 3rem;
 }
 
 .tw-max-h-16 {
   max-height: 4rem;
+}
+
+.tw-max-h-4 {
+  max-height: 1rem;
 }
 
 .tw-w-1 {
@@ -1247,6 +1247,14 @@ cart-drawer .product-option .price {
   width: 100%;
 }
 
+.tw-max-w-12 {
+  max-width: 3rem;
+}
+
+.tw-max-w-16 {
+  max-width: 4rem;
+}
+
 .tw-max-w-60 {
   max-width: 15rem;
 }
@@ -1255,20 +1263,16 @@ cart-drawer .product-option .price {
   max-width: 38rem;
 }
 
+.tw-max-w-full {
+  max-width: 100%;
+}
+
 .tw-max-w-lg {
   max-width: 32rem;
 }
 
 .tw-max-w-xs {
   max-width: 20rem;
-}
-
-.tw-max-w-12 {
-  max-width: 3rem;
-}
-
-.tw-max-w-16 {
-  max-width: 4rem;
 }
 
 .tw-flex-1 {
@@ -1645,6 +1649,11 @@ cart-drawer .product-option .price {
   padding-bottom: 1rem;
 }
 
+.tw-py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .tw-py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -1730,6 +1739,10 @@ cart-drawer .product-option .price {
   font-size: 1.4rem;
 }
 
+.tw-text-xl {
+  font-size: calc(1.7rem * var(--font-heading-scale));
+}
+
 .tw-text-xs {
   font-size: 1rem;
 }
@@ -1802,12 +1815,12 @@ cart-drawer .product-option .price {
     margin-bottom: 2.5rem;
   }
 
-  .md\:tw-mr-10 {
-    margin-right: 2.5rem;
-  }
-
   .md\:tw-mb-12 {
     margin-bottom: 3rem;
+  }
+
+  .md\:tw-mr-10 {
+    margin-right: 2.5rem;
   }
 
   .md\:tw-block {
@@ -1852,6 +1865,11 @@ cart-drawer .product-option .price {
 
   .md\:tw-justify-self-end {
     justify-self: end;
+  }
+
+  .md\:tw-px-36 {
+    padding-left: 9rem;
+    padding-right: 9rem;
   }
 
   .md\:\!tw-pt-0 {
@@ -1912,16 +1930,16 @@ cart-drawer .product-option .price {
     grid-column: span 9 / span 9;
   }
 
+  .lg\:tw-mb-16 {
+    margin-bottom: 4rem;
+  }
+
   .lg\:tw-mr-20 {
     margin-right: 5rem;
   }
 
   .lg\:tw-mr-3 {
     margin-right: 0.75rem;
-  }
-
-  .lg\:tw-mb-16 {
-    margin-bottom: 4rem;
   }
 
   .lg\:tw-flex {
@@ -2032,10 +2050,6 @@ cart-drawer .product-option .price {
 
   .lg\:tw-text-center {
     text-align: center;
-  }
-
-  .lg\:tw-text-2xl {
-    font-size: calc(2rem * var(--font-heading-scale));
   }
 }
 

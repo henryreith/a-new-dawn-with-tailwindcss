@@ -77,6 +77,15 @@
           </div>
         </div>
       {% endfor %}
+      <div class='product_benefits__cta center{% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+        <a
+          href='#MainContent'
+          class='button tw-font-semibold tw-px-16 tw-py-8 tw-max-w-full md:tw-px-36 tw-text-2xl'
+          style=''
+        >
+          Shop Now
+        </a>
+      </div>
     </div>
   </div>
 {% endif %}
@@ -96,6 +105,11 @@
       "id": "animations_reveal_on_scroll",
       "label": "t:sections.benefits-inline.settings.animations_reveal_on_scroll.label",
       "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Icon or extra image used add visual elements around images"
     },
     {
       "type": "text",
