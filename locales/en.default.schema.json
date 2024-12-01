@@ -612,6 +612,57 @@
         "name": "Benefits inline"
       }
     },
+    "benefits-with-media-left-right": {
+      "name": "Benefits With Media Left Right",
+      "settings": {
+        "title": {
+          "label": "Benefit's Title"
+        },
+        "font_size_title": {
+          "label": "Title font size"
+        },
+        "font_size_benefit": {
+          "label": "Benefit's font size"
+        },
+        "animations_reveal_on_scroll": {
+          "label": "Reveal sections on scroll"
+        },
+        "show_eyecatcher_above_section": {
+          "label": "Show eyecatcher above section"
+        },
+        "border_on_top": {
+          "label": "Show border on top"
+        },
+        "border_on_bottom": {
+          "label": "Show border on bottom"
+        }
+      },
+      "blocks": {
+        "benefit": {
+          "name": "Benefit",
+          "settings": {
+            "title": {
+              "label": "Benefit title"
+            },
+            "header": {
+              "content": "Icon"
+            },
+            "paragraph": {
+              "content": "If the icons appear at the top of the page, add inline svg code as this will load the icon directly in the code meaning it will be seen on page load. If the icon is lower down the page add the icon as a SVG or PNG image."
+            },
+            "iconhtml": {
+              "label": "Add inline SVG icon (HTML Code)"
+            },
+            "icon_image": {
+              "label": "SVG or PNG benefit icon"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Benefits inline"
+      }
+    },
     "collage": {
       "name": "Collage",
       "settings": {

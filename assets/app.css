@@ -1824,24 +1824,12 @@ cart-drawer .product-option .price {
     margin-bottom: 2.5rem;
   }
 
-  .md\:tw-mb-12 {
-    margin-bottom: 3rem;
+  .md\:tw-mb-24 {
+    margin-bottom: 6rem;
   }
 
   .md\:tw-mr-10 {
     margin-right: 2.5rem;
-  }
-
-  .md\:tw-mb-16 {
-    margin-bottom: 4rem;
-  }
-
-  .md\:tw-mb-20 {
-    margin-bottom: 5rem;
-  }
-
-  .md\:tw-mb-24 {
-    margin-bottom: 6rem;
   }
 
   .md\:tw-block {
@@ -1951,36 +1939,16 @@ cart-drawer .product-option .price {
     grid-column: span 9 / span 9;
   }
 
-  .lg\:tw-mb-16 {
-    margin-bottom: 4rem;
-  }
-
-  .lg\:tw-mr-20 {
-    margin-right: 5rem;
-  }
-
-  .lg\:tw-mr-3 {
-    margin-right: 0.75rem;
+  .lg\:tw-mb-40 {
+    margin-bottom: 10rem;
   }
 
   .lg\:tw-mr-24 {
     margin-right: 6rem;
   }
 
-  .lg\:tw-mb-20 {
-    margin-bottom: 5rem;
-  }
-
-  .lg\:tw-mb-28 {
-    margin-bottom: 7rem;
-  }
-
-  .lg\:tw-mb-32 {
-    margin-bottom: 8rem;
-  }
-
-  .lg\:tw-mb-40 {
-    margin-bottom: 10rem;
+  .lg\:tw-mr-3 {
+    margin-right: 0.75rem;
   }
 
   .lg\:tw-flex {
