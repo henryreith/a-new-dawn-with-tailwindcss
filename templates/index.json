@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_home_page_1_zfHPFY": {
@@ -16,35 +16,35 @@
           "type": "slider",
           "settings": {
             "slide_title": "@ziggyonthebeaches",
-            "slide_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg"
+            "slide_image": "shopify://shop_images/ziggyonthebeaches_-_2.jpg"
           }
         },
         "slider_WU9xPd": {
           "type": "slider",
           "settings": {
             "slide_title": "@bear_brindlefrenchie",
-            "slide_image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg"
+            "slide_image": "shopify://shop_images/bear_brindlefrenchie_-_2.jpg"
           }
         },
         "slider_cU7mzh": {
           "type": "slider",
           "settings": {
             "slide_title": "@Wet Dog",
-            "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+            "slide_image": "shopify://shop_images/dog-playing-with-water.jpg"
           }
         },
         "slider_Xrfihi": {
           "type": "slider",
           "settings": {
             "slide_title": "Holder",
-            "slide_image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_d4a58994-44ec-4129-b70a-a3420b17405d.jpg"
+            "slide_image": "shopify://shop_images/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_d4a58994-44ec-4129-b70a-a3420b17405d.jpg"
           }
         },
         "slider_BzcHrC": {
           "type": "slider",
           "settings": {
             "slide_title": "Box",
-            "slide_image": "shopify:\/\/shop_images\/oh-crap-non-plastic-compostable-biodegradable-dog-poop-bags-380-bag-pack-side-angle-with-rolls-20200129.jpg"
+            "slide_image": "shopify://shop_images/oh-crap-non-plastic-compostable-biodegradable-dog-poop-bags-380-bag-pack-side-angle-with-rolls-20200129.jpg"
           }
         }
       },
@@ -60,16 +60,79 @@
         "animations_reveal_on_scroll": true,
         "border_on_top": false,
         "border_on_bottom": false,
-        "heading": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags<\/span>.<\/h1>",
-        "subtext": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic<\/span> Dog Poop Bag.<\/h2>",
+        "heading": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags</span>.</h1>",
+        "subtext": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic</span> Dog Poop Bag.</h2>",
         "button_text": "Shop Now",
         "button_url": "",
-        "reviewsio": "<div id='reviewsio_hero_summary' style='max-width: 35rem;\n    margin: 0.5em 0;\n    min-height: 6.1rem'>\n                <div class='reviews-io-rating-bar-widget' data-widget-id='jXLfhonmWcpzUR87' data-store-name='oh-crap' lang='en'><\/div>\n                <script src='\/\/widget.reviews.io\/modern-widgets\/rating-bar.js' async><\/script>\n            <\/div>",
+        "reviewsio": "<div id='reviewsio_hero_summary' style='max-width: 35rem;\n    margin: 0.5em 0;\n    min-height: 6.1rem'>\n                <div class='reviews-io-rating-bar-widget' data-widget-id='jXLfhonmWcpzUR87' data-store-name='oh-crap' lang='en'></div>\n                <script src='//widget.reviews.io/modern-widgets/rating-bar.js' async></script>\n            </div>",
         "card_color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "slide_color_scheme": "",
         "slide_background_color": "#ffffff"
+      }
+    },
+    "benefit_with_media_left_right_zaRYz8": {
+      "type": "benefit-with-media-left-right",
+      "blocks": {
+        "benefit_qq7xQb": {
+          "type": "benefit",
+          "settings": {
+            "title": "Benefit 1",
+            "icon_html": "",
+            "icon_image": "shopify://shop_images/Oh_Crap_Pawprint_-_Aligned_Straight.svg"
+          }
+        },
+        "benefit_nnwGdG": {
+          "type": "benefit",
+          "settings": {
+            "title": "New Benefit 2",
+            "icon_html": "",
+            "icon_image": "shopify://shop_images/circle-check-solid_1.svg"
+          }
+        },
+        "benefit_kMRTwx": {
+          "type": "benefit",
+          "settings": {
+            "title": "New Benefit 3",
+            "icon_html": "",
+            "icon_image": "shopify://shop_images/Oh_Crap_Pawprint_-_Aligned_Straight.svg"
+          }
+        },
+        "benefit_VrCTzK": {
+          "type": "benefit",
+          "settings": {
+            "title": "New Benefit  4",
+            "icon_html": "",
+            "icon_image": "shopify://shop_images/circle-check-solid_1.svg"
+          }
+        },
+        "benefit_FeKC7i": {
+          "type": "benefit",
+          "settings": {
+            "title": "",
+            "icon_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_qq7xQb",
+        "benefit_nnwGdG",
+        "benefit_kMRTwx",
+        "benefit_VrCTzK",
+        "benefit_FeKC7i"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "title": "",
+        "font_size_title": 10,
+        "font_size_benefit": 26,
+        "animations_reveal_on_scroll": true,
+        "show_eyecatcher_above_section": false,
+        "border_on_top": false,
+        "border_on_bottom": false,
+        "padding_top": 26,
+        "padding_bottom": 26
       }
     },
     "hero_home_page_xiRKQB": {
@@ -79,70 +142,70 @@
           "type": "slider",
           "settings": {
             "slide_title": "@doggy1",
-            "slide_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg"
+            "slide_image": "shopify://shop_images/ziggyonthebeaches_-_2.jpg"
           }
         },
         "slider_Rz8Vkc": {
           "type": "slider",
           "settings": {
             "slide_title": "@doggy_Boo",
-            "slide_image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg"
+            "slide_image": "shopify://shop_images/bear_brindlefrenchie_-_2.jpg"
           }
         },
         "slider_wF7MJn": {
           "type": "slider",
           "settings": {
             "slide_title": "Water Park",
-            "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+            "slide_image": "shopify://shop_images/dog-playing-with-water.jpg"
           }
         },
         "slider_qGnXNA": {
           "type": "slider",
           "settings": {
             "slide_title": "Dog 5",
-            "slide_image": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg"
+            "slide_image": "shopify://shop_images/bear_brindlefrenchie_-_2.jpg"
           }
         },
         "slider_MEwknh": {
           "type": "slider",
           "settings": {
             "slide_title": "@Dog_6",
-            "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+            "slide_image": "shopify://shop_images/dog-playing-with-water.jpg"
           }
         },
         "slider_Lr9eRq": {
           "type": "slider",
           "settings": {
             "slide_title": "Product 2",
-            "slide_image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_6e7df95a-f56d-4aa5-8d79-0255eec9df05.jpg"
+            "slide_image": "shopify://shop_images/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_6e7df95a-f56d-4aa5-8d79-0255eec9df05.jpg"
           }
         },
         "slider_kT7Lyi": {
           "type": "slider",
           "settings": {
             "slide_title": "More Dogs1",
-            "slide_image": "shopify:\/\/shop_images\/oh-crap-dog-bag-holder-front-on_679a687a-65f9-4c83-8f71-7c1e1010076b.jpg"
+            "slide_image": "shopify://shop_images/oh-crap-dog-bag-holder-front-on_679a687a-65f9-4c83-8f71-7c1e1010076b.jpg"
           }
         },
         "slider_rPt44T": {
           "type": "slider",
           "settings": {
             "slide_title": "More Dogs 2",
-            "slide_image": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg"
+            "slide_image": "shopify://shop_images/ziggyonthebeaches_-_2.jpg"
           }
         },
         "slider_697Dya": {
           "type": "slider",
           "settings": {
             "slide_title": "More Dogs 3",
-            "slide_image": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+            "slide_image": "shopify://shop_images/dog-playing-with-water.jpg"
           }
         },
         "slider_Y6iPfe": {
           "type": "slider",
           "settings": {
             "slide_title": "Dogs 10",
-            "slide_image": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Green_4510d896-f65a-44d9-a71d-7c6085a0c465.jpg"
+            "slide_image": "shopify://shop_images/Oh_Crap_Dog_Poop_Bag_Holder_-_Green_4510d896-f65a-44d9-a71d-7c6085a0c465.jpg"
           }
         }
       },
@@ -164,11 +227,11 @@
         "animations_reveal_on_scroll": true,
         "border_on_top": false,
         "border_on_bottom": false,
-        "heading": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags<\/span>.<\/h1>",
-        "subtext": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic<\/span> Dog Poop Bag.<\/h2>",
+        "heading": "<h1 class='tw-bold'>Oh Crap <span style='color:#6dab3c'>Compostable Dog Poop Bags</span>.</h1>",
+        "subtext": "<h2>Australia's Award Winning<br>No 1 <span style='color:#6dab3c'>Non-Plastic</span> Dog Poop Bag.</h2>",
         "button_text": "Shop Now",
         "button_url": "#bags",
-        "reviewsio": "<div id=\"reviewsio_hero_summary\" style='max-width: 35rem;\n    margin: 0.5em 0;\n    min-height: 6.1rem'>\n                <div class=\"reviews-io-rating-bar-widget\" data-widget-id=\"jXLfhonmWcpzUR87\" data-store-name=\"oh-crap\" lang=\"en\"><\/div>\n                <script src=\"\/\/widget.reviews.io\/modern-widgets\/rating-bar.js\" async><\/script>\n            <\/div>",
+        "reviewsio": "<div id=\"reviewsio_hero_summary\" style='max-width: 35rem;\n    margin: 0.5em 0;\n    min-height: 6.1rem'>\n                <div class=\"reviews-io-rating-bar-widget\" data-widget-id=\"jXLfhonmWcpzUR87\" data-store-name=\"oh-crap\" lang=\"en\"></div>\n                <script src=\"//widget.reviews.io/modern-widgets/rating-bar.js\" async></script>\n            </div>",
         "sm_slide_scroll_speed": 7,
         "slide_divide_number": 8,
         "lg_slide_scroll_speed_left_column": 12,
@@ -210,6 +273,7 @@
         "benefit_YdDf3q",
         "benefit_kVeCdF"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "",
         "title": "",
@@ -230,7 +294,7 @@
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -238,18 +302,18 @@
         "column2": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/MASTER_-_Oh_Crap_Logo_-_Word_Only_979b5344-df08-4b43-a2f3-98fd2333401c.svg",
+            "image": "shopify://shop_images/MASTER_-_Oh_Crap_Logo_-_Word_Only_979b5344-df08-4b43-a2f3-98fd2333401c.svg",
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "Hello",
-            "link": "shopify:\/\/pages\/test-page"
+            "link": "shopify://pages/test-page"
           }
         },
         "column3": {
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -287,9 +351,9 @@
             "variant_id": "42544313303261",
             "custom_varient_title": "1 Month Supply",
             "custom_description": "45 Bags. Box contains 3 rolls of 15 bags.<br>\nAll new design - Fit's Oh Crap & standard dog poop bag holders. plus $4.50 shipping.",
-            "image_1": "shopify:\/\/shop_images\/45_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
-            "image_2": "shopify:\/\/shop_images\/ziggyonthebeaches_-_2.jpg",
-            "image_3": "shopify:\/\/shop_images\/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_d4a58994-44ec-4129-b70a-a3420b17405d.jpg"
+            "image_1": "shopify://shop_images/45_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
+            "image_2": "shopify://shop_images/ziggyonthebeaches_-_2.jpg",
+            "image_3": "shopify://shop_images/Oh_Crap_Dog_Poop_Bag_Holder_-_Holds_One_Roll_d4a58994-44ec-4129-b70a-a3420b17405d.jpg"
           }
         },
         "product_variant_EicFDL": {
@@ -299,10 +363,10 @@
             "variant_id": "42544313237725",
             "custom_varient_title": "6 Month Supply",
             "custom_description": "180 Bags. 12 rolls of 15 bags.<br>\nAll new design - Fit's Oh Crap & standard dog poop bag holders. plus $9.50 shipping.",
-            "image_1": "shopify:\/\/shop_images\/180_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
-            "image_2": "shopify:\/\/shop_images\/oh-crap-dog-bag-holder-front-on_2dfa88e1-68b6-400d-a649-c8bc1161d0f8.jpg",
-            "image_3": "shopify:\/\/shop_images\/bear_brindlefrenchie_-_2.jpg",
-            "image_4": "shopify:\/\/shop_images\/dog-playing-with-water.jpg"
+            "image_1": "shopify://shop_images/180_Oh_Crap_Compostable_Dog_Poop_Bags.jpg",
+            "image_2": "shopify://shop_images/oh-crap-dog-bag-holder-front-on_2dfa88e1-68b6-400d-a649-c8bc1161d0f8.jpg",
+            "image_3": "shopify://shop_images/bear_brindlefrenchie_-_2.jpg",
+            "image_4": "shopify://shop_images/dog-playing-with-water.jpg"
           }
         }
       },
@@ -316,7 +380,7 @@
         "border_on_top": false,
         "border_on_bottom": false,
         "title": "Oh Crap - Australia's No1 Non-Plastic Dog Poop Bag",
-        "subtext": "<p class=\"text-white\" >Award winning eco-friendly dog poop bags that are certified compostable. They are made from an alternative to plastic called cornstarch and break down in just 3 months! Plus they are 3x thicker than average poo bags so you don't get that warm, wet feeling every time you pick up your furry friends business. Join the #OhCrapFamily today and start <i>changing the world one poop at a time.<\/i><\/p>",
+        "subtext": "<p class=\"text-white\" >Award winning eco-friendly dog poop bags that are certified compostable. They are made from an alternative to plastic called cornstarch and break down in just 3 months! Plus they are 3x thicker than average poo bags so you don't get that warm, wet feeling every time you pick up your furry friends business. Join the #OhCrapFamily today and start <i>changing the world one poop at a time.</i></p>",
         "enable_buy_now_button": false,
         "padding_top": 40,
         "padding_bottom": 60,
@@ -411,6 +475,7 @@
   },
   "order": [
     "hero_home_page_1_zfHPFY",
+    "benefit_with_media_left_right_zaRYz8",
     "hero_home_page_xiRKQB",
     "benefit_inline_r8EHBj",
     "multicolumn",
