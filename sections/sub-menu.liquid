@@ -28,6 +28,23 @@
         border-color: rgba(var(--color-foreground), 0.06);
     }
   {% endif %}
+  {% comment %}
+  #sub-menu-outer-wrap{
+    position: relative;
+  }
+  #sub-menu-outer-wrap:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(var(--color-background), 0) 0%, rgba(var(--color-background), 1) 100%);
+      pointer-events: none;
+      z-index: 1;
+
+  }
+  {% endcomment %}
   .submenu__wrapper {
     {% if show_images_on_mobile %}
       --gap-spacing: 1rem;
@@ -99,57 +116,61 @@
   id='section-{{ section.id }}'
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
 >
-  <div class='page-width submenu__wrapper tw-mx-auto tw-flex tw-flex-wrap tw-shrink-0 tw-grow tw-justify-center tw-items-start'>
-    {%- for block in section.blocks -%}
-      <a
-        href='{{ block.settings.link }}'
-        class='submenu__item tw-relative tw-text-center lg:tw-text-left tw-flex tw-flex-col lg:tw-flex-row tw-gap-3 tw-items-center tw-justify-center{% if animate_scroll %} scroll-trigger animate--slide-in{% endif %}'
-        {{ block.shopify_attributes }}
-        {% if animate_scroll %}
-          data-cascade
-          style='--animation-order: {{ forloop.index }};'
-        {% endif %}
-      >
-        {%- if show_images_on_mobile and block.settings.image != blank -%}
-          <div class='lg:tw-hidden lg:tw-h-8 tw-flex tw-items-center tw-justify-center tw-aspect-square tw-w-full tw-h-full'>
-            <img
-              srcset='
-                {% if block.settings.image.width >= 350 %}{{ block.settings.image | image_url: width: 350 }} 350w,{% endif %}
-                {% if block.settings.image.width >= 750 %}{{ block.settings.image | image_url: width: 750 }} 750w,{% endif %}
-                {{ block.settings.image | image_url }} {{ block.settings.image }}w
-              '
-              sizes='(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw'
-              src='{{ block.settings.image | image_url: width: 750 }}'
-              loading='lazy'
-              fetchpriority='high'
-              width='{{ block.settings.image.width }}'
-              height='{{ block.settings.image.height }}'
-              alt='{{ block.settings.image.alt | escape }}'
-              class='submenu__item-image tw-w-full tw-h-full tw-rounded-full tw-object-cover tw-aspect-square'
-            >
-          </div>
-        {%- endif -%}
-        {%- liquid
-          assign text_classes = 'submenu__item-text tw-font-semibold tw-text-smd tw-text-center'
-          assign badge_classes = 'submenu__badge tw-mr-3 tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'
-          if show_images_on_mobile
-            assign text_classes = 'submenu__item-text tw-font-semibold tw-text-sm md:tw-text-smd'
-            assign badge_classes = 'submenu__badge tw-absolute lg:tw-relative tw-m-0 lg:tw-mr-3 tw-top-1 lg:tw-top-[-1px] tw-right-0  tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'
-          endif
-        -%}
-        <span class='{{ text_classes }}'>
-          {% comment %}
-            If we are showing images on mobile we need to add the below classes to the badge
-          {% endcomment %}
-          {%- if block.settings.badge_text != blank -%}
-            <span class='{{ badge_classes }}'>
-              {{- block.settings.badge_text -}}
+  <div class='page-width'>
+    <div id='sub-menu-outer-wrap' class='tw-flex tw-overflow-x-scroll tw-no-scrollbar'>
+      <div class='submenu__wrapper tw-mx-auto tw-flex tw-flex-wrap tw-shrink-0 tw-grow tw-justify-center tw-items-start'>
+        {%- for block in section.blocks -%}
+          <a
+            href='{{ block.settings.link }}'
+            class='submenu__item tw-relative tw-text-center lg:tw-text-left tw-flex tw-flex-col lg:tw-flex-row tw-gap-3 tw-items-center tw-justify-center{% if animate_scroll %} scroll-trigger animate--slide-in{% endif %}'
+            {{ block.shopify_attributes }}
+            {% if animate_scroll %}
+              data-cascade
+              style='--animation-order: {{ forloop.index }};'
+            {% endif %}
+          >
+            {%- if show_images_on_mobile and block.settings.image != blank -%}
+              <div class='lg:tw-hidden lg:tw-h-8 tw-flex tw-items-center tw-justify-center tw-aspect-square tw-w-full tw-h-full'>
+                <img
+                  srcset='
+                    {% if block.settings.image.width >= 350 %}{{ block.settings.image | image_url: width: 350 }} 350w,{% endif %}
+                    {% if block.settings.image.width >= 750 %}{{ block.settings.image | image_url: width: 750 }} 750w,{% endif %}
+                    {{ block.settings.image | image_url }} {{ block.settings.image }}w
+                  '
+                  sizes='(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw'
+                  src='{{ block.settings.image | image_url: width: 750 }}'
+                  loading='lazy'
+                  fetchpriority='high'
+                  width='{{ block.settings.image.width }}'
+                  height='{{ block.settings.image.height }}'
+                  alt='{{ block.settings.image.alt | escape }}'
+                  class='submenu__item-image tw-w-full tw-h-full tw-rounded-full tw-object-cover tw-aspect-square'
+                >
+              </div>
+            {%- endif -%}
+            {%- liquid
+              assign text_classes = 'submenu__item-text tw-font-semibold tw-text-smd tw-text-center'
+              assign badge_classes = 'submenu__badge tw-mr-3 tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'
+              if show_images_on_mobile
+                assign text_classes = 'submenu__item-text tw-font-semibold tw-text-sm md:tw-text-smd'
+                assign badge_classes = 'submenu__badge tw-absolute lg:tw-relative tw-m-0 lg:tw-mr-3 tw-top-1 lg:tw-top-[-1px] tw-right-0  tw-text-xs tw-font-bold tw-uppercase tw-rounded tw-px-2 tw-py-1'
+              endif
+            -%}
+            <span class='{{ text_classes }}'>
+              {% comment %}
+                If we are showing images on mobile we need to add the below classes to the badge
+              {% endcomment %}
+              {%- if block.settings.badge_text != blank -%}
+                <span class='{{ badge_classes }}'>
+                  {{- block.settings.badge_text -}}
+                </span>
+              {%- endif -%}
+              {{ block.settings.text }}
             </span>
-          {%- endif -%}
-          {{ block.settings.text }}
-        </span>
-      </a>
-    {%- endfor -%}
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
   </div>
 </div>
 
