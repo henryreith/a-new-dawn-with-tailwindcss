@@ -45,7 +45,7 @@
 
   }
   {% endcomment %}
-  .submenu__wrapper {
+  .submenu__inner-wrapper {
     {% if show_images_on_mobile %}
       --gap-spacing: 1rem;
     {% else %}
@@ -117,8 +117,8 @@
   class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
 >
   <div class='page-width'>
-    <div id='sub-menu-outer-wrap' class='tw-flex tw-overflow-x-scroll tw-no-scrollbar'>
-      <div class='submenu__wrapper tw-mx-auto tw-flex tw-flex-wrap tw-shrink-0 tw-grow tw-justify-center tw-items-start'>
+    <div id='submenu__outer-wrap' class=''>
+      <div class='submenu__inner-wrapper tw-mx-auto tw-flex tw-flex-wrap tw-shrink-0 tw-grow tw-justify-center tw-items-start'>
         {%- for block in section.blocks -%}
           <a
             href='{{ block.settings.link }}'
