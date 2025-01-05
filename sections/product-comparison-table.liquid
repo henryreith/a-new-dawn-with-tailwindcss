@@ -1,0 +1,149 @@
+{% if product.metafields.custom.comparison_table %}
+  <section class='comparison-table-section tw-py-10 tw-px-5'>
+    {% assign table_overview = product.metafields.custom.comparison_table[0] %}
+    {% assign table_header = product.metafields.custom.comparison_table[1] %}
+    {% assign table_features = product.metafields.custom.comparison_table[2] %}
+
+    <div class='comparison-table-content tw-max-w-4xl tw-mx-auto'>
+      {% if table_overview.header or table_overview.sub_paragraph %}
+        <div class='tw-mb-8'>
+          {% if table_overview.header != blank %}
+            <h2 class='tw-text-3xl tw-font-bold tw-text-center'>
+              {{ table_overview.header | metafield_tag }}
+            </h2>
+          {% endif %}
+          {% if table_overview.sub_paragraph != blank %}
+            <p class='tw-text-lg tw-text-center tw-mt-4'>
+              {{ table_overview.sub_paragraph | metafield_tag }}
+            </p>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <table class='comparison-table tw-w-full tw-border-collapse tw-text-center'>
+        <thead>
+          <tr>
+            <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>Feature</th>
+            <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
+              {% if table_header.our_brand_logo != blank %}
+                <img
+                  src='{{ table_header.our_brand_logo | file_img_url: '150x' }}'
+                  alt='{{ table_header.our_brand_name }}'
+                  class='tw-mx-auto tw-max-h-12'
+                >
+              {% else %}
+                {{ table_header.our_brand_name }}
+              {% endif %}
+            </th>
+            {% if table_header.competitor_1_title != blank %}
+              <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
+                {{ table_header.competitor_1_title }}
+              </th>
+            {% endif %}
+            {% if table_header.competitor_2_title != blank %}
+              <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
+                {{ table_header.competitor_2_title }}
+              </th>
+            {% endif %}
+            {% if table_header.competitor_3_title != blank %}
+              <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
+                {{ table_header.competitor_3_title }}
+              </th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for feature in table_features %}
+            <tr>
+              <td class='tw-px-4 tw-py-2 tw-border'>{{ feature.feature_title }}</td>
+              <td class='tw-px-4 tw-py-2 tw-border'>
+                {% if feature.our_brand_has_feature == true %}✔️{% else %}✘{% endif %}
+              </td>
+              {% if table_header.competitor_1_title != blank %}
+                <td class='tw-px-4 tw-py-2 tw-border'>
+                  {% if feature.competitor_1_has_feature == true %}✔️{% else %}✘{% endif %}
+                </td>
+              {% endif %}
+              {% if table_header.competitor_2_title != blank %}
+                <td class='tw-px-4 tw-py-2 tw-border'>
+                  {% if feature.competitor_2_has_feature == true %}✔️{% else %}✘{% endif %}
+                </td>
+              {% endif %}
+              {% if table_header.competitor_3_title != blank %}
+                <td class='tw-px-4 tw-py-2 tw-border'>
+                  {% if feature.competitor_3_has_feature == true %}✔️{% else %}✘{% endif %}
+                </td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Comparison Table",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "t:sections.all.section_content_width.label",
+      "options": [
+        {
+          "label": "t:sections.all.section_content_width.options__1.label",
+          "value": "full_width"
+        },
+        {
+          "label": "t:sections.all.section_content_width.options__2.label",
+          "value": "page_width"
+        },
+        {
+          "label": "t:sections.all.section_content_width.options__3.label",
+          "value": "narrow"
+        }
+      ],
+      "default": "page_width"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Product Comparison Table"
+    }
+  ]
+}
+{% endschema %}

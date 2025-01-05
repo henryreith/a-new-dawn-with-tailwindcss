@@ -1275,6 +1275,10 @@ cart-drawer .product-option .price {
   max-width: 20rem;
 }
 
+.tw-max-w-4xl {
+  max-width: 56rem;
+}
+
 .tw-flex-1 {
   flex: 1 1 0%;
 }
@@ -1289,6 +1293,10 @@ cart-drawer .product-option .price {
 
 .tw-grow {
   flex-grow: 1;
+}
+
+.tw-border-collapse {
+  border-collapse: collapse;
 }
 
 .tw-snap-none {
@@ -1570,6 +1578,11 @@ cart-drawer .product-option .price {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
+.tw-bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+}
+
 .tw-bg-cover {
   background-size: cover;
 }
@@ -1668,6 +1681,16 @@ cart-drawer .product-option .price {
   padding-bottom: 2rem;
 }
 
+.tw-px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.tw-py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .\!tw-pb-4 {
   padding-bottom: 1rem !important;
 }
@@ -1754,6 +1777,10 @@ cart-drawer .product-option .price {
 
 .tw-text-xs {
   font-size: 1rem;
+}
+
+.tw-text-3xl {
+  font-size: calc(3rem * var(--font-heading-scale));
 }
 
 .tw-font-bold {
