@@ -259,10 +259,20 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "product_comparison_table_GawgUH": {
+      "type": "product-comparison-table",
+      "settings": {
+        "color_scheme": "",
+        "section_content_width": "page_width",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
+    "product_comparison_table_GawgUH",
     "benefit_inline_k6d7aw",
     "product_benefit_image_text_aNy9aK",
     "custom_liquid_aN3qeb",
