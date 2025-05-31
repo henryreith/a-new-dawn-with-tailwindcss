@@ -196,7 +196,7 @@
       "name": "How To Use",
       "settings": {
         "section_heading": "How to Use Our Product",
-        "video_image": "{{ shop.brand.logo }}",
+        "video_image": "shopify://shop_images/bear_brindlefrenchie_-_2.jpg",
         "color_scheme": "",
         "section_content_width": "page_width",
         "padding_top": 40,
