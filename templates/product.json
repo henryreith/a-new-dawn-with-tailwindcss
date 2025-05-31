@@ -196,6 +196,7 @@
       "name": "How To Use",
       "settings": {
         "section_heading": "How to Use Our Product",
+        "video_image": "{{ shop.brand.logo }}",
         "color_scheme": "",
         "section_content_width": "page_width",
         "padding_top": 40,
