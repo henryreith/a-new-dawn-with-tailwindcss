@@ -1,100 +1,8 @@
-{% schema %}
-{
-  "name": "How To Use",
-  "settings": [
-    {
-      "type": "text",
-      "id": "section_heading",
-      "label": "Section Heading",
-      "default": "How to Use Our Product"
-    },
-    {
-      "type": "video",
-      "id": "video_url",
-      "label": "Video"
-    },
-    {
-      "type": "image_picker",
-      "id": "video_image",
-      "label": "Image of Steps",
-      "info": "Image of steps. Suggest this be a GIF or static image that represents the steps visually. If a video is added above, this image will not be shown"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
-    },
-    {
-      "type": "select",
-      "id": "section_content_width",
-      "label": "t:sections.all.section_content_width.label",
-      "options": [
-        {
-          "label": "t:sections.all.section_content_width.options__1.label",
-          "value": "full_width"
-        },
-        {
-          "label": "t:sections.all.section_content_width.options__2.label",
-          "value": "page_width"
-        },
-        {
-          "label": "t:sections.all.section_content_width.options__3.label",
-          "value": "narrow"
-        }
-      ],
-      "default": "page_width"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 40
-    }
-  ],
-  "blocks": [
-    {
-      "type": "step",
-      "name": "Step",
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "step_text",
-          "label": "Step Text",
-          "default": "<p>Step description goes here.</p>"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "How To Use",
-      "blocks": [{ "type": "step" }, { "type": "step" }, { "type": "step" }]
-    }
-  ]
-}
-{% endschema %}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
-
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
@@ -103,54 +11,181 @@
   }
 {%- endstyle -%}
 
-{%- assign content_width_class = 'page-width' -%}
-{%- case section.settings.section_content_width -%}
-  {%- when 'narrow' -%}
-    {%- assign content_width_class = 'page-width page-width--narrow' -%}
-  {%- when 'full_width' -%}
-    {%- assign content_width_class = '' -%}
-{%- endcase -%}
+{%- assign howto = section.settings.how_to_object -%}
+{%- if howto -%}
+  {%- comment -%} Build the heading text {%- endcomment -%}
+  {%- assign section_title = section.settings.heading -%}
+  {%- if section.settings.append_product_name and product.title -%}
+    {%- assign section_title = section_title | append: ' ' | append: product.title -%}
+  {%- endif -%}
 
-<section class='section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}'>
-  <div class='{{ content_width_class }}'>
-    <h2 class='tw-text-3xl tw-font-bold tw-text-center tw-mb-12'>
-      {{ section.settings.section_heading | escape }}
-    </h2>
-    <div class='tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-content-start tw-gap-12'>
-      <!-- Left: Video or GIF -->
-      <div class='tw-flex tw-justify-center'>
-        {% if section.settings.video_url != blank %}
-          <video class='tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' controls>
-            <source src='{{ section.settings.video_url | escape }}' type='video/mp4'>
-            Your browser does not support the video tag.
-          </video>
-        {% elsif section.settings.video_image != blank %}
-          {{
-            section.settings.video_image
-            | image_url: width: 30
-            | image_tag: width: section.settings.video_image.width, height: section.settings.video_image.height
-          }}
+  {%- assign content_width_class = 'page-width' -%}
+  {%- case section.settings.section_content_width -%}
+    {%- when 'narrow' -%}
+      {%- assign content_width_class = 'page-width page-width--narrow' -%}
+    {%- when 'full_width' -%}
+      {%- assign content_width_class = '' -%}
+  {%- endcase -%}
+
+  <section class='section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'>
+    <div class='{{ content_width_class }}'>
+      {%- comment -%} Title {%- endcomment -%}
+      <h2 class='tw-text-3xl tw-font-bold tw-text-center tw-mb-4'>
+        {{ section_title }}
+      </h2>
+
+      {%- comment -%} Sub-description {%- endcomment -%}
+      {% if howto.description != blank %}
+        <div class='tw-text-center tw-text-lg tw-mb-8'>
+          {{ howto.description | richtext }}
+        </div>
+      {% endif %}
+
+      <div class='tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-12'>
+        {%- comment -%} Media + ordering logic {%- endcomment -%}
+        {% if section.settings.media_position == 'left' %}
+          <div class='tw-flex tw-justify-center'>
+            {% if howto.media.media_content_type == 'video' %}
+              <video class='tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' controls>
+                <source src='{{ howto.media | file_url }}' type='video/mp4'>
+                Your browser does not support the video tag.
+              </video>
+            {% else %}
+              {{ howto.media | image_tag: class: 'tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' }}
+            {% endif %}
+          </div>
+          <div>
+            {%- comment -%} Steps list {%- endcomment -%}
+            <ol class='tw-space-y-8'>
+              {% for step in howto.steps %}
+                <li class='tw-flex tw-items-start'>
+                  {% if step.icon != blank %}
+                    {{ step.icon | image_tag: class: 'tw-h-10 tw-w-10 tw-mr-4' }}
+                  {% else %}
+                    <span class='tw-flex-shrink-0 tw-h-10 tw-w-10 tw-bg-blue-600 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center tw-font-bold tw-text-xl tw-mr-4'>
+                      {{ forloop.index }}
+                    </span>
+                  {% endif %}
+                  <div class='tw-text-lg tw-leading-relaxed' style='max-width: 32rem;'>
+                    {{ step.step_text | richtext }}
+                  </div>
+                </li>
+              {% endfor %}
+            </ol>
+          </div>
         {% else %}
-          <div class='tw-bg-gray-100 tw-rounded-lg tw-w-full tw-h-64 tw-flex tw-items-center tw-justify-center tw-text-gray-400'>
-            No video or image provided
+          <div class='lg:tw-order-2 tw-flex tw-justify-center'>
+            {% if howto.media.media_content_type == 'video' %}
+              <video class='tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' controls>
+                <source src='{{ howto.media | file_url }}' type='video/mp4'>
+                Your browser does not support the video tag.
+              </video>
+            {% else %}
+              {{ howto.media | image_tag: class: 'tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' }}
+            {% endif %}
+          </div>
+          <div class='lg:tw-order-1'>
+            {%- comment -%} Steps list {%- endcomment -%}
+            <ol class='tw-space-y-8'>
+              {% for step in howto.steps %}
+                <li class='tw-flex tw-items-start'>
+                  {% if step.icon != blank %}
+                    {{ step.icon | image_tag: class: 'tw-h-10 tw-w-10 tw-mr-4' }}
+                  {% else %}
+                    <span class='tw-flex-shrink-0 tw-h-10 tw-w-10 tw-bg-blue-600 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center tw-font-bold tw-text-xl tw-mr-4'>
+                      {{ forloop.index }}
+                    </span>
+                  {% endif %}
+                  <div class='tw-text-lg tw-leading-relaxed' style='max-width: 32rem;'>
+                    {{ step.step_text | richtext }}
+                  </div>
+                </li>
+              {% endfor %}
+            </ol>
           </div>
         {% endif %}
       </div>
-      <!-- Right: Steps -->
-      <div>
-        <ol class='tw-space-y-8'>
-          {% for block in section.blocks %}
-            <li class='tw-flex tw-items-start'>
-              <span class='tw-flex-shrink-0 tw-h-10 tw-w-10 tw-bg-blue-600 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center tw-font-bold tw-text-xl tw-mr-4'>
-                {{ forloop.index }}
-              </span>
-              <div class='tw-text-lg tw-leading-relaxed' style='max-width: 32rem;'>
-                {{ block.settings.step_text }}
-              </div>
-            </li>
-          {% endfor %}
-        </ol>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "How It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section title",
+      "default": "How it works"
+    },
+    {
+      "type": "checkbox",
+      "id": "append_product_name",
+      "label": "Append product name to title",
+      "default": false
+    },
+    {
+      "type": "metaobject",
+      "id": "how_to_object",
+      "label": "How It Works content",
+      "metaobject": {
+        "type": "how_to",
+        "list": false
+      }
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Media on desktop",
+      "options": [
+        { "label": "Left", "value": "left" },
+        { "label": "Right", "value": "right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content width",
+      "options": [
+        { "label": "Full width", "value": "full_width" },
+        { "label": "Page width", "value": "page_width" },
+        { "label": "Narrow", "value": "narrow" }
+      ],
+      "default": "page_width"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works"
+    }
+  ]
+}
+{% endschema %}
