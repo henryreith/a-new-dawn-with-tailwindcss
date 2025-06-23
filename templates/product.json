@@ -166,43 +166,6 @@
         "padding_bottom": 36
       }
     },
-    "how_to_use_Rarb9Q": {
-      "type": "how-to-use",
-      "blocks": {
-        "step_t6QqnC": {
-          "type": "step",
-          "settings": {
-            "step_text": "<p>Step description goes here.</p>"
-          }
-        },
-        "step_ALzBRG": {
-          "type": "step",
-          "settings": {
-            "step_text": "<p>Step description goes here.</p>"
-          }
-        },
-        "step_UgbbP3": {
-          "type": "step",
-          "settings": {
-            "step_text": "<p>Step description goes here.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "step_t6QqnC",
-        "step_ALzBRG",
-        "step_UgbbP3"
-      ],
-      "name": "How To Use",
-      "settings": {
-        "section_heading": "How to Use Our Product",
-        "video_image": "shopify://shop_images/bear_brindlefrenchie_-_2.jpg",
-        "color_scheme": "",
-        "section_content_width": "page_width",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
     "product_comparison_table_GawgUH": {
       "type": "product-comparison-table",
       "settings": {
@@ -305,11 +268,25 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "how_to_use_4CcBgL": {
+      "type": "how-to-use",
+      "name": "How It Works",
+      "settings": {
+        "heading": "How it works",
+        "append_product_name": false,
+        "how_it_works_object": "",
+        "media_position": "left",
+        "section_content_width": "page_width",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "color_scheme": ""
+      }
     }
   },
   "order": [
     "main",
-    "how_to_use_Rarb9Q",
+    "how_to_use_4CcBgL",
     "product_comparison_table_GawgUH",
     "benefit_inline_k6d7aw",
     "product_benefit_image_text_aNy9aK",
