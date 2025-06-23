@@ -11,8 +11,8 @@
   }
 {%- endstyle -%}
 
-{%- assign howto = section.settings.how_to_object -%}
-{%- if howto -%}
+{%- assign howitworks = section.settings.how_it_works -%}
+{%- if howitworks -%}
   {%- comment -%} Build the heading text {%- endcomment -%}
   {%- assign section_title = section.settings.heading -%}
   {%- if section.settings.append_product_name and product.title -%}
@@ -35,9 +35,9 @@
       </h2>
 
       {%- comment -%} Sub-description {%- endcomment -%}
-      {% if howto.description != blank %}
+      {% if howitworks.description != blank %}
         <div class='tw-text-center tw-text-lg tw-mb-8'>
-          {{ howto.description | richtext }}
+          {{ howitworks.description | richtext }}
         </div>
       {% endif %}
 
@@ -45,19 +45,19 @@
         {%- comment -%} Media + ordering logic {%- endcomment -%}
         {% if section.settings.media_position == 'left' %}
           <div class='tw-flex tw-justify-center'>
-            {% if howto.media.media_content_type == 'video' %}
+            {% if howitworks.media.media_content_type == 'video' %}
               <video class='tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' controls>
-                <source src='{{ howto.media | file_url }}' type='video/mp4'>
+                <source src='{{ howitworks.media | file_url }}' type='video/mp4'>
                 Your browser does not support the video tag.
               </video>
             {% else %}
-              {{ howto.media | image_tag: class: 'tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' }}
+              {{ howitworks.media | image_tag: class: 'tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' }}
             {% endif %}
           </div>
           <div>
             {%- comment -%} Steps list {%- endcomment -%}
             <ol class='tw-space-y-8'>
-              {% for step in howto.steps %}
+              {% for step in howitworks.steps %}
                 <li class='tw-flex tw-items-start'>
                   {% if step.icon != blank %}
                     {{ step.icon | image_tag: class: 'tw-h-10 tw-w-10 tw-mr-4' }}
@@ -75,19 +75,19 @@
           </div>
         {% else %}
           <div class='lg:tw-order-2 tw-flex tw-justify-center'>
-            {% if howto.media.media_content_type == 'video' %}
+            {% if howitworks.media.media_content_type == 'video' %}
               <video class='tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' controls>
-                <source src='{{ howto.media | file_url }}' type='video/mp4'>
+                <source src='{{ howitworks.media | file_url }}' type='video/mp4'>
                 Your browser does not support the video tag.
               </video>
             {% else %}
-              {{ howto.media | image_tag: class: 'tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' }}
+              {{ howitworks.media | image_tag: class: 'tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md' }}
             {% endif %}
           </div>
           <div class='lg:tw-order-1'>
             {%- comment -%} Steps list {%- endcomment -%}
             <ol class='tw-space-y-8'>
-              {% for step in howto.steps %}
+              {% for step in howitworks.steps %}
                 <li class='tw-flex tw-items-start'>
                   {% if step.icon != blank %}
                     {{ step.icon | image_tag: class: 'tw-h-10 tw-w-10 tw-mr-4' }}
@@ -127,12 +127,9 @@
     },
     {
       "type": "metaobject",
-      "id": "how_to_object",
+      "id": "how_it_works_object",
       "label": "How It Works content",
-      "metaobject": {
-        "type": "how_to",
-        "list": false
-      }
+      "metaobject_type": "how_it_works"
     },
     {
       "type": "select",
