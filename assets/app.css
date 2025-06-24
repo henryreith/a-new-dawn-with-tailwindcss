@@ -1114,6 +1114,14 @@ cart-drawer .product-option .price {
   margin-top: 1rem;
 }
 
+.tw-mr-2 {
+  margin-right: 0.5rem;
+}
+
+.tw-mt-1 {
+  margin-top: 0.25rem;
+}
+
 .\!tw-block {
   display: block !important;
 }
@@ -1140,6 +1148,10 @@ cart-drawer .product-option .price {
 
 .tw-aspect-square {
   aspect-ratio: 1 / 1;
+}
+
+.tw-aspect-video {
+  aspect-ratio: 16 / 9;
 }
 
 .tw-h-1 {
@@ -1201,6 +1213,10 @@ cart-drawer .product-option .price {
 
 .tw-h-full {
   height: 100%;
+}
+
+.tw-h-16 {
+  height: 4rem;
 }
 
 .tw-max-h-12 {
@@ -1269,6 +1285,14 @@ cart-drawer .product-option .price {
 
 .tw-w-full {
   width: 100%;
+}
+
+.tw-w-12 {
+  width: 3rem;
+}
+
+.tw-w-16 {
+  width: 4rem;
 }
 
 .tw-min-w-\[1000px\] {
@@ -1522,6 +1546,18 @@ cart-drawer .product-option .price {
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+.tw-space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.tw-space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
 .tw-justify-self-start {
@@ -1864,6 +1900,10 @@ cart-drawer .product-option .price {
   font-weight: 600;
 }
 
+.tw-font-medium {
+  font-weight: 500;
+}
+
 .tw-uppercase {
   text-transform: uppercase;
 }
@@ -1889,6 +1929,26 @@ cart-drawer .product-option .price {
 .tw-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.tw-text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
+}
+
+.tw-text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
+
+.tw-text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+
+.tw-text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
 
 .tw-no-underline {
