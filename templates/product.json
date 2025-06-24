@@ -166,20 +166,6 @@
         "padding_bottom": 36
       }
     },
-    "how_to_use_4CcBgL": {
-      "type": "how-to-use",
-      "name": "How It Works",
-      "settings": {
-        "heading": "How it works",
-        "append_product_name": false,
-        "how_it_works_object": "{{ product.metafields.custom.how_it_works.value }}",
-        "media_position": "left",
-        "section_content_width": "page_width",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "color_scheme": ""
-      }
-    },
     "product_comparison_table_GawgUH": {
       "type": "product-comparison-table",
       "settings": {
@@ -286,7 +272,6 @@
   },
   "order": [
     "main",
-    "how_to_use_4CcBgL",
     "product_comparison_table_GawgUH",
     "benefit_inline_k6d7aw",
     "product_benefit_image_text_aNy9aK",
