@@ -13,7 +13,7 @@
 
 {%- comment -%} Get the how it works data from the product's metafield {%- endcomment -%}
 {%- assign howitworks = product.metafields.custom.how_it_works -%}
-
+test
 {%- if howitworks -%}
   {%- comment -%} Build the heading text {%- endcomment -%}
   {%- assign section_title = section.settings.heading -%}
@@ -105,7 +105,7 @@
                         | append: forloop.index
                       }}
                     {%- else -%}
-                      <span class='tw-flex-shrink-0 tw-h-10 tw-w-10 tw-bg-{{ section.settings.accent_color }} tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center tw-font-bold tw-text-sm'>
+                      <span class='tw-flex-shrink-0 tw-h-10 tw-w-10 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center tw-font-bold tw-text-sm'>
                         {{ forloop.index }}
                       </span>
                     {%- endif -%}
@@ -116,7 +116,7 @@
                     {%- if step.step_title != blank -%}
                       <h3 class='tw-text-xl tw-font-semibold tw-text-gray-900 tw-mb-2'>
                         {%- if section.settings.show_step_numbers and step.icon == blank -%}
-                          <span class='tw-text-{{ section.settings.accent_color }} tw-mr-2'>{{ forloop.index }}.</span>
+                          <span class='tw-mr-2'>{{ forloop.index }}.</span>
                         {%- endif -%}
                         {{ step.step_title }}
                       </h3>
@@ -153,7 +153,7 @@
 
 {% schema %}
 {
-  "name": "How It Works (Product)",
+  "name": "How It Works",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -228,24 +228,6 @@
       "content": "Styling"
     },
     {
-      "type": "select",
-      "id": "accent_color",
-      "label": "Step number color",
-      "options": [
-        { "label": "Blue", "value": "blue-600" },
-        { "label": "Green", "value": "green-600" },
-        { "label": "Purple", "value": "purple-600" },
-        { "label": "Red", "value": "red-600" },
-        { "label": "Yellow", "value": "yellow-600" },
-        { "label": "Indigo", "value": "indigo-600" },
-        { "label": "Pink", "value": "pink-600" },
-        { "label": "Teal", "value": "teal-600" },
-        { "label": "Orange", "value": "orange-600" },
-        { "label": "Dark Gray", "value": "gray-800" }
-      ],
-      "default": "blue-600"
-    },
-    {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "Color scheme",
@@ -278,7 +260,7 @@
   ],
   "presets": [
     {
-      "name": "How It Works (Product)"
+      "name": "How It Works"
     }
   ]
 }
