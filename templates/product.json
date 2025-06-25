@@ -171,16 +171,18 @@
       "name": "How It Works",
       "settings": {
         "heading": "How It Works",
-        "media_position": "left",
         "section_content_width": "page_width",
+        "color_scheme": "scheme-1",
+        "media_position": "left",
+        "show_media": true,
+        "autoplay_video": false,
+        "show_video_controls": true,
         "show_step_numbers": true,
         "show_step_prefix": "Step",
         "show_step_suffix": ".",
         "step_font_size": 1.4,
-        "show_media": true,
-        "autoplay_video": false,
-        "show_video_controls": true,
-        "color_scheme": "scheme-1",
+        "icon_position": "left",
+        "icon_size": 8,
         "padding_top": 40,
         "padding_bottom": 40
       }
