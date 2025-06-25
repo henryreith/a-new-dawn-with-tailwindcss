@@ -31,12 +31,12 @@
 
   <section class='how-it-works section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'>
     <div class='{{ content_width_class }} how-it-works__container'>
-      <!-- Title -->
+      {%- comment -%} Title {%- endcomment -%}
       <h2 class='how-it-works__title tw-text-3xl tw-font-bold tw-text-center {% if howitworks.description != blank %}tw-mb-4{% else %}tw-mb-10{% endif %}'>
         {{- section_title -}}
       </h2>
 
-      <!-- Description -->
+      {%- comment -%} Description {%- endcomment -%}
       {% if howitworks.description != blank %}
         <div class='how-it-works__description tw-text-center tw-text-lg tw-mb-10'>
           {{- howitworks.description | metafield_tag -}}
@@ -44,43 +44,45 @@
       {% endif %}
 
       <div class='how-it-works__grid how-it-works__grid--media-{{ section.settings.media_position }} tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-20 tw-items-center'>
-        <!-- Media -->
-        <div class='how-it-works__media {% if section.settings.media_position == 'right' %}lg:tw-order-2{% endif %} tw-flex tw-justify-center'>
-          {% if howitworks.media != blank %}
-            {% if howitworks.media.media_content_type == 'video' %}
-              <video
-                class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'
-                {% if section.settings.autoplay_video %}
-                  autoplay muted loop
-                {% endif %}
-                {% if section.settings.show_video_controls %}
-                  controls
-                {% endif %}
-                playsinline
-              >
-                <source src='{{ howitworks.media | file_url }}' type='video/mp4'>
-                Your browser does not support the video tag.
-              </video>
-            {% else %}
-              {{
-                howitworks.media
-                | image_url: width: 600
-                | image_tag:
-                  widths: '300,600,900,1200',
-                  class: 'how-it-works__media-image tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md',
-                  alt: howitworks.media.alt
-              }}
+        {% if section.settings.show_media %}
+          {%- comment -%} Media {%- endcomment -%}
+          <div class='how-it-works__media {% if section.settings.media_position == 'right' %}lg:tw-order-2{% endif %} tw-flex tw-justify-center'>
+            {% if howitworks.media != blank %}
+              {% if howitworks.media.media_content_type == 'video' %}
+                <video
+                  class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'
+                  {% if section.settings.autoplay_video %}
+                    autoplay muted loop
+                  {% endif %}
+                  {% if section.settings.show_video_controls %}
+                    controls
+                  {% endif %}
+                  playsinline
+                >
+                  <source src='{{ howitworks.media | file_url }}' type='video/mp4'>
+                  Your browser does not support the video tag.
+                </video>
+              {% else %}
+                {{
+                  howitworks.media
+                  | image_url: width: 600
+                  | image_tag:
+                    widths: '300,600,900,1200',
+                    class: 'how-it-works__media-image tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md',
+                    alt: howitworks.media.alt
+                }}
+              {% endif %}
             {% endif %}
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
 
-        <!-- Steps -->
+        {%- comment -%} Steps {%- endcomment -%}
         <div class='how-it-works__steps {% if section.settings.media_position == 'right' %}lg:tw-order-1{% endif %}'>
           {% if howitworks.step != blank %}
             <ol class='how-it-works__step-list tw-px-0 tw-space-y-6'>
               {% for step in howitworks.step.value %}
                 <li class='how-it-works__step tw-flex tw-items-center tw-space-x-10'>
-                  <!-- Icon or number -->
+                  {%- comment -%} Icon or number {%- endcomment -%}
                   <div class='how-it-works__step-icon-wrapper tw-flex-shrink-0'>
                     {% if step.icon != blank %}
                       {{
@@ -101,7 +103,7 @@
                     {% endif %}
                   </div>
 
-                  <!-- Text -->
+                  {%- comment -%} Text {%- endcomment -%}
                   <div class='how-it-works__step-content tw-flex-1'>
                     {% if step.step != blank %}
                       <div class='how-it-works__step-text tw-mb-2'>
@@ -110,7 +112,7 @@
                             {% if section.settings.show_step_prefix %}
                               {{ section.settings.show_step_prefix }}
                             {% endif %}
-                            {{ forloop.index }}
+                            {{- forloop.index -}}
                             {% if section.settings.show_step_suffix %}
                               {{ section.settings.show_step_suffix }}
                             {% endif %}
