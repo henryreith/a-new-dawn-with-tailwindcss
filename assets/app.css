@@ -2243,6 +2243,10 @@ cart-drawer .product-option .price {
     align-items: center;
   }
 
+  .lg\:tw-justify-start {
+    justify-content: flex-start;
+  }
+
   .lg\:tw-gap-12 {
     gap: 3rem;
   }

@@ -92,7 +92,7 @@
         {% endif %}
 
         {%- comment -%} Steps {%- endcomment -%}
-        <div class='how-it-works__steps{% if section.settings.media_position == 'right' %} lg:tw-order-1{% endif %}'>
+        <div class='how-it-works__steps tw-flex tw-justify-center lg:tw-justify-start{% if section.settings.media_position == 'right' %} lg:tw-order-1{% endif %}'>
           {% if howitworks.step != blank %}
             {%- assign icon_position = section.settings.icon_position -%}
             <ol class='how-it-works__step-list tw-px-0 tw-space-y-6'>
