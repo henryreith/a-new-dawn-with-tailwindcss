@@ -12,6 +12,10 @@
   .how-it-works__step-number {
     font-size: {{ section.settings.step_font_size }}rem;
   }
+  .how-it-works__step-icon, .how-it-works__step-icon--fallback{
+    width: {{  section.settings.icon_size }}rem;
+    height: {{  section.settings.icon_size }}rem;
+  }
 {%- endstyle -%}
 
 {%- assign howitworks = product.metafields.custom.how_it_works.value -%}
@@ -90,20 +94,21 @@
         {%- comment -%} Steps {%- endcomment -%}
         <div class='how-it-works__steps{% if section.settings.media_position == 'right' %} lg:tw-order-1{% endif %}'>
           {% if howitworks.step != blank %}
+            {%- assign icon_position = section.settings.icon_position -%}
             <ol class='how-it-works__step-list tw-px-0 tw-space-y-6'>
               {% for step in howitworks.step.value %}
-                <li class='how-it-works__step tw-flex tw-items-center tw-space-x-10'>
+                <li class='how-it-works__step tw-flex {% if icon_position == 'left' %}tw-items-center tw-space-x-10{% endif %} {% if icon_position == 'above' %}tw-flex-col{% endif %}'>
                   {%- comment -%} Icon or number {%- endcomment -%}
-                  <div class='how-it-works__step-icon-wrapper tw-flex-shrink-0'>
+                  <div class='how-it-works__step-icon-wrapper tw-flex-shrink-0 {% if icon_position == 'above' %}tw-mb-4{% endif %}'>
                     {% if step.icon != blank %}
                       {{
                         step.icon
                         | image_url: width: 80
-                        | image_tag: class: 'how-it-works__step-icon tw-h-10 tw-w-10', alt: step.icon.alt
+                        | image_tag: class: 'how-it-works__step-icon', alt: step.icon.alt
                       }}
                     {% else %}
                       <span
-                        class='how-it-works__step-icon--fallback tw-flex tw-items-center tw-justify-center tw-h-10 tw-w-10 tw-rounded-full tw-font-bold'
+                        class='how-it-works__step-icon--fallback tw-flex tw-items-center tw-justify-center tw-rounded-full tw-font-bold'
                         style='
                           background-color: rgba(var(--color-background-contrast));
                           color: rgba(var(--color-foreground));
@@ -121,11 +126,11 @@
                         {% if section.settings.show_step_numbers %}
                           <span class='how-it-works__step-number tw-mr-2'>
                             {% if section.settings.show_step_prefix %}
-                              {{ section.settings.show_step_prefix }}
+                              {{- section.settings.show_step_prefix -}}
                             {% endif %}
                             {{- forloop.index -}}
                             {% if section.settings.show_step_suffix %}
-                              {{ section.settings.show_step_suffix }}
+                              {{- section.settings.show_step_suffix -}}
                             {% endif %}
                           </span>
                         {% endif %}
@@ -164,6 +169,28 @@
       "default": "How It Works",
       "info": "This title will be used for all products using this section"
     },
+
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content width",
+      "options": [
+        { "label": "Full width", "value": "full_width" },
+        { "label": "Page width", "value": "page_width" },
+        { "label": "Narrow", "value": "narrow" }
+      ],
+      "default": "page_width"
+    },
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
     {
       "type": "header",
       "content": "Layout Options"
@@ -180,15 +207,33 @@
       "info": "On mobile, media always appears first"
     },
     {
-      "type": "select",
-      "id": "section_content_width",
-      "label": "Content width",
-      "options": [
-        { "label": "Full width", "value": "full_width" },
-        { "label": "Page width", "value": "page_width" },
-        { "label": "Narrow", "value": "narrow" }
-      ],
-      "default": "page_width"
+      "type": "header",
+      "content": "Media Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_media",
+      "label": "Show media",
+      "default": true,
+      "info": "Toggle visibility of media (image/video)"
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_video",
+      "label": "Autoplay videos",
+      "default": true,
+      "info": "Videos will autoplay muted and loop"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_video_controls",
+      "label": "Show video controls",
+      "default": false,
+      "info": "Display play/pause controls on videos"
     },
     {
       "type": "checkbox",
@@ -222,44 +267,27 @@
       "info": "Font size for step text"
     },
     {
-      "type": "header",
-      "content": "Media Settings"
+      "type": "select",
+      "id": "icon_position",
+      "label": "Icon position",
+      "options": [
+        { "label": "Left", "value": "left" },
+        { "label": "Above step", "value": "above" }
+      ],
+      "default": "above"
     },
     {
-      "type": "checkbox",
-      "id": "show_media",
-      "label": "Show media",
-      "default": true,
-      "info": "Toggle visibility of media (image/video)"
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 2.5,
+      "info": "Font size for step text"
     },
-    {
-      "type": "header",
-      "content": "Video Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "autoplay_video",
-      "label": "Autoplay videos",
-      "default": true,
-      "info": "Videos will autoplay muted and loop"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_video_controls",
-      "label": "Show video controls",
-      "default": false,
-      "info": "Display play/pause controls on videos"
-    },
-    {
-      "type": "header",
-      "content": "Styling"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color scheme",
-      "default": "scheme-1"
-    },
+
     {
       "type": "header",
       "content": "Section Spacing"

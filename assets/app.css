@@ -1219,6 +1219,10 @@ cart-drawer .product-option .price {
   height: 4rem;
 }
 
+.tw-h-20 {
+  height: 5rem;
+}
+
 .tw-max-h-12 {
   max-height: 3rem;
 }
@@ -1293,6 +1297,10 @@ cart-drawer .product-option .price {
 
 .tw-w-16 {
   width: 4rem;
+}
+
+.tw-w-20 {
+  width: 5rem;
 }
 
 .tw-min-w-\[1000px\] {
