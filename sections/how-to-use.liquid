@@ -36,9 +36,16 @@
   <section class='how-it-works section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'>
     <div class='{{ content_width_class }} how-it-works__container'>
       {%- comment -%} Title {%- endcomment -%}
-      <h2 class='how-it-works__title tw-text-3xl tw-font-bold tw-text-center {% if howitworks.description != blank %}tw-mb-4{% else %}tw-mb-10{% endif %}'>
+      <h2 class='how-it-works__title tw-text-sm tw-text-center tw-underline tw-underline-offset-4 tw-mb-6'>
         {{- section_title -}}
       </h2>
+
+      {%- comment -%} Product Title {%- endcomment -%}
+      {% if howitworks.product_name != blank %}
+        <div class='how-it-works__title tw-text-center tw-text-3xl tw-font-bold tw-text-center {% if howitworks.description != blank %}tw-mb-4{% else %}tw-mb-10{% endif %}'>
+          {{- howitworks.product_name -}}
+        </div>
+      {% endif %}
 
       {%- comment -%} Description {%- endcomment -%}
       {% if howitworks.description != blank %}

@@ -1122,6 +1122,10 @@ cart-drawer .product-option .price {
   margin-top: 0.25rem;
 }
 
+.tw-mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .\!tw-block {
   display: block !important;
 }
@@ -1995,8 +1999,20 @@ cart-drawer .product-option .price {
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
+.tw-underline {
+  text-decoration-line: underline;
+}
+
 .tw-no-underline {
   text-decoration-line: none;
+}
+
+.tw-underline-offset-2 {
+  text-underline-offset: 2px;
+}
+
+.tw-underline-offset-4 {
+  text-underline-offset: 4px;
 }
 
 .tw-shadow-lg {
