@@ -182,7 +182,7 @@
         "show_step_suffix": ".",
         "step_font_size": 1.4,
         "icon_position": "left",
-        "icon_size": 8,
+        "icon_size": 4,
         "padding_top": 40,
         "padding_bottom": 40
       }
