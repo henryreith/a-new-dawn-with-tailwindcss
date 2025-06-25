@@ -1439,6 +1439,10 @@ cart-drawer .product-option .price {
   align-items: center;
 }
 
+.tw-justify-start {
+  justify-content: flex-start;
+}
+
 .tw-justify-center {
   justify-content: center;
 }
@@ -1489,6 +1493,10 @@ cart-drawer .product-option .price {
 
 .tw-gap-8 {
   gap: 2rem;
+}
+
+.tw-gap-20 {
+  gap: 5rem;
 }
 
 .tw-gap-x-10 {
@@ -1558,6 +1566,24 @@ cart-drawer .product-option .price {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.tw-space-y-16 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(4rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(4rem * var(--tw-space-y-reverse));
+}
+
+.tw-space-x-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(3rem * var(--tw-space-x-reverse));
+  margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.tw-space-x-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .tw-justify-self-start {
@@ -1800,6 +1826,11 @@ cart-drawer .product-option .price {
   padding-bottom: 2rem;
 }
 
+.tw-px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .\!tw-pb-4 {
   padding-bottom: 1rem !important;
 }
@@ -1949,6 +1980,11 @@ cart-drawer .product-option .price {
 .tw-text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+}
+
+.tw-text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
 .tw-no-underline {

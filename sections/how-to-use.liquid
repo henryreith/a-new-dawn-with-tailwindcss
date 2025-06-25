@@ -9,13 +9,13 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+  .how-it-works__step-number {
+    font-size: {{ section.settings.step_font_size }}rem;
+  }
 {%- endstyle -%}
 
-{%- comment -%} Get the how it works data from the product's metafield {%- endcomment -%}
-{%- assign howitworks = product.metafields.custom.how_it_works -%}
-test
+{%- assign howitworks = product.metafields.custom.how_it_works.value -%}
 {%- if howitworks -%}
-  {%- comment -%} Build the heading text {%- endcomment -%}
   {%- assign section_title = section.settings.heading -%}
   {%- if section_title == blank -%}
     {%- assign section_title = 'How It Works' -%}
@@ -29,27 +29,27 @@ test
       {%- assign content_width_class = '' -%}
   {%- endcase -%}
 
-  <section class='section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'>
-    <div class='{{ content_width_class }}'>
-      {%- comment -%} Title {%- endcomment -%}
-      <h2 class='tw-text-3xl tw-font-bold tw-text-center tw-mb-4'>
-        {{ section_title }}
+  <section class='how-it-works section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'>
+    <div class='{{ content_width_class }} how-it-works__container'>
+      <!-- Title -->
+      <h2 class='how-it-works__title tw-text-3xl tw-font-bold tw-text-center {% if howitworks.description != blank %}tw-mb-4{% else %}tw-mb-10{% endif %}'>
+        {{- section_title -}}
       </h2>
 
-      {%- comment -%} Sub-description {%- endcomment -%}
-      {%- if howitworks.description != blank -%}
-        <div class='tw-text-center tw-text-lg tw-mb-8'>
-          {{ howitworks.description }}
+      <!-- Description -->
+      {% if howitworks.description != blank %}
+        <div class='how-it-works__description tw-text-center tw-text-lg tw-mb-10'>
+          {{- howitworks.description | metafield_tag -}}
         </div>
-      {%- endif -%}
+      {% endif %}
 
-      <div class='tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-12 tw-items-center'>
-        {%- comment -%} Media Column {%- endcomment -%}
-        <div class='{% if section.settings.media_position == "left" %}tw-order-1 lg:tw-order-1{% else %}tw-order-1 lg:tw-order-2{% endif %} tw-flex tw-justify-center'>
-          {%- if howitworks.media != blank -%}
-            {%- if howitworks.media.media_content_type == 'video' -%}
+      <div class='how-it-works__grid how-it-works__grid--media-{{ section.settings.media_position }} tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-20 tw-items-center'>
+        <!-- Media -->
+        <div class='how-it-works__media {% if section.settings.media_position == 'right' %}lg:tw-order-2{% endif %} tw-flex tw-justify-center'>
+          {% if howitworks.media != blank %}
+            {% if howitworks.media.media_content_type == 'video' %}
               <video
-                class='tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'
+                class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'
                 {% if section.settings.autoplay_video %}
                   autoplay muted loop
                 {% endif %}
@@ -61,90 +61,69 @@ test
                 <source src='{{ howitworks.media | file_url }}' type='video/mp4'>
                 Your browser does not support the video tag.
               </video>
-            {%- else -%}
+            {% else %}
               {{
                 howitworks.media
                 | image_url: width: 600
                 | image_tag:
-                  widths: '300, 600, 900, 1200',
-                  class: 'tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md',
+                  widths: '300,600,900,1200',
+                  class: 'how-it-works__media-image tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md',
                   alt: howitworks.media.alt
-                | default: section_title
               }}
-            {%- endif -%}
-          {%- else -%}
-            <div class='tw-bg-gray-200 tw-aspect-video tw-flex tw-items-center tw-justify-center tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'>
-              <div class='tw-text-center tw-text-gray-500'>
-                <svg
-                  class='tw-w-16 tw-h-16 tw-text-gray-400 tw-mx-auto tw-mb-2'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                >
-                  <path fill-rule='evenodd' d='M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z' clip-rule='evenodd'></path>
-                </svg>
-                <p class='tw-text-sm'>No media configured</p>
-              </div>
-            </div>
-          {%- endif -%}
+            {% endif %}
+          {% endif %}
         </div>
 
-        {%- comment -%} Steps Column {%- endcomment -%}
-        <div class='{% if section.settings.media_position == "left" %}tw-order-2 lg:tw-order-2{% else %}tw-order-2 lg:tw-order-1{% endif %}'>
-          {%- if howitworks.how_it_works_steps != blank -%}
-            <ol class='tw-space-y-6'>
-              {%- for step in howitworks.how_it_works_steps -%}
-                <li class='tw-flex tw-items-start tw-space-x-4'>
-                  {%- comment -%} Step Icon/Number {%- endcomment -%}
-                  <div class='tw-flex-shrink-0'>
-                    {%- if step.icon != blank -%}
+        <!-- Steps -->
+        <div class='how-it-works__steps {% if section.settings.media_position == 'right' %}lg:tw-order-1{% endif %}'>
+          {% if howitworks.step != blank %}
+            <ol class='how-it-works__step-list tw-px-0 tw-space-y-6'>
+              {% for step in howitworks.step.value %}
+                <li class='how-it-works__step tw-flex tw-items-center tw-space-x-10'>
+                  <!-- Icon or number -->
+                  <div class='how-it-works__step-icon-wrapper tw-flex-shrink-0'>
+                    {% if step.icon != blank %}
                       {{
                         step.icon
                         | image_url: width: 80
-                        | image_tag: class: 'tw-h-10 tw-w-10 tw-rounded-full tw-object-cover', alt: step.icon.alt
-                        | default: 'Step '
-                        | append: forloop.index
+                        | image_tag: class: 'how-it-works__step-icon tw-h-10 tw-w-10', alt: step.icon.alt
                       }}
-                    {%- else -%}
-                      <span class='tw-flex-shrink-0 tw-h-10 tw-w-10 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center tw-font-bold tw-text-sm'>
-                        {{ forloop.index }}
+                    {% else %}
+                      <span
+                        class='how-it-works__step-icon--fallback tw-flex tw-items-center tw-justify-center tw-h-10 tw-w-10 tw-rounded-full tw-font-bold'
+                        style='
+                          background-color: rgba(var(--color-background-contrast));
+                          color: rgba(var(--color-foreground));
+                        '
+                      >
+                        {{- forloop.index -}}
                       </span>
-                    {%- endif -%}
+                    {% endif %}
                   </div>
 
-                  {%- comment -%} Step Content {%- endcomment -%}
-                  <div class='tw-flex-1'>
-                    {%- if step.step_title != blank -%}
-                      <h3 class='tw-text-xl tw-font-semibold tw-text-gray-900 tw-mb-2'>
-                        {%- if section.settings.show_step_numbers and step.icon == blank -%}
-                          <span class='tw-mr-2'>{{ forloop.index }}.</span>
-                        {%- endif -%}
-                        {{ step.step_title }}
-                      </h3>
-                    {%- endif -%}
-
-                    {%- if step.step_text != blank -%}
-                      <div class='tw-text-gray-600 tw-leading-relaxed prose prose-sm max-w-none'>
-                        {{ step.step_text }}
+                  <!-- Text -->
+                  <div class='how-it-works__step-content tw-flex-1'>
+                    {% if step.step != blank %}
+                      <div class='how-it-works__step-text tw-mb-2'>
+                        {% if section.settings.show_step_numbers %}
+                          <span class='how-it-works__step-number tw-mr-2'>
+                            {% if section.settings.show_step_prefix %}
+                              {{ section.settings.show_step_prefix }}
+                            {% endif %}
+                            {{ forloop.index }}
+                            {% if section.settings.show_step_suffix %}
+                              {{ section.settings.show_step_suffix }}
+                            {% endif %}
+                          </span>
+                        {% endif %}
+                        {{ step.step | metafield_tag }}
                       </div>
-                    {%- endif -%}
+                    {% endif %}
                   </div>
                 </li>
-              {%- endfor -%}
+              {% endfor %}
             </ol>
-          {%- else -%}
-            <div class='tw-text-center tw-text-gray-500 tw-py-8'>
-              <svg
-                class='tw-w-12 tw-h-12 tw-text-gray-300 tw-mx-auto tw-mb-4'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01'></path>
-              </svg>
-              <p class='tw-font-medium'>No steps configured</p>
-              <p class='tw-text-sm tw-mt-1'>Add steps to the 'How It Works' metaobject for this product.</p>
-            </div>
-          {%- endif -%}
+          {% endif %}
         </div>
       </div>
     </div>
@@ -204,6 +183,41 @@ test
       "label": "Show step numbers in titles",
       "default": true,
       "info": "Adds numbers to step titles when no icon is provided"
+    },
+    {
+      "type": "text",
+      "id": "show_step_prefix",
+      "label": "Step number prefix",
+      "default": "Step ",
+      "info": "Prefix before the step number in titles"
+    },
+    {
+      "type": "text",
+      "id": "show_step_suffix",
+      "label": "Step number suffix",
+      "info": "Suffix after the step number in titles"
+    },
+    {
+      "type": "range",
+      "id": "step_font_size",
+      "label": "Step font size",
+      "min": 0.5,
+      "max": 2,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.4,
+      "info": "Font size for step text"
+    },
+    {
+      "type": "header",
+      "content": "Media Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_media",
+      "label": "Show media",
+      "default": true,
+      "info": "Toggle visibility of media (image/video)"
     },
     {
       "type": "header",
