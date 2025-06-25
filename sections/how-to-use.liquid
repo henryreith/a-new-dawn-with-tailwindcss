@@ -47,37 +47,48 @@
         {% if section.settings.show_media %}
           {%- comment -%} Media {%- endcomment -%}
           <div class='how-it-works__media {% if section.settings.media_position == 'right' %}lg:tw-order-2{% endif %} tw-flex tw-justify-center'>
-            {% if howitworks.media != blank %}
-              {% if howitworks.media.media_content_type == 'video' %}
-                <video
-                  class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'
-                  {% if section.settings.autoplay_video %}
-                    autoplay muted loop
-                  {% endif %}
-                  {% if section.settings.show_video_controls %}
-                    controls
-                  {% endif %}
-                  playsinline
-                >
-                  <source src='{{ howitworks.media | file_url }}' type='video/mp4'>
-                  Your browser does not support the video tag.
-                </video>
-              {% else %}
-                {{
-                  howitworks.media
-                  | image_url: width: 600
-                  | image_tag:
-                    widths: '300,600,900,1200',
-                    class: 'how-it-works__media-image tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md',
-                    alt: howitworks.media.alt
-                }}
-              {% endif %}
+            {%- assign file = howitworks.media -%}
+            {%- assign url = file | file_url -%}
+            {%- assign ctype = file.content_type | downcase -%}
+
+            {% if ctype contains 'video/' %}
+              test
+              {%- comment -%} It’s a video… {%- endcomment -%}
+              <video
+                class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'
+                {% if section.settings.autoplay_video %}
+                  autoplay muted loop
+                {% endif %}
+                {% if section.settings.show_video_controls %}
+                  controls
+                {% endif %}
+                playsinline
+              >
+                <source src='{{ url }}' type='{{ ctype }}'>
+                Your browser doesn’t support the video tag.
+              </video>
+
+            {% elsif url contains '.mp4' or url contains '.webm' or url contains '.ogg' %}
+              {%- comment -%} Fallback: extension check for video… {%- endcomment -%}
+              <video
+                class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'
+                {% if section.settings.autoplay_video %}
+                  autoplay muted loop
+                {% endif %}
+                {% if section.settings.show_video_controls %}
+                  controls
+                {% endif %}
+                playsinline
+              >
+                <source src='{{ url }}' type='video/mp4'>
+                Your browser doesn’t support the video tag.
+              </video>
             {% endif %}
           </div>
         {% endif %}
 
         {%- comment -%} Steps {%- endcomment -%}
-        <div class='how-it-works__steps {% if section.settings.media_position == 'right' %}lg:tw-order-1{% endif %}'>
+        <div class='how-it-works__steps{% if section.settings.media_position == 'right' %} lg:tw-order-1{% endif %}'>
           {% if howitworks.step != blank %}
             <ol class='how-it-works__step-list tw-px-0 tw-space-y-6'>
               {% for step in howitworks.step.value %}
