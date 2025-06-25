@@ -178,8 +178,8 @@
         "show_step_suffix": ".",
         "step_font_size": 1.4,
         "show_media": true,
-        "autoplay_video": true,
-        "show_video_controls": false,
+        "autoplay_video": false,
+        "show_video_controls": true,
         "color_scheme": "scheme-1",
         "padding_top": 40,
         "padding_bottom": 40
