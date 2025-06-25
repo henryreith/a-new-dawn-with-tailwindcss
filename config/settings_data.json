@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "logo": "{{ shop.brand.logo }}",
@@ -107,8 +107,8 @@
     "sold_out_badge_color_scheme": "scheme-3",
     "brand_headline": "",
     "brand_description": "",
-    "social_facebook_link": "https:\/\/www.facebook.com\/OhCrapPets",
-    "social_instagram_link": "http:\/\/instagram.com\/OhCrapPets",
+    "social_facebook_link": "https://www.facebook.com/OhCrapPets",
+    "social_instagram_link": "http://instagram.com/OhCrapPets",
     "social_youtube_link": "",
     "social_tiktok_link": "",
     "social_twitter_link": "",
@@ -162,15 +162,13 @@
         }
       }
     },
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
-          "text": "#797575",
+          "text": "#4e4a4a",
           "button": "#6dab3c",
           "button_label": "#ffffff",
           "secondary_button_label": "#6dab3c",
