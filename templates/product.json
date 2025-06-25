@@ -268,27 +268,10 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
-    },
-    "how_to_use_6MWmTk": {
-      "type": "how-to-use",
-      "name": "How It Works (Product)",
-      "settings": {
-        "heading": "How It Works",
-        "media_position": "left",
-        "section_content_width": "page_width",
-        "show_step_numbers": true,
-        "autoplay_video": true,
-        "show_video_controls": false,
-        "accent_color": "blue-600",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
     }
   },
   "order": [
     "main",
-    "how_to_use_4CcBgL",
     "product_comparison_table_GawgUH",
     "benefit_inline_k6d7aw",
     "product_benefit_image_text_aNy9aK",
