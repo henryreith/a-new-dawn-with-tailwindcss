@@ -176,7 +176,7 @@
         "show_step_numbers": true,
         "show_step_prefix": "Step",
         "show_step_suffix": ".",
-        "step_font_size": 1.4,
+        "step_font_size": 1.3,
         "show_media": true,
         "autoplay_video": false,
         "show_video_controls": true,
