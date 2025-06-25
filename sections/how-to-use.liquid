@@ -13,8 +13,24 @@
     font-size: {{ section.settings.step_font_size }}rem;
   }
   .how-it-works__step-icon, .how-it-works__step-icon--fallback{
+    width: {{  section.settings.icon_size | times: 0.75 | round: 0 }}rem;
+  }
+  .how-it-works__step-icon--fallback{
+    height: {{  section.settings.icon_size | times: 0.75 | round: 0 }}rem;
+  }
+  .how-it-works__step-icon {
+    height: auto;
+  }
+  @media screen and (min-width: 750px) {
+    .how-it-works__step-icon, .how-it-works__step-icon--fallback{
     width: {{  section.settings.icon_size }}rem;
+  }
+  .how-it-works__step-icon--fallback{
     height: {{  section.settings.icon_size }}rem;
+  }
+  .how-it-works__step-icon {
+    height: auto;
+  }
   }
 {%- endstyle -%}
 
@@ -36,7 +52,7 @@
   <section class='how-it-works section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'>
     <div class='{{ content_width_class }} how-it-works__container'>
       {%- comment -%} Title {%- endcomment -%}
-      <h2 class='how-it-works__title tw-text-sm tw-text-center tw-underline tw-underline-offset-4 tw-mb-6'>
+      <h2 class='how-it-works__title tw-text-sm tw-font-normal tw-text-center tw-underline tw-underline-offset-4 tw-mb-6'>
         {{- section_title -}}
       </h2>
 
@@ -102,15 +118,15 @@
         <div class='how-it-works__steps tw-flex tw-justify-center lg:tw-justify-start{% if section.settings.media_position == 'right' %} lg:tw-order-1{% endif %}'>
           {% if howitworks.step != blank %}
             {%- assign icon_position = section.settings.icon_position -%}
-            <ol class='how-it-works__step-list tw-px-0 tw-space-y-6'>
+            <ol class='how-it-works__step-list tw-px-0 tw-space-y-6 lg:tw-space-y-8'>
               {% for step in howitworks.step.value %}
-                <li class='how-it-works__step tw-flex {% if icon_position == 'left' %}tw-items-center tw-space-x-10{% endif %} {% if icon_position == 'above' %}tw-flex-col{% endif %}'>
+                <li class='how-it-works__step tw-flex {% if icon_position == 'left' %}tw-items-center tw-space-x-8 lg:tw-space-x-10{% endif %} {% if icon_position == 'above' %}tw-flex-col{% endif %}'>
                   {%- comment -%} Icon or number {%- endcomment -%}
                   <div class='how-it-works__step-icon-wrapper tw-flex-shrink-0 {% if icon_position == 'above' %}tw-mb-4{% endif %}'>
                     {% if step.icon != blank %}
                       {{
                         step.icon
-                        | image_url: width: 80
+                        | image_url: width: 1024
                         | image_tag: class: 'how-it-works__step-icon', alt: step.icon.alt
                       }}
                     {% else %}
