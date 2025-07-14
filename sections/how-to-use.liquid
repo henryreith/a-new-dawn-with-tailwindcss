@@ -75,19 +75,22 @@
           {%- comment -%} Media {%- endcomment -%}
           <div class='how-it-works__media {% if section.settings.media_position == 'right' %}lg:tw-order-2{% endif %} tw-flex tw-justify-center'>
             {%- assign file = howitworks.media -%}
+            {%- assign thumbnail = howitworks.video_thumbnail -%}
             {%- assign url = file | file_url -%}
             {%- assign ctype = file.content_type | downcase -%}
 
             {% if ctype contains 'video/' %}
-              test
               {%- comment -%} It’s a video… {%- endcomment -%}
               <video
-                class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'
+                class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full'
                 {% if section.settings.autoplay_video %}
                   autoplay muted loop
                 {% endif %}
                 {% if section.settings.show_video_controls %}
                   controls
+                {% endif %}
+                {% if thumbnail != blank %}
+                  poster='{{ thumbnail | file_url }}'
                 {% endif %}
                 playsinline
               >
@@ -98,12 +101,15 @@
             {% elsif url contains '.mp4' or url contains '.webm' or url contains '.ogg' %}
               {%- comment -%} Fallback: extension check for video… {%- endcomment -%}
               <video
-                class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full tw-max-w-md'
+                class='how-it-works__media-video tw-rounded-lg tw-shadow-lg tw-w-full'
                 {% if section.settings.autoplay_video %}
                   autoplay muted loop
                 {% endif %}
                 {% if section.settings.show_video_controls %}
                   controls
+                {% endif %}
+                {% if thumbnail != blank %}
+                  poster='{{ thumbnail | file_url }}'
                 {% endif %}
                 playsinline
               >
