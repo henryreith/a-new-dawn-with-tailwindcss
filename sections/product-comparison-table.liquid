@@ -1,371 +1,515 @@
 {%- style -%}
-  .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+      .comparison-table-section {
+        --section-padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        --section-padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+      }
+
+      @media screen and (min-width: 750px) {
+        .comparison-table-section {
+          --section-padding-top: {{ section.settings.padding_top }}px;
+          --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+      }
+
+      .comparison-table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      .comparison-table th {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: white;
+      }
+
+      .comparison-table th:first-child,
+      .comparison-table td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 10;
+        background: white;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      }
+
+      .comparison-table th:nth-child(2),
+      .comparison-table td:nth-child(2) {
+        position: sticky;
+        left: var(--first-column-width, 120px);
+        z-index: 9;
+        background: {{ section.settings.highlight_color | default: '#F6F9FE' }};
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      }
+
+      .comparison-table th:first-child {
+        z-index: 11;
+      }
+
+      .comparison-table th:nth-child(2) {
+        z-index: 10;
+      }
+
+      .comparison-scroll-container {
+      position: relative;
+    }
+    .comparison-scroll-container::before,
+    .comparison-scroll-container::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 2rem;
+      pointer-events: none;
+    }
+    .comparison-scroll-container::before {
+      left: 0;
+      background: linear-gradient(to right, white, rgba(255,255,255,0));
+    }
+    .comparison-scroll-container::after {
+      right: 0;
+      background: linear-gradient(to left, white, rgba(255,255,255,0));
+    }
+
+    .comparison-scroll-container::-webkit-scrollbar-thumb {
+    opacity: 0;
+    transition: opacity .2s;
   }
-  .comparison-table th,
-  .comparison-table td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #ddd;
+  .comparison-scroll-container:hover::-webkit-scrollbar-thumb {
+    opacity: 1;
   }
-  .comparison-table th {
-    background-color: #f5f5f5;
-  }
-  .feature-check {
-    color: green;
-    font-size: 24px;
-  }
-  .feature-cross {
-    color: red;
-    font-size: 24px;
-  }
-  .comparison-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .comparison-subheader {
-    text-align: center;
-    margin-bottom: 30px;
-    font-style: italic;
-    color: #666;
-  }
+
+
+    .feature-check {
+      color: {{ section.settings.check_color | default: '#22c55e' }};
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .feature-cross {
+      color: {{ section.settings.cross_color | default: '#ef4444' }};
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .comparison-scroll-container {
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e1 #f1f5f9;
+    }
+
+    .comparison-scroll-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .comparison-scroll-container::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+
+    .comparison-scroll-container::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .comparison-scroll-container::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    .comparison-header-image {
+      max-height: {{ section.settings.header_image_height }}px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .comparison-footnote {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-table th:first-child,
+      .comparison-table td:first-child {
+        min-width: 100px;
+      }
+
+      .comparison-table th:nth-child(2),
+      .comparison-table td:nth-child(2) {
+        min-width: 120px;
+      }
+    }
 {%- endstyle -%}
 
-{%- assign comparison_data = product.metafields.custom.comparison_table.value -%}
+{%- liquid
+  assign comparison_data = product.metafields.custom.comparison_table.value
+  assign section_header = null
+  assign table_header = null
 
-{% assign section_headers = null %}
-{% assign table_header = null %}
-{% assign features = null %}
+  if comparison_data == blank
+    assign show_section = false
+  else
+    assign show_section = true
+  endif
+-%}
 
-<div class='page-width'>
-  {% comment %}
-    This is the JSON data for the comparison table.
-    You can use this to debug or check the structure of your data.
-    <pre>{{ comparison_data | json }}</pre>
-  {% endcomment %}
-
+{%- if show_section -%}
+  {%- comment -%} Parse the comparison data {%- endcomment -%}
   {%- for item in comparison_data -%}
-    {%- # assign header = item.header -%}
-    {%- # assign sub_paragraph = item.sub_paragraph -%}
-    {% if item.our_brand_name != blank %}
-      {% assign table_header = item %}
-      {% break %}
-    {% endif %}
-    {% if item.feature_title != blank %}
-      {%- assign item_json = item | json -%}
-      {%- assign features = features | append: item_json -%}
-      {% break %}
-    {% endif %}
-    {% if item.header != blank or item.sub_paragraph != blank %}
-      {% assign section_headers = item %}
-    {% endif %}
+    {%- if item.header != blank or item.sub_paragraph != blank -%}
+      {%- assign section_header = item -%}
+    {%- elsif item.our_brand_name != blank -%}
+      {%- assign table_header = item -%}
+    {%- endif -%}
   {%- endfor -%}
 
-  {%- comment -%}
-    Now that we have table_header, let's assign competitor titles for easy reference:
-  {%- endcomment -%}
-  {%- assign competitor_1_title = table_header.competitor_1_title -%}
-  {%- assign competitor_2_title = table_header.competitor_2_title -%}
-  {%- assign competitor_3_title = table_header.competitor_3_title -%}
+  {%- liquid
+    assign competitor_1_title = table_header.competitor_1_title
+    assign competitor_2_title = table_header.competitor_2_title
+    assign competitor_3_title = table_header.competitor_3_title
+    assign competitor_4_title = table_header.competitor_4_title
 
-  <h3>{{ section_headers.header }}</h3>
-  <p>{{ section_headers.sub_paragraph }}</p>
-  <div class='comparison-section tw-scrollbar-hide tw-overflow-x-scroll xl:tw-mx-auto xl:tw-max-w-[1080px]'>
-    <table class='comparison-table tw-table-auto tw-border-separate tw-min-w-[1000px]' cellspacing='0px'>
-      <thead>
-        <tr class='tw-border-0 tw-p-0'>
-          <th class='tw-sticky tw-left-0 tw-z-10 tw-bg-white'>Features</th>
+    assign total_columns = 2
+    if competitor_1_title != blank
+      assign total_columns = total_columns | plus: 1
+    endif
+    if competitor_2_title != blank
+      assign total_columns = total_columns | plus: 1
+    endif
+    if competitor_3_title != blank
+      assign total_columns = total_columns | plus: 1
+    endif
+    if competitor_4_title != blank
+      assign total_columns = total_columns | plus: 1
+    endif
+  -%}
 
-          <th class='tw-sticky tw-left-[100px] tw-z-10 tw-bg-[#F6F9FE] tw-border-x tw-border-primary'>
-            <div class=''>
-              <div class='tw-flex tw-content-center tw-justify-center'>
-                {%- if table_header.our_brand_logo -%}
-                  {{
-                    table_header.our_brand_logo
-                    | image_url: width: 256
-                    | image_tag:
-                      width: table_header.our_brand_logo.width,
-                      height: table_header.our_brand_logo.height,
-                      sizes: '100vw',
-                      widths: '256',
-                      class: 'mx-auto tw-w-40'
-                  }}
-                {%- else -%}
-                  {{ table_header.our_brand_name }}
-                {%- endif -%}
-              </div>
-            </div>
-          </th>
-          {% if competitor_1_title != blank %}
-            <th>
-              <div class=''>
-                <div class='tw-flex tw-content-center tw-justify-center'>
-                  {{ competitor_1_title }}
-                </div>
-              </div>
-            </th>
-          {% endif %}
-          {% if competitor_2_title != blank %}
-            <th>
-              <div class=''>
-                <div class='tw-flex tw-content-center tw-justify-center'>
-                  {{ competitor_2_title }}
-                </div>
-              </div>
-            </th>
-          {% endif %}
-          {% if competitor_3_title != blank %}
-            <th>
-              <div class=''>
-                <div class='tw-flex tw-content-center tw-justify-center'>
-                  {{ competitor_3_title }}
-                </div>
-              </div>
-            </th>
-          {% endif %}
-        </tr>
-      </thead>
-      <tbody>
-        {%- for feature in comparison_data -%}
-          <tr>
-            {%- if feature.feature_title != blank -%}
-              <td>{{ feature.feature_title }}</td>
-              <td>
-                {%- if feature.our_brand_feature -%}
-                  <span class='feature-check'>✓</span>
-                {%- else -%}
-                  <span class='feature-cross'>✗</span>
-                {%- endif -%}
-              </td>
-              {% if competitor_1_title != blank %}
-                <td>
-                  {%- if feature.competitor_1_feature -%}
-                    <span class='feature-check'>✓</span>
-                  {%- else -%}
-                    <span class='feature-cross'>✗</span>
-                  {%- endif -%}
-                </td>
-              {% endif %}
-              {% if competitor_2_title != blank %}
-                <td>
-                  {%- if feature.competitor_2_feature -%}
-                    <span class='feature-check'>✓</span>
-                  {%- else -%}
-                    <span class='feature-cross'>✗</span>
-                  {%- endif -%}
-                </td>
-              {% endif %}
-              {% if competitor_3_title != blank %}
-                <td>
-                  {%- if feature.competitor_3_feature -%}
-                    <span class='feature-check'>✓</span>
-                  {%- else -%}
-                    <span class='feature-cross'>✗</span>
-                  {%- endif -%}
-                </td>
-              {%- endif -%}
+  <div class='comparison-table-section color-{{ section.settings.color_scheme }} gradient'>
+    <div
+      class='section-padding'
+      style='padding-top: var(--section-padding-top); padding-bottom: var(--section-padding-bottom);'
+    >
+      {%- liquid
+        case section.settings.section_content_width
+          when 'full_width'
+            assign container_class = 'tw-w-full tw-px-4'
+          when 'page_width'
+            assign container_class = 'page-width'
+          when 'narrow'
+            assign container_class = 'tw-max-w-4xl tw-mx-auto tw-px-4'
+        endcase
+      -%}
+
+      <div class='{{ container_class }}'>
+        {%- comment -%} Section Header {%- endcomment -%}
+        {%- if section_header -%}
+          <div class='tw-text-center tw-mb-8'>
+            {%- if section_header.header != blank -%}
+              <h2 class='tw-text-3xl tw-font-bold tw-mb-4 {{ section.settings.header_alignment }}'>
+                {{ section_header.header }}
+              </h2>
             {%- endif -%}
-          </tr>
+            {%- if section_header.sub_paragraph != blank -%}
+              <div class='tw-text-lg tw-text-gray-600 tw-max-w-3xl tw-mx-auto {{ section.settings.header_alignment }}'>
+                {{ section_header.sub_paragraph | metafield_tag }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Comparison Table {%- endcomment -%}
+        <div class='comparison-scroll-container tw-overflow-x-auto tw-shadow-lg tw-rounded-lg'>
+          <table
+            class='comparison-table tw-w-full tw-min-w-max tw-bg-white'
+            style='min-width: {{ total_columns | times: 150 }}px;'
+          >
+            {%- comment -%} Table Header {%- endcomment -%}
+            <thead>
+              <tr>
+                <th class='tw-p-4 tw-text-left tw-font-semibold tw-border-b tw-border-gray-200'>
+                  {{ section.settings.features_column_title | default: 'Features' }}
+                </th>
+
+                {%- comment -%} Our Brand Column {%- endcomment -%}
+                <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-l tw-border-r tw-border-gray-200'>
+                  <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
+                    {%- if table_header.our_brand_logo != blank -%}
+                      {{
+                        table_header.our_brand_logo
+                        | image_url: width: 400
+                        | image_tag:
+                          class: 'comparison-header-image tw-mx-auto',
+                          alt: table_header.our_brand_name,
+                          loading: 'lazy'
+                      }}
+
+                    {%- elsif table_header.our_brand_name != blank -%}
+                      <div class='tw-font-bold tw-text-sm'>{{ table_header.our_brand_name }}</div>
+                    {%- endif -%}
+                    {%- if table_header.our_brand_subtitle != blank -%}
+                      <div class='tw-text-xs tw-text-gray-500'>{{ table_header.our_brand_subtitle }}</div>
+                    {%- endif -%}
+                  </div>
+                </th>
+
+                {%- comment -%} Competitor Columns {%- endcomment -%}
+                {%- if competitor_1_title != blank -%}
+                  <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-gray-200'>
+                    <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
+                      {%- if table_header.competitor_1_logo != blank -%}
+                        {{
+                          table_header.competitor_1_logo
+                          | image_url: width: 400
+                          | image_tag:
+                            class: 'comparison-header-image tw-mx-auto',
+                            alt: competitor_1_title,
+                            loading: 'lazy'
+                        }}
+                      {%- elsif competitor_1_title != blank -%}
+                        <div class='tw-font-bold tw-text-sm'>{{ competitor_1_title }}</div>
+                      {%- endif -%}
+                      {%- if table_header.competitor_1_subtitle != blank -%}
+                        <div class='tw-text-xs tw-text-gray-500'>{{ table_header.competitor_1_subtitle }}</div>
+                      {%- endif -%}
+                    </div>
+                  </th>
+                {%- endif -%}
+
+                {%- if competitor_2_title != blank -%}
+                  <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-gray-200'>
+                    <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
+                      {%- if table_header.competitor_2_logo != blank -%}
+                        {{
+                          table_header.competitor_2_logo
+                          | image_url: width: 400
+                          | image_tag:
+                            class: 'comparison-header-image tw-mx-auto',
+                            alt: competitor_2_title,
+                            loading: 'lazy'
+                        }}
+                      {%- endif -%}
+                      <div class='tw-font-bold tw-text-sm'>{{ competitor_2_title }}</div>
+                      {%- if table_header.competitor_2_subtitle != blank -%}
+                        <div class='tw-text-xs tw-text-gray-500'>{{ table_header.competitor_2_subtitle }}</div>
+                      {%- endif -%}
+                    </div>
+                  </th>
+                {%- endif -%}
+
+                {%- if competitor_3_title != blank -%}
+                  <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-gray-200'>
+                    <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
+                      {%- if table_header.competitor_3_logo != blank -%}
+                        {{
+                          table_header.competitor_3_logo
+                          | image_url: width: 400
+                          | image_tag:
+                            class: 'comparison-header-image tw-mx-auto',
+                            alt: competitor_3_title,
+                            loading: 'lazy'
+                        }}
+                      {%- endif -%}
+                      <div class='tw-font-bold tw-text-sm'>{{ competitor_3_title }}</div>
+                      {%- if table_header.competitor_3_subtitle != blank -%}
+                        <div class='tw-text-xs tw-text-gray-500'>{{ table_header.competitor_3_subtitle }}</div>
+                      {%- endif -%}
+                    </div>
+                  </th>
+                {%- endif -%}
+
+                {%- if competitor_4_title != blank -%}
+                  <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-gray-200'>
+                    <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
+                      {%- if table_header.competitor_4_logo != blank -%}
+                        {{
+                          table_header.competitor_4_logo
+                          | image_url: width: 400
+                          | image_tag:
+                            class: 'comparison-header-image tw-mx-auto',
+                            alt: competitor_4_title,
+                            loading: 'lazy'
+                        }}
+                      {%- endif -%}
+                      <div class='tw-font-bold tw-text-sm'>{{ competitor_4_title }}</div>
+                      {%- if table_header.competitor_4_subtitle != blank -%}
+                        <div class='tw-text-xs tw-text-gray-500'>{{ table_header.competitor_4_subtitle }}</div>
+                      {%- endif -%}
+                    </div>
+                  </th>
+                {%- endif -%}
+              </tr>
+            </thead>
+
+            {%- comment -%} Table Body {%- endcomment -%}
+            <tbody>
+              {%- for item in comparison_data -%}
+                {%- if item.feature_title != blank -%}
+                  <tr class='tw-border-b tw-border-gray-100 hover:tw-bg-gray-50 tw-transition-colors'>
+                    {%- comment -%} Feature Title {%- endcomment -%}
+                    <td class='tw-p-4 tw-font-medium tw-text-gray-900'>
+                      {{ item.feature_title }}
+                      {%- if item.feature_description != blank -%}
+                        <div class='tw-text-sm tw-text-gray-500 tw-mt-1'>{{ item.feature_description }}</div>
+                      {%- endif -%}
+                    </td>
+
+                    {%- comment -%} Our Brand Feature {%- endcomment -%}
+                    <td class='tw-p-4 tw-text-center tw-border-l tw-border-r tw-border-gray-100'>
+                      {%- if item.our_brand_feature_type == 'boolean' -%}
+                        {%- if item.our_brand_feature -%}
+                          <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                        {%- else -%}
+                          <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                        {%- endif -%}
+                      {%- elsif item.our_brand_feature_type == 'text' -%}
+                        <div class='tw-font-medium'>{{ item.our_brand_feature_text }}</div>
+                      {%- elsif item.our_brand_feature_type == 'price' -%}
+                        <div class='tw-font-medium tw-text-green-600'>{{ item.our_brand_feature_price }}</div>
+                      {%- else -%}
+                        {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
+                        {%- if item.our_brand_feature -%}
+                          <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                        {%- else -%}
+                          <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                        {%- endif -%}
+                      {%- endif -%}
+                      {%- if item.our_brand_feature_note != blank -%}
+                        <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.our_brand_feature_note }}</div>
+                      {%- endif -%}
+                    </td>
+
+                    {%- comment -%} Competitor Features {%- endcomment -%}
+                    {%- if competitor_1_title != blank -%}
+                      <td class='tw-p-4 tw-text-center'>
+                        {%- if item.competitor_1_feature_type == 'boolean' -%}
+                          {%- if item.competitor_1_feature -%}
+                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                          {%- else -%}
+                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                          {%- endif -%}
+                        {%- elsif item.competitor_1_feature_type == 'text' -%}
+                          <div class='tw-font-medium'>{{ item.competitor_1_feature_text }}</div>
+                        {%- elsif item.competitor_1_feature_type == 'price' -%}
+                          <div class='tw-font-medium'>{{ item.competitor_1_feature_price }}</div>
+                        {%- else -%}
+                          {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
+                          {%- if item.competitor_1_feature -%}
+                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                          {%- else -%}
+                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                          {%- endif -%}
+                        {%- endif -%}
+                        {%- if item.competitor_1_feature_note != blank -%}
+                          <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.competitor_1_feature_note }}</div>
+                        {%- endif -%}
+                      </td>
+                    {%- endif -%}
+
+                    {%- if competitor_2_title != blank -%}
+                      <td class='tw-p-4 tw-text-center'>
+                        {%- if item.competitor_2_feature_type == 'boolean' -%}
+                          {%- if item.competitor_2_feature -%}
+                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                          {%- else -%}
+                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                          {%- endif -%}
+                        {%- elsif item.competitor_2_feature_type == 'text' -%}
+                          <div class='tw-font-medium'>{{ item.competitor_2_feature_text }}</div>
+                        {%- elsif item.competitor_2_feature_type == 'price' -%}
+                          <div class='tw-font-medium'>{{ item.competitor_2_feature_price }}</div>
+                        {%- else -%}
+                          {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
+                          {%- if item.competitor_2_feature -%}
+                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                          {%- else -%}
+                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                          {%- endif -%}
+                        {%- endif -%}
+                        {%- if item.competitor_2_feature_note != blank -%}
+                          <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.competitor_2_feature_note }}</div>
+                        {%- endif -%}
+                      </td>
+                    {%- endif -%}
+
+                    {%- if competitor_3_title != blank -%}
+                      <td class='tw-p-4 tw-text-center'>
+                        {%- if item.competitor_3_feature_type == 'boolean' -%}
+                          {%- if item.competitor_3_feature -%}
+                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                          {%- else -%}
+                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                          {%- endif -%}
+                        {%- elsif item.competitor_3_feature_type == 'text' -%}
+                          <div class='tw-font-medium'>{{ item.competitor_3_feature_text }}</div>
+                        {%- elsif item.competitor_3_feature_type == 'price' -%}
+                          <div class='tw-font-medium'>{{ item.competitor_3_feature_price }}</div>
+                        {%- else -%}
+                          {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
+                          {%- if item.competitor_3_feature -%}
+                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                          {%- else -%}
+                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                          {%- endif -%}
+                        {%- endif -%}
+                        {%- if item.competitor_3_feature_note != blank -%}
+                          <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.competitor_3_feature_note }}</div>
+                        {%- endif -%}
+                      </td>
+                    {%- endif -%}
+
+                    {%- if competitor_4_title != blank -%}
+                      <td class='tw-p-4 tw-text-center'>
+                        {%- if item.competitor_4_feature_type == 'boolean' -%}
+                          {%- if item.competitor_4_feature -%}
+                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                          {%- else -%}
+                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                          {%- endif -%}
+                        {%- elsif item.competitor_4_feature_type == 'text' -%}
+                          <div class='tw-font-medium'>{{ item.competitor_4_feature_text }}</div>
+                        {%- elsif item.competitor_4_feature_type == 'price' -%}
+                          <div class='tw-font-medium'>{{ item.competitor_4_feature_price }}</div>
+                        {%- else -%}
+                          {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
+                          {%- if item.competitor_4_feature -%}
+                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
+                          {%- else -%}
+                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
+                          {%- endif -%}
+                        {%- endif -%}
+                        {%- if item.competitor_4_feature_note != blank -%}
+                          <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.competitor_4_feature_note }}</div>
+                        {%- endif -%}
+                      </td>
+                    {%- endif -%}
+                  </tr>
+                {%- endif -%}
+              {%- endfor -%}
+            </tbody>
+          </table>
+        </div>
+
+        {%- comment -%} Footnotes {%- endcomment -%}
+        {%- assign has_footnotes = false -%}
+        {%- for item in comparison_data -%}
+          {%- if item.footnote != blank -%}
+            {%- assign has_footnotes = true -%}
+            {%- break -%}
+          {%- endif -%}
         {%- endfor -%}
-      </tbody>
-    </table>
+
+        {%- if has_footnotes -%}
+          <div class='tw-mt-6 tw-space-y-2'>
+            {%- for item in comparison_data -%}
+              {%- if item.footnote != blank -%}
+                <div class='comparison-footnote'>
+                  {{ item.footnote }}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
   </div>
-</div>
-
-{% comment %}
-  Previous code for reference with tailwind styling
-   {% for reference in product.metafields.custom.references %}
-     {% if reference.type == 'metaobject' %}
-       Metaobject Field 1: {{ reference.metaobject.fields.field1 }} Metaobject Field 2:
-       {{ reference.metaobject.fields.field2 }}
-     {% endif %}
-   {% endfor %}
-   {% for reference in product.metafields.custom.references %}
-     <pre>{{ reference | json }}</pre>
-   {% endfor %}
-   <div><strong>Metafield Value:</strong> {{ product.metafields.custom.comparison_table }}</div>
-   {% if product.metafields.custom.comparison_table %}
-     <section class='comparison-table-section tw-py-10 tw-px-5'>
-       {% assign table_overview = product.metafields.custom.comparison_table[0] %}
-       {% assign table_header = product.metafields.custom.comparison_table[1] %}
-       {% assign table_features = product.metafields.custom.comparison_table[2] %}
-
-       {{ product.metafields.custom.comparison_table[0] }}
-
-       <div class='comparison-table-content tw-max-w-4xl tw-mx-auto'>
-         {% if table_overview.header or table_overview.sub_paragraph %}
-           <div class='tw-mb-8'>
-             {% if table_overview.header != blank %}
-               <h2 class='tw-text-3xl tw-font-bold tw-text-center'>
-                 {{ table_overview.header | metafield_tag }}
-               </h2>
-             {% endif %}
-             {% if table_overview.sub_paragraph != blank %}
-               <p class='tw-text-lg tw-text-center tw-mt-4'>
-                 {{ table_overview.sub_paragraph | metafield_tag }}
-               </p>
-             {% endif %}
-           </div>
-         {% endif %}
-
-         <table class='comparison-table tw-w-full tw-border-collapse tw-text-center'>
-           <thead>
-             <tr>
-               <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>Feature</th>
-               <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
-                 {% if table_header.our_brand_logo != blank %}
-                   <img
-                     src='{{ table_header.our_brand_logo | file_img_url: '150x' }}'
-                     alt='{{ table_header.our_brand_name }}'
-                     class='tw-mx-auto tw-max-h-12'
-                   >
-                 {% else %}
-                   {{ table_header.our_brand_name }}
-                 {% endif %}
-               </th>
-               {% if table_header.competitor_1_title != blank %}
-                 <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
-                   {{ table_header.competitor_1_title }}
-                 </th>
-               {% endif %}
-               {% if table_header.competitor_2_title != blank %}
-                 <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
-                   {{ table_header.competitor_2_title }}
-                 </th>
-               {% endif %}
-               {% if table_header.competitor_3_title != blank %}
-                 <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
-                   {{ table_header.competitor_3_title }}
-                 </th>
-               {% endif %}
-             </tr>
-           </thead>
-           <tbody>
-             {% for feature in table_features %}
-               <tr>
-                 <td class='tw-px-4 tw-py-2 tw-border'>{{ feature.feature_title }}</td>
-                 <td class='tw-px-4 tw-py-2 tw-border'>
-                   {% if feature.our_brand_has_feature == true %}✔️{% else %}✘{% endif %}
-                 </td>
-                 {% if table_header.competitor_1_title != blank %}
-                   <td class='tw-px-4 tw-py-2 tw-border'>
-                     {% if feature.competitor_1_has_feature == true %}✔️{% else %}✘{% endif %}
-                   </td>
-                 {% endif %}
-                 {% if table_header.competitor_2_title != blank %}
-                   <td class='tw-px-4 tw-py-2 tw-border'>
-                     {% if feature.competitor_2_has_feature == true %}✔️{% else %}✘{% endif %}
-                   </td>
-                 {% endif %}
-                 {% if table_header.competitor_3_title != blank %}
-                   <td class='tw-px-4 tw-py-2 tw-border'>
-                     {% if feature.competitor_3_has_feature == true %}✔️{% else %}✘{% endif %}
-                   </td>
-                 {% endif %}
-               </tr>
-             {% endfor %}
-           </tbody>
-         </table>
-       </div>
-     </section>
-   {% endif %}
-
-   {% if product.metafields.custom.comparison_table.value != blank %}
-     {% assign comparison_table_data = product.metafields.custom.comparison_table.value %}
-     <section class='comparison-table-section tw-py-10 tw-px-5'>
-       {% assign overview = comparison_table_data[0] %}
-       {{ comparison_table_data | json }}
-       {% assign competitors = comparison_table_data[1] %}
-       {% assign features = comparison_table_data | slice: 2 %}
-       <!-- Get everything after the first two objects -->
-
-       <div class='comparison-table-content tw-max-w-4xl tw-mx-auto'>
-         <!-- Header and Sub-paragraph -->
-         {% if overview.header or overview.sub_paragraph %}
-           <div class='tw-mb-8'>
-             {% if overview.header != blank %}
-               <h2 class='tw-text-3xl tw-font-bold tw-text-center'>
-                 {{ overview.header.children[0].children[0].value }}
-               </h2>
-             {% endif %}
-             {% if overview.sub_paragraph != blank %}
-               <p class='tw-text-lg tw-text-center tw-mt-4'>
-                 {{ overview.sub_paragraph.children[0].children[0].value }}
-               </p>
-             {% endif %}
-           </div>
-         {% endif %}
-
-         <!-- Comparison Table -->
-         <table class='comparison-table tw-w-full tw-border-collapse tw-text-center'>
-           <thead>
-             <tr>
-               <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>Feature</th>
-               <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
-                 {% if competitors.our_brand_logo != blank %}
-                   <img
-                     src='{{ competitors.our_brand_logo | file_url }}'
-                     alt='{{ competitors.our_brand_name }}'
-                     class='tw-mx-auto tw-max-h-12'
-                   >
-                 {% else %}
-                   {{ competitors.our_brand_name }}
-                 {% endif %}
-               </th>
-               {% if competitors.competitor_1_title != blank %}
-                 <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
-                   {{ competitors.competitor_1_title }}
-                 </th>
-               {% endif %}
-               {% if competitors.competitor_2_title != blank %}
-                 <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
-                   {{ competitors.competitor_2_title }}
-                 </th>
-               {% endif %}
-               {% if competitors.competitor_3_title != blank %}
-                 <th class='tw-px-4 tw-py-2 tw-border tw-font-bold tw-bg-gray-200'>
-                   {{ competitors.competitor_3_title }}
-                 </th>
-               {% endif %}
-             </tr>
-           </thead>
-           <tbody>
-             {% for feature in features %}
-               <tr>
-                 <!-- Feature Title -->
-                 <td class='tw-px-4 tw-py-2 tw-border'>{{ feature.feature_title }}</td>
-                 <!-- Your Brand -->
-                 <td class='tw-px-4 tw-py-2 tw-border'>
-                   {% if feature.our_brand_feature == true %}✔️{% else %}✘{% endif %}
-                 </td>
-                 <!-- Competitor 1 -->
-                 {% if competitors.competitor_1_title != blank %}
-                   <td class='tw-px-4 tw-py-2 tw-border'>
-                     {% if feature.competitor_1_feature == true %}✔️{% else %}✘{% endif %}
-                   </td>
-                 {% endif %}
-                 <!-- Competitor 2 -->
-                 {% if competitors.competitor_2_title != blank %}
-                   <td class='tw-px-4 tw-py-2 tw-border'>
-                     {% if feature.competitor_2_feature == true %}✔️{% else %}✘{% endif %}
-                   </td>
-                 {% endif %}
-                 <!-- Competitor 3 -->
-                 {% if competitors.competitor_3_title != blank %}
-                   <td class='tw-px-4 tw-py-2 tw-border'>
-                     {% if feature.competitor_3_feature == true %}✔️{% else %}✘{% endif %}
-                   </td>
-                 {% endif %}
-               </tr>
-             {% endfor %}
-           </tbody>
-         </table>
-       </div>
-     </section>
-   {% endif %}
-{% endcomment %}
+{%- endif -%}
 
 {% schema %}
 {
@@ -374,34 +518,110 @@
   "class": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
+      "label": "Color scheme",
       "default": "scheme-1"
     },
     {
       "type": "select",
       "id": "section_content_width",
-      "label": "t:sections.all.section_content_width.label",
+      "label": "Section content width",
       "options": [
         {
-          "label": "t:sections.all.section_content_width.options__1.label",
+          "label": "Full width",
           "value": "full_width"
         },
         {
-          "label": "t:sections.all.section_content_width.options__2.label",
+          "label": "Page width",
           "value": "page_width"
         },
         {
-          "label": "t:sections.all.section_content_width.options__3.label",
+          "label": "Narrow",
           "value": "narrow"
         }
       ],
       "default": "page_width"
     },
     {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header alignment",
+      "options": [
+        {
+          "label": "Left",
+          "value": "tw-text-left"
+        },
+        {
+          "label": "Center",
+          "value": "tw-text-center"
+        },
+        {
+          "label": "Right",
+          "value": "tw-text-right"
+        }
+      ],
+      "default": "tw-text-center"
+    },
+    {
       "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "content": "Table Customization"
+    },
+    {
+      "type": "text",
+      "id": "features_column_title",
+      "label": "Features column title",
+      "default": "Features"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Brand column highlight color",
+      "default": "#F6F9FE"
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Check mark color",
+      "default": "#22c55e"
+    },
+    {
+      "type": "color",
+      "id": "cross_color",
+      "label": "Cross mark color",
+      "default": "#ef4444"
+    },
+    {
+      "type": "text",
+      "id": "check_symbol",
+      "label": "Check symbol",
+      "default": "✓",
+      "info": "Symbol to display for positive features"
+    },
+    {
+      "type": "text",
+      "id": "cross_symbol",
+      "label": "Cross symbol",
+      "default": "✗",
+      "info": "Symbol to display for negative features"
+    },
+    {
+      "type": "range",
+      "id": "header_image_height",
+      "min": 30,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Header image height",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
     },
     {
       "type": "range",
@@ -410,7 +630,7 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
+      "label": "Padding top",
       "default": 36
     },
     {
@@ -420,7 +640,7 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
+      "label": "Padding bottom",
       "default": 36
     }
   ],
