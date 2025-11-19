@@ -140,10 +140,6 @@
                 {% endif %}
               </div>
             {% endif %}
-
-            {% if section.settings.show_divider and forloop.last == false %}
-              <div class='tw-mx-4 tw-h-8 tw-w-px tw-bg-current tw-opacity-20'></div>
-            {% endif %}
           {% endfor %}
         </div>
       {% endfor %}
@@ -244,12 +240,6 @@
       "unit": "%",
       "default": 70,
       "info": "Adjust transparency of logos"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_divider",
-      "label": "Show divider between logos",
-      "default": false
     },
     {
       "type": "header",
