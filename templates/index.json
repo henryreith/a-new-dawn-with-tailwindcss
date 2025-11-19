@@ -459,6 +459,71 @@
         "padding_bottom": 24
       }
     },
+    "infinite_scrolling_logos_CLzH3g": {
+      "type": "infinite-scrolling-logos",
+      "blocks": {
+        "logo_anfFWb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/circle-check-solid_1.svg",
+            "link": ""
+          }
+        },
+        "logo_Pdq9qd": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/MASTER_-_Oh_Crap_Logo_-_Word_Only.svg",
+            "link": ""
+          }
+        },
+        "logo_cEkjMh": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Oh_Crap_Logo-R.svg",
+            "link": ""
+          }
+        },
+        "logo_wAA9bx": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Oh_Crap_Pawprint_-_Aligned_Straight.svg",
+            "link": ""
+          }
+        },
+        "logo_hqrczA": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/ziggyonthebeaches_-_2.jpg",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_anfFWb",
+        "logo_Pdq9qd",
+        "logo_cEkjMh",
+        "logo_wAA9bx",
+        "logo_hqrczA"
+      ],
+      "name": "Infinite Scrolling Logos",
+      "settings": {
+        "heading": "As Seen In",
+        "heading_size": "h2",
+        "color_scheme": "",
+        "logo_height": 60,
+        "logo_spacing": 40,
+        "grayscale_logos": true,
+        "color_on_hover": true,
+        "logo_opacity": 70,
+        "show_divider": false,
+        "marquee_speed": 40,
+        "scroll_direction": "left",
+        "border_on_top": false,
+        "border_on_bottom": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "page_ipCyhp": {
       "type": "page",
       "settings": {
@@ -509,6 +574,7 @@
     "multicolumn",
     "highlighted_products_jwhF6k",
     "infinite_scrolling_text_kV488r",
+    "infinite_scrolling_logos_CLzH3g",
     "page_ipCyhp",
     "featured_collection_WBQiA4"
   ]
