@@ -1,0 +1,340 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #infinite-scrolling-logos-section-{{ section.id }} {
+    --logo-height: {{ section.settings.logo_height }}px;
+    --logo-spacing: {{ section.settings.logo_spacing }}px;
+  }
+
+  #infinite-scrolling-logos-section-{{ section.id }} .infinite-scrolling-logos__logo-item {
+    height: var(--logo-height);
+    padding: 0 var(--logo-spacing);
+  }
+
+  #infinite-scrolling-logos-section-{{ section.id }} .infinite-scrolling-logos__logo-item img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    {% if section.settings.grayscale_logos %}
+      filter: grayscale(100%);
+      opacity: {{ section.settings.logo_opacity | divided_by: 100.0 }};
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    {% else %}
+      opacity: {{ section.settings.logo_opacity | divided_by: 100.0 }};
+      transition: opacity 0.3s ease;
+    {% endif %}
+  }
+
+  {% if section.settings.grayscale_logos and section.settings.color_on_hover %}
+  #infinite-scrolling-logos-section-{{ section.id }} .infinite-scrolling-logos:hover .infinite-scrolling-logos__logo-item img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  {% endif %}
+
+  /* Apply the animation to the logo items */
+  .infinite-scrolling-logos__inner > div {
+    animation: var(--direction) var(--marquee-speed) linear infinite;
+  }
+
+  @media (prefers-reduced-motion) {
+    .infinite-scrolling-logos__inner > div {
+      animation: none;
+    }
+  }
+
+  /* Pause the animation when a user hovers over it */
+  .infinite-scrolling-logos:hover .infinite-scrolling-logos__inner > div {
+    animation-play-state: paused;
+  }
+
+  /* Setting the Animation using Keyframes */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id='infinite-scrolling-logos-section-{{ section.id }}'
+  class='section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient {% if section.settings.border_on_top %} tw-border-t {% endif %}{% if section.settings.border_on_bottom %} tw-border-b {% endif %}'
+>
+  {% if section.settings.heading != blank %}
+    <div class='tw-text-center tw-mb-8'>
+      <h2 class='{{ section.settings.heading_size }}'>{{ section.settings.heading }}</h2>
+    </div>
+  {% endif %}
+
+  <div class='infinite-scrolling-logos'>
+    <div
+      class='infinite-scrolling-logos__inner tw-flex tw-flex-row tw-items-center tw-overflow-x-hidden'
+      style='--marquee-speed: {{ section.settings.marquee_speed }}s; --direction:scroll-{{ section.settings.scroll_direction }}'
+      role='marquee'
+    >
+      {% for i in (1..3) %}
+        <div class='infinite-scrolling-logos__content tw-flex tw-flex-row tw-items-center tw-whitespace-nowrap'>
+          {% for block in section.blocks %}
+            {% if block.settings.logo != blank %}
+              <div class='infinite-scrolling-logos__logo-item tw-flex tw-items-center tw-justify-center'>
+                {% if block.settings.link != blank %}
+                  <a href='{{ block.settings.link }}' target='_blank' rel='noopener noreferrer'>
+                    {{
+                      block.settings.logo
+                      | image_url: width: 600
+                      | image_tag: loading: 'lazy', alt: block.settings.logo.alt
+                    }}
+                  </a>
+                {% else %}
+                  {{
+                    block.settings.logo
+                    | image_url: width: 600
+                    | image_tag: loading: 'lazy', alt: block.settings.logo.alt
+                  }}
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if section.settings.show_divider and forloop.last == false %}
+              <div class='tw-mx-4 tw-h-8 tw-w-px tw-bg-current tw-opacity-20'></div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+    {% # END .infinite-scrolling-logos__inner %}
+  </div>
+  {% # END .infinite-scrolling-logos %}
+</div>
+{% # END #infinite-scrolling-logos-section-{{ section.id }} %}
+
+{% schema %}
+{
+  "name": "Infinite Scrolling Logos",
+  "tag": "section",
+  "class": "infinite-scrolling-logos-section",
+  "max_blocks": 25,
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "As Seen In"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Small"
+        },
+        {
+          "value": "h2",
+          "label": "Medium"
+        },
+        {
+          "value": "h1",
+          "label": "Large"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Logo Settings"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height",
+      "min": 20,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "logo_spacing",
+      "label": "Logo spacing",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale_logos",
+      "label": "Make logos grayscale",
+      "default": true,
+      "info": "Gives a more uniform, professional look"
+    },
+    {
+      "type": "checkbox",
+      "id": "color_on_hover",
+      "label": "Show color on hover",
+      "default": true,
+      "info": "Only works if 'Make logos grayscale' is enabled"
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "label": "Logo opacity",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 70,
+      "info": "Adjust transparency of logos"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show divider between logos",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Animation Settings"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Scroll speed",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "s",
+      "default": 40,
+      "info": "Lower = faster"
+    },
+    {
+      "type": "select",
+      "id": "scroll_direction",
+      "label": "Scroll direction",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_top",
+      "label": "Show border on top",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_on_bottom",
+      "label": "Show border on bottom",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)",
+          "info": "Link to the publication or website"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Infinite Scrolling Logos",
+      "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1046,6 +1046,11 @@ cart-drawer .product-option .price {
   margin-bottom: 1rem;
 }
 
+.tw-mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .\!tw-mb-0 {
   margin-bottom: 0px !important;
 }
@@ -1337,6 +1342,10 @@ cart-drawer .product-option .price {
 
 .tw-w-full {
   width: 100%;
+}
+
+.tw-w-px {
+  width: 1px;
 }
 
 .tw-min-w-\[100px\] {
@@ -1853,6 +1862,10 @@ cart-drawer .product-option .price {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
+.tw-bg-current {
+  background-color: currentColor;
+}
+
 .tw-bg-cover {
   background-size: cover;
 }
@@ -2182,6 +2195,10 @@ cart-drawer .product-option .price {
 
 .tw-underline-offset-4 {
   text-underline-offset: 4px;
+}
+
+.tw-opacity-20 {
+  opacity: 0.2;
 }
 
 .tw-shadow-lg {
