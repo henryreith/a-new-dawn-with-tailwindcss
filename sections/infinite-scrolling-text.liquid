@@ -70,11 +70,7 @@
         <div class='infinite-scrolling-text__content tw-flex tw-flex-row tw-items-center tw-whitespace-nowrap'>
           {% for block in section.blocks %}
             <div
-              class='infinite-scrolling-text__text-item {% if section.settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
-              {% if section.settings.animations_reveal_on_scroll %}
-                data-cascade
-                style='--animation-order: {{ forloop.index }};'
-              {% endif %}
+              class='infinite-scrolling-text__text-item'
             >
               {{ block.settings.text_item }}
             </div>
