@@ -190,8 +190,15 @@
     "product_comparison_table_GawgUH": {
       "type": "product-comparison-table",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "section_content_width": "page_width",
+        "header_alignment": "tw-text-center",
+        "brand_accent_color": "#6dab3c",
+        "highlight_color": "#f6f9fe",
+        "competitor_check_color": "#4d6e89",
+        "competitor_cross_color": "#4d6e89",
+        "features_column_title": "Features",
+        "header_image_height": 60,
         "padding_top": 36,
         "padding_bottom": 36
       }
