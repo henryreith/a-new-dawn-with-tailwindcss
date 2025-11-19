@@ -12,19 +12,28 @@
   }
 
   #infinite-scrolling-logos-section-{{ section.id }} {
-    --logo-height: {{ section.settings.logo_height }}px;
-    --logo-spacing: {{ section.settings.logo_spacing }}px;
+    --logo-height: {{ section.settings.logo_height | times: 0.7 | round: 0 }}px;
+    --logo-spacing: {{ section.settings.logo_spacing | times: 0.6 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #infinite-scrolling-logos-section-{{ section.id }} {
+      --logo-height: {{ section.settings.logo_height }}px;
+      --logo-spacing: {{ section.settings.logo_spacing }}px;
+    }
   }
 
   #infinite-scrolling-logos-section-{{ section.id }} .infinite-scrolling-logos__logo-item {
-    height: var(--logo-height);
     padding: 0 var(--logo-spacing);
+    flex-shrink: 0;
   }
 
   #infinite-scrolling-logos-section-{{ section.id }} .infinite-scrolling-logos__logo-item img {
-    height: 100%;
+    height: var(--logo-height);
     width: auto;
+    max-height: var(--logo-height);
     object-fit: contain;
+    flex-shrink: 0;
     {% if section.settings.grayscale_logos %}
       filter: grayscale(100%);
       opacity: {{ section.settings.logo_opacity | divided_by: 100.0 }};
@@ -36,20 +45,30 @@
   }
 
   {% if section.settings.grayscale_logos and section.settings.color_on_hover %}
-  #infinite-scrolling-logos-section-{{ section.id }} .infinite-scrolling-logos:hover .infinite-scrolling-logos__logo-item img {
+  #infinite-scrolling-logos-section-{{ section.id }} .infinite-scrolling-logos__logo-item:hover img {
     filter: grayscale(0%);
     opacity: 1;
   }
   {% endif %}
 
+  .infinite-scrolling-logos__inner {
+    display: flex;
+    width: 100%;
+  }
+
   /* Apply the animation to the logo items */
   .infinite-scrolling-logos__inner > div {
     animation: var(--direction) var(--marquee-speed) linear infinite;
+    display: flex;
+    flex-shrink: 0;
   }
 
-  @media (prefers-reduced-motion) {
+  @media (prefers-reduced-motion: reduce) {
     .infinite-scrolling-logos__inner > div {
-      animation: none;
+      animation: none !important;
+    }
+    .infinite-scrolling-logos__inner {
+      justify-content: center;
     }
   }
 
@@ -90,12 +109,17 @@
 
   <div class='infinite-scrolling-logos'>
     <div
-      class='infinite-scrolling-logos__inner tw-flex tw-flex-row tw-items-center tw-overflow-x-hidden'
+      class='infinite-scrolling-logos__inner tw-overflow-x-hidden'
       style='--marquee-speed: {{ section.settings.marquee_speed }}s; --direction:scroll-{{ section.settings.scroll_direction }}'
       role='marquee'
     >
-      {% for i in (1..3) %}
-        <div class='infinite-scrolling-logos__content tw-flex tw-flex-row tw-items-center tw-whitespace-nowrap'>
+      {% if section.blocks.size >= 8 %}
+        {% assign duplicate_count = 2 %}
+      {% else %}
+        {% assign duplicate_count = 3 %}
+      {% endif %}
+      {% for i in (1..duplicate_count) %}
+        <div class='infinite-scrolling-logos__content tw-items-center'>
           {% for block in section.blocks %}
             {% if block.settings.logo != blank %}
               <div class='infinite-scrolling-logos__logo-item tw-flex tw-items-center tw-justify-center'>
