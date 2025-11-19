@@ -1,141 +1,278 @@
 {%- style -%}
-      .comparison-table-section {
-        --section-padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-        --section-padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-      }
+  .comparison-table-section {
+    --section-padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    --brand-accent-color: {{ section.settings.brand_accent_color | default: '#6dab3c' }};
+  }
 
-      @media screen and (min-width: 750px) {
-        .comparison-table-section {
-          --section-padding-top: {{ section.settings.padding_top }}px;
-          --section-padding-bottom: {{ section.settings.padding_bottom }}px;
-        }
-      }
-
-      .comparison-table {
-        border-collapse: separate;
-        border-spacing: 0;
-      }
-
-      .comparison-table th {
-        position: sticky;
-        top: 0;
-        z-index: 5;
-        background: white;
-      }
-
-      .comparison-table th:first-child,
-      .comparison-table td:first-child {
-        position: sticky;
-        left: 0;
-        z-index: 10;
-        background: white;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-      }
-
-      .comparison-table th:nth-child(2),
-      .comparison-table td:nth-child(2) {
-        position: sticky;
-        left: var(--first-column-width, 120px);
-        z-index: 9;
-        background: {{ section.settings.highlight_color | default: '#F6F9FE' }};
-        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-      }
-
-      .comparison-table th:first-child {
-        z-index: 11;
-      }
-
-      .comparison-table th:nth-child(2) {
-        z-index: 10;
-      }
-
-      .comparison-scroll-container {
-      position: relative;
+  @media screen and (min-width: 750px) {
+    .comparison-table-section {
+      --section-padding-top: {{ section.settings.padding_top }}px;
+      --section-padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-    .comparison-scroll-container::before,
-    .comparison-scroll-container::after {
+  }
+
+  /* Table base styles */
+  .comparison-table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  /* Sticky feature column (first column) */
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background: white;
+  }
+
+  /* Sticky brand column (second column) - highlighted */
+  .comparison-table th:nth-child(2),
+  .comparison-table td:nth-child(2) {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 100px;
+    z-index: 9;
+    background: {{ section.settings.highlight_color | default: '#F6F9FE' }};
+    box-sizing: border-box;
+  }
+
+  @media screen and (min-width: 1280px) {
+    .comparison-table th:nth-child(2),
+    .comparison-table td:nth-child(2) {
+      left: 285px;
+    }
+  }
+
+  /* Brand column border styling */
+  .comparison-table th:nth-child(2) {
+    border-top: 2px solid var(--brand-accent-color);
+    border-left: 2px solid var(--brand-accent-color);
+    border-right: 2px solid var(--brand-accent-color);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+
+  .comparison-table tbody tr:first-child td:nth-child(2) {
+    border-top: 1px solid #e5e7eb;
+    border-left: 2px solid var(--brand-accent-color);
+    border-right: 2px solid var(--brand-accent-color);
+  }
+
+  .comparison-table tbody tr:not(:first-child) td:nth-child(2) {
+    border-top: 1px solid #e5e7eb;
+    border-left: 2px solid var(--brand-accent-color);
+    border-right: 2px solid var(--brand-accent-color);
+  }
+
+  .comparison-table tbody tr:last-child td:nth-child(2) {
+    border-bottom: 2px solid var(--brand-accent-color);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  /* Higher z-index for header sticky cells */
+  .comparison-table th:first-child {
+    z-index: 11;
+  }
+
+  .comparison-table th:nth-child(2) {
+    z-index: 10;
+  }
+
+  /* Scroll container wrapper for gradient fade */
+  .comparison-scroll-wrapper {
+    position: relative;
+  }
+
+  /* Gradient fade on right edge for mobile - fixed to viewport */
+  @media screen and (max-width: 1279px) {
+    .comparison-scroll-wrapper::after {
       content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 2rem;
-      pointer-events: none;
-    }
-    .comparison-scroll-container::before {
-      left: 0;
-      background: linear-gradient(to right, white, rgba(255,255,255,0));
-    }
-    .comparison-scroll-container::after {
+      position: fixed;
+      top: 0;
       right: 0;
-      background: linear-gradient(to left, white, rgba(255,255,255,0));
+      bottom: 0;
+      width: 2.5rem;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+      pointer-events: none;
+      z-index: 15;
     }
-
-    .comparison-scroll-container::-webkit-scrollbar-thumb {
-    opacity: 0;
-    transition: opacity .2s;
-  }
-  .comparison-scroll-container:hover::-webkit-scrollbar-thumb {
-    opacity: 1;
   }
 
+  /* Scroll container */
+  .comparison-scroll-container {
+    position: relative;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
 
-    .feature-check {
-      color: {{ section.settings.check_color | default: '#22c55e' }};
-      font-size: 1.5rem;
-      font-weight: bold;
+  .comparison-scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  /* SVG Icons */
+  .comparison-check-icon {
+    width: 23px;
+    height: 20px;
+    display: inline-block;
+  }
+
+  .comparison-cross-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+
+  /* Brand column check icon color */
+  .brand-column .comparison-check-icon path {
+    stroke: var(--brand-accent-color);
+  }
+
+  /* Competitor column check/cross icon colors */
+  .competitor-column .comparison-check-icon path {
+    stroke: {{ section.settings.competitor_check_color}};
+  }
+
+  .competitor-column .comparison-cross-icon path {
+    stroke: {{ section.settings.competitor_cross_color}};
+  }
+
+  /* Table cell styling with more breathing room */
+  .comparison-table th {
+    padding: 0.5rem 0.375rem;
+  }
+
+  .comparison-table td {
+    min-height: 52px;
+    padding: 0.75rem 0.5rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .comparison-table th {
+      padding: 0.75rem 0;
     }
 
-    .feature-cross {
-      color: {{ section.settings.cross_color | default: '#ef4444' }};
-      font-size: 1.5rem;
-      font-weight: bold;
+    .comparison-table td {
+      padding: 1rem 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .comparison-table th {
+      padding: 1rem 0;
     }
 
-    .comparison-scroll-container {
-      scrollbar-width: thin;
-      scrollbar-color: #cbd5e1 #f1f5f9;
+    .comparison-table td {
+      padding: 1.25rem 1rem;
     }
+  }
 
-    .comparison-scroll-container::-webkit-scrollbar {
-      height: 8px;
+  /* Column widths */
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    min-width: 100px;
+  }
+
+  .comparison-table th:nth-child(2),
+  .comparison-table td:nth-child(2) {
+    min-width: 82px;
+  }
+
+  .comparison-table th:not(:first-child):not(:nth-child(2)),
+  .comparison-table td:not(:first-child):not(:nth-child(2)) {
+    min-width: 82px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .comparison-table th:nth-child(2),
+    .comparison-table td:nth-child(2),
+    .comparison-table th:not(:first-child):not(:nth-child(2)),
+    .comparison-table td:not(:first-child):not(:nth-child(2)) {
+      min-width: 130px;
     }
+  }
 
-    .comparison-scroll-container::-webkit-scrollbar-track {
-      background: #f1f5f9;
-      border-radius: 4px;
+  @media screen and (min-width: 1280px) {
+    .comparison-table th:first-child,
+    .comparison-table td:first-child {
+      width: 285px;
     }
+  }
 
-    .comparison-scroll-container::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
+  @media screen and (min-width: 1536px) {
+    .comparison-table th:nth-child(2),
+    .comparison-table td:nth-child(2),
+    .comparison-table th:not(:first-child):not(:nth-child(2)),
+    .comparison-table td:not(:first-child):not(:nth-child(2)) {
+      width: 130px;
     }
+  }
 
-    .comparison-scroll-container::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
-    }
+  /* Border styling */
+  .comparison-table td:first-child {
+    border-top: 1px solid #e5e7eb;
+  }
 
-    .comparison-header-image {
-      max-height: {{ section.settings.header_image_height }}px;
-      width: auto;
-      object-fit: contain;
-    }
+  .comparison-table td:not(:first-child):not(:nth-child(2)) {
+    border-top: 1px solid #e5e7eb;
+  }
 
+  /* Header image styling */
+  .comparison-header-image {
+    max-height: {{ section.settings.header_image_height }}px;
+    max-width: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Footnotes styling */
+  .comparison-footnotes {
+    margin-top: 1.5rem;
+  }
+
+  .comparison-footnote {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 0.375rem;
+  }
+
+  @media screen and (min-width: 768px) {
     .comparison-footnote {
-      font-size: 0.875rem;
-      color: #6b7280;
-      margin-top: 1rem;
+      font-size: 1.2rem;
     }
+  }
 
-    @media (max-width: 768px) {
-      .comparison-table th:first-child,
-      .comparison-table td:first-child {
-        min-width: 100px;
-      }
+  .comparison-footnote a {
+    text-decoration: underline;
+  }
 
-      .comparison-table th:nth-child(2),
-      .comparison-table td:nth-child(2) {
-        min-width: 120px;
-      }
+  /* Text sizing responsive */
+
+  .comparison-table-text-sm {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 640px) {
+    .comparison-table-text-sm {
+      font-size: 1.1rem;
     }
+  }
+
+  @media screen and (max-width: 990px) {
+    .comparison-table-text-sm {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Feature value text colors */
+  .brand-column .feature-value-text {
+    color: var(--brand-accent-color);
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -200,312 +337,592 @@
       <div class='{{ container_class }}'>
         {%- comment -%} Section Header {%- endcomment -%}
         {%- if section_header -%}
-          <div class='tw-text-center tw-mb-8'>
+          <div class='tw-mb-6 lg:tw-mb-9 tw-flex tw-flex-col tw-gap-2 tw-items-center {{ section.settings.header_alignment }}'>
             {%- if section_header.header != blank -%}
-              <h2 class='tw-text-3xl tw-font-bold tw-mb-4 {{ section.settings.header_alignment }}'>
+              <h2 class='tw-text-3xl lg:tw-text-4xl tw-font-bold'>
                 {{ section_header.header }}
               </h2>
             {%- endif -%}
             {%- if section_header.sub_paragraph != blank -%}
-              <div class='tw-text-lg tw-text-gray-600 tw-max-w-3xl tw-mx-auto {{ section.settings.header_alignment }}'>
+              <div class='tw-text-base lg:tw-text-lg tw-text-gray-600 tw-max-w-3xl'>
                 {{ section_header.sub_paragraph | metafield_tag }}
               </div>
             {%- endif -%}
           </div>
         {%- endif -%}
 
-        {%- comment -%} Comparison Table {%- endcomment -%}
-        <div class='comparison-scroll-container tw-overflow-x-auto tw-shadow-lg tw-rounded-lg'>
-          <table
-            class='comparison-table tw-w-full tw-min-w-max tw-bg-white'
-            style='min-width: {{ total_columns | times: 150 }}px;'
-          >
-            {%- comment -%} Table Header {%- endcomment -%}
-            <thead>
-              <tr>
-                <th class='tw-p-4 tw-text-left tw-font-semibold tw-border-b tw-border-gray-200'>
-                  {{ section.settings.features_column_title | default: 'Features' }}
-                </th>
+        {%- comment -%} Comparison Table Container {%- endcomment -%}
+        <div class='tw-mx-auto xl:tw-max-w-[1080px] 2xl:tw-max-w-[1125px]'>
+          <div class='comparison-scroll-wrapper'>
+            <div class='comparison-scroll-container tw-ml-4 xl:tw-ml-0 xl:tw-mx-auto xl:tw-px-10 2xl:tw-px-0'>
+              <table class='comparison-table tw-mb-6 tw-mx-auto'>
+                {%- comment -%} Table Header {%- endcomment -%}
+                <thead>
+                  <tr class='tw-border-0 tw-p-0'>
+                    <th class='tw-border-0 tw-bg-white tw-p-0'></th>
 
-                {%- comment -%} Our Brand Column {%- endcomment -%}
-                <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-l tw-border-r tw-border-gray-200'>
-                  <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
-                    {%- if table_header.our_brand_logo != blank -%}
-                      {{
-                        table_header.our_brand_logo
-                        | image_url: width: 400
-                        | image_tag:
-                          class: 'comparison-header-image tw-mx-auto',
-                          alt: table_header.our_brand_name,
-                          loading: 'lazy'
-                      }}
+                    {%- comment -%} Our Brand Column Header {%- endcomment -%}
+                    <th class='tw-p-0 brand-column'>
+                      <div class='tw-min-w-[82px] tw-px-1.5 tw-py-2 md:tw-px-0 xl:tw-py-3 2xl:tw-w-[130px]'>
+                        <div class='tw-mx-auto tw-max-w-[100px]'>
+                          {%- if table_header.our_brand_logo != blank -%}
+                            {{
+                              table_header.our_brand_logo
+                              | image_url: width: 200
+                              | image_tag:
+                                class: 'comparison-header-image tw-mx-auto',
+                                alt: table_header.our_brand_name,
+                                loading: 'lazy'
+                            }}
+                          {%- elsif table_header.our_brand_name != blank -%}
+                            <div class='tw-font-bold comparison-table-text-sm tw-text-center'>
+                              {{ table_header.our_brand_name }}
+                            </div>
+                          {%- endif -%}
+                          {%- if table_header.our_brand_subtitle != blank -%}
+                            <div class='comparison-table-text-sm tw-text-center tw-mt-1'>
+                              {{ table_header.our_brand_subtitle }}
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    </th>
 
-                    {%- elsif table_header.our_brand_name != blank -%}
-                      <div class='tw-font-bold tw-text-sm'>{{ table_header.our_brand_name }}</div>
-                    {%- endif -%}
-                    {%- if table_header.our_brand_subtitle != blank -%}
-                      <div class='tw-text-xs tw-text-gray-500'>{{ table_header.our_brand_subtitle }}</div>
-                    {%- endif -%}
-                  </div>
-                </th>
-
-                {%- comment -%} Competitor Columns {%- endcomment -%}
-                {%- if competitor_1_title != blank -%}
-                  <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-gray-200'>
-                    <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
-                      {%- if table_header.competitor_1_logo != blank -%}
-                        {{
-                          table_header.competitor_1_logo
-                          | image_url: width: 400
-                          | image_tag:
-                            class: 'comparison-header-image tw-mx-auto',
-                            alt: competitor_1_title,
-                            loading: 'lazy'
-                        }}
-                      {%- elsif competitor_1_title != blank -%}
-                        <div class='tw-font-bold tw-text-sm'>{{ competitor_1_title }}</div>
-                      {%- endif -%}
-                      {%- if table_header.competitor_1_subtitle != blank -%}
-                        <div class='tw-text-xs tw-text-gray-500'>{{ table_header.competitor_1_subtitle }}</div>
-                      {%- endif -%}
-                    </div>
-                  </th>
-                {%- endif -%}
-
-                {%- if competitor_2_title != blank -%}
-                  <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-gray-200'>
-                    <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
-                      {%- if table_header.competitor_2_logo != blank -%}
-                        {{
-                          table_header.competitor_2_logo
-                          | image_url: width: 400
-                          | image_tag:
-                            class: 'comparison-header-image tw-mx-auto',
-                            alt: competitor_2_title,
-                            loading: 'lazy'
-                        }}
-                      {%- endif -%}
-                      <div class='tw-font-bold tw-text-sm'>{{ competitor_2_title }}</div>
-                      {%- if table_header.competitor_2_subtitle != blank -%}
-                        <div class='tw-text-xs tw-text-gray-500'>{{ table_header.competitor_2_subtitle }}</div>
-                      {%- endif -%}
-                    </div>
-                  </th>
-                {%- endif -%}
-
-                {%- if competitor_3_title != blank -%}
-                  <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-gray-200'>
-                    <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
-                      {%- if table_header.competitor_3_logo != blank -%}
-                        {{
-                          table_header.competitor_3_logo
-                          | image_url: width: 400
-                          | image_tag:
-                            class: 'comparison-header-image tw-mx-auto',
-                            alt: competitor_3_title,
-                            loading: 'lazy'
-                        }}
-                      {%- endif -%}
-                      <div class='tw-font-bold tw-text-sm'>{{ competitor_3_title }}</div>
-                      {%- if table_header.competitor_3_subtitle != blank -%}
-                        <div class='tw-text-xs tw-text-gray-500'>{{ table_header.competitor_3_subtitle }}</div>
-                      {%- endif -%}
-                    </div>
-                  </th>
-                {%- endif -%}
-
-                {%- if competitor_4_title != blank -%}
-                  <th class='tw-p-4 tw-text-center tw-font-semibold tw-border-b tw-border-gray-200'>
-                    <div class='tw-flex tw-flex-col tw-items-center tw-gap-2'>
-                      {%- if table_header.competitor_4_logo != blank -%}
-                        {{
-                          table_header.competitor_4_logo
-                          | image_url: width: 400
-                          | image_tag:
-                            class: 'comparison-header-image tw-mx-auto',
-                            alt: competitor_4_title,
-                            loading: 'lazy'
-                        }}
-                      {%- endif -%}
-                      <div class='tw-font-bold tw-text-sm'>{{ competitor_4_title }}</div>
-                      {%- if table_header.competitor_4_subtitle != blank -%}
-                        <div class='tw-text-xs tw-text-gray-500'>{{ table_header.competitor_4_subtitle }}</div>
-                      {%- endif -%}
-                    </div>
-                  </th>
-                {%- endif -%}
-              </tr>
-            </thead>
-
-            {%- comment -%} Table Body {%- endcomment -%}
-            <tbody>
-              {%- for item in comparison_data -%}
-                {%- if item.feature_title != blank -%}
-                  <tr class='tw-border-b tw-border-gray-100 hover:tw-bg-gray-50 tw-transition-colors'>
-                    {%- comment -%} Feature Title {%- endcomment -%}
-                    <td class='tw-p-4 tw-font-medium tw-text-gray-900'>
-                      {{ item.feature_title }}
-                      {%- if item.feature_description != blank -%}
-                        <div class='tw-text-sm tw-text-gray-500 tw-mt-1'>{{ item.feature_description }}</div>
-                      {%- endif -%}
-                    </td>
-
-                    {%- comment -%} Our Brand Feature {%- endcomment -%}
-                    <td class='tw-p-4 tw-text-center tw-border-l tw-border-r tw-border-gray-100'>
-                      {%- if item.our_brand_feature_type == 'boolean' -%}
-                        {%- if item.our_brand_feature -%}
-                          <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                        {%- else -%}
-                          <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                        {%- endif -%}
-                      {%- elsif item.our_brand_feature_type == 'text' -%}
-                        <div class='tw-font-medium'>{{ item.our_brand_feature_text }}</div>
-                      {%- elsif item.our_brand_feature_type == 'price' -%}
-                        <div class='tw-font-medium tw-text-green-600'>{{ item.our_brand_feature_price }}</div>
-                      {%- else -%}
-                        {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
-                        {%- if item.our_brand_feature -%}
-                          <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                        {%- else -%}
-                          <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                        {%- endif -%}
-                      {%- endif -%}
-                      {%- if item.our_brand_feature_note != blank -%}
-                        <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.our_brand_feature_note }}</div>
-                      {%- endif -%}
-                    </td>
-
-                    {%- comment -%} Competitor Features {%- endcomment -%}
+                    {%- comment -%} Competitor Column Headers {%- endcomment -%}
                     {%- if competitor_1_title != blank -%}
-                      <td class='tw-p-4 tw-text-center'>
-                        {%- if item.competitor_1_feature_type == 'boolean' -%}
-                          {%- if item.competitor_1_feature -%}
-                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                          {%- else -%}
-                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                          {%- endif -%}
-                        {%- elsif item.competitor_1_feature_type == 'text' -%}
-                          <div class='tw-font-medium'>{{ item.competitor_1_feature_text }}</div>
-                        {%- elsif item.competitor_1_feature_type == 'price' -%}
-                          <div class='tw-font-medium'>{{ item.competitor_1_feature_price }}</div>
-                        {%- else -%}
-                          {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
-                          {%- if item.competitor_1_feature -%}
-                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                          {%- else -%}
-                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                          {%- endif -%}
-                        {%- endif -%}
-                        {%- if item.competitor_1_feature_note != blank -%}
-                          <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.competitor_1_feature_note }}</div>
-                        {%- endif -%}
-                      </td>
+                      <th class='tw-p-0'>
+                        <div class='tw-min-w-[82px] tw-px-1.5 tw-py-2 md:tw-px-0 xl:tw-py-3 2xl:tw-w-[130px]'>
+                          <div class='tw-mx-auto tw-max-w-[100px]'>
+                            {%- if table_header.competitor_1_logo != blank -%}
+                              {{
+                                table_header.competitor_1_logo
+                                | image_url: width: 200
+                                | image_tag:
+                                  class: 'comparison-header-image tw-mx-auto',
+                                  alt: competitor_1_title,
+                                  loading: 'lazy'
+                              }}
+                            {%- elsif competitor_1_title != blank -%}
+                              <div class='tw-font-bold comparison-table-text-sm tw-text-center'>
+                                {{ competitor_1_title }}
+                              </div>
+                            {%- endif -%}
+                            {%- if table_header.competitor_1_subtitle != blank -%}
+                              <div class='comparison-table-text-sm tw-text-center tw-mt-1'>
+                                {{ table_header.competitor_1_subtitle }}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                      </th>
                     {%- endif -%}
 
                     {%- if competitor_2_title != blank -%}
-                      <td class='tw-p-4 tw-text-center'>
-                        {%- if item.competitor_2_feature_type == 'boolean' -%}
-                          {%- if item.competitor_2_feature -%}
-                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                          {%- else -%}
-                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                          {%- endif -%}
-                        {%- elsif item.competitor_2_feature_type == 'text' -%}
-                          <div class='tw-font-medium'>{{ item.competitor_2_feature_text }}</div>
-                        {%- elsif item.competitor_2_feature_type == 'price' -%}
-                          <div class='tw-font-medium'>{{ item.competitor_2_feature_price }}</div>
-                        {%- else -%}
-                          {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
-                          {%- if item.competitor_2_feature -%}
-                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                          {%- else -%}
-                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                          {%- endif -%}
-                        {%- endif -%}
-                        {%- if item.competitor_2_feature_note != blank -%}
-                          <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.competitor_2_feature_note }}</div>
-                        {%- endif -%}
-                      </td>
+                      <th class='tw-p-0'>
+                        <div class='tw-min-w-[82px] tw-px-1.5 tw-py-2 md:tw-px-0 xl:tw-py-3 2xl:tw-w-[130px]'>
+                          <div class='tw-mx-auto tw-max-w-[100px]'>
+                            {%- if table_header.competitor_2_logo != blank -%}
+                              {{
+                                table_header.competitor_2_logo
+                                | image_url: width: 200
+                                | image_tag:
+                                  class: 'comparison-header-image tw-mx-auto',
+                                  alt: competitor_2_title,
+                                  loading: 'lazy'
+                              }}
+                            {%- elsif competitor_2_title != blank -%}
+                              <div class='tw-font-bold comparison-table-text-sm tw-text-center'>
+                                {{ competitor_2_title }}
+                              </div>
+                            {%- endif -%}
+                            {%- if table_header.competitor_2_subtitle != blank -%}
+                              <div class='comparison-table-text-sm tw-text-center tw-mt-1'>
+                                {{ table_header.competitor_2_subtitle }}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                      </th>
                     {%- endif -%}
 
                     {%- if competitor_3_title != blank -%}
-                      <td class='tw-p-4 tw-text-center'>
-                        {%- if item.competitor_3_feature_type == 'boolean' -%}
-                          {%- if item.competitor_3_feature -%}
-                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                          {%- else -%}
-                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                          {%- endif -%}
-                        {%- elsif item.competitor_3_feature_type == 'text' -%}
-                          <div class='tw-font-medium'>{{ item.competitor_3_feature_text }}</div>
-                        {%- elsif item.competitor_3_feature_type == 'price' -%}
-                          <div class='tw-font-medium'>{{ item.competitor_3_feature_price }}</div>
-                        {%- else -%}
-                          {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
-                          {%- if item.competitor_3_feature -%}
-                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                          {%- else -%}
-                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                          {%- endif -%}
-                        {%- endif -%}
-                        {%- if item.competitor_3_feature_note != blank -%}
-                          <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.competitor_3_feature_note }}</div>
-                        {%- endif -%}
-                      </td>
+                      <th class='tw-p-0'>
+                        <div class='tw-min-w-[82px] tw-px-1.5 tw-py-2 md:tw-px-0 xl:tw-py-3 2xl:tw-w-[130px]'>
+                          <div class='tw-mx-auto tw-max-w-[100px]'>
+                            {%- if table_header.competitor_3_logo != blank -%}
+                              {{
+                                table_header.competitor_3_logo
+                                | image_url: width: 200
+                                | image_tag:
+                                  class: 'comparison-header-image tw-mx-auto',
+                                  alt: competitor_3_title,
+                                  loading: 'lazy'
+                              }}
+                            {%- elsif competitor_3_title != blank -%}
+                              <div class='tw-font-bold comparison-table-text-sm tw-text-center'>
+                                {{ competitor_3_title }}
+                              </div>
+                            {%- endif -%}
+                            {%- if table_header.competitor_3_subtitle != blank -%}
+                              <div class='comparison-table-text-sm tw-text-center tw-mt-1'>
+                                {{ table_header.competitor_3_subtitle }}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                      </th>
                     {%- endif -%}
 
                     {%- if competitor_4_title != blank -%}
-                      <td class='tw-p-4 tw-text-center'>
-                        {%- if item.competitor_4_feature_type == 'boolean' -%}
-                          {%- if item.competitor_4_feature -%}
-                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                          {%- else -%}
-                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                          {%- endif -%}
-                        {%- elsif item.competitor_4_feature_type == 'text' -%}
-                          <div class='tw-font-medium'>{{ item.competitor_4_feature_text }}</div>
-                        {%- elsif item.competitor_4_feature_type == 'price' -%}
-                          <div class='tw-font-medium'>{{ item.competitor_4_feature_price }}</div>
-                        {%- else -%}
-                          {%- comment -%} Default to boolean for backward compatibility {%- endcomment -%}
-                          {%- if item.competitor_4_feature -%}
-                            <span class='feature-check'>{{ section.settings.check_symbol | default: '✓' }}</span>
-                          {%- else -%}
-                            <span class='feature-cross'>{{ section.settings.cross_symbol | default: '✗' }}</span>
-                          {%- endif -%}
-                        {%- endif -%}
-                        {%- if item.competitor_4_feature_note != blank -%}
-                          <div class='tw-text-xs tw-text-gray-500 tw-mt-1'>{{ item.competitor_4_feature_note }}</div>
-                        {%- endif -%}
-                      </td>
+                      <th class='tw-p-0'>
+                        <div class='tw-min-w-[82px] tw-px-1.5 tw-py-2 md:tw-px-0 xl:tw-py-3 2xl:tw-w-[130px]'>
+                          <div class='tw-mx-auto tw-max-w-[100px]'>
+                            {%- if table_header.competitor_4_logo != blank -%}
+                              {{
+                                table_header.competitor_4_logo
+                                | image_url: width: 200
+                                | image_tag:
+                                  class: 'comparison-header-image tw-mx-auto',
+                                  alt: competitor_4_title,
+                                  loading: 'lazy'
+                              }}
+                            {%- elsif competitor_4_title != blank -%}
+                              <div class='tw-font-bold comparison-table-text-sm tw-text-center'>
+                                {{ competitor_4_title }}
+                              </div>
+                            {%- endif -%}
+                            {%- if table_header.competitor_4_subtitle != blank -%}
+                              <div class='comparison-table-text-sm tw-text-center tw-mt-1'>
+                                {{ table_header.competitor_4_subtitle }}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                      </th>
                     {%- endif -%}
                   </tr>
+                </thead>
+
+                {%- comment -%} Table Body {%- endcomment -%}
+                <tbody>
+                  {%- for item in comparison_data -%}
+                    {%- if item.feature_title != blank -%}
+                      <tr class='tw-border-none tw-p-0'>
+                        {%- comment -%} Feature Title {%- endcomment -%}
+                        <td class='tw-sticky tw-left-0 tw-z-10 tw-min-w-[100px] tw-bg-white tw-pr-3 comparison-table-text-sm xl:tw-w-[285px] xl:tw-pr-1 2xl:tw-pr-4'>
+                          {{ item.feature_title }}
+                        </td>
+
+                        {%- comment -%} Our Brand Feature {%- endcomment -%}
+                        <td class='tw-p-0 brand-column'>
+                          <div class='tw-flex tw-min-h-[52px] tw-min-w-[82px] tw-items-center tw-justify-center md:tw-min-w-[130px] md:comparison-table-text-sm'>
+                            <div class='tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-y-1 tw-py-1.5'>
+                              {%- if item.our_brand_feature_type == 'boolean' -%}
+                                {%- if item.our_brand_feature -%}
+                                  <svg
+                                    class='comparison-check-icon'
+                                    viewBox='0 0 23 20'
+                                    fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                  >
+                                    <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.brand_accent_color}}" stroke-width="2.5" stroke-linecap="round"/>
+                                  </svg>
+                                {%- else -%}
+                                  <svg
+                                    class='comparison-cross-icon'
+                                    viewBox='0 0 16 15'
+                                    fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                  >
+                                    <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                                {%- endif -%}
+                              {%- elsif item.our_brand_feature_type == 'text' -%}
+                                <div class='tw-mx-auto tw-w-9/12 tw-text-center feature-value-text'>
+                                  {{ item.our_brand_feature_text }}
+                                </div>
+                              {%- elsif item.our_brand_feature_type == 'price' -%}
+                                <svg
+                                  class='comparison-check-icon'
+                                  viewBox='0 0 23 20'
+                                  fill='none'
+                                  xmlns='http://www.w3.org/2000/svg'
+                                >
+                                  <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.brand_accent_color}}" stroke-width="2.5" stroke-linecap="round"/>
+                                </svg>
+                                <div class='feature-value-text'>{{ item.our_brand_feature_price }}</div>
+                              {%- else -%}
+                                {%- if item.our_brand_feature -%}
+                                  <svg
+                                    class='comparison-check-icon'
+                                    viewBox='0 0 23 20'
+                                    fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                  >
+                                    <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.brand_accent_color}}" stroke-width="2.5" stroke-linecap="round"/>
+                                  </svg>
+                                {%- else -%}
+                                  <svg
+                                    class='comparison-cross-icon'
+                                    viewBox='0 0 16 15'
+                                    fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                  >
+                                    <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                                {%- endif -%}
+                              {%- endif -%}
+                              {%- if item.our_brand_feature_note != blank -%}
+                                <div class='tw-text-xs'>{{ item.our_brand_feature_note }}</div>
+                              {%- endif -%}
+                            </div>
+                          </div>
+                        </td>
+
+                        {%- comment -%} Competitor 1 Feature {%- endcomment -%}
+                        {%- if competitor_1_title != blank -%}
+                          <td class='tw-p-0 competitor-column'>
+                            <div class='tw-flex tw-min-h-[52px] tw-min-w-[82px] tw-items-center tw-justify-center md:tw-min-w-[130px] md:comparison-table-text-sm'>
+                              <div class='tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-y-1 tw-py-1.5'>
+                                {%- if item.competitor_1_feature_type == 'boolean' -%}
+                                  {%- if item.competitor_1_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                {%- elsif item.competitor_1_feature_type == 'text' -%}
+                                  <div class='tw-mx-auto tw-w-9/12 tw-text-center'>
+                                    {{ item.competitor_1_feature_text }}
+                                  </div>
+                                {%- elsif item.competitor_1_feature_type == 'price' -%}
+                                  {%- if item.competitor_1_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                  <div>{{ item.competitor_1_feature_price }}</div>
+                                {%- else -%}
+                                  {%- if item.competitor_1_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                {%- endif -%}
+                                {%- if item.competitor_1_feature_note != blank -%}
+                                  <div>{{ item.competitor_1_feature_note }}</div>
+                                {%- endif -%}
+                              </div>
+                            </div>
+                          </td>
+                        {%- endif -%}
+
+                        {%- comment -%} Competitor 2 Feature {%- endcomment -%}
+                        {%- if competitor_2_title != blank -%}
+                          <td class='tw-p-0 competitor-column'>
+                            <div class='tw-flex tw-min-h-[52px] tw-min-w-[82px] tw-items-center tw-justify-center md:tw-min-w-[130px] md:comparison-table-text-sm'>
+                              <div class='tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-y-1 tw-py-1.5'>
+                                {%- if item.competitor_2_feature_type == 'boolean' -%}
+                                  {%- if item.competitor_2_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                {%- elsif item.competitor_2_feature_type == 'text' -%}
+                                  <div class='tw-mx-auto tw-w-9/12 tw-text-center'>
+                                    {{ item.competitor_2_feature_text }}
+                                  </div>
+                                {%- elsif item.competitor_2_feature_type == 'price' -%}
+                                  {%- if item.competitor_2_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                  <div>{{ item.competitor_2_feature_price }}</div>
+                                {%- else -%}
+                                  {%- if item.competitor_2_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                {%- endif -%}
+                                {%- if item.competitor_2_feature_note != blank -%}
+                                  <div>{{ item.competitor_2_feature_note }}</div>
+                                {%- endif -%}
+                              </div>
+                            </div>
+                          </td>
+                        {%- endif -%}
+
+                        {%- comment -%} Competitor 3 Feature {%- endcomment -%}
+                        {%- if competitor_3_title != blank -%}
+                          <td class='tw-p-0 competitor-column'>
+                            <div class='tw-flex tw-min-h-[52px] tw-min-w-[82px] tw-items-center tw-justify-center md:tw-min-w-[130px] md:comparison-table-text-sm'>
+                              <div class='tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-y-1 tw-py-1.5'>
+                                {%- if item.competitor_3_feature_type == 'boolean' -%}
+                                  {%- if item.competitor_3_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                {%- elsif item.competitor_3_feature_type == 'text' -%}
+                                  <div class='tw-mx-auto tw-w-9/12 tw-text-center'>
+                                    {{ item.competitor_3_feature_text }}
+                                  </div>
+                                {%- elsif item.competitor_3_feature_type == 'price' -%}
+                                  {%- if item.competitor_3_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                  <div>{{ item.competitor_3_feature_price }}</div>
+                                {%- else -%}
+                                  {%- if item.competitor_3_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                {%- endif -%}
+                                {%- if item.competitor_3_feature_note != blank -%}
+                                  <div>{{ item.competitor_3_feature_note }}</div>
+                                {%- endif -%}
+                              </div>
+                            </div>
+                          </td>
+                        {%- endif -%}
+
+                        {%- comment -%} Competitor 4 Feature {%- endcomment -%}
+                        {%- if competitor_4_title != blank -%}
+                          <td class='tw-p-0 competitor-column'>
+                            <div class='tw-flex tw-min-h-[52px] tw-min-w-[82px] tw-items-center tw-justify-center md:tw-min-w-[130px] md:comparison-table-text-sm'>
+                              <div class='tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-y-1 tw-py-1.5'>
+                                {%- if item.competitor_4_feature_type == 'boolean' -%}
+                                  {%- if item.competitor_4_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                {%- elsif item.competitor_4_feature_type == 'text' -%}
+                                  <div class='tw-mx-auto tw-w-9/12 tw-text-center'>
+                                    {{ item.competitor_4_feature_text }}
+                                  </div>
+                                {%- elsif item.competitor_4_feature_type == 'price' -%}
+                                  {%- if item.competitor_4_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                  <div>{{ item.competitor_4_feature_price }}</div>
+                                {%- else -%}
+                                  {%- if item.competitor_4_feature -%}
+                                    <svg
+                                      class='comparison-check-icon'
+                                      viewBox='0 0 23 20'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2 8.5L9.125 15L21 2" stroke="{{ section.settings.competitor_check_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                  {%- else -%}
+                                    <svg
+                                      class='comparison-cross-icon'
+                                      viewBox='0 0 16 15'
+                                      fill='none'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                    >
+                                      <path d="M2.22852 13.2694L7.99775 7.50019M7.99775 7.50019L13.767 13.2694M7.99775 7.50019L2.22852 1.73096M7.99775 7.50019L13.767 1.73096" stroke="{{ section.settings.competitor_cross_color | default: '#4D6E89' }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  {%- endif -%}
+                                {%- endif -%}
+                                {%- if item.competitor_4_feature_note != blank -%}
+                                  <div>{{ item.competitor_4_feature_note }}</div>
+                                {%- endif -%}
+                              </div>
+                            </div>
+                          </td>
+                        {%- endif -%}
+                      </tr>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {%- comment -%} Footnotes {%- endcomment -%}
+          {%- assign has_footnotes = false -%}
+          {%- for item in comparison_data -%}
+            {%- if item.footnote != blank -%}
+              {%- assign has_footnotes = true -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if has_footnotes -%}
+            <div class='comparison-footnotes tw-ml-4 tw-overflow-x-scroll tw-pr-2 xl:tw-ml-0 xl:tw-mx-auto xl:tw-px-10 2xl:tw-px-0'>
+              {%- for item in comparison_data -%}
+                {%- if item.footnote != blank -%}
+                  <p class='comparison-footnote lg:tw-text-center'>
+                    {{ item.footnote }}
+                  </p>
                 {%- endif -%}
               {%- endfor -%}
-            </tbody>
-          </table>
-        </div>
-
-        {%- comment -%} Footnotes {%- endcomment -%}
-        {%- assign has_footnotes = false -%}
-        {%- for item in comparison_data -%}
-          {%- if item.footnote != blank -%}
-            {%- assign has_footnotes = true -%}
-            {%- break -%}
+            </div>
           {%- endif -%}
-        {%- endfor -%}
-
-        {%- if has_footnotes -%}
-          <div class='tw-mt-6 tw-space-y-2'>
-            {%- for item in comparison_data -%}
-              {%- if item.footnote != blank -%}
-                <div class='comparison-footnote'>
-                  {{ item.footnote }}
-                </div>
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
+        </div>
       </div>
     </div>
   </div>
@@ -569,45 +986,49 @@
     },
     {
       "type": "header",
-      "content": "Table Customization"
+      "content": "Brand Column Styling"
+    },
+    {
+      "type": "color",
+      "id": "brand_accent_color",
+      "label": "Brand accent color",
+      "default": "#6dab3c",
+      "info": "Main brand color used for borders, check marks, and text in your brand column"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Brand column background color",
+      "default": "#F6F9FE",
+      "info": "Background color for your brand column"
+    },
+    {
+      "type": "header",
+      "content": "Competitor Column Styling"
+    },
+    {
+      "type": "color",
+      "id": "competitor_check_color",
+      "label": "Competitor check mark color",
+      "default": "#4D6E89",
+      "info": "Color for check marks in competitor columns"
+    },
+    {
+      "type": "color",
+      "id": "competitor_cross_color",
+      "label": "Competitor cross mark color",
+      "default": "#4D6E89",
+      "info": "Color for cross marks in competitor columns"
+    },
+    {
+      "type": "header",
+      "content": "Other Customization"
     },
     {
       "type": "text",
       "id": "features_column_title",
       "label": "Features column title",
       "default": "Features"
-    },
-    {
-      "type": "color",
-      "id": "highlight_color",
-      "label": "Brand column highlight color",
-      "default": "#F6F9FE"
-    },
-    {
-      "type": "color",
-      "id": "check_color",
-      "label": "Check mark color",
-      "default": "#22c55e"
-    },
-    {
-      "type": "color",
-      "id": "cross_color",
-      "label": "Cross mark color",
-      "default": "#ef4444"
-    },
-    {
-      "type": "text",
-      "id": "check_symbol",
-      "label": "Check symbol",
-      "default": "✓",
-      "info": "Symbol to display for positive features"
-    },
-    {
-      "type": "text",
-      "id": "cross_symbol",
-      "label": "Cross symbol",
-      "default": "✗",
-      "info": "Symbol to display for negative features"
     },
     {
       "type": "range",
