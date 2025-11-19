@@ -485,6 +485,7 @@
         },
         "logo_wAA9bx": {
           "type": "logo",
+          "disabled": true,
           "settings": {
             "logo": "shopify://shop_images/Oh_Crap_Pawprint_-_Aligned_Straight.svg",
             "link": ""
@@ -509,10 +510,10 @@
       "settings": {
         "heading": "As Seen In",
         "heading_size": "h2",
-        "color_scheme": "",
-        "logo_height": 60,
+        "color_scheme": "scheme-1",
+        "logo_height": 115,
         "logo_spacing": 40,
-        "grayscale_logos": true,
+        "grayscale_logos": false,
         "color_on_hover": true,
         "logo_opacity": 70,
         "show_divider": false,
