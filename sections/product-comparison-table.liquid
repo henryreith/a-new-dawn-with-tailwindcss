@@ -24,7 +24,7 @@
     position: sticky;
     left: 0;
     z-index: 10;
-    background: white;
+    /* background: white; */
   }
 
   /* Sticky brand column (second column) - highlighted */
@@ -34,7 +34,7 @@
     position: sticky;
     left: 100px;
     z-index: 9;
-    background: {{ section.settings.highlight_color | default: '#F6F9FE' }};
+    background: {{ section.settings.highlight_color }};
     box-sizing: border-box;
   }
 
@@ -86,11 +86,11 @@
     position: relative;
   }
 
-  /* Gradient fade on right edge for mobile - fixed to viewport */
+  /* Gradient fade on right edge for mobile */
   @media screen and (max-width: 1279px) {
     .comparison-scroll-wrapper::after {
       content: '';
-      position: fixed;
+      position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
