@@ -511,7 +511,7 @@
         "heading": "As Seen In",
         "heading_size": "h2",
         "color_scheme": "scheme-1",
-        "logo_height": 115,
+        "logo_height": 60,
         "logo_spacing": 40,
         "grayscale_logos": false,
         "color_on_hover": true,
