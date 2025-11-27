@@ -1730,6 +1730,10 @@ cart-drawer .product-option .price {
   overflow-x: clip;
 }
 
+.tw-overflow-y-visible {
+  overflow-y: visible;
+}
+
 .tw-overflow-x-scroll {
   overflow-x: scroll;
 }
